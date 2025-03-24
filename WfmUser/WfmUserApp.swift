@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct WfmUserApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            ControllerView()
         }
     }
 }
+
+
