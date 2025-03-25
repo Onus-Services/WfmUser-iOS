@@ -31,8 +31,8 @@ struct DateFilterHeaderView: View {
 
     @Binding var listReportType: Int
     
-    @Binding var customDate1: Date?
-    @Binding var customDate2: Date?
+    @Binding var customDate1: Date
+    @Binding var customDate2: Date
     
     var otoRefreshCheckbox: () -> Void = {}
     var otoRefreshSpinner: () -> Void = {}
@@ -158,11 +158,11 @@ struct DateFilterHeaderView: View {
                     }
                 } else {
                     HStack {
-                        DateFilterHeaderSmallViewInfo(text: selectedDateType == .customDate ? "\(customDate1?.ddMMYYFormat ?? "")\n\(customDate2?.ddMMYYFormat ?? "")" : selectedDateType.description, icon: ImageConstants.calendar.rawValue)
+                        DateFilterHeaderSmallViewInfo(text: selectedDateType == .customDate ? "\(customDate1.ddMMYYFormat)\n\(customDate2.ddMMYYFormat)" : selectedDateType.description, icon: ImageConstants.calendar.rawValue)
                         
-                        DateFilterHeaderSmallViewInfo(text: "\(selectedStoreArray.count)", icon: ImageConstants.store.rawValue)
+                        /*DateFilterHeaderSmallViewInfo(text: "\(selectedStoreArray.count)", icon: ImageConstants.store.rawValue)
                         
-                        DateFilterHeaderSmallViewInfo(text: "\(selectedUserPlateArray.count)", icon: ImageConstants.user.rawValue)
+                        DateFilterHeaderSmallViewInfo(text: "\(selectedUserPlateArray.count)", icon: ImageConstants.user.rawValue) */
                         
                         Button {
                             withAnimation {

@@ -21,7 +21,7 @@ struct HomePageRoutePageView: View {
                     HomePageListDayPageView().environmentObject(homePageVM)
                 } else {
                     VStack(spacing: 0) {
-                        HomePageListDayPageHeaderInfo().environmentObject(homePageVM)
+                        //HomePageListDayPageHeaderInfo().environmentObject(homePageVM)
                         ZStack {
                             HelperMainMapView(mapView: homePageVM.mapView, markerClicked: { mapMarker in
                                 homePageVM.dayMarkerClicked(groupingList: mapMarker)

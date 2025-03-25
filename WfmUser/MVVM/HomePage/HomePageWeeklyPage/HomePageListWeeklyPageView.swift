@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HomePageListWeeklyPageView: View {
-    //@EnvironmentObject var homePageVM: HomePageViewModel
-    @State var personelRoutePointArray: [PointModel] = []
+    @EnvironmentObject var homePageVM: HomePageViewModel
+    var personelRoutePointArray: [PointModel] = []
     @State var selectedDay: Int = -1
     @State var homePageType: Int = 0
     var body: some View {
@@ -19,9 +19,6 @@ struct HomePageListWeeklyPageView: View {
             VStack(spacing: 0) {
                 VStack {
                     if homePageType == 0 {
-                        
-                        
-                        
                         ScrollView(.horizontal) {
                             HStack {
                                 ForEach(0..<8, id:\.self) { i in
@@ -36,11 +33,11 @@ struct HomePageListWeeklyPageView: View {
                                                     .background(getDayColorAll(for: "\(i)"))
                                                     
                                                 VStack {
-                                                    Text("KM: \(String(format: "%.2f", i == 0 ? personelRoutePointArray.compactMap { Double($0.mesafeKM) }.reduce(0, +) : personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.compactMap { Double($0.mesafeKM) }.reduce(0, +)))")
+                                                    Text("KM: \(String(format: "%.2f", i == 0 ? homePageVM.personelRoutePointArray.compactMap { Double($0.mesafeKM) }.reduce(0, +) : homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.compactMap { Double($0.mesafeKM) }.reduce(0, +)))")
                                                         .foregroundStyle(.black)
                                                         .font(.custom(fontsRegular, size: 12))
                                                     
-                                                    Text("Süre: \(String(format: "%.2f", i == 0 ? personelRoutePointArray.compactMap { Double($0.sureDK) }.reduce(0, +) : personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.compactMap { Double($0.sureDK) }.reduce(0, +))) dk")
+                                                    Text("Süre: \(String(format: "%.2f", i == 0 ? homePageVM.personelRoutePointArray.compactMap { Double($0.sureDK) }.reduce(0, +) : homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.compactMap { Double($0.sureDK) }.reduce(0, +))) dk")
                                                         .foregroundStyle(.black)
                                                         .font(.custom(fontsRegular, size: 12))
                                                     
@@ -48,10 +45,10 @@ struct HomePageListWeeklyPageView: View {
                                                         .font(.custom(fontsSemiBold, size: 12))
                                                         .foregroundStyle(.black)
                                                     
-                                                    Text(i == 0 ? "\(personelRoutePointArray.count - 14)" : "\(personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.count - 2)")
+                                                    Text(i == 0 ? "\(homePageVM.personelRoutePointArray.count - 14)" : "\(homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.count - 2)")
                                                         .font(.custom(fontsSemiBold, size: 12))
                                                         .foregroundStyle(.black)
-                                                        .opacity(i == 0 ? 1.0 : personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.count <= 0 ? 0.0 : 1.0)
+                                                        .opacity(i == 0 ? 1.0 : homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.count <= 0 ? 0.0 : 1.0)
                                                 }.frame(maxWidth: .infinity)
                                             }
                                             
@@ -60,62 +57,30 @@ struct HomePageListWeeklyPageView: View {
                                             .background(.white)
                                             .customOverlayStyle(cornerRadius: 10, lineColor: getDayColorAll(for: "\(i)"), lineWidth: 2)
                                             //.background(getDayColorAll(for: "\(i)"))
-                                    }).disabled(i == 0 ? false : (personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.count <= 0 ? true : false))
+                                    }).disabled(i == 0 ? false : (homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.count <= 0 ? true : false))
                                 }
                             }
                         }
                         
-                        
-                        /*let columns = [
-                            GridItem(.flexible(), spacing: 0),
-                            GridItem(.flexible(), spacing: 0)
-                        ]
-                    
-                        ScrollView {
-                            LazyVGrid(columns: columns, spacing: 0) {
-                                ForEach(1..<9, id:\.self) { i in
-                                    Button(action: {
-                                        selectedDay = i
-                                    }, label: {
-                                        VStack {
-                                            Text("\(getDayNameAll(for: i))")
-                                                .font(.custom(fontsSemiBold, size: 12))
-                                                .foregroundStyle(.white)
-                                            Text(String(format: "%.2f", personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.compactMap { Double($0.mesafeKM) }.reduce(0, +)))
-                                                .font(.custom(fontsRegular, size: 12))
-                                                .foregroundStyle(.white)
-                                                .opacity(personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.count <= 0 ? 0.0 : 1.0)
-                                            Text("\(personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.count - 2)")
-                                                .font(.custom(fontsSemiBold, size: 12))
-                                                .foregroundStyle(.white)
-                                                .opacity(personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.count <= 0 ? 0.0 : 1.0)
-                                        }.frame(maxWidth: .infinity)
-                                            .frame(height: 70)
-                                            .background(getDayColorAll(for: "\(i)"))
-                                    }).disabled((personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.count <= 0 ? true : false))
-                                }
-                            }
-                        }.frame(maxHeight: 140)*/
-                            //.scrollDisabled(true)
                         if selectedDay != -1 {
                             ScrollView {
                                 VStack(spacing: 5) {
                                     if selectedDay == 0 {
-                                        ForEach(0..<personelRoutePointArray.count, id:\.self) { i in
-                                            let cell = personelRoutePointArray[i]
+                                        ForEach(0..<homePageVM.personelRoutePointArray.count, id:\.self) { i in
+                                            let cell = homePageVM.personelRoutePointArray[i]
                                             Button {
-                                                //homePageVM.selectedPoint = cell
-                                                //homePageVM.isPointDialog = true
+                                                homePageVM.selectedPoint = cell
+                                                homePageVM.isPointDialog = true
                                             } label: {
                                                 HomePageRoutePagePointCellView(cell: cell)
                                             }
                                         }
                                     } else {
-                                        ForEach(0..<personelRoutePointArray.filter { $0.haftaninGunu == "\(selectedDay)" }.count, id:\.self) { i in
-                                            let cell = personelRoutePointArray.filter { $0.haftaninGunu == "\(selectedDay)" }[i]
+                                        ForEach(0..<homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(selectedDay)" }.count, id:\.self) { i in
+                                            let cell = homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(selectedDay)" }[i]
                                             Button {
-                                                //homePageVM.selectedPoint = cell
-                                                //homePageVM.isPointDialog = true
+                                                homePageVM.selectedPoint = cell
+                                                homePageVM.isPointDialog = true
                                             } label: {
                                                 HomePageRoutePagePointCellView(cell: cell)
                                             }
@@ -129,7 +94,7 @@ struct HomePageListWeeklyPageView: View {
                                 .foregroundStyle(.black)
                         }
                     } else {
-                        /*ZStack {
+                        ZStack {
                             HelperMainMapView(mapView: homePageVM.mapView, markerClicked: { mapMarker in
                                 homePageVM.markerClicked(groupingList: mapMarker)
                             }, updateMapView: { map in
@@ -147,19 +112,19 @@ struct HomePageListWeeklyPageView: View {
                             }
                             
                             
-                        } */
+                        }
                         
                     }
                 }.frame(maxHeight: .infinity, alignment: .top)
                 
-                //HomePageBottomBar(homePageType: $homePageType).environmentObject(homePageVM)
+                HomePageBottomBar(homePageType: $homePageType).environmentObject(homePageVM)
                     .padding(.bottom, 1)
             }.frame(maxHeight: .infinity, alignment: .top)
-            /*if homePageVM.isPointDialog {
+            if homePageVM.isPointDialog {
                 RoutePointDialogView().environmentObject(homePageVM)
-            } */
+            }
         }.onAppear {
-            loadUsers()
+            //loadUsers()
         }
     }
     
@@ -204,7 +169,7 @@ struct HomePageListWeeklyPageView: View {
             do {
                 let decodedData = try JSONDecoder().decode([PointModel].self, from: finalJsonData)
                 DispatchQueue.main.async {
-                    self.personelRoutePointArray = decodedData.filter { $0.arac == "07 BDU 311" }
+                    //self.personelRoutePointArray = decodedData.filter { $0.arac == "07 BDU 311" }
                 }
                 print("✅ JSON BAŞARIYLA DECODE EDİLDİ!")
             } catch let DecodingError.dataCorrupted(context) {

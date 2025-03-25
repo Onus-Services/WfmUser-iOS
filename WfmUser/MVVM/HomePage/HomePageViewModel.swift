@@ -46,6 +46,7 @@ class HomePageViewModel: ObservableObject {
     @Published var isToastMessageText: String = "" //toast message text
     @Published var isToastMessageBgColor: Color = .MyColor.failedWarningColor //toast message text
     
+    @Published var editAddress: Bool = false
     @Published var pinOnMap: Bool = false
     @Published var addressOnCenterMap: String = "..." //adres öğrenme
     @Published var place: Place? //adres öğrenme
@@ -62,6 +63,7 @@ class HomePageViewModel: ObservableObject {
     @Published var reportDetailArray: [ReportModel] = []
     @Published var widgetArrayOnlyData: [WidgetModelOnlyData] = []
     @Published var widgets: [WidgetModelArray] = [WidgetModelArray(title: String(localized: "WDTeslimat"), color: .NewColor.widgetTeslimat, widget: []), WidgetModelArray(title: String(localized: "WDSefer"), color: .NewColor.widgetSefer, widget: []), WidgetModelArray(title: String(localized: "WDOrtalama"), color: .NewColor.widgetOrtalama, widget: []), WidgetModelArray(title: String(localized: "WDToplam"), color: .NewColor.widgetToplam, widget: []), WidgetModelArray(title: String(localized: "WDRut"), color: .NewColor.widgetRut, widget: [])]
+    @Published var isReportOneDay: Bool = false
     
     //ekranda gösterilecek raporlar dizisi
     @Published var addedReport: [ReportType] = []
@@ -69,6 +71,13 @@ class HomePageViewModel: ObservableObject {
     @Published var localReport: [ReportType] = []
     
     @Published var routeSetting: [RouteSettingModel] = []
+    
+    @Published var globalSelectedDateType: SelectedDateType = .today
+    @Published var gloablSelectedFirstDate: Date = Date()
+    @Published var globalSelectedSecondDate: Date = Date()
+    @Published var customDate1: Date = Date()
+    @Published var customDate2: Date = Date()
+    
     
     @Published var homePagePageType: Int = 0
     
@@ -594,7 +603,7 @@ class HomePageViewModel: ObservableObject {
                 do {
                     let company = try JSONDecoder().decode([ReportModel].self, from: jsonData)
                     print("Parsed Model: \(company)")
-                    self.reportDetailArray = company.filter { $0.aracPlaka == "07 BDU 310" }
+                    self.reportDetailArray = [company.filter { $0.aracPlaka == "07 BDU 310" }.first!]
                     self.fillWidgets()
                 } catch {
                     print("JSON parse error: \(error)")

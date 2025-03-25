@@ -28,17 +28,17 @@ struct HomePageDashboard: View {
                     homePageVM.otoRefreshList(type: 1)
                 } onTapRefresh: {
                     homePageVM.otoRefreshList(type: 0)
-                }
+                } */
                 
-                DateFilterHeaderView(type: 0, storeAndUserFilter: true, filterOpen: true, selectedDateType: $homePageVM.globalSelectedDateType, selectedFirstDate: $homePageVM.gloablSelectedFirstDate, selectedSecondDate: $homePageVM.globalSelectedSecondDate, selectedStoreArray: $homePageVM.globalSelectedStoreArray, selectedUserPlateArray: $homePageVM.globalSelectedUserPlateArray, storeArray: $homePageVM.globalStoreArray, userPlateArray: $homePageVM.globalUserPlateArray, listReportType: .constant(0), customDate1: $homePageVM.customDate1, customDate2: $homePageVM.customDate2) {
-                    homePageVM.isOtoRefresh.toggle()
+                DateFilterHeaderView(type: 0, storeAndUserFilter: false, filterOpen: true, selectedDateType: $homePageVM.globalSelectedDateType, selectedFirstDate: $homePageVM.gloablSelectedFirstDate, selectedSecondDate: $homePageVM.globalSelectedSecondDate, selectedStoreArray: .constant([]), selectedUserPlateArray: .constant([]), storeArray: .constant([]), userPlateArray: .constant([]), listReportType: .constant(0), customDate1: $homePageVM.customDate1, customDate2: $homePageVM.customDate2) {
+                    /*homePageVM.isOtoRefresh.toggle()
                     preferences.set(homePageVM.isOtoRefresh, forKey: "isOtoRefresh")
-                    homePageVM.otoRefreshList(type: 1)
+                    homePageVM.otoRefreshList(type: 1)*/
                 } otoRefreshSpinner: {
-                    homePageVM.selectOtoRefresh = homePageVM.otoRefreshSelectIndex!
-                    preferences.set(homePageVM.selectOtoRefresh, forKey: "otoRefreshSelectIndex")
+                    /*homePageVM.selectOtoRefresh = homePageVM.otoRefreshSelectIndex!
+                    preferences.set(homePageVM.selectOtoRefresh, forKey: "otoRefreshSelectIndex")*/
                 } otoRefreshManuel: {
-                    homePageVM.otoRefreshList(type: 2)
+                    //homePageVM.otoRefreshList(type: 2)
                 } selectStoreMenu: {
                     showSelectUserPlateMenu = false
                     showSelectDateMenu = false
@@ -52,25 +52,25 @@ struct HomePageDashboard: View {
                     homePageVM.getReportAll(loading: true) { r in
                         //
                     }
-                    homePageVM.otoRefreshList(type: 1)
+                    //homePageVM.otoRefreshList(type: 1)
                 } dateFilterTomorrow: {
                     print("Dün seçildi")
                     homePageVM.getReportAll(loading: true) { r in
                         //
                     }
-                    homePageVM.otoRefreshList(type: 1)
+                    //homePageVM.otoRefreshList(type: 1)
                 } dateFilterLastWeek: {
                     print("Geçen hafta")
                     homePageVM.getReportAll(loading: true) { r in
                         //
                     }
-                    homePageVM.otoRefreshList(type: 1)
+                    //homePageVM.otoRefreshList(type: 1)
                 } dateFilterCustomDate: {
                     homePageVM.globalSelectedDateType = .customDate
                     showSelectStoreMenu = false
                     showSelectUserPlateMenu = false
                     showSelectDateMenu.toggle()
-                    homePageVM.otoRefreshList(type: 1)
+                    //homePageVM.otoRefreshList(type: 1)
                 } onAppearFunc: {
                     /*if !mainPageVM.firstOnAppearFunc {
                         print("AAAALALALALA")
@@ -78,11 +78,7 @@ struct HomePageDashboard: View {
                             //
                         }
                     } */
-                }.onChange(of: homePageVM.globalSelectedDateType) { _ in
-                    if homePageVM.globalSelectedDateType == .today {
-                        homePageVM.otoRefreshList(type: 1)
-                    }
-                } */
+                }
                 
                 if homePageVM.reportDetailArray.count < 1 {
                     NoValueDescView()
@@ -107,33 +103,15 @@ struct HomePageDashboard: View {
                         Spacer()
                         ScrollView {
                             ForEach(0..<homePageVM.addedReport.count, id:\.self) { i in
-                                ReportView(data: homePageVM.reportDetailArray, selectedReport: homePageVM.addedReport[i], reportIndex: i, stores: [], plates: []).environmentObject(homePageVM)
+                                ReportView(isReportOneDay: homePageVM.isReportOneDay, data: homePageVM.reportDetailArray, selectedReport: homePageVM.addedReport[i], reportIndex: i, stores: [], plates: []).environmentObject(homePageVM)
                             }
                         }
                     }
                 }
             }
             
-            
-            /*if showSelectStoreMenu {
-                DropDownUserStoresMenu(showUserStoresMenu: $showSelectStoreMenu, stores: $homePageVM.globalStoreArray, selectedStores: $homePageVM.globalSelectedStoreArray) {
-                    homePageVM.getMerchReport()
-                    homePageVM.getReportAll(loading: true) { r in
-                        //
-                    }
-                }.padding(.top, 117) //72
-            }
-            
-            if showSelectUserPlateMenu {
-                DropDownUserPlatesMenu(showSelectUserPlateMenu: $showSelectUserPlateMenu, plates: $homePageVM.globalUserPlateArray, selectedPlates: $homePageVM.globalSelectedUserPlateArray) {
-                    homePageVM.getReportAll(loading: true) { r in
-                        //
-                    }
-                }.padding(.top, 117)
-            }
-            
             if homePageVM.globalSelectedDateType == .customDate && showSelectDateMenu {
-                CalendarSelectView(showSelectDateMenu: $showSelectDateMenu, firstSelectedDate: $homePageVM.customDate1, secondSelectedDate: $homePageVM.customDate2) {
+                /*CalendarSelectView(showSelectDateMenu: $showSelectDateMenu, firstSelectedDate: $homePageVM.customDate1, secondSelectedDate: $homePageVM.customDate2) {
                     showSelectDateMenu = false
                     let calendar = Calendar.current
                     let components = calendar.dateComponents([.day], from: homePageVM.customDate1!, to: homePageVM.customDate2!)
@@ -148,8 +126,8 @@ struct HomePageDashboard: View {
                     homePageVM.getReportAll(loading: true) { r in
                         //
                     }
-                }.padding(.top, 172)
-                /*DropDownDatePickerMenu(type: 0, showSelectDateMenu: $showSelectDateMenu, firstDate: $homePageVM.customDate1, secondDate: $homePageVM.customDate2) {
+                }.padding(.top, 172) */
+                DropDownDatePickerMenu(type: 0, showSelectDateMenu: $showSelectDateMenu, firstDate: $homePageVM.customDate1, secondDate: $homePageVM.customDate2) {
                     print("Özel Tarih")
                     let calendar = Calendar.current
                     let components = calendar.dateComponents([.day], from: homePageVM.customDate1, to: homePageVM.customDate2)
@@ -164,8 +142,8 @@ struct HomePageDashboard: View {
                     homePageVM.getReportAll(loading: true) { r in
                         //
                     }
-                }.padding(.top, 172) //127 */
-            } */
+                }.padding(.top, 90)
+            }
         }
     }
 }

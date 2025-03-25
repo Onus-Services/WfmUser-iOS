@@ -169,7 +169,7 @@ struct DropDownUserPlatesMenu: View {
     }
 }
 
-struct OpenSelectedMenuSearchBarView: View {
+/*struct OpenSelectedMenuSearchBarView: View {
     var text: String
     @Binding var searchText: String
     var body: some View {
@@ -205,7 +205,7 @@ struct OpenSelectedMenuSearchBarView: View {
             .padding(.vertical, 5)
             .padding(.horizontal, 10)
     }
-}
+} */
 
 
 struct DropDownMenuCell1: View {

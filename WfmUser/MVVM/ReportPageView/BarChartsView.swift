@@ -11,7 +11,7 @@ import Charts
 struct BarChartsView: View {
     
     @EnvironmentObject var homePageVM: HomePageViewModel
-    
+    var isReportOneDay: Bool = true
     var data: [ReportModel] = localReportModel
     var reportType: ReportType = .barTeslimat
     var groupType: Int = 0
@@ -38,55 +38,92 @@ struct BarChartsView: View {
             VStack(spacing: 0) {
                 
                 Chart {
-                    ForEach(0..<data5.valueArray.count, id:\.self) { i in
-                        let value = value3(data5.valueArray[i])
-                        switch value {
-                        case .intValues(let array):
-                            ForEach(0..<array.count, id:\.self) { j in
+                    if isReportOneDay {
+                        ForEach(0..<data5.groupArray.count, id:\.self) { i in
+                            let value = value3(data5.valueArray[0])
+                            switch value {
+                            case .intValues(let array):
                                 BarMark(
                                     x: .value(data5.groupArray[i][0], data5.groupArray[i][1]),
-                                    y: .value(data5.descArray[j], array[j])
+                                    y: .value(data5.descArray[i], array[i])
                                 )
-                                .foregroundStyle(by: .value("", data5.descArray[j]))
+                                .foregroundStyle(by: .value("", data5.descArray[i]))
                                 .annotation (position: .overlay) {
-                                    if array[j] > 0 {
-                                        Text("\(array[j])")
+                                    if array[i] > 0 {
+                                        Text("\(array[i])")
                                             .foregroundStyle(.white)
                                             .font(.custom(fontsRegular, size: 8))
                                     }
+                                }
+                            case .doubleValues(let array):
+                                BarMark(
+                                    x: .value(data5.groupArray[i][0], data5.groupArray[i][1]),
+                                    y: .value(data5.descArray[i], array[i])
+                                )
+                                .foregroundStyle(by: .value("", data5.descArray[i]))
+                                .annotation (position: .overlay) {
+                                    if array[i] > 0 {
+                                        Text(String(format: "%.2f", array[i]))
+                                            .foregroundStyle(.white)
+                                            .font(.custom(fontsRegular, size: 8))
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        ForEach(0..<data5.valueArray.count, id:\.self) { i in
+                            let value = value3(data5.valueArray[i])
+                            switch value {
+                            case .intValues(let array):
+                                ForEach(0..<array.count, id:\.self) { j in
+                                    BarMark(
+                                        x: .value(data5.groupArray[i][0], data5.groupArray[i][1]),
+                                        y: .value(data5.descArray[j], array[j])
+                                    )
+                                    .foregroundStyle(by: .value("", data5.descArray[j]))
+                                    .annotation (position: .overlay) {
+                                        if array[j] > 0 {
+                                            Text("\(array[j])")
+                                                .foregroundStyle(.white)
+                                                .font(.custom(fontsRegular, size: 8))
+                                        }
+                                    }
+                                    
+                                    /*.annotation {
+                                        Text("\(array.reduce(0) { $0 + $1 })")
+                                            .foregroundStyle(.black)
+                                            .font(.custom(fontsRegular, size: 8))
+                                            .opacity(array.count - 1 == j ? 1 : 0)
+                                    }*/
                                 }
                                 
-                                /*.annotation {
-                                    Text("\(array.reduce(0) { $0 + $1 })")
-                                        .foregroundStyle(.black)
-                                        .font(.custom(fontsRegular, size: 8))
-                                        .opacity(array.count - 1 == j ? 1 : 0)
-                                }*/
-                            }
-                            
-                        case .doubleValues(let array):
-                            ForEach(0..<array.count, id:\.self) { j in
-                                BarMark(
-                                    x: .value(data5.groupArray[i][0], data5.groupArray[i][1]),
-                                    y: .value(data5.descArray[j], array[j])
-                                )
-                                .foregroundStyle(by: .value("", data5.descArray[j]))
-                                .annotation (position: .overlay) {
-                                    if array[j] > 0 {
-                                        Text(String(format: "%.2f", array[j]))
-                                            .foregroundStyle(.white)
-                                            .font(.custom(fontsRegular, size: 8))
+                            case .doubleValues(let array):
+                                ForEach(0..<array.count, id:\.self) { j in
+                                    BarMark(
+                                        x: .value(data5.groupArray[i][0], data5.groupArray[i][1]),
+                                        y: .value(data5.descArray[j], array[j])
+                                    )
+                                    .foregroundStyle(by: .value("", data5.descArray[j]))
+                                    .annotation (position: .overlay) {
+                                        if array[j] > 0 {
+                                            Text(String(format: "%.2f", array[j]))
+                                                .foregroundStyle(.white)
+                                                .font(.custom(fontsRegular, size: 8))
+                                        }
                                     }
+                                    /*.annotation {
+                                        Text(String(format: "%.2f", array.reduce(0.0) { $0 + $1 }))
+                                            .foregroundStyle(.black)
+                                            .font(.custom(fontsRegular, size: 8))
+                                            .opacity(array.count - 1 == j ? 1.0 : 0.0)
+                                    }*/
                                 }
-                                /*.annotation {
-                                    Text(String(format: "%.2f", array.reduce(0.0) { $0 + $1 }))
-                                        .foregroundStyle(.black)
-                                        .font(.custom(fontsRegular, size: 8))
-                                        .opacity(array.count - 1 == j ? 1.0 : 0.0)
-                                }*/
                             }
                         }
                     }
+                   
+                    
+                    
                 }.chartYScale(range: .plotDimension(padding: 10))
                     .chartForegroundStyleScale(titleToColor(data5: data5))
                     .frame(height: type == 0 ? chartsHeight : .infinity)
@@ -146,6 +183,10 @@ struct BarChartsView: View {
                     .padding()
             }
             
+        }.onAppear {
+            print("TTTTTTgroupArray \(data5.groupArray) - \(data5.groupArray.count)")
+            print("YYYYYYdescArray \(data5.descArray) - \(data5.descArray.count)")
+            print("RRRRRRvalueArray \(data5.valueArray) - \(data5.valueArray.count)")
         }
     }
     

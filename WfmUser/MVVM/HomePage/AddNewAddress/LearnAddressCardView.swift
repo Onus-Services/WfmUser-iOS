@@ -37,6 +37,7 @@ struct LearnAddressCardView: View {
                     .customOverlayStyle(cornerRadius: 10, lineColor: Color.gray)
                 HStack(spacing: 0) {
                     Button {
+                        homePageVM.editAddress = false
                         homePageVM.pinOnMap = false
                     } label: {
                         Text("vazgec")
@@ -50,6 +51,7 @@ struct LearnAddressCardView: View {
                             /*mainPageVM.setPointAddress(mxRoutePoinstId: mainPageVM.clickedPoint!.MxRoutePointsId!, address: mainPageVM.addressOnCenterMap, lat: mainPageVM.place?.geoCoordinates?.latitude ?? -1.0, long: mainPageVM.place?.geoCoordinates?.longitude ?? -1.0) { result in
                                 mainPageVM.createAllPointMarker()
                             } */
+                            //homePageVM.editAddress = false
                             homePageVM.pinOnMap = false
                             homePageVM.isAddNewAddressDialog = true
                         }
@@ -82,6 +84,7 @@ struct LearnAddressPinCardView: View {
                 Spacer()
                 Button {
                     withAnimation {
+                        homePageVM.editAddress = false
                         homePageVM.pinOnMap = true
                     }
                     

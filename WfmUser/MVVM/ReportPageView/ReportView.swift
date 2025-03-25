@@ -12,7 +12,7 @@ struct ReportView: View {
     
     @State var indexSelectedReport: Int?
     @State var indexSelectedGroup: Int? = 0
-    
+    var isReportOneDay: Bool = true
     var data: [ReportModel] //= localReportModel
     
     let reportTypes: [ReportType] = [.barTeslimat, .pieTeslimat, .lineHesaplananToplananKm, .barHesaplananToplananSaat, .barAdresSkor, .barOrtalamaGeofence, .barAracVerimlilik, .barSeferBBB, .barDuraklama, .barKumeleme, .barOrtalamaTeslimat]
@@ -112,7 +112,7 @@ struct ReportView: View {
                             
                             ReportViewHeaderSmallButton(icon: ImageConstants.raporBuyutIcon.rawValue) {
                                 homePageVM.fullScreenChartReportType = selectedReport!
-                                homePageVM.fullScreenChartDetail = getChartDetails(groupType: indexSelectedGroup!, reportType: selectedReport!, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate))
+                                homePageVM.fullScreenChartDetail = getChartDetails(isReportOneDay: isReportOneDay, groupType: indexSelectedGroup!, reportType: selectedReport!, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate))
                                 withAnimation {
                                     homePageVM.isFullScreenChart = true
                                 }
@@ -165,11 +165,11 @@ struct ReportView: View {
                         if selectedReport != nil {
                             switch returnChartType(reportType: selectedReport!) {
                             case .barChart:
-                                BarChartsView(data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport!, groupType: indexSelectedGroup!, data5: getChartDetails(groupType: indexSelectedGroup!, reportType: selectedReport!, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate))).environmentObject(homePageVM)
+                                BarChartsView(isReportOneDay: isReportOneDay, data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport!, groupType: indexSelectedGroup!, data5: getChartDetails(isReportOneDay: isReportOneDay, groupType: indexSelectedGroup!, reportType: selectedReport!, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate))).environmentObject(homePageVM)
                             case .pieChart:
-                                PieChartsView(data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport!, groupType: indexSelectedGroup!, data5: getChartDetails(groupType: indexSelectedGroup!, reportType: selectedReport!, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate)))
+                                PieChartsView(data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport!, groupType: indexSelectedGroup!, data5: getChartDetails(isReportOneDay: isReportOneDay, groupType: indexSelectedGroup!, reportType: selectedReport!, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate)))
                             case .lineChart:
-                                LineChartsView(data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport!, groupType: indexSelectedGroup!, data5: getChartDetails(groupType: indexSelectedGroup!, reportType: selectedReport!, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate)))
+                                LineChartsView(data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport!, groupType: indexSelectedGroup!, data5: getChartDetails(isReportOneDay: isReportOneDay, groupType: indexSelectedGroup!, reportType: selectedReport!, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate)))
                             }
                         }
                     }
@@ -205,7 +205,6 @@ struct ReportView: View {
     
     func filterReportData(selectedStore: [Int] = [], selectedPlate: [String] = []) -> [ReportModel] {
         var returnReportData: [ReportModel] = data
-        
         if selectedStore != [] {
             returnReportData = returnReportData.filter { selectedStore.contains(Int($0.depo) ?? 0) }
             //returnReportData = returnReportData.filter { selectedStore.contains(Int($0.CompanyId) ?? 0) }
@@ -231,7 +230,7 @@ struct ReportView: View {
                     }
                 }
             }
-            returnReportData = newData
+            //returnReportData = newData
         } else {
             var newData: [ReportModel] = []
             for d in returnReportData {
@@ -248,14 +247,14 @@ struct ReportView: View {
                     }
                 }
             }
-            returnReportData = newData
+            //returnReportData = newData
         }
         
         return returnReportData
     }
 }
 
-struct ReportViewCompare: View {
+/*struct ReportViewCompare: View {
     @EnvironmentObject var homePageVM: MainPageViewModel
     
     @State var indexSelectedReport: Int?
@@ -395,11 +394,11 @@ struct ReportViewCompare: View {
                         if selectedReport != nil {
                             switch returnChartType(reportType: selectedReport) {
                             case .barChart:
-                                BarChartsView(data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport, groupType: indexSelectedGroup, data5: getChartDetails(groupType: indexSelectedGroup, reportType: selectedReport, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate))).environmentObject(homePageVM)
+                                BarChartsView(data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport, groupType: indexSelectedGroup, data5: getChartDetails(isReportOneDay: isReportOneDay, groupType: indexSelectedGroup, reportType: selectedReport, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate))).environmentObject(homePageVM)
                             case .pieChart:
-                                PieChartsView(data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport, groupType: indexSelectedGroup, data5: getChartDetails(groupType: indexSelectedGroup, reportType: selectedReport, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate)))
+                                PieChartsView(data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport, groupType: indexSelectedGroup, data5: getChartDetails(isReportOneDay: isReportOneDay, groupType: indexSelectedGroup, reportType: selectedReport, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate)))
                             case .lineChart:
-                                LineChartsView(data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport, groupType: indexSelectedGroup, data5: getChartDetails(groupType: indexSelectedGroup, reportType: selectedReport, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate)))
+                                LineChartsView(data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport, groupType: indexSelectedGroup, data5: getChartDetails(isReportOneDay: isReportOneDay, groupType: indexSelectedGroup, reportType: selectedReport, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate)))
                             }
                         }
                     }
@@ -476,7 +475,7 @@ struct ReportViewCompare: View {
         
         return returnReportData
     }
-}
+} */
 
 struct Plates: Identifiable {
     var id: String

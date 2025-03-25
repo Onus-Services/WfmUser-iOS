@@ -131,7 +131,7 @@ struct ChartDetailModel: Identifiable {
     }
 }
 
-func getChartDetails(groupType: Int, reportType: ReportType, report: [ReportModel]) -> ChartDetailModel {
+func getChartDetails(isReportOneDay: Bool, groupType: Int, reportType: ReportType, report: [ReportModel]) -> ChartDetailModel {
     var descArray: [String] = []
     var chartTitle: String = ""
     switch reportType {
@@ -176,9 +176,18 @@ func getChartDetails(groupType: Int, reportType: ReportType, report: [ReportMode
     var groupArray: [[String]] = []
     for d in report {
         if groupType == 0 {
-            groupArray.append(["Araç", d.aracPlaka])
+            if isReportOneDay {
+                groupArray = [["Değer", "Olumlu"], ["Değer", "Olumsuz"], ["Değer", "Devam"], ["Değer", "FarklıG"], ["Değer", "FarklıA"], ["Değer", "Durak"]]
+            } else {
+                groupArray.append(["Araç", d.aracPlaka])
+            }
         } else {
-            groupArray.append(["Depo", d.depo])
+            if isReportOneDay {
+                groupArray = [["Değer", "Olumlu"], ["Değer", "Olumsuz"], ["Değer", "Devam"], ["Değer", "FarklıG"], ["Değer", "FarklıA"], ["Değer", "Durak"]]
+            } else {
+                groupArray.append(["Araç", d.aracPlaka])
+            }
+            //groupArray.append(["Depo", d.depo])
         }
         switch reportType {
         case .barTeslimat:

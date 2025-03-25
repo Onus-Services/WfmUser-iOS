@@ -17,7 +17,7 @@ struct DayMapPointExcDialogView: View {
     var body: some View {
         ZStack {
             /*Color.white
-                .ignoresSafeArea(edges: .all) */
+                .ignoresSafeArea(edges: .all)*/
             
             if let selectedPoint = selectedPoint {
                 VStack {
@@ -34,10 +34,21 @@ struct DayMapPointExcDialogView: View {
                                     .foregroundStyle(.black)
                             })
                             
-                            Text("\(selectedPoint.gelenAdres)")
-                                .foregroundStyle(.black)
-                                .font(.custom(fontsRegular, size: 12))
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                            if homePageVM.personelDayRoutePointArray.count > 0 {
+                                if selectedPoint.takipId == homePageVM.personelDayRoutePointArray[0].takipId || selectedPoint.takipId == homePageVM.personelDayRoutePointArray[homePageVM.personelDayRoutePointArray.count - 1].takipId {
+                                    Text("\(selectedPoint.isim)")
+                                        .foregroundStyle(.black)
+                                        .font(.custom(fontsRegular, size: 12))
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                } else {
+                                    Text("\(selectedPoint.gelenAdres)")
+                                        .foregroundStyle(.black)
+                                        .font(.custom(fontsRegular, size: 12))
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                            }
+                            
+                            
                             
                             if homePageVM.personelDayRoutePointArray.count > 0 {
                                 if selectedPoint.takipId == homePageVM.personelDayRoutePointArray[0].takipId || selectedPoint.takipId == homePageVM.personelDayRoutePointArray[homePageVM.personelDayRoutePointArray.count - 1].takipId {
@@ -45,12 +56,21 @@ struct DayMapPointExcDialogView: View {
                                         .resizable()
                                         .frame(width: 25, height: 25)
                                         .foregroundStyle(.black)
+                                } else {
+                                    Button {
+                                        homePageVM.editAddress = true
+                                        homePageVM.pinOnMap = true
+                                    } label: {
+                                        Image(systemName: "fibrechannel")
+                                            .resizable()
+                                            .frame(width: 25, height: 25)
+                                            .foregroundStyle(.black)
+                                    }
                                 }
                             }
+                        }.background(.white)
+                            .padding(5)
                             
-                            
-                            
-                        }.padding(.vertical, 5)
 
                         if homePageVM.personelDayRoutePointArray.count > 0 {
                             if selectedPoint.takipId == homePageVM.personelDayRoutePointArray[0].takipId || selectedPoint.takipId == homePageVM.personelDayRoutePointArray[homePageVM.personelDayRoutePointArray.count - 1].takipId  {
@@ -71,7 +91,8 @@ struct DayMapPointExcDialogView: View {
                         }
                         
                         
-                    }.customOverlayStyle(cornerRadius: 10, lineColor: .gray.opacity(0.2))
+                    }.background(.white)
+                        .customOverlayStyle(cornerRadius: 10, lineColor: .gray.opacity(0.2))
                         .padding(.horizontal, 5)
                     Spacer()
                 }

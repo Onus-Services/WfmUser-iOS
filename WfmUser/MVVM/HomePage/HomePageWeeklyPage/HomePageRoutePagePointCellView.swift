@@ -19,110 +19,168 @@ struct HomePageRoutePagePointCellView: View {
                     HStack(spacing: 0) {
                         ZStack {
                             Rectangle()
-                                .frame(width: 25, height: 25)
+                                .frame(width: 25, height: 30)
                                 .foregroundStyle(.white)
-                                .customOverlayStyle(cornerRadius: 8, lineColor: .black)
+                                .customOverlayStyle(cornerRadius: 10, lineColor: getDayColor(for: cell.haftaninGunu), lineWidth: 2)
                             
                             Text("\(cell.sira)")
-                                .font(.custom(fontsRegular, size: 12))
-                                .foregroundStyle(.black)
+                                .font(.custom(fontsSemiBold, size: 12))
+                                .foregroundStyle(Color.init(hex1: cell.vehicleColor))
                         }.padding(.horizontal, 5)
-                        HomePageRoutePagePointCellAracPlaka(colorStr: cell.vehicleColor, text: "Araç", desc: cell.arac)
-                        HomePageRoutePagePointCellAracPlaka(text: "Gün", desc: getDayNameShort(for: cell.haftaninGunu), color: getDayColor(for: cell.haftaninGunu))
-                        Spacer()
-                        Text("| \(cell.baslangicZamani.formattedTimeYYYY_MM_DD()) - \(cell.bitisZamani.formattedTimeYYYY_MM_DD()) / (\(cell.calismaSuresiDK))")
-                            .font(.custom(fontsRegular, size: 12))
-                            .padding(.horizontal, 5)
-                            .foregroundStyle(.black)
-                    }
-                    Divider()
-                    HStack(spacing: 0) {
-                        Text("Müşteri Adı: ")
-                            .font(.custom(fontsMedium, size: 12))
-                            .foregroundStyle(.black)
+                        
                         Text("\(cell.isim)")
-                            .font(.custom(fontsRegular, size: 12))
+                            .font(.custom(fontsSemiBold, size: 14))
                             .foregroundStyle(.black)
-                            .lineLimit(1)
+                            .frame(height: 50)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                    }.padding(.horizontal, 5)
-                    HStack(spacing: 0) {
-                        HStack(spacing: 0) {
-                            Text("İl: ")
-                                .font(.custom(fontsMedium, size: 12))
-                                .foregroundStyle(.black)
-                            Text("\(cell.il)")
-                                .font(.custom(fontsRegular, size: 12))
-                                .foregroundStyle(.black)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                        HStack(spacing: 0) {
-                            Text("İlçe: ")
-                                .font(.custom(fontsMedium, size: 12))
-                                .foregroundStyle(.black)
-                            Text("\(cell.ilce)")
-                                .font(.custom(fontsRegular, size: 12))
-                                .foregroundStyle(.black)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                        HStack(spacing: 0) {
-                            Text("Mah.: ")
-                                .font(.custom(fontsMedium, size: 12))
-                                .foregroundStyle(.black)
-                            Text("\(cell.mahalle)")
-                                .font(.custom(fontsRegular, size: 12))
-                                .foregroundStyle(.black)
-                                .lineLimit(1)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                    }.padding(.horizontal, 5)
+                            .multilineTextAlignment(.center)
+                    }
+                    
+                    /*HomePageRoutePagePointCellAracPlaka(colorStr: cell.vehicleColor, text: "Araç", desc: cell.arac)
+                    HomePageRoutePagePointCellAracPlaka(text: "Gün", desc: getDayNameShort(for: cell.haftaninGunu), color: getDayColor(for: cell.haftaninGunu))
+                    Spacer()
+                    Text("| \(cell.baslangicZamani.formattedTimeYYYY_MM_DD()) - \(cell.bitisZamani.formattedTimeYYYY_MM_DD()) / (\(cell.calismaSuresiDK))")
+                        .font(.custom(fontsRegular, size: 12))
+                        .padding(.horizontal, 5)
+                        .foregroundStyle(.black) */
+                    
+                    Divider()
                     HStack(spacing: 20) {
+                        HStack(spacing: 5) {
+                            Image(systemName: "road.lanes")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .foregroundStyle(.black)
+                            Text("\(cell.mesafeKM) KM")
+                                .font(.custom(fontsSemiBold, size: 16))
+                                .foregroundStyle(.black)
+                        }.frame(maxWidth: .infinity, alignment: .leading)
+                        HStack(spacing: 5) {
+                            Image(systemName: "clock")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .foregroundStyle(.black)
+                            Text("\(cell.sureDK) DK")
+                                .font(.custom(fontsSemiBold, size: 16))
+                                .foregroundStyle(.black)
+                        }.frame(maxWidth: .infinity, alignment: .leading)
                         HStack(spacing: 0) {
-                            Text("KM: ")
-                                .font(.custom(fontsMedium, size: 12))
-                                .foregroundStyle(.black)
-                            Text("\(cell.mesafeKM)")
-                                .font(.custom(fontsRegular, size: 12))
-                                .foregroundStyle(.black)
-                        }
-                        HStack(spacing: 0) {
-                            Text("DK: ")
-                                .font(.custom(fontsMedium, size: 12))
-                                .foregroundStyle(.black)
-                            Text("\(cell.sureDK)")
-                                .font(.custom(fontsRegular, size: 12))
-                                .foregroundStyle(.black)
-                        }
-                        HStack(spacing: 0) {
-                            Text("Frekans: ")
-                                .font(.custom(fontsMedium, size: 12))
-                                .foregroundStyle(.black)
-                            Text("\(cell.frekans)")
-                                .font(.custom(fontsRegular, size: 12))
-                                .foregroundStyle(.black)
-                        }
-                        HStack(spacing: 0) {
-                            Text("Ağırlık/Hacim: ")
-                                .font(.custom(fontsMedium, size: 12))
+                            Image(systemName: "scalemass")
+                                .resizable()
+                                .frame(width: 25, height: 25)
                                 .foregroundStyle(.black)
                             Text("\(cell.kg) / \(cell.hacim)")
-                                .font(.custom(fontsRegular, size: 12))
+                                .font(.custom(fontsSemiBold, size: 16))
                                 .foregroundStyle(.black)
-                        }
+                        }.frame(maxWidth: .infinity, alignment: .leading)
                     }.frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 5)
+                        .padding(5)
+                    
+                    HStack(spacing: 20) {
+                        HStack(spacing: 5) {
+                            Text("SLA: \(cell.baslangicZamani.formattedTimeYYYY_MM_DD()) - \(cell.bitisZamani.formattedTimeYYYY_MM_DD())")
+                                .font(.custom(fontsSemiBold, size: 16))
+                                .foregroundStyle(.black)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Text("İş Süresi: \(cell.calismaSuresiDK)dk")
+                                .font(.custom(fontsSemiBold, size: 16))
+                                .foregroundStyle(.black)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }.frame(maxWidth: .infinity, alignment: .leading)
+                    }.frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(5)
+                    
+                    HStack(spacing: 0) {
+                        HStack(spacing: 0) {
+                            Text("\(cell.il.uppercased())/\(cell.ilce.uppercased())-\(cell.mahalle)")
+                                .font(.custom(fontsRegular, size: 14))
+                                .foregroundStyle(.black)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    }.padding(.horizontal, 5)
+                    
+                    HStack(spacing: 0) {
+                        HStack(spacing: 0) {
+                            Text("Sipariş Notu: ")
+                                .font(.custom(fontsRegular, size: 14))
+                                .foregroundStyle(.black)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    }.padding(.horizontal, 5)
                     
                 }.customOverlayStyle(cornerRadius: 10, lineColor: .black.opacity(0.3))
             //}
+        }.onAppear {
+            //loadUsers()
+        }
+    }
+    
+    func loadUsers() {
+        guard let fileURL = Bundle.main.url(forResource: "wfmUser", withExtension: "txt") else {
+            print("❌ Dosya bulunamadı!")
+            return
+        }
+
+        do {
+            let rawData = try Data(contentsOf: fileURL)
+                
+            // 1. JSON'u String olarak oku
+            guard let jsonString = String(data: rawData, encoding: .utf8) else {
+                print("❌ Dosya içeriği stringe çevrilemedi!")
+                return
+            }
+                
+            print("✅ JSON STRING OKUNDU: \(jsonString.prefix(200))...")  // İlk 200 karakteri göster (kontrol amaçlı)
+                
+            // 2. İlk JSON decode işlemi: String formatında saklanan JSON'u tekrar JSON'a çevir
+            guard let jsonData = jsonString.data(using: .utf8) else {
+                print("❌ JSON string, Data'ya çevrilemedi!")
+                return
+            }
+                
+            let jsonStringDecoded: String
+            do {
+                jsonStringDecoded = try JSONDecoder().decode(String.self, from: jsonData)
+                print("✅ JSON STRING DECODE EDİLDİ")
+            } catch {
+                print("❌ İlk JSON decode hatası: \(error.localizedDescription)")
+                return
+            }
+                
+            // 3. İkinci JSON decode işlemi: Asıl JSON veri modeline çevir
+            guard let finalJsonData = jsonStringDecoded.data(using: .utf8) else {
+                print("❌ Final JSON data oluşturulamadı!")
+                return
+            }
+            
+            do {
+                let decodedData = try JSONDecoder().decode([PointModel].self, from: finalJsonData)
+                DispatchQueue.main.async {
+                    //self.cell = decodedData.filter { $0.arac == "07 BDU 311" }[2]
+                }
+                print("✅ JSON BAŞARIYLA DECODE EDİLDİ!")
+            } catch let DecodingError.dataCorrupted(context) {
+                print("❌ Data Corrupted: \(context)")
+            } catch let DecodingError.keyNotFound(key, context) {
+                print("❌ Eksik Anahtar: \(key.stringValue) – Context: \(context.debugDescription)")
+            } catch let DecodingError.typeMismatch(type, context) {
+                print("❌ Tür Uyumsuzluğu: \(type) – Context: \(context.debugDescription)")
+            } catch let DecodingError.valueNotFound(value, context) {
+                print("❌ Değer Eksik: \(value) – Context: \(context.debugDescription)")
+            } catch {
+                print("❌ Genel JSON Decode Hatası: \(error.localizedDescription)")
+            }
+        } catch {
+            print("❌ Dosya okuma hatası: \(error.localizedDescription)")
         }
     }
 }
 
-/*
+
 #Preview {
-    HomePageRoutePagePointCellView().environmentObject(HomePageViewModel())
+    HomePageRoutePagePointCellView(cell: PointModel(sira: "", baslangicZamani: "", calismaSuresiDK: "", bitisZamani: "", isim: "", gelenAdres: "", score: "", arac: "", baslangicNoktasi: "", bitisNoktasi: "", mesafeKM: "", masraf: "", sureDK: "", enlem: "", boylam: "", takipId: "", tip: "", frekans: "", sla: "", kritikGun: "", kritikArac: "", kritikNokta: "", adet: "", kg: "", hacim: "", noktaninAracTipi: "", maxAdet: "", maxKG: "", maxHacim: "", aracTipi: "", rotaNo: "", referansNo: "", kmAvantaj: "", maliyet: "", kmMaliyet: "", barkod: "", siparisNotu: "", siparisTarihi: "", mesaiSuresi: "", haftaninGunu: "", haftaNo: "", il: "", ilce: "", mahalle: "", mxBlockId: "", blockColor: "", vehicleColor: "", mxRoutePointsId: "", slot: "", temsilciAdi: "", degerDesi: "", isRspNavigated: "", vehicleId: "", realPalet: "", slaWaitTime: "", tacoWaitTime: "", mxRouteProcessedId: "", bayi: "", bolge: "", guzergah: "", maxPalet: "", rotaBaslangicTarih: "", odemeTipi: "", nitelik15: "", nitelik16: "", rff10: "", rff1: "", rff2: "", executionStatusId: -1))
 }
-*/
+
 
 struct HomePageRoutePagePointCellAracPlaka: View {
     

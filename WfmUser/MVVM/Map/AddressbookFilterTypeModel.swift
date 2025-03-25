@@ -29,7 +29,7 @@ struct AddressbookFilterTypeModel2: Codable, Identifiable {
     var filterValidation: String //
     var filterSpecial: String //filtrenin modelde hangi değişkene baktığı
     var selectedValue: String //
-        
+    
     var parsAtt: [FilterSequenceValue]?
     var selectedItems: Set<String> = []
 
