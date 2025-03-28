@@ -8,6 +8,7 @@
 import Foundation
 import heresdk
 import SwiftUI
+import CoreLocation
 
 class HomePageViewModel: ObservableObject {
     
@@ -18,6 +19,8 @@ class HomePageViewModel: ObservableObject {
     
     @Published var isLoading = false
     @Published var isButtonLoading = false
+    
+    @Published var blockStatusId: CLong = 0
     
     @Published var isWeeklyView: Bool = true
     @Published var pointsArray: [PointModel] = []
@@ -77,6 +80,10 @@ class HomePageViewModel: ObservableObject {
     @Published var globalSelectedSecondDate: Date = Date()
     @Published var customDate1: Date = Date()
     @Published var customDate2: Date = Date()
+    
+    @Published var reRouteDialog: Bool = false //otomatik sırala dialog
+    @Published var entryUpdate: Int = 1 //iş listesi hazırlma kontorlü
+    
     
     
     @Published var homePagePageType: Int = 0
@@ -396,7 +403,7 @@ class HomePageViewModel: ObservableObject {
     
     func isExcLocationError(_ status: Int) -> Bool {
         if self.isLocErrInfo {
-            self.error = "İşlem yapabilmek için konum izinlerini açmanız gerekmektedir."
+            self.error = String(localized: "ErrorKonumIzin")
             self.errorCode = -10
             self.errorType = ErrorTypes.WARNING
             self.showAlert = true
@@ -923,6 +930,71 @@ class HomePageViewModel: ObservableObject {
                 widgets[4].widget.append(widget)
             }
         }
+    }
+    
+    //MARK: Oto Sırala
+    func entryRequestByMobile(resultHandler:@escaping (Bool) -> ()) {
+        self.isLoading = true
+        let mobileId: String = preferences.string(forKey: "token") ?? ""
+        isLoading = false
+        resultHandler(true)
+        /*networkManager.entryRequestByMobile(mxBlockId: self.user.MxBlockId!, mobileId: mobileId, completion: { [weak self] result in
+            guard self != nil else { return }
+            let result1: ResponseResult<Int> = jsonStringToModel12(api: "entryRequestByMobile", result: result)
+            if result1.isError {
+                self?.errorDialogCallFunc(response: result1)
+                resultHandler(false)
+            } else {
+                resultHandler(true)
+            }
+            self?.isLoading = false
+        }) */
+    }
+    
+    func setReRoute(lastSelectedStartPoint: Int, lastSelectedEndPoint: Int, dataHash : [Int : Int]? = nil) {
+        self.isLoading = true
+        let mobileId: String = preferences.string(forKey: "token") ?? ""
+        if lastSelectedStartPoint == nil || lastSelectedEndPoint == nil{
+            print("Lütfen Gerekli Yerleri Seçiniz.")
+        }else{
+            isLoading = true
+            isLoading = false
+            /*networkManager.setReRoute(mxRouteId: self.user.MxRouteId!, mxBlockId: self.user.MxBlockId!, secondProcessId: (dataHash != nil ? dataHash![lastSelectedStartPoint] ?? 1 : lastSelectedStartPoint)!, lastProcessId: (dataHash != nil ? dataHash![lastSelectedEndPoint] ?? 2 : lastSelectedEndPoint)!, mobileId: mobileId, completion: { [weak self] result in
+                guard self != nil else { return }
+                let result1: ResponseResult<[MxRoutePointModel]> = jsonStringToModel12(api: "setReRoute", result: result)
+                if result1.isError {
+                    
+                    self?.errorDialogCallFunc(response: result1)
+                } else {
+                    let oldList: [MxRoutePointModel] = self?.pointArray ?? []
+                    SQLiteCommands.insertPointArray(result1.data.first!)
+                    self?.pointArray111 = SQLiteCommands.getPointModelArray() ?? []
+                    self?.pointArray = (self?.pointArray111.filter { $0.ExecutionType == ExecutionTypes.islemYok })!
+                    
+                    let newList: [MxRoutePointModel] = self?.pointArray ?? [] // Yeni liste
+
+                    let changedItems = self?.findChangedListSequences(oldList: oldList, newList: newList)
+                    self?.isChangeListSequencePoint = changedItems ?? []
+                    self?.isChangeListSequence = true
+                }
+                self?.isLoading = false
+            }) */
+        }
+    }
+    
+    func isNearby(_ point: PointModel, in list: [PointModel]) -> Bool {
+        let thresholdDistance: Double = 150
+        let location1: CLLocation = CLLocation(latitude: Double(point.enlem) ?? -1.0, longitude: Double(point.boylam) ?? -1.0)
+        for otherPoint in list {
+            if point.id != otherPoint.id { // Aynı noktayı karşılaştırmamak için
+                let location2: CLLocation = CLLocation(latitude: Double(otherPoint.enlem) ?? -1.0, longitude: Double(otherPoint.boylam) ?? -1.0)
+                let distance = location1.distance(from: location2) // Metre cinsinden mesafe
+                if distance < thresholdDistance {
+                    return true
+                }
+            }
+        }
+        return false
     }
 }
 

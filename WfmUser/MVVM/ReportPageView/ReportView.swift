@@ -169,7 +169,7 @@ struct ReportView: View {
                             case .pieChart:
                                 PieChartsView(data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport!, groupType: indexSelectedGroup!, data5: getChartDetails(isReportOneDay: isReportOneDay, groupType: indexSelectedGroup!, reportType: selectedReport!, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate)))
                             case .lineChart:
-                                LineChartsView(data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport!, groupType: indexSelectedGroup!, data5: getChartDetails(isReportOneDay: isReportOneDay, groupType: indexSelectedGroup!, reportType: selectedReport!, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate)))
+                                LineChartsView(isReportOneDay: isReportOneDay, data: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate), reportType: selectedReport!, groupType: indexSelectedGroup!, data5: getChartDetails(isReportOneDay: isReportOneDay, groupType: indexSelectedGroup!, reportType: selectedReport!, report: filterReportData(selectedStore: selectedStore, selectedPlate: selectedPlate)))
                             }
                         }
                     }

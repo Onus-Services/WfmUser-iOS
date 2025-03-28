@@ -17,7 +17,7 @@ struct RoutePointDialogView: View {
         ZStack {
             if let point = homePageVM.selectedPoint {
                 VStack(spacing: 0) {
-                    DialogHeaderCard(text: String(localized: "ABNDNoktaDetayi"), background: Color.DialogColor.dialogHeaderDarkBlue) {
+                    DialogHeaderCard(text: String(localized: "DialogNoktaDetayı"), background: Color.DialogColor.dialogHeaderDarkBlue) {
                         homePageVM.isPointDialog = false
                     }
                     VStack(spacing: 0) {

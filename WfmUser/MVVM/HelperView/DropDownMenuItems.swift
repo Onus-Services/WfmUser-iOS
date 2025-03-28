@@ -270,7 +270,7 @@ struct DropDownDatePickerMenu: View {
                     }
                 }
                 let dateRange = firstDate...Calendar.current.date(byAdding: .day, value: 7, to: firstDate)!
-                DatePicker("\(String(localized: "Bitiş"))", selection: $secondDate, in: dateRange, displayedComponents: [.date])
+                DatePicker("\(String(localized: "DPBitis"))", selection: $secondDate, in: dateRange, displayedComponents: [.date])
                 .onChange(of: secondDate) { newValue in
                     if firstDate != secondDate {
                         withAnimation {

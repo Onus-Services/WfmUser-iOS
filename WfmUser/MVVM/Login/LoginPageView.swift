@@ -17,134 +17,172 @@ struct LoginPageView: View {
     @State var currentLanguage: String = ""
     var body: some View {
         ZStack {
-            VStack {
+            
+            Image(ImageConstants.loginBackgroundImage.rawValue)
+            
+            VStack(spacing: 0) {
                 
-                ZStack {
-                    Image(ImageConstants.rxAdminLogo1.rawValue)
-                        .resizable()
-                        .frame(width: 200, height: 100)
-                    
-                    VStack {
-                        HStack {
-                            Spacer()
-                            HStack {
-                                Button(action: {
-                                    loginPageVM.isChangeLanguageInfoDialog = true
-                                }, label: {
-                                    HStack {
-                                        Image(ImageConstants.leftListTr.rawValue)
-                                            .resizable()
-                                            .frame(width: 14, height: 14)
-                                        
-                                        Text("TR")
-                                            .font(.custom(fontsRegular, size: 14))
-                                            .foregroundStyle(.black)
-                                    }.frame(width: 50, height: 20)
-                                        .background(currentLanguage == "tr" ? .white : .clear)
-                                        .cornerRadius(5)
-                                })
-                                
-                                Button(action: {
-                                    loginPageVM.isChangeLanguageInfoDialog = true
-                                }, label: {
-                                    HStack {
-                                        Image(ImageConstants.leftListEng.rawValue)
-                                            .resizable()
-                                            .frame(width: 14, height: 14)
-                                        
-                                        Text("EN")
-                                            .font(.custom(fontsRegular, size: 14))
-                                            .foregroundStyle(.black)
-                                    }.frame(width: 50, height: 20)
-                                        .background(currentLanguage == "en" ? .white : .clear)
-                                        .cornerRadius(5)
-                                })
-                            }.padding(5)
-                                .background(Color.NewColor.gray238)
-                                .cornerRadius(5)
-                        }.padding(.top, 10)
-                            .padding(.trailing, 20)
-                        
+                VStack {
+                    /*HStack {
                         Spacer()
-                    }
-                    
-                        
-                }.frame(height: 150)
-                
-                
-                CustomInputView(text: $loginPageVM.userName, isSecure: false)
-                
-                ZStack {
-                    CustomInputView(text: $loginPageVM.password, isPass: true, isSecure: isShowPass)
-                    
+                        HStack {
+                            Button(action: {
+                                loginPageVM.isChangeLanguageInfoDialog = true
+                            }, label: {
+                                HStack {
+                                    Image(ImageConstants.leftListTr.rawValue)
+                                        .resizable()
+                                        .frame(width: 14, height: 14)
+                                    
+                                    Text("TR")
+                                        .font(.custom(fontsRegular, size: 14))
+                                        .foregroundStyle(.black)
+                                }.frame(width: 50, height: 20)
+                                    .background(currentLanguage == "tr" ? .white : .clear)
+                                    .cornerRadius(5)
+                            })
+                            
+                            Button(action: {
+                                loginPageVM.isChangeLanguageInfoDialog = true
+                            }, label: {
+                                HStack {
+                                    Image(ImageConstants.leftListEng.rawValue)
+                                        .resizable()
+                                        .frame(width: 14, height: 14)
+                                    
+                                    Text("EN")
+                                        .font(.custom(fontsRegular, size: 14))
+                                        .foregroundStyle(.black)
+                                }.frame(width: 50, height: 20)
+                                    .background(currentLanguage == "en" ? .white : .clear)
+                                    .cornerRadius(5)
+                            })
+                        }.padding(5)
+                            .background(Color.NewColor.gray238)
+                            .cornerRadius(5)
+                    }.padding(.top, 10)
+                        .padding(.trailing, 20) */
                     HStack {
                         Spacer()
-                        Button {
-                            isShowPass.toggle()
-                        } label: {
-                            Image(systemName: !isShowPass ? "eye.circle.fill" : "eye.slash.circle.fill")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(.gray.opacity(0.3))
+                        HStack(spacing: 5) {
+                            languageButton(language: "TR", isSelected: currentLanguage == "tr")
+                            languageButton(language: "EN", isSelected: currentLanguage == "en")
                         }
-
-                    }.padding(.horizontal, 5)
-                }
+                        .padding(5)
+                        .background(Color.white)
+                        .cornerRadius(8)
+                    }
+                }.padding(.vertical, 5)
                 
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        withAnimation {
-                            appState.pageType = 4
-                        }
-                    }, label: {
-                        Text("Şifremi Unuttum")
-                            .foregroundStyle(.gray)
-                            .font(.custom(fontsSemiBold, size: 14))
-                    })
-                }.padding(.horizontal, 5)
-                
-                HStack {
-                    Text("LPbenihatirla")
-                        .font(Font.custom(fontsMedium, size: 14))
-                        .foregroundColor(Color.black)
-                        .padding(.leading, 20)
+                ZStack {
                     
-                    Toggle(isOn: $loginPageVM.showGreeting) {
+                    VStack{
+                        Image(ImageConstants.rotamenLogo.rawValue)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
                         
-                    }.labelsHidden()
-                        .tint(Color.NewColor.primary1)
-                    
-                    Spacer()
-                    Button {
-                        loginPageVM.getLogin(username: loginPageVM.userName, password: loginPageVM.password) { result in
-                            if result {
-                                if loginPageVM.showGreeting {
-                                    preferences.set(loginPageVM.showGreeting, forKey: "showGreeting")
-                                    preferences.set(loginPageVM.userName, forKey: "userName")
-                                    preferences.set(loginPageVM.password, forKey: "userPassword")
-                                } else {
-                                    preferences.set(loginPageVM.showGreeting, forKey: "showGreeting")
-                                    preferences.set(loginPageVM.userName, forKey: "userName")
-                                    preferences.set(loginPageVM.password, forKey: "userPassword")
+                        Text("LoginRotaPlanla")
+                            .foregroundColor(.white)
+                            .font(.custom(fontsMedium, size: 16))
+                            .frame(maxWidth: .infinity)
+                    }.frame(height: screenHeight * 0.1)
+                        .padding()
+                        .background(.white.opacity(0.3))
+                        .customOverlayStyle(cornerRadius: 10, lineColor: .white)
+                }//.frame(height: 150)
+                
+                VStack {
+                    VStack {
+                        Text("LoginHosGeldiniz")
+                            .font(.custom(fontsBold, size: 20))
+                            .foregroundColor(.black)
+                        
+                        CustomInputView(text: $loginPageVM.userName, isSecure: false)
+                        
+                        ZStack {
+                            CustomInputView(text: $loginPageVM.password, isPass: true, isSecure: isShowPass)
+                            
+                            HStack {
+                                Spacer()
+                                Button {
+                                    isShowPass.toggle()
+                                } label: {
+                                    Image(systemName: !isShowPass ? "eye.circle.fill" : "eye.slash.circle.fill")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(.gray.opacity(0.3))
                                 }
-                                appState.goSmsVerificationPage()
-                                //appState.successLogin()
-                                mainPageVM.mainPageType = MainPageTypes.anasayfa
+
+                            }.padding(.horizontal, 5)
+                        }
+                        
+                        HStack {
+                            Text("LoginBeniHatirla")
+                                .font(Font.custom(fontsMedium, size: 12))
+                                .foregroundColor(Color.black)
+                            
+                            Toggle(isOn: $loginPageVM.showGreeting) {
+                                
+                            }.labelsHidden()
+                                .tint(Color.NewColor.primary1)
+                            
+                            Spacer()
+                            Button(action: {
+                                withAnimation {
+                                    appState.pageType = 4
+                                }
+                            }, label: {
+                                Text("LoginSifremiUnuttum")
+                                    .foregroundStyle(.gray)
+                                    .font(.custom(fontsSemiBold, size: 12))
+                            })
+                        }.padding(.horizontal, 5)
+                        
+                        HStack {
+                            
+                            
+                            Spacer()
+                            Button {
+                                loginPageVM.getLogin(username: loginPageVM.userName, password: loginPageVM.password) { result in
+                                    if result {
+                                        if loginPageVM.showGreeting {
+                                            preferences.set(loginPageVM.showGreeting, forKey: "showGreeting")
+                                            preferences.set(loginPageVM.userName, forKey: "userName")
+                                            preferences.set(loginPageVM.password, forKey: "userPassword")
+                                        } else {
+                                            preferences.set(loginPageVM.showGreeting, forKey: "showGreeting")
+                                            preferences.set(loginPageVM.userName, forKey: "userName")
+                                            preferences.set(loginPageVM.password, forKey: "userPassword")
+                                        }
+                                        appState.goSmsVerificationPage()
+                                        //appState.successLogin()
+                                        mainPageVM.mainPageType = MainPageTypes.anasayfa
+                                    }
+                                }
+                                hideKeyboard()
+                            } label: {
+                                Text("LoginGiris")
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.NewColor.primary1)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
                             }
                         }
-                        hideKeyboard()
-                    } label: {
-                        Text("LPgiris")
-                            .font(.custom(fontsSemiBold, size: 15))
-                            .frame(width: 100, height: 50)
-                            .foregroundColor(.white)
-                            .background(Color.NewColor.primary1)
-                            .cornerRadius(CR.btn5)
-                    }
-                }
+                    }.padding()
+                        .background(.white)
+                        .customOverlayStyle(cornerRadius: 10, lineColor: .gray)
+                    Spacer()
+                    Text("LoginRotamen")
+                        .foregroundStyle(.white)
+                        .font(.custom(fontsRegular, size: 10))
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 20)
+                    
+                }.padding(.top, 100)
                 
-                Spacer()
+                
             }.padding(.top, screenHeight * 0.1)
                 .padding(.horizontal, 20)
             
@@ -183,10 +221,34 @@ struct LoginPageView: View {
             }
         }
     }
+    
+    private func languageButton(language: String, isSelected: Bool) -> some View {
+        Button(action: {
+            //currentLanguage = language.lowercased()
+            loginPageVM.isChangeLanguageInfoDialog = true
+        }) {
+            HStack {
+                Image(language == "TR" ? ImageConstants.leftListTr.rawValue : ImageConstants.leftListEng.rawValue)
+                    .resizable()
+                    .frame(width: 14, height: 14)
+                Text(language)
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundColor(isSelected ? .white : .primary)
+            }
+            .frame(width: 50, height: 30)
+            .background(isSelected ? Color.black : Color.clear)
+            .cornerRadius(5)
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(isSelected ? Color.white : Color.gray, lineWidth: 1)
+            )
+        }
+    }
 }
 
 #Preview {
     LoginPageView()
+    //LoginView()
 }
 
 struct CustomInputView: View {
@@ -204,17 +266,24 @@ struct CustomInputView: View {
                 if isPass {
                     if isSecure {
                         SecureField("LPsifre", text: $text)
+                            .autocapitalization(.none)
+                            .padding()
                     } else {
                         TextField("LPsifre", text: $text)
+                            .autocapitalization(.none)
+                            .padding()
                     }
                 } else {
                     TextField("LPkullaniciAdi", text: $text)
+                        .autocapitalization(.none)
+                        .padding()
                 }
                 
                 
             }.frame(height: 45)
             .padding(.horizontal, 5)
-            .background(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 2))
+            .background(Color(.secondarySystemBackground))
+            .customOverlayStyle(cornerRadius: 10, lineColor: .clear)
         }
     }
 }

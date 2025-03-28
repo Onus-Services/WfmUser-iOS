@@ -21,6 +21,13 @@ extension Color {
         static var dialogBackgorundOpacityColor: Color { return Color.gray.opacity(0.5) }
         static var dialogHeaderLightBlue: Color { return Color(red: 100.0/255.0, green: 180.0/255.0, blue: 255.0/255.0) }
         static var dialogHeaderDarkBlue: Color { return Color(red: 0/255, green: 61/255, blue: 96/255) }
+        static var reRouteHeaderBlue: Color { return Color(red: 130.0/255.0, green: 203.0/255.0, blue: 255.0/255.0) }
+        static var reRouteListYellow1: Color { return Color(red: 255.0/255.0, green: 209.0/255.0, blue: 101.0/255.0) }
+        static var reRouteListYellow2: Color { return Color(red: 255.0/255.0, green: 211.0/255.0, blue: 65.0/255.0) }
+        static var reRouteListRed1: Color { return Color(red: 250.0/255.0, green: 88.0/255.0, blue: 70.0/255.0) }
+        static var reRouteListRed2: Color { return Color(red: 155.0/255.0, green: 29.0/255.0, blue: 26.0/255.0) }
+        static var reRouteListGreen1: Color { return Color(red: 40.0/255.0, green: 147.0/255.0, blue: 20.0/255.0) }
+        static var reRouteListGreen2: Color { return Color(red: 172.0/255.0, green: 241.0/255.0, blue: 162.0/255.0) }
     }
     
     struct BarcodeColor {

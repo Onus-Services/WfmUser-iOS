@@ -26,6 +26,10 @@ struct HomePageView: View {
                 AddNewAddressDialogView().environmentObject(homePageVM)
             }
             
+            if homePageVM.reRouteDialog {
+                RerouteDialogView().environmentObject(homePageVM)
+            }
+            
             if homePageVM.isPickerViewOpen {
                 if homePageVM.selectedFilterIndex != -1 {
                     PickerViewDialogCardView(title: homePageVM.newAddressFilter[homePageVM.selectedFilterIndex].filterName, isPickerViewOpen: $homePageVM.isPickerViewOpen, itemsDialog: homePageVM.newAddressFilter[homePageVM.selectedFilterIndex].parsAtt!.map { $0.value }, isPickerViewSelectedItems: $homePageVM.newAddressFilter[homePageVM.selectedFilterIndex].selectedItems).environmentObject(homePageVM)
@@ -77,10 +81,10 @@ struct HomePageBottomBar: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            HomePageBottomBarButton(text: String(localized: "Liste"), image: ImageConstants.bottomBarDashboard.rawValue, isSelect: homePageType == 0 ? true : false) {
+            HomePageBottomBarButton(text: String(localized: "\(String(localized: "Liste"))"), image: ImageConstants.bottomBarDashboard.rawValue, isSelect: homePageType == 0 ? true : false) {
                 homePageType = 0
             }.environmentObject(homePageVM)
-            HomePageBottomBarButton(text: String(localized: "Harita"), image: ImageConstants.bottomBarAdresDefteri.rawValue, isSelect: homePageType == 1 ? true : false) {
+            HomePageBottomBarButton(text: String(localized: "\(String(localized: "Harita"))"), image: ImageConstants.bottomBarAdresDefteri.rawValue, isSelect: homePageType == 1 ? true : false) {
                 homePageType = 1
             }.environmentObject(homePageVM)
         }

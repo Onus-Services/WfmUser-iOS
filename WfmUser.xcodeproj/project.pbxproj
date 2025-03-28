@@ -122,6 +122,8 @@
 		4ECD905E2D8ABF28007504C1 /* ForgotPasswordPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD905D2D8ABF28007504C1 /* ForgotPasswordPageView.swift */; };
 		4ECD90612D8AC3CC007504C1 /* ForgotPasswordPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD90602D8AC3CC007504C1 /* ForgotPasswordPageViewModel.swift */; };
 		4ECD90652D8B00D0007504C1 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD90642D8B00D0007504C1 /* LocationViewModel.swift */; };
+		4ED9913D2D956C4B00065555 /* RerouteDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED9913A2D956C4B00065555 /* RerouteDialogView.swift */; };
+		4ED9913E2D956C4B00065555 /* RerouteDialogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED9913B2D956C4B00065555 /* RerouteDialogViewModel.swift */; };
 		4EFB5E1D2D88266A0086CDF3 /* HomePageRouteCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB5E1C2D88266A0086CDF3 /* HomePageRouteCellView.swift */; };
 		4EFB5E212D882CFB0086CDF3 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB5E202D882CFB0086CDF3 /* NavigationManager.swift */; };
 		4EFB5E282D8836D00086CDF3 /* HelperMainMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB5E242D8836D00086CDF3 /* HelperMainMapView.swift */; };
@@ -129,6 +131,7 @@
 		4EFB5E2A2D8836D00086CDF3 /* RouteCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB5E262D8836D00086CDF3 /* RouteCalculator.swift */; };
 		4EFB5E2C2D885A790086CDF3 /* FrekansMatrixDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB5E2B2D885A780086CDF3 /* FrekansMatrixDialogView.swift */; };
 		4EFB5E2E2D898E710086CDF3 /* RoutePointDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB5E2D2D898E710086CDF3 /* RoutePointDialogView.swift */; };
+		4EFB71472D96DA12005E78DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EFB71452D96DA12005E78DA /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -251,6 +254,8 @@
 		4ECD905D2D8ABF28007504C1 /* ForgotPasswordPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPageView.swift; sourceTree = "<group>"; };
 		4ECD90602D8AC3CC007504C1 /* ForgotPasswordPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPageViewModel.swift; sourceTree = "<group>"; };
 		4ECD90642D8B00D0007504C1 /* LocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		4ED9913A2D956C4B00065555 /* RerouteDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RerouteDialogView.swift; sourceTree = "<group>"; };
+		4ED9913B2D956C4B00065555 /* RerouteDialogViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RerouteDialogViewModel.swift; sourceTree = "<group>"; };
 		4EFB5E1C2D88266A0086CDF3 /* HomePageRouteCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageRouteCellView.swift; sourceTree = "<group>"; };
 		4EFB5E202D882CFB0086CDF3 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		4EFB5E242D8836D00086CDF3 /* HelperMainMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperMainMapView.swift; sourceTree = "<group>"; };
@@ -258,6 +263,8 @@
 		4EFB5E262D8836D00086CDF3 /* RouteCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCalculator.swift; sourceTree = "<group>"; };
 		4EFB5E2B2D885A780086CDF3 /* FrekansMatrixDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrekansMatrixDialogView.swift; sourceTree = "<group>"; };
 		4EFB5E2D2D898E710086CDF3 /* RoutePointDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePointDialogView.swift; sourceTree = "<group>"; };
+		4EFB71462D96DA12005E78DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4EFB71482D96DA4C005E78DA /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,6 +502,7 @@
 				4EC617722D8320AF0077245B /* Extensions */,
 				4EC617692D8320650077245B /* Constants */,
 				4EC6175F2D8320040077245B /* GlobalFunc */,
+				4EFB71452D96DA12005E78DA /* Localizable.strings */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -551,6 +559,7 @@
 		4EC6177F2D8320CB0077245B /* DialogView */ = {
 			isa = PBXGroup;
 			children = (
+				4ED9913C2D956C4B00065555 /* ReRouteDialogView */,
 				4EC617802D8320DA0077245B /* ChangeLanguageInfoDialog.swift */,
 				4EC617832D8320DA0077245B /* ErrorDialogView.swift */,
 				4EC617822D8320DA0077245B /* loading_rotamen.gif */,
@@ -623,6 +632,15 @@
 			path = ForgotPass;
 			sourceTree = "<group>";
 		};
+		4ED9913C2D956C4B00065555 /* ReRouteDialogView */ = {
+			isa = PBXGroup;
+			children = (
+				4ED9913A2D956C4B00065555 /* RerouteDialogView.swift */,
+				4ED9913B2D956C4B00065555 /* RerouteDialogViewModel.swift */,
+			);
+			path = ReRouteDialogView;
+			sourceTree = "<group>";
+		};
 		4EFB5E272D8836D00086CDF3 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,6 +709,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = 4EC6170F2D831C2E0077245B;
 			packageReferences = (
@@ -727,6 +746,7 @@
 				4EC617232D831C2F0077245B /* Preview Assets.xcassets in Resources */,
 				4EC617D42D8446820077245B /* Poppins-LightItalic.ttf in Resources */,
 				4EC617CC2D8446820077245B /* Poppins-Bold.ttf in Resources */,
+				4EFB71472D96DA12005E78DA /* Localizable.strings in Resources */,
 				4EC617202D831C2F0077245B /* Assets.xcassets in Resources */,
 				4EC617CF2D8446820077245B /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				4EC617D12D8446820077245B /* Poppins-ExtraLightItalic.ttf in Resources */,
@@ -782,6 +802,7 @@
 				4EC6177A2D8320BB0077245B /* Date+Extensions.swift in Sources */,
 				4EC617B22D842F9B0077245B /* HomePageView.swift in Sources */,
 				4EFB5E1D2D88266A0086CDF3 /* HomePageRouteCellView.swift in Sources */,
+				4ED9913E2D956C4B00065555 /* RerouteDialogViewModel.swift in Sources */,
 				4EAAC20B2D8D741C00D7A837 /* LineChartsView.swift in Sources */,
 				4EC617662D83203C0077245B /* LeftListMenuView.swift in Sources */,
 				4EC617642D8320380077245B /* HeaderBarView.swift in Sources */,
@@ -806,6 +827,7 @@
 				4EAAC21D2D8D76DC00D7A837 /* NoValueDescView.swift in Sources */,
 				4EC617612D83200E0077245B /* ApiResponseFunc.swift in Sources */,
 				4EAAC1BB2D8C2B5300D7A837 /* HomePageRoutePageView.swift in Sources */,
+				4ED9913D2D956C4B00065555 /* RerouteDialogView.swift in Sources */,
 				4EC6177B2D8320BB0077245B /* ColorExtensions.swift in Sources */,
 				4EAAC1B22D8BFC5900D7A837 /* SQLiteCommands.swift in Sources */,
 				4EC617492D831F010077245B /* SMSVerificationView.swift in Sources */,
@@ -837,12 +859,25 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		4EFB71452D96DA12005E78DA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EFB71462D96DA12005E78DA /* en */,
+				4EFB71482D96DA4C005E78DA /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		4EC617242D831C2F0077245B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -906,6 +941,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

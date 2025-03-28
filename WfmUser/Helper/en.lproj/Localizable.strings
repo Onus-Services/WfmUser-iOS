@@ -1,0 +1,317 @@
+/* 
+  Localizable.strings
+  WfmUser
+
+  Created by Mustafa Alper Aydin on 28.03.2025.
+  
+*/
+
+"ForgotPassPSifreyiYenile" = "Reset Password";
+"ForgotPassDogrulama" = "Send Verification Code";
+
+"LoginRotaPlanla" = "Plan Route, Monitor Field Live, and Manage";
+"LoginHosGeldiniz" = "Welcome";
+"LoginBeniHatirla" = "Remember Me";
+"LoginSifremiUnuttum" = "Forgot Password";
+"LoginGiris" = "Login";
+"LoginRotamen" = "Rotamen ® is a Registered Technology Brand of OnUs Services.";
+
+"MonthlyWeek" = "Week";
+"MonthlyKm" = "KM:";
+"MonthlySure" = "Dr:";
+"MonthlyGoruntuleGun" = "Select the day you want to view.";
+"WeeklySureKucuk" = "mn";
+
+"SeciliDegerRapor" = "No report available for the selected values.";
+
+"LearnAddressVazgec" = "Cancel";
+"LearnAddressOnayla" = "Confirm";
+
+"AddNewAddressAddres" = "Address:";
+"AddNewAddressKonum" = "Location:";
+"AddNewAddressBaslik" = "Title:";
+"AddNewAddressDegisiklikOnay" = "Submit Changes for Approval";
+"AddNewAddressGeri" = "< Back";
+"AddNewAddressDigerOzellik" = "Proceed to other features >";
+"AddNewAddressKapat" = "Close";
+"AddNewAddressKaydet" = "Save";
+
+"WeeklyKm" = "KM:";
+"WeeklySure" = "Duration:";
+"WeeklyGoruntuleGun" = "Select the day you want to view.";
+
+"RoutePageKm" = "KM";
+"RoutePageDk" = "MIN";
+"RoutePageSla" = "SLA:";
+"RoutePageIsSuresi" = "Work Duration:";
+"RoutePageDkKucuk" = "min";
+"RoutePageSiparisNot" = "Order Note: ";
+"RoutePageYolTarifi" = "Directions";
+
+"ABFReFrekans" = "Frequency";
+"ABFReTSec" = "Select";
+"ABFReYok" = "None";
+"ABFRePtsi" = "Mon";
+"ABFReSalı" = "Tue";
+"ABFReCars" = "Wed";
+"ABFRePers" = "Thu";
+"ABFReCuma" = "Fri";
+"ABFReCtsi" = "Sat";
+"ABFRePazr" = "Sun";
+
+"HeaderTamamlananIsler" = "Completed Tasks:";
+"HeaderOtoSirala" = "Auto Sort";
+"HeaderUgranmis" = "Visited";
+"HeaderAdres" = "Address";
+
+"NavigateGeri" = "Back";
+"NavigateTakipId" = "Tracking ID: ";
+"NavigateGelmedim" = "Not Arrived ";
+"NavigateYolTarifi" = "Directions";
+"NavigateNoktaNotu" = "Point Note";
+
+"CikisEminMisin" = "Are you sure you want to log out?";
+"CikisKapat" = "Close";
+"CikisCikis" = "Log Out";
+
+"DPTamam" = "OK";
+"DPBitis" = "End";
+"DPBaslangic" = "Start";
+
+// MARK: Left Menu
+"LMhosgeldin" = "Welcome";
+"LManasayfa" = "Home";
+"LMhaftalik" = "Weekly Plan";
+"LMraporlar" = "Reports";
+"LMaylik" = "Monthly Plan";
+"LMcikisYap" = "Log Out";
+"LMrotamenSaha" = "Rotamen Field Workforce Management System is a Registered Software Brand of OnUs Services.";
+
+"listeyiHazirlamakIcinTikla" = "Click to Prepare Your Task List.";
+"startPoint" = "Start Point";
+"endPoint" = "End Point";
+"close" = "Close";
+"reset" = "Reset";
+"isListesiniSirala" = "Sort Task List";
+"gerekliYerleriSecin" = "Select Required Places";
+"isListesiniHazirla" = "Prepare Task List";
+"isListesiSiralama" = "Task List Sorting";
+"baslangicBitisSec" = "To reorder the Task List, please select the Start and End locations.";
+"seciniz" = "Select";
+"baslangicYeri" = "Start Location";
+"bitisYeri" = "End Location";
+"depoya" = "To Warehouse";
+"yakin" = "Near";
+"uzak" = "Far";
+"lutfenBaslangic" = "Please Select a Start Point";
+"lutfenBitis" = "Please Select an End Point";
+
+// MARK: ChangeLanguageDialog Page
+"CLDDilAyar" = "How do you set the language for the Wfm-User app?";
+"CLDTelGuncelleme" = "Due to updates on your phone, there are different steps to change the Wfm User language.";
+"CLDBirAdim" = "1. Proceed to the next screen.";
+"CLDIkiAdim" = "2. Tap on 'Language' to select your preferred language.";
+"CLDHicDil" = "If no language settings are available, go to your iPhone's general language settings to set your preferred language first.";
+"CLDDevam" = "Continue";
+"CLDIptal" = "Cancel";
+
+"geldiginiziD" = "You have arrived at";
+"noktayaD" = "the point";
+"onayliyorMusunuz" = "Do you confirm?";
+"gidiyorum" = "I'm going";
+"gelmedim" = "I didn't arrive";
+"geldim" = "I arrived";
+"olumlutamamla" = "Complete Positively";
+"olumsuztamamla" = "Complete Negatively";
+"olarakKaydedilecek" = " will be recorded as.";
+"eminmisin" = "Are you sure?";
+"olumlu" = "Point Positive";
+"olumsuz" = "Point Negative";
+"Kapat" = "Close";
+
+"ErrorKullaniciAdiBos" = "Username cannot be empty";
+"ErrorSifrelerBos" = "Passwords cannot be empty";
+"ErrorSifre6" = "Password cannot be less than 6 characters";
+"ErrorSifrelerUyusmuyor" = "Passwords do not match";
+"ErrorSifreveKullaniciAdiBos" = "Password and Username cannot be empty";
+"ErrorSifreBos" = "Password cannot be empty";
+"ErrorGelmedim" = "Will be recorded as 'Not Arrived'.\nAre you sure?";
+"ErrorOlumlu" = "Will be recorded as 'Positive'.\nAre you sure?";
+"ErrorOlumsuz" = "Will be recorded as 'Negative'.\nAre you sure?";
+"ErrorGidiyorum" = "Will be recorded as 'I'm Going'.\nAre you sure?";
+"ErrorKonumIzin" = "You need to enable location permissions to proceed.";
+
+"ToastBosBırakılan" = "There is a required field left empty.";
+"ToastIkiNoktaAyni" = "Two points cannot be the same.";
+
+"resultBos" = "An issue has been encountered. (Result is empty).";
+"errorClassBos" = "An issue has been encountered. (ErrorClass is empty).";
+"loginResultBos" = "An issue has been encountered. (LoginResult is empty).";
+"refresh" = "Refresh";
+"search" = "Search";
+"birHaritaSec" = "Select a Map";
+"baskaAktifIs" = "You have another active task";
+"depoyaEnYakin" = "Closest to Warehouse";
+"depoyaEnUzak" = "Farthest from Warehouse";
+"eveEnYakin" = "Closest to Home";
+"eveEnUzak" = "Farthest from Home";
+"nokta1111" = "Point:";
+"noktayaOlanUzakliginiz" = "Distance to the Point";
+
+"BottomBarListe" = "List";
+"BottomBarHarita" = "Map";
+
+"HeaderInfoGün" = "Day";
+"HeaderInfoNokta" = "Point";
+"HeaderInfoAgirlik" = "Weight";
+"HeaderInfoTutar" = "Amount";
+"HeaderInfoKm" = "Km";
+"HeaderInfoSüre" = "Duration";
+
+"DayHafta" = "All Week";
+"DayPazartesi" = "Monday";
+"DaySali" = "Tuesday";
+"DayCarsamba" = "Wednesday";
+"DayPersembe" = "Thursday";
+"DayCuma" = "Friday";
+"DayCumartesi" = "Saturday";
+"DayPazar" = "Sunday";
+
+"DayPazartesiKisa" = "Mon.";
+"DaySaliKisa" = "Tue.";
+"DayCarsambaKisa" = "Wed.";
+"DayPersembeKisa" = "Thu.";
+"DayCumaKisa" = "Fri.";
+"DayCumartesiKisa" = "Sat.";
+"DayPazarKisa" = "Sun.";
+
+"DialogNoktaDüzenle" = "Edit Point";
+"DialogNoktaEkle" = "Add Point";
+"DialogNoktaDetayı" = "Point Details";
+"DialogFrekans" = "Frequency";
+"DialogCikis" = "Exit";
+
+
+//
+"ChartRaporTipi" = "Report Type";
+"ChartHaritayaGit" = "Go to Map";
+"SeciliDegerlerRaporYok" = "No report available for the selected values";
+"offlineModdasiniz" = "You are in offline mode";
+
+// MARK: Rapor Tipi (Report Type)
+"RTDTeslimatDurum" = "Delivery Status";
+"RTDHesaplananToplananKM" = "Calculated/Mobile Collected KM";
+"RTDAltSebep" = "Sub Reason";
+"RTDMüsteriDeneyimi" = "Customer Experience";
+"RTDHesaplananToplananSaat" = "Calculated/Mobile Collected Hours";
+"RTDKoliKGArac" = "Package - KG Vehicle";
+"RTDOrtalamaKGArac" = "Average KG/Vehicle";
+"RTDAdresSkor" = "Address Score Distribution";
+"RTDOrtalamaGeofence" = "Average Geofence";
+"RTDAracBasinaVerimlilik" = "Efficiency Per Vehicle";
+"RTDSeferBBB" = "Started/Not Started/Completed Trip";
+"RTDDropTeslimatSayisi" = "Drop - Delivery Count";
+"RTDOrtalamaTeslimatSüresi" = "Average Delivery Time";
+"RTDOrtalamaAdresDüzeltme" = "Average Address Correction Count";
+"RTDTeslimatCizgi" = "Delivery Line";
+
+// MARK: Rapor Tipi Desc Text (Report Type Description Text)
+"RTDTTeslimatDurumBar" = "Delivery Status (Bar)";
+"RTDTTeslimatDurumPie" = "Delivery Status (Pie)";
+"RTDTHesaplananToplananKM" = "Calculated/Mobile Collected KM";
+"RTDTAltSebepBar" = "Sub Reason (Bar)";
+"RTDTMüsteriDeneyimiPie" = "Customer Experience (Pie)";
+"RTDTMüsteriDeneyimiBar" = "Customer Experience (Bar)";
+"RTDTHesaplananToplananSaat" = "Calculated/Mobile Collected Hours";
+"RTDTKoliKGArac" = "Package - KG Vehicle";
+"RTDTOrtalamaKGArac" = "Average KG/Vehicle";
+"RTDTAdresSkor" = "Address Score Distribution";
+"RTDTOrtalamaGeofence" = "Average Geofence";
+"RTDTAracBasinaVerimlilik" = "Efficiency Per Vehicle";
+"RTDTSeferBBB" = "Started/Not Started/Completed Trip";
+"RTDTDropTeslimatSayisi" = "Drop - Delivery Count";
+"RTDTOrtalamaTeslimatSüresi" = "Average Delivery Time";
+"RTDTOrtalamaAdresDüzeltme" = "Average Address Correction Count";
+"RTDTTeslimatCizgi" = "Delivery Line";
+// MARK: Report Legend
+"RLOlumluAdet" = "Positive Count";
+"RLKısmiOlumluAdet" = "Partial Positive Count";
+"RLOlumsuzAdet" = "Negative Count";
+"RLUgranmamisAdet" = "Not Visited Count";
+"RLDevamEdenAdet" = "Ongoing Count";
+"RLKazaAriza" = "Accident/Failure Not Delivered";
+"RLZilCalma" = "Doorbell Ring";
+"RLTemassizTeslimat" = "Contactless Delivery";
+"RLKomsumaBirak" = "Leave with Neighbor";
+"RLGüvenligeBirak" = "Leave with Security";
+"RLAlternatifAdres" = "Alternative Address";
+"RLEsnekSaat" = "Flexible Time";
+"RLHesaplananSaat" = "Calculated Time";
+"RLToplananSaat" = "Collected Time";
+"RLKG" = "KG";
+"RLDesi" = "Volume";
+"RLKoli" = "Parcel";
+"RLYeterliAdres" = "Sufficient Address";
+"RLKismiYeterliAdres" = "Partially Sufficient Address";
+"RLYetersizAdres" = "Insufficient Address";
+"RLNoktaAtisi" = "Direct Hit";
+"RLYakin" = "Near";
+"RLUzak" = "Far";
+"RLHataliKullanim" = "Incorrect Usage";
+"RLGeofenceHesaplanmayan" = "Geofence Not Calculated";
+"RLSeferBaslat" = "Start Trip Count";
+"RLSeferBaslatmayan" = "Not Started Trip Count";
+"RLSeferBitis" = "End Trip Count";
+"RLDropSayisi" = "Drop Count";
+"RLTeslimatSayisi" = "Delivery Count";
+"RLTeslimatPerformans" = "Delivery Performance";
+"RLOrtalamaAdresDüzeltme" = "Average Address Correction Count";
+"RLAracBasinaVerimlilik" = "Efficiency per Vehicle (%)";
+"RLHesaplananKm" = "Calculated Km";
+"RLToplananKm" = "Mobile Collected Km";
+"RLKalanKm" = "Remaining Km";
+
+
+"WDTeslimat" = "Delivery";
+"WDSefer" = "Trip";
+"WDOrtalama" = "Average";
+"WDToplam" = "Total";
+"WDBölge" = "Region";
+"WDArac" = "Vehicle";
+"WDBaslatan" = "Initiator";
+"WDBaslatan1" = "Initi\nator";
+"WDBaslatmayan" = "Non-Initiator";
+"WDBaslatmayan1" = "Non-Initi\nator";
+"WDBitiren" = "Finisher";
+"WDBitiren1" = "Finish\ner";
+"WDBitirmeyen" = "Non-Finisher";
+"WDBitirmeyen1" = "Non-Finisher";
+"WDOlumlu" = "Positive";
+"WDOlumsuz" = "Negative";
+"WDDevam" = "Continue";
+"WDSiparis" = "Order";
+"WDToplamSefer" = "Total Trips";
+"WDLimitUstu" = "Over Limit";
+"WDVerimlilik" = "Efficiency";
+"WDSeferBit" = "Trip End";
+"WDTeslimat" = "Delivery";
+"WDKM" = "KM";
+"WDHesKm" = "Calc. KM";
+"WDTopKm" = "Total KM";
+"WDKmVer" = "KM Provided";
+"WDGeofence" = "Geofence";
+"WDOrtBek" = "Avg. Wait";
+
+"DDDKapat" = "Close";
+"DFHDepoSeciniz" = "Select Storage";
+"DFHCokluSecim" = "Multiple Selection";
+"DFHKullanıcıSeciniz" = "Select User";
+"DFHBugün" = "Today";
+"DFHDün" = "Yesterday";
+"DFHGecenHafta" = "Last Week";
+"DFHTarihAraligi" = "Date Range";
+"DPDepo" = "Storage";
+"DPHepsi" = "All";
+"DPPlaka" = "License Plate";
+"DPTemizle" = "Clear";
+"DPOnayla" = "Confirm";

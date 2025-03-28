@@ -58,19 +58,19 @@ struct LeftListMenuView: View {
                         }
                     }
                     
-                    GenericMenuButton(showMenu: $showMenu, menuButtonIcon: ImageConstants.leftListHome.rawValue, menuButtonText: NSLocalizedString("Haftalık Plan", comment: "")) {
+                    GenericMenuButton(showMenu: $showMenu, menuButtonIcon: ImageConstants.leftListHome.rawValue, menuButtonText: NSLocalizedString("LMhaftalik", comment: "")) {
                         withAnimation {
                             mainPageVM.mainPageType = .haftalikPlan
                         }
                     }
                     
-                    GenericMenuButton(showMenu: $showMenu, menuButtonIcon: ImageConstants.leftListHome.rawValue, menuButtonText: NSLocalizedString("Raporlar", comment: "")) {
+                    GenericMenuButton(showMenu: $showMenu, menuButtonIcon: ImageConstants.leftListHome.rawValue, menuButtonText: NSLocalizedString("LMraporlar", comment: "")) {
                         withAnimation {
                             mainPageVM.mainPageType = .raporlar
                         }
                     }
                     
-                    GenericMenuButton(showMenu: $showMenu, menuButtonIcon: ImageConstants.leftListHome.rawValue, menuButtonText: NSLocalizedString("AylıkPlan", comment: "")) {
+                    GenericMenuButton(showMenu: $showMenu, menuButtonIcon: ImageConstants.leftListHome.rawValue, menuButtonText: NSLocalizedString("LMaylik", comment: "")) {
                         withAnimation {
                             mainPageVM.mainPageType = .aylik
                         }
@@ -246,12 +246,12 @@ struct LogoutDialogView: View {
         ZStack {
             VStack(spacing: 0) {
                 
-                DialogHeaderCard(text: "Çıkış", background: Color.DialogColor.dialogHeaderDarkBlue) {
+                DialogHeaderCard(text: String(localized: "DialogCikis"), background: Color.DialogColor.dialogHeaderDarkBlue) {
                     mainPageVM.isLogoutDialog = false
                 }
                 
                 VStack(spacing: 0) {
-                    Text("Çıkış yapılacak emin misiniz?")
+                    Text("CikisEminMisin")
                         .font(.custom(fontsRegular, size: 14))
                         .foregroundStyle(.black)
                         .padding(.vertical, 30)
@@ -287,7 +287,7 @@ struct LogoutDialogView: View {
                                 mainPageVM.isLogoutDialog = false
                             }
                         } label: {
-                            Text("Kapat") //reddet - göster
+                            Text("CikisKapat") //reddet - göster
                                 .font(.custom(fontsMedium, size: 14))
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
@@ -304,7 +304,7 @@ struct LogoutDialogView: View {
                                 mainPageVM.isLogoutDialog = false
                             }
                         } label: {
-                            Text("Çıkış") //reddet - göster
+                            Text("CikisCikis") //reddet - göster
                                 .font(.custom(fontsMedium, size: 14))
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)

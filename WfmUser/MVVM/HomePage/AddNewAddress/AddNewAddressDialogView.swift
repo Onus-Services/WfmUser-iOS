@@ -22,12 +22,12 @@ struct AddNewAddressDialogView: View {
         ZStack {
             if homePageVM.editAddress {
                 VStack(spacing: 0) {
-                    DialogHeaderCard(text: String(localized: "Nokta Düzenle"), background: Color.DialogColor.dialogHeaderDarkBlue) {
+                    DialogHeaderCard(text: String(localized: "DialogNoktaDüzenle"), background: Color.DialogColor.dialogHeaderDarkBlue) {
                         homePageVM.isAddNewAddressDialog = false
                     }
                     
                     HStack {
-                        Text("Adres:")
+                        Text("AddNewAddressAddres")
                             .font(.custom(fontsSemiBold, size: 14))
                             .frame(width: 50)
                         
@@ -37,13 +37,13 @@ struct AddNewAddressDialogView: View {
                     }
                     
                     HStack {
-                        Text("Konum: \(homePageVM.place?.geoCoordinates)")
+                        Text("\(String(localized: "AddNewAddressKonum")) \(homePageVM.place?.geoCoordinates)")
                             .foregroundStyle(.black)
                             .font(.custom(fontsRegular, size: 14))
                     }
                     
                     HStack {
-                        Text("Başlık:")
+                        Text("AddNewAddressBaslik")
                             .foregroundStyle(.black)
                             .font(.custom(fontsRegular, size: 14))
                         
@@ -61,7 +61,7 @@ struct AddNewAddressDialogView: View {
                         Button {
                             //
                         } label: {
-                            Text("Değişiklikleri Onaya Gönder")
+                            Text("AddNewAddressDegisiklikOnay")
                                 .font(.custom(fontsSemiBold, size: 16))
                                 .foregroundStyle(.white)
                                 .padding(10)
@@ -72,12 +72,12 @@ struct AddNewAddressDialogView: View {
                 }
             } else {
                 VStack(spacing: 0) {
-                    DialogHeaderCard(text: String(localized: "Nokta Ekle"), background: Color.DialogColor.dialogHeaderDarkBlue) {
+                    DialogHeaderCard(text: String(localized: "DialogNoktaEkle"), background: Color.DialogColor.dialogHeaderDarkBlue) {
                         homePageVM.isAddNewAddressDialog = false
                     }
                     
                     HStack {
-                        Text("Adres:")
+                        Text("AddNewAddressAddres")
                             .font(.custom(fontsSemiBold, size: 14))
                             .frame(width: 50)
                         
@@ -87,7 +87,7 @@ struct AddNewAddressDialogView: View {
                     }
                     
                     HStack {
-                        Text("Konum: \(homePageVM.place?.geoCoordinates)")
+                        Text("\(String(localized: "AddNewAddressKonum")) \(homePageVM.place?.geoCoordinates)")
                             .foregroundStyle(.black)
                             .font(.custom(fontsRegular, size: 14))
                     }
@@ -118,7 +118,7 @@ struct AddNewAddressDialogView: View {
                                     newAddressPageType = 0
                                 }
                             }, label: {
-                                Text("< Geri")
+                                Text("AddNewAddressGeri")
                                     .font(.custom(fontsRegular, size: 14))
                                     .foregroundStyle(.blue)
                                     .padding(5)
@@ -162,7 +162,7 @@ struct AddNewAddressDialogView: View {
                                 newAddressPageType = 1
                             }
                         }, label: {
-                            Text("Diğer özelliklere geç >")
+                            Text("AddNewAddressDigerOzellik")
                                 .font(.custom(fontsRegular, size: 14))
                                 .foregroundStyle(.blue)
                         })
@@ -174,7 +174,7 @@ struct AddNewAddressDialogView: View {
                                 homePageVM.addressOnCenterMap = "..."
                                 homePageVM.place = nil
                             } label: {
-                                Text("Kapat")
+                                Text("AddNewAddressKapat")
                                     .font(.custom(fontsSemiBold, size: 14))
                                     .foregroundStyle(.white)
                                     .frame(maxWidth: .infinity, alignment: .center)
@@ -184,11 +184,11 @@ struct AddNewAddressDialogView: View {
                             }
                             Button {
                                 if homePageVM.newAddressFilter[0].selectedValue == "" || homePageVM.newAddressFilter[1].selectedItems == [] || homePageVM.newAddressFilter[3].selectedValue == "" || homePageVM.newAddressFilter[5].selectedItems == [] || homePageVM.newAddressFilter[6].selectedItems == [] || homePageVM.newAddressFilter[7].selectedItems == [] || homePageVM.newAddressFilter[12].selectedItems == [] {
-                                    homePageVM.showToast(message: "Boş bırakılan zorunlu alan var.")
+                                    homePageVM.showToast(message: String(localized: "ToastBosBırakılan"))
                                 }
                                 print("\(homePageVM.newAddressFilter)")
                             } label: {
-                                Text("Kaydet")
+                                Text("AddNewAddressKaydet")
                                     .font(.custom(fontsSemiBold, size: 14))
                                     .foregroundStyle(.white)
                                     .frame(maxWidth: .infinity, alignment: .center)

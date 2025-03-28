@@ -40,7 +40,7 @@ struct LearnAddressCardView: View {
                         homePageVM.editAddress = false
                         homePageVM.pinOnMap = false
                     } label: {
-                        Text("vazgec")
+                        Text("LearnAddressVazgec")
                             .padding(.vertical, 3)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(.white)
@@ -56,7 +56,7 @@ struct LearnAddressCardView: View {
                             homePageVM.isAddNewAddressDialog = true
                         }
                     } label: {
-                        Text("onayla")
+                        Text("LearnAddressOnayla")
                             .padding(.vertical, 3)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(.white)

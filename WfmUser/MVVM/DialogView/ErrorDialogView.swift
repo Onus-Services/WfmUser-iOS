@@ -140,7 +140,7 @@ struct ErrorDialogView: View {
                                 appState.logout()
                             }
                         } label: {
-                            Text("\(String(localized: "Kapat"))") //reddet - göster
+                            Text("Kapat") //reddet - göster
                                 .font(.custom(fontsMedium, size: 14))
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)

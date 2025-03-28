@@ -12,6 +12,7 @@ struct HomePageRouteCellView: View {
     @EnvironmentObject var homePageVM: HomePageViewModel
     var pastCell: PointModel
     @State var cell: PointModel
+    var isClose: Bool = false
     @State var showHowGo: Bool = false
     @State var navigateType: Int = 1
     
@@ -24,16 +25,17 @@ struct HomePageRouteCellView: View {
                 .ignoresSafeArea(.all)
             //if let cell = homePageVM.cell {
                 VStack(spacing: 0) {
+                    
                     HStack(spacing: 0) {
                         ZStack {
                             Rectangle()
-                                .frame(width: 40, height: 40)
-                                .foregroundStyle(Color.MyColor.releaseNoteBlueText)
-                                .customOverlayStyle(cornerRadius: 10, lineColor: Color.MyColor.releaseNoteBlueText)
+                                .frame(width: 30, height: 40)
+                                .foregroundStyle(.white)
+                                .customOverlayStyle(cornerRadius: 10, lineColor: .gray.opacity(0.2))
                             
                             Text("\(cell.sira)")
-                                .font(.custom(fontsMedium, size: 16))
-                                .foregroundStyle(.white)
+                                .font(.custom(fontsMedium, size: 14))
+                                .foregroundStyle(.black)
                         }
                         VStack {
                             Text("\(cell.takipId) - \(cell.isim)")
@@ -108,7 +110,7 @@ struct HomePageRouteCellView: View {
                                         .frame(width: 15, height: 15)
                                         .foregroundStyle(Color.white)
                                     
-                                    Text("Yol Tarifi")
+                                    Text("RoutePageYolTarifi")
                                         .font(.custom(fontsSemiBold, size: 14))
                                         .foregroundStyle(Color.white)
                                 }.padding(10)
@@ -116,7 +118,13 @@ struct HomePageRouteCellView: View {
                                     .customOverlayStyle(cornerRadius: 10, lineColor: .clear)
                             })
                             Spacer()
-                            Button(action: {
+                            if isClose {
+                                Image(systemName: "mappin.and.ellipse")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .foregroundStyle(Color.MyColor.colorGreen)
+                            }
+                            /*Button(action: {
                                 withAnimation {
                                     navigateType = 2
                                     showHowGo = true
@@ -130,8 +138,7 @@ struct HomePageRouteCellView: View {
                                     Text("\((Int(cell.sira) ?? 0) - 1) >> \(cell.sira) Güzergah")
                                         .font(.custom(fontsSemiBold, size: 14))
                                 }
-                            })//.opacity(Int(cell.sira) ?? 0 <= 1 ? 0.0 : 1.0)
-                            .opacity(0.0)
+                            }).opacity(Int(cell.sira) ?? 0 <= 1 ? 0.0 : 1.0) */
                         }.padding(.vertical, 3)
                         
                     }.padding(.horizontal, 5)
@@ -272,7 +279,7 @@ struct CellExecutionGelmedim: View {
         Button {
             //AnalyticsManager.shared.logButtonClick(buttonName: .HomeUndoButton, screenName: .HomeScreen)
             if !homePageVM.isExcLocationError(LecyStatus.gitmedim) {
-                homePageVM.error = "Gelmedim Olarak Kaydedilecek.\nEmin Misiniz?"
+                homePageVM.error = String(localized: "ErrorGelmedim")
                 homePageVM.errorType = ErrorTypes.WARNING
                 homePageVM.errorCode = LecyStatus.gitmedim
                 homePageVM.dialogExcPoint = point
@@ -294,7 +301,7 @@ struct CellExecutionOlumlu: View {
         Button {
             //AnalyticsManager.shared.logButtonClick(buttonName: .HomeUndoButton, screenName: .HomeScreen)
             if !homePageVM.isExcLocationError(LecyStatus.gitmedim) {
-                homePageVM.error = "Gelmedim Olarak Kaydedilecek.\nEmin Misiniz?"
+                homePageVM.error = String(localized: "ErrorOlumlu")
                 homePageVM.errorType = ErrorTypes.WARNING
                 homePageVM.errorCode = LecyStatus.olumluTeslimat
                 homePageVM.dialogExcPoint = point
@@ -316,7 +323,7 @@ struct CellExecutionOlumsuz: View {
         Button {
             //AnalyticsManager.shared.logButtonClick(buttonName: .HomeUndoButton, screenName: .HomeScreen)
             if !homePageVM.isExcLocationError(LecyStatus.gitmedim) {
-                homePageVM.error = "Gelmedim Olarak Kaydedilecek.\nEmin Misiniz?"
+                homePageVM.error = String(localized: "ErrorOlumsuz")
                 homePageVM.errorType = ErrorTypes.WARNING
                 homePageVM.errorCode = LecyStatus.olumsuzTeslimat
                 homePageVM.dialogExcPoint = point
@@ -367,7 +374,7 @@ struct CellExecutionGidiyorum: View {
                     //homePageVM.pointExcDialog = false
                 } else {
                     homePageVM.selectedPoint = point
-                    homePageVM.error = "Gidiyorum Olarak Kaydedilecek.\nEmin Misiniz?"
+                    homePageVM.error = String(localized: "ErrorGidiyorum")
                     homePageVM.errorType = ErrorTypes.WARNING
                     homePageVM.errorCode = LecyStatus.gidiyorum
                     homePageVM.dialogExcPoint = point

@@ -183,10 +183,6 @@ struct BarChartsView: View {
                     .padding()
             }
             
-        }.onAppear {
-            print("TTTTTTgroupArray \(data5.groupArray) - \(data5.groupArray.count)")
-            print("YYYYYYdescArray \(data5.descArray) - \(data5.descArray.count)")
-            print("RRRRRRvalueArray \(data5.valueArray) - \(data5.valueArray.count)")
         }
     }
     
@@ -434,7 +430,7 @@ struct ChartDetailInfoDialog: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.custom(fontsRegular, size: 10))
             
-            Button {
+            /*Button {
                 onTap()
             } label: {
                 Text("ChartHaritayaGit")
@@ -443,7 +439,7 @@ struct ChartDetailInfoDialog: View {
                     .background(Color.NewColor.primary1)
                     .foregroundStyle(.white)
                     .font(.custom(fontsRegular, size: 10))
-            }
+            } */
 
             
         }.padding(5)

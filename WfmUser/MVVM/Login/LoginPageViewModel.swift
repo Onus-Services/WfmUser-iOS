@@ -71,18 +71,18 @@ class LoginPageViewModel: ObservableObject {
     func getLogin(username: String, password: String, resultHandler:@escaping (Bool) -> ()) {
         if username == "" || password == "" {
             if username == "" && password == "" {
-                self.error = "Şifre ve Kullanıcı Adı Boş Bırakılamaz"
+                self.error = String(localized: "ErrorSifreveKullaniciAdiBos")
             } else if username == "" {
-                self.error = "Kullanıcı Adı Boş Bırakılamaz"
+                self.error = String(localized: "ErrorKullaniciAdiBos")
             } else if password == "" {
-                self.error = "Şifre Boş Bırakılamaz"
+                self.error = String(localized: "ErrorSifreBos")
             }
             self.errorCode = -00
             self.errorType = ErrorTypes.FAILED
             self.showAlert = true
             resultHandler(false)
         } else if password.count < 6 {
-            self.error = "Şifre 6 Karakterden küçük olamaz"
+            self.error = String(localized: "ErrorSifre6")
             self.errorCode = -00
             self.errorType = ErrorTypes.FAILED
             self.showAlert = true

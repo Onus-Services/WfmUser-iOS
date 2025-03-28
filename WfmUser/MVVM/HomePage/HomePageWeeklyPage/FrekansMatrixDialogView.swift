@@ -31,7 +31,7 @@ struct FrekansMatrixDialogView: View {
             if isFrekansDialogOpen {
                 VStack(spacing: 0) {
                     ZStack {
-                        DialogHeaderCard(text: "Frekans", background: Color.DialogColor.dialogHeaderDarkBlue) {
+                        DialogHeaderCard(text: String(localized: "DialogFrekans"), background: Color.DialogColor.dialogHeaderDarkBlue) {
                             isFrekansDialogOpen.toggle()
                         }
                     }

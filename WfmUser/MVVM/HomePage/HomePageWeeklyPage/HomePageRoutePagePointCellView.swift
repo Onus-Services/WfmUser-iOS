@@ -51,7 +51,7 @@ struct HomePageRoutePagePointCellView: View {
                                 .resizable()
                                 .frame(width: 25, height: 25)
                                 .foregroundStyle(.black)
-                            Text("\(cell.mesafeKM) KM")
+                            Text("\(cell.mesafeKM) \(String(localized: "RoutePageKm"))")
                                 .font(.custom(fontsSemiBold, size: 16))
                                 .foregroundStyle(.black)
                         }.frame(maxWidth: .infinity, alignment: .leading)
@@ -60,7 +60,7 @@ struct HomePageRoutePagePointCellView: View {
                                 .resizable()
                                 .frame(width: 25, height: 25)
                                 .foregroundStyle(.black)
-                            Text("\(cell.sureDK) DK")
+                            Text("\(cell.sureDK) \(String(localized: "RoutePageDk"))")
                                 .font(.custom(fontsSemiBold, size: 16))
                                 .foregroundStyle(.black)
                         }.frame(maxWidth: .infinity, alignment: .leading)
@@ -78,11 +78,11 @@ struct HomePageRoutePagePointCellView: View {
                     
                     HStack(spacing: 20) {
                         HStack(spacing: 5) {
-                            Text("SLA: \(cell.baslangicZamani.formattedTimeYYYY_MM_DD()) - \(cell.bitisZamani.formattedTimeYYYY_MM_DD())")
+                            Text("\(String(localized: "RoutePageSla")) \(cell.baslangicZamani.formattedTimeYYYY_MM_DD()) - \(cell.bitisZamani.formattedTimeYYYY_MM_DD())")
                                 .font(.custom(fontsSemiBold, size: 16))
                                 .foregroundStyle(.black)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                            Text("İş Süresi: \(cell.calismaSuresiDK)dk")
+                            Text("\(String(localized: "RoutePageIsSuresi")) \(cell.calismaSuresiDK) \(String(localized: "RoutePageDkKucuk"))")
                                 .font(.custom(fontsSemiBold, size: 16))
                                 .foregroundStyle(.black)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -101,7 +101,7 @@ struct HomePageRoutePagePointCellView: View {
                     
                     HStack(spacing: 0) {
                         HStack(spacing: 0) {
-                            Text("Sipariş Notu: ")
+                            Text("RoutePageSiparisNot")
                                 .font(.custom(fontsRegular, size: 14))
                                 .foregroundStyle(.black)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -210,13 +210,13 @@ struct HomePageRoutePagePointCellAracPlaka: View {
 
 func getDayNameShort(for number: String) -> String {
     let dayMap: [String: String] = [
-        "1": "Pzt.",
-        "2": "Salı",
-        "3": "Çarş.",
-        "4": "Perş.",
-        "5": "Cuma",
-        "6": "Cts.",
-        "7": "Pzr."
+        "1": String(localized: "DayPazartesiKisa"),
+        "2": String(localized: "DaySaliKisa"),
+        "3": String(localized: "DayCarsambaKisa"),
+        "4": String(localized: "DayPersembeKisa"),
+        "5": String(localized: "DayCumaKisa"),
+        "6": String(localized: "DayCumartesiKisa"),
+        "7": String(localized: "DayPazarKisa")
     ]
     
     return dayMap[number] ?? ""
@@ -237,13 +237,13 @@ func getDayColor(for number: String) -> Color {
 
 func getDayName(for number: Int) -> String {
     let dayMap: [Int: String] = [
-        1: "Pazartesi",
-        2: "Salı",
-        3: "Çarşamba",
-        4: "Perşembe",
-        5: "Cuma",
-        6: "Cumartesi",
-        7: "Pazar"
+        1: String(localized: "DayPazartesi"),
+        2: String(localized: "DaySali"),
+        3: String(localized: "DayCarsamba"),
+        4: String(localized: "DayPersembe"),
+        5: String(localized: "DayCuma"),
+        6: String(localized: "DayCumartesi"),
+        7: String(localized: "DayPazar")
     ]
     
     return dayMap[number] ?? ""

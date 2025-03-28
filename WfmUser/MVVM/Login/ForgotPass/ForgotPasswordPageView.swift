@@ -23,8 +23,6 @@ struct ForgotPasswordPageView: View {
                 
                 VStack {
                     
-                    Text("kk: \(forgotPageVM.userName)")
-                    
                     ZStack {
                         CustomInputView(text: $forgotPageVM.password, isPass: true, isSecure: isShowPass)
                         
@@ -68,7 +66,7 @@ struct ForgotPasswordPageView: View {
                             }
                         }
                     } label: {
-                        Text("Şifreyi Yenile")
+                        Text("ForgotPassPSifreyiYenile")
                             .font(.custom(fontsSemiBold, size: 15))
                             .padding(.horizontal, 10)
                             .padding(.vertical, 20)
@@ -92,7 +90,7 @@ struct ForgotPasswordPageView: View {
                             }
                         }
                     } label: {
-                        Text("Doğrulama Kodu Gönder")
+                        Text("ForgotPassDogrulama")
                             .font(.custom(fontsSemiBold, size: 15))
                             .padding(.horizontal, 10)
                             .padding(.vertical, 20)

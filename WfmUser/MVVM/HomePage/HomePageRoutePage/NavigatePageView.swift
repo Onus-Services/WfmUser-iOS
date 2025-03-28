@@ -39,7 +39,7 @@ struct NavigatePageView: View {
                                     .frame(width: 20, height: 20)
                                     .foregroundStyle(.blue)
                                 
-                                Text("Geri")
+                                Text("NavigateGeri")
                                     .font(.custom(fontsRegular, size: 12))
                                     .foregroundStyle(.blue)
                             }.background(.white)
@@ -48,7 +48,7 @@ struct NavigatePageView: View {
                             
                         })
                         
-                        Text("TakipId: \(point.takipId)")
+                        Text("\(String(localized: "NavigateTakipId")) \(point.takipId)")
                             .foregroundStyle(.black)
                             .font(.custom(fontsRegular, size: 12))
                             .frame(maxWidth: .infinity, alignment: .center)
@@ -56,7 +56,7 @@ struct NavigatePageView: View {
                         Button(action: {
                             withAnimation {
                                 if !homePageVM.isExcLocationError(LecyStatus.gitmedim) {
-                                    homePageVM.error = "Gelmedim Olarak Kaydedilecek.\nEmin Misiniz?"
+                                    homePageVM.error = String(localized: "ErrorGelmedim")
                                     homePageVM.errorType = ErrorTypes.WARNING
                                     homePageVM.errorCode = LecyStatus.gitmedim
                                     homePageVM.dialogExcPoint = point
@@ -64,7 +64,7 @@ struct NavigatePageView: View {
                                 }
                             }
                         }, label: {
-                            Text("gelmedim")
+                            Text("NavigateGelmedim")
                                 .font(.custom(fontsRegular, size: 12))
                                 .padding(.horizontal, 10)
                                 .frame(height: 30)
@@ -98,7 +98,7 @@ struct NavigatePageView: View {
                                     .frame(width: 15, height: 15)
                                     .foregroundStyle(Color.white)
                                 
-                                Text("Yol Tarifi")
+                                Text("NavigateYolTarifi")
                                     .font(.custom(fontsSemiBold, size: 14))
                                     .foregroundStyle(Color.white)
                             }.padding(10)
@@ -141,7 +141,7 @@ struct NavigatePageView: View {
                                 .customOverlayStyle(cornerRadius: 10, lineColor: .gray)
                                 .padding(5)
                             if orderNote.isEmpty {
-                                Text("Nokta notu")
+                                Text("NavigateNoktaNotu")
                                     .font(.custom(fontsRegular, size: 14))
                                     .foregroundColor(.gray)
                                     .padding(8)

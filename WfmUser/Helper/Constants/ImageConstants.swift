@@ -20,6 +20,7 @@ enum ImageConstants: String {
     ///logo
     case avansas = "avansas_logo"
     case rotamen = "rotamen_logo"
+    case rotamenLogo = "logo-1"
     ///Header
     case headerMenu = "menu"
     
@@ -208,4 +209,6 @@ enum ImageConstants: String {
     
     
     case gidiyorumIcon = "gidiyorum_icon"
+    
+    case loginBackgroundImage = "login_background_image"
 }

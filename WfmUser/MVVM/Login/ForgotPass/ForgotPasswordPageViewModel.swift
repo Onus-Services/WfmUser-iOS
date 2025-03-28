@@ -31,7 +31,7 @@ class ForgotPasswordPageViewModel: ObservableObject {
     
     func usernameControll(username: String, resultHandler:@escaping (Bool) -> ()) {
         if username == "" {
-            self.error = "Kullanıcı Adı Boş Bırakılamaz"
+            self.error = String(localized: "ErrorKullaniciAdiBos")
             self.errorCode = -00
             self.errorType = ErrorTypes.FAILED
             self.showAlert = true
@@ -50,19 +50,19 @@ class ForgotPasswordPageViewModel: ObservableObject {
     
     func getNewPass(password: String, passwordRepeat: String, resultHandler:@escaping (Bool) -> ()) {
         if password == "" || passwordRepeat == "" {
-            self.error = "Şifreler Boş Bırakılamaz"
+            self.error = String(localized: "ErrorSifrelerBos")
             self.errorCode = -00
             self.errorType = ErrorTypes.FAILED
             self.showAlert = true
             resultHandler(false)
         } else if password.count < 6 {
-            self.error = "Şifre 6 Karakterden küçük olamaz"
+            self.error = String(localized: "ErrorSifre6")
             self.errorCode = -00
             self.errorType = ErrorTypes.FAILED
             self.showAlert = true
             resultHandler(false)
         } else if password != passwordRepeat {
-            self.error = "Şifreler uyuşmuyor"
+            self.error = String(localized: "ErrorSifrelerUyusmuyor")
             self.errorCode = -00
             self.errorType = ErrorTypes.FAILED
             self.showAlert = true

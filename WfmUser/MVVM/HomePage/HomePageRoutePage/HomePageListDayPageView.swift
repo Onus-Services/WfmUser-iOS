@@ -26,7 +26,8 @@ struct HomePageListDayPageView: View {
                                 HomePageRouteCellView(pastCell: cell, cell: cell).environmentObject(homePageVM)
                             } else {
                                 let pastCell = homePageVM.personelDayRoutePointArray[i - 1]
-                                HomePageRouteCellView(pastCell: pastCell, cell: cell).environmentObject(homePageVM)
+                                let isClose = homePageVM.isNearby(cell, in: homePageVM.personelDayRoutePointArray)
+                                HomePageRouteCellView(pastCell: pastCell, cell: cell, isClose: isClose).environmentObject(homePageVM)
                             }
                         }
                     }.padding(.horizontal, 5)
@@ -50,12 +51,12 @@ struct HomePageListDayPageHeaderInfo: View {
     var body: some View {
         VStack {
             HStack {
-                HomePageListDayPageHeaderInfoView(image: "calendar", text: "Gün", desc: "\(getDayName(for: currentWeekdayNumber()))")
-                HomePageListDayPageHeaderInfoView(image: "number.circle", text: "Nokta",  desc: "\(homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(currentWeekdayNumber())" }.count - 2)")
-                HomePageListDayPageHeaderInfoView(image: "scalemass", text: "Ağırlık", desc: "0")
-                HomePageListDayPageHeaderInfoView(image: "turkishlirasign.circle", text: "Tutar", desc: "0 TL")
-                HomePageListDayPageHeaderInfoView(image: "road.lanes", text: "Km", desc: "0")
-                HomePageListDayPageHeaderInfoView(image: "clock.circle", text: "Süre", desc: "0")
+                HomePageListDayPageHeaderInfoView(image: "calendar", text: "\(String(localized: "HeaderInfoGün"))", desc: "\(getDayName(for: currentWeekdayNumber()))")
+                HomePageListDayPageHeaderInfoView(image: "number.circle", text: "\(String(localized: "HeaderInfoNokta"))",  desc: "\(homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(currentWeekdayNumber())" }.count - 2)")
+                HomePageListDayPageHeaderInfoView(image: "scalemass", text: "\(String(localized: "HeaderInfoAgirlik"))", desc: "0")
+                HomePageListDayPageHeaderInfoView(image: "turkishlirasign.circle", text: "\(String(localized: "HeaderInfoTutar"))", desc: "0 TL")
+                HomePageListDayPageHeaderInfoView(image: "road.lanes", text: "\(String(localized: "HeaderInfoKm"))", desc: "0")
+                HomePageListDayPageHeaderInfoView(image: "clock.circle", text: "\(String(localized: "HeaderInfoSüre"))", desc: "0")
             }
         }.padding(.horizontal, 5)
     }
@@ -67,12 +68,26 @@ struct HomePageListDayPageHeaderCompletePointInfo: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Tamamlanan İşler: \(homePageVM.personelDayRoutePointArray.count - 2) / \(homePageVM.personelDayRoutePointArray.filter {[LecyStatus.olumluTeslimat, LecyStatus.olumsuzTeslimat].contains($0.executionStatusId)}.count)")
+                Text("\(String(localized: "HeaderTamamlananIsler")) \(homePageVM.personelDayRoutePointArray.count - 2) / \(homePageVM.personelDayRoutePointArray.filter {[LecyStatus.olumluTeslimat, LecyStatus.olumsuzTeslimat].contains($0.executionStatusId)}.count)")
                     .font(.custom(fontsMedium, size: 14))
+                    .foregroundStyle(.black)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 5)
                     .background(.gray.opacity(0.2))
                     .customOverlayStyle(cornerRadius: 5, lineColor: .gray.opacity(0.5))
+                
+                Button {
+                    withAnimation {
+                        homePageVM.reRouteDialog = true
+                    }
+                } label: {
+                    Text("HeaderOtoSirala")
+                        .font(.custom(fontsMedium, size: 14))
+                        .foregroundStyle(.white)
+                        .padding(5)
+                        .background(Color.MyColor.releaseNoteBlueText)
+                        .customOverlayStyle(cornerRadius: 5, lineColor: Color.MyColor.releaseNoteBlueText)
+                }
             }
         }.padding(.horizontal, 5)
     }
@@ -97,7 +112,7 @@ struct HomePageListDayPageHeaderFilterCard: View {
                         .onChange(of: ugranmisCheckboxChecked) { newValue in
                             //mainPageVM.pointArray = mainPageVM.listfilter(allPoint: newValue, searchText: mainPageVM.searchText, redAddress: firstCheckboxChecked, yellowAddress: secondCheckboxChecked, greenAddress: fourthCheckboxChecked)
                         }
-                    Text("ugranmis")
+                    Text("HeaderUgranmis")
                         .font(Font.custom(fontsRegular, size: 8))
                 }
                 
@@ -130,7 +145,7 @@ struct HomePageListDayPageHeaderFilterCard: View {
                 
                 
                 if !isTextFieldFocused {
-                    Text("adress")
+                    Text("HeaderAdres")
                         .font(Font.custom(fontsRegular, size: 12))
                         .padding(.trailing, 8)
 
@@ -195,6 +210,7 @@ struct HomePageListDayPageHeaderInfoView: View {
             Text(desc)
                 .font(.custom(fontsRegular, size: 12))
                 .foregroundStyle(.black)
+                .lineLimit(1)
         }.customOverlayStyle(cornerRadius: 5, lineColor: .gray.opacity(0.2))
         /*HStack(spacing: 5) {
             Image(systemName: image)

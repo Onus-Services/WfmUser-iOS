@@ -58,6 +58,10 @@ struct MainPageView: View {
                 LoadingDialogView()
             }
             
+            if mainPageVM.isChangeLanguageInfoDialog {
+                ChangeLanguageInfoDialog(isChangeLanguageInfoDialog: $mainPageVM.isChangeLanguageInfoDialog)
+            }
+            
         }.onAppear {
             //homePageVM.getCompanyListByMasterCompany(firstLogin: appState.newLogin)
             homePageVM.addedReport = []

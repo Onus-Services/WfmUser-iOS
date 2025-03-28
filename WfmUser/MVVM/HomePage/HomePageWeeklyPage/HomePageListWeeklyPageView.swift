@@ -33,11 +33,11 @@ struct HomePageListWeeklyPageView: View {
                                                     .background(getDayColorAll(for: "\(i)"))
                                                     
                                                 VStack {
-                                                    Text("KM: \(String(format: "%.2f", i == 0 ? homePageVM.personelRoutePointArray.compactMap { Double($0.mesafeKM) }.reduce(0, +) : homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.compactMap { Double($0.mesafeKM) }.reduce(0, +)))")
+                                                    Text("\(String(localized: "WeeklyKm")) \(String(format: "%.2f", i == 0 ? homePageVM.personelRoutePointArray.compactMap { Double($0.mesafeKM) }.reduce(0, +) : homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.compactMap { Double($0.mesafeKM) }.reduce(0, +)))")
                                                         .foregroundStyle(.black)
                                                         .font(.custom(fontsRegular, size: 12))
                                                     
-                                                    Text("Süre: \(String(format: "%.2f", i == 0 ? homePageVM.personelRoutePointArray.compactMap { Double($0.sureDK) }.reduce(0, +) : homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.compactMap { Double($0.sureDK) }.reduce(0, +))) dk")
+                                                    Text("\(String(localized: "WeeklySure")) \(String(format: "%.2f", i == 0 ? homePageVM.personelRoutePointArray.compactMap { Double($0.sureDK) }.reduce(0, +) : homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.compactMap { Double($0.sureDK) }.reduce(0, +))) \(String(localized: "WeeklySureKucuk"))")
                                                         .foregroundStyle(.black)
                                                         .font(.custom(fontsRegular, size: 12))
                                                     
@@ -54,7 +54,7 @@ struct HomePageListWeeklyPageView: View {
                                             
                                         }.frame(width: 100)
                                             .frame(height: 100)
-                                            .background(.white)
+                                            .background(selectedDay == i ? getDayColorAll(for: "\(i)").opacity(0.2) : .white)
                                             .customOverlayStyle(cornerRadius: 10, lineColor: getDayColorAll(for: "\(i)"), lineWidth: 2)
                                             //.background(getDayColorAll(for: "\(i)"))
                                     }).disabled(i == 0 ? false : (homePageVM.personelRoutePointArray.filter { $0.haftaninGunu == "\(i)" }.count <= 0 ? true : false))
@@ -89,7 +89,7 @@ struct HomePageListWeeklyPageView: View {
                                 }.padding(.horizontal, 5)
                             }.padding(.top, 5)
                         } else {
-                            Text("Görüntülemek istediğiniz günü seçiniz.")
+                            Text("WeeklyGoruntuleGun")
                                 .font(.custom(fontsSemiBold, size: 14))
                                 .foregroundStyle(.black)
                         }
@@ -196,14 +196,14 @@ struct HomePageListWeeklyPageView: View {
 
 func getDayNameAll(for number: Int) -> String {
     let dayMap: [Int: String] = [
-        0: "Bütün Hafta",
-        1: "Pazartesi",
-        2: "Salı",
-        3: "Çarşamba",
-        4: "Perşembe",
-        5: "Cuma",
-        6: "Cumartesi",
-        7: "Pazar"
+        0: String(localized: "DayHafta"),
+        1: String(localized: "DayPazartesi"),
+        2: String(localized: "DaySali"),
+        3: String(localized: "DayCarsamba"),
+        4: String(localized: "DayPersembe"),
+        5: String(localized: "DayCuma"),
+        6: String(localized: "DayCumartesi"),
+        7: String(localized: "DayPazar")
     ]
     
     return dayMap[number] ?? ""

@@ -177,13 +177,59 @@ func getChartDetails(isReportOneDay: Bool, groupType: Int, reportType: ReportTyp
     for d in report {
         if groupType == 0 {
             if isReportOneDay {
-                groupArray = [["Değer", "Olumlu"], ["Değer", "Olumsuz"], ["Değer", "Devam"], ["Değer", "FarklıG"], ["Değer", "FarklıA"], ["Değer", "Durak"]]
+                switch reportType {
+                case .barTeslimat:
+                    groupArray = [["Değer", "Olumlu"], ["Değer", "Olumsuz"], ["Değer", "Devam"], ["Değer", "FarklıG"], ["Değer", "FarklıA"], ["Değer", "Durak"]]
+                case .pieTeslimat:
+                    groupArray = [["Değer", "Olumlu"], ["Değer", "Olumsuz"], ["Değer", "Devam"], ["Değer", "FarklıG"], ["Değer", "FarklıA"], ["Değer", "Durak"]]
+                case .lineHesaplananToplananKm:
+                    groupArray = [["Değer", "Hesaplanan"], ["Değer", "Toplanan"]]
+                case .barHesaplananToplananSaat:
+                    groupArray = [["Değer", "Hesaplanan"], ["Değer", "Toplanan"]]
+                case .barAdresSkor:
+                    groupArray = [["Değer", "Yeterli"], ["Değer", "Kısmi"], ["Değer", "Yetersiz"]]
+                case .barOrtalamaGeofence:
+                    groupArray = [["Değer", "Nokta"], ["Değer", "Yakın"], ["Değer", "Uzak"], ["Değer", "Hatalı"], ["Değer", "Hesaplanmayan"]]
+                case .barAracVerimlilik:
+                    groupArray = [["Değer", "Verimlilik"]]
+                case .barSeferBBB:
+                    groupArray = [["Değer", "Başlatan"], ["Değer", "Başlatmayan"], ["Değer", "Bitiren"]]
+                case .barDuraklama:
+                    groupArray = [["Değer", "FarklıG"], ["Değer", "FarklıA"], ["Değer", "Duraklama"]]
+                case .barKumeleme:
+                    groupArray = [["Değer", "Kümeleme"]]
+                case .barOrtalamaTeslimat:
+                    groupArray = [["Değer", "Teslimat Per"]]
+                }
             } else {
                 groupArray.append(["Araç", d.aracPlaka])
             }
         } else {
             if isReportOneDay {
-                groupArray = [["Değer", "Olumlu"], ["Değer", "Olumsuz"], ["Değer", "Devam"], ["Değer", "FarklıG"], ["Değer", "FarklıA"], ["Değer", "Durak"]]
+                switch reportType {
+                case .barTeslimat:
+                    groupArray = [["Değer", "Olumlu"], ["Değer", "Olumsuz"], ["Değer", "Devam"], ["Değer", "FarklıG"], ["Değer", "FarklıA"], ["Değer", "Durak"]]
+                case .pieTeslimat:
+                    groupArray = [["Değer", "Olumlu"], ["Değer", "Olumsuz"], ["Değer", "Devam"], ["Değer", "FarklıG"], ["Değer", "FarklıA"], ["Değer", "Durak"]]
+                case .lineHesaplananToplananKm:
+                    groupArray = [["Değer", "Hesaplanan"], ["Değer", "Toplanan"]]
+                case .barHesaplananToplananSaat:
+                    groupArray = [["Değer", "Hesaplanan"], ["Değer", "Toplanan"]]
+                case .barAdresSkor:
+                    groupArray = [["Değer", "Yeterli"], ["Değer", "Kısmi"], ["Değer", "Yetersiz"]]
+                case .barOrtalamaGeofence:
+                    groupArray = [["Değer", "Nokta"], ["Değer", "Yakın"], ["Değer", "Uzak"], ["Değer", "Hatalı"], ["Değer", "Hesaplanmayan"]]
+                case .barAracVerimlilik:
+                    groupArray = [["Değer", "Verimlilik"]]
+                case .barSeferBBB:
+                    groupArray = [["Değer", "Başlatan"], ["Değer", "Başlatmayan"], ["Değer", "Bitiren"]]
+                case .barDuraklama:
+                    groupArray = [["Değer", "FarklıG"], ["Değer", "FarklıA"], ["Değer", "Duraklama"]]
+                case .barKumeleme:
+                    groupArray = [["Değer", "Kümeleme"]]
+                case .barOrtalamaTeslimat:
+                    groupArray = [["Değer", "Teslimat Per"]]
+                }
             } else {
                 groupArray.append(["Araç", d.aracPlaka])
             }
@@ -197,7 +243,7 @@ func getChartDetails(isReportOneDay: Bool, groupType: Int, reportType: ReportTyp
         case .barAdresSkor:
             valueArray.append(.intValues([d.yesil, d.turuncu, d.kirmizi]))
         case .barOrtalamaGeofence:
-            valueArray.append(.intValues([d.noktaAtisi, d.yakin, d.uzak, d.geofenceHesaplanmayan]))
+            valueArray.append(.intValues([d.noktaAtisi, d.yakin, d.uzak, d.hataliKullanim, d.geofenceHesaplanmayan]))
         case .barSeferBBB:
             valueArray.append(.intValues([d.seferBaslatAdet, d.seferBaslatmayanAdet, d.seferBitisAdet]))
         case .barAracVerimlilik:
@@ -217,7 +263,7 @@ func getChartDetails(isReportOneDay: Bool, groupType: Int, reportType: ReportTyp
         }
     }
     
-    var returnDetail: ChartDetailModel = ChartDetailModel(chartTitle: chartTitle, groupArray: groupArray, descArray: descArray, valueArray: valueArray)
+    let returnDetail: ChartDetailModel = ChartDetailModel(chartTitle: chartTitle, groupArray: groupArray, descArray: descArray, valueArray: valueArray)
     
     
     return returnDetail
