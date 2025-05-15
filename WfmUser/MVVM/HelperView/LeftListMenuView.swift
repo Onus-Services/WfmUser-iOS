@@ -242,8 +242,38 @@ struct LogoutDialogView: View {
     
     @State var isShowAnket: Bool = false
     
+    var useFullScreenWrapper: Bool = true
+    
     var body: some View {
-        ZStack {
+        Group {
+            if useFullScreenWrapper {
+                ZStack {
+                    contentView
+                }
+                .background(Color.white)
+                    .customOverlayStyle(cornerRadius: CR.dlg10, lineColor: Color.DialogColor.dialogHeaderDarkBlue)
+                    .padding(.horizontal, 10)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(
+                        Color.DialogColor.dialogBackgorundOpacityColor
+                            .ignoresSafeArea()
+                            .onTapGesture {
+                                withAnimation{
+                                    mainPageVM.isLogoutDialog = false
+                                }
+                            }
+                    )
+                    .customAppearAnimation2()
+                    .onAppear {
+                        isShowAnket = preferences.bool(forKey: "logout_anket")
+                    }
+            } else {
+                contentView
+            }
+        }
+        
+        
+        /*ZStack {
             VStack(spacing: 0) {
                 
                 DialogHeaderCard(text: String(localized: "DialogCikis"), background: Color.DialogColor.dialogHeaderDarkBlue) {
@@ -337,6 +367,87 @@ struct LogoutDialogView: View {
             .customAppearAnimation2()
             .onAppear {
                 isShowAnket = preferences.bool(forKey: "logout_anket")
+            } */
+    }
+    
+    @ViewBuilder
+    var contentView: some View {
+        VStack(spacing: 0) {
+            
+            DialogHeaderCard(text: String(localized: "DialogCikis"), background: Color.DialogColor.dialogHeaderDarkBlue) {
+                mainPageVM.isLogoutDialog = false
             }
+            
+            VStack(spacing: 0) {
+                Text("CikisEminMisin")
+                    .font(.custom(fontsRegular, size: 14))
+                    .foregroundStyle(.black)
+                    .padding(.vertical, 30)
+                    .padding(.horizontal, 5)
+                
+                if !isShowAnket {
+                    Text("Anket")
+                    
+                    Button {
+                        withAnimation {
+                            isShowAnket = true
+                            preferences.set(true, forKey: "logout_anket")
+                        }
+                    } label: {
+                        Text("Anketi tekrar gösterme göster")
+                        
+                    }
+                } else {
+                    Button {
+                        withAnimation {
+                            isShowAnket = false
+                            preferences.set(false, forKey: "logout_anket")
+                        }
+                    } label: {
+                        Text("Anketi göster")
+                        
+                    }
+                }
+                
+                HStack(spacing: 10) {
+                    Button {
+                        withAnimation {
+                            mainPageVM.isLogoutDialog = false
+                        }
+                    } label: {
+                        Text("CikisKapat") //reddet - göster
+                            .font(.custom(fontsMedium, size: 14))
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 10)
+                            .background(Color.WarningColor.successWarningColor)
+                            .cornerRadius(CR.btn10)
+                        
+                    }
+                    
+                    Button {
+                        withAnimation {
+                            appState.logout()
+                            mainPageVM.mainPageType = MainPageTypes.anasayfa
+                            mainPageVM.isLogoutDialog = false
+                        }
+                    } label: {
+                        Text("CikisCikis") //reddet - göster
+                            .font(.custom(fontsMedium, size: 14))
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 10)
+                            .background(Color.WarningColor.warningWarningColor)
+                            .cornerRadius(CR.btn10)
+                           
+                        
+                    }
+                    
+                }.padding(.horizontal, 20)
+                    .padding(.vertical, 10)
+                
+            }
+            
+        }.frame(maxWidth: screenHeight * 0.7)
     }
 }

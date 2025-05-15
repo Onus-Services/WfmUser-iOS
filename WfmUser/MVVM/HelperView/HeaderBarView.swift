@@ -16,7 +16,7 @@ struct HeaderBarView: View {
     var body: some View {
         HStack {
             
-            HeaderCustomButton(icon: ImageConstants.headerMenuNew.rawValue) {
+            HeaderCustomButton(icon: ImageConstants.rotamenLogo.rawValue) {
                 showMenu = true
             }.environmentObject(mainPageVM)
             

@@ -146,7 +146,82 @@ struct HelperMainMapView: UIViewRepresentable {
             locationIndicator.updateLocation(myLocation)
         }*/
         ///marker tıklama --- */*
-        func onTap(origin: heresdk.Point2D) {
+        func onTap(origin: Point2D) {
+            let originInPixels = Point2D(x: origin.x ,y: origin.y);
+            let sizeInPixels = Size2D(width: 1, height: 1);
+            let rectangle = Rectangle2D(origin: originInPixels, size: sizeInPixels);
+            
+            // Creates a list of map content type from which the results will be picked.
+            // The content type values can be mapContent, mapItems and customLayerData.
+            var contentTypesToPickFrom = Array<MapScene.MapPickFilter.ContentType>();
+            
+            // mapContent is used when picking embedded carto POIs, traffic incidents, vehicle restriction etc.
+            // mapItems is used when picking map items such as MapMarker, MapPolyline, MapPolygon etc.
+            // Currently we need map markers so adding the mapItems filter.
+            contentTypesToPickFrom.append(MapScene.MapPickFilter.ContentType.mapItems);
+            let filter = MapScene.MapPickFilter(filter: contentTypesToPickFrom);
+                
+            parent.mapView.pick(filter: filter, inside: rectangle, completion: onMapItemsPicked);
+        }
+        
+        func onMapItemsPicked(mapPickResults: MapPickResult?) {
+            let pickedMapItems = mapPickResults?.mapItems;
+            // Note that MapMarker items contained in a cluster are not part of pickedMapItems?.markers.
+            if let groupingList = pickedMapItems?.clusteredMarkers {
+                handlePickedMapMarkerClusters(groupingList)
+            }
+                
+            // Note that 3D map markers can't be picked yet. Only marker, polgon and polyline map items are pickable.
+            guard let topmostMapMarker = pickedMapItems?.markers.first else {
+                return
+            }
+                
+            if let message = topmostMapMarker.metadata?.getString(key: "key_poi") {
+                //showDialog(title: "Map Marker picked", message: message)
+                return
+            }
+                
+            if let message = topmostMapMarker.metadata?.getString(key: "key_poi_text") {
+                //showDialog(title: "Map Marker with text picked", message: message)
+                // You can update text for a marker on-the-fly.
+                topmostMapMarker.text = "Marker was picked."
+                return
+            }
+                
+            //showDialog(title: "Map marker picked:", message: "Location: \(topmostMapMarker.coordinates)")
+        }
+        
+        private func handlePickedMapMarkerClusters(_ groupingList: [MapMarkerCluster.Grouping]) {
+            guard let topmostGrouping = groupingList.first else {
+                return
+            }
+                
+            let clusterSize = topmostGrouping.markers.count
+            if (clusterSize == 0) {
+                // This cluster does not contain any MapMarker items.
+                return
+            }
+            if (clusterSize == 1) {
+                let metadata = getClusterMetadata(topmostGrouping.markers.first!)
+                //showDialog(title: "Map Marker picked", message: "This MapMarker belongs to a cluster. Metadata: \(metadata)")
+            } else {
+                var metadata = ""
+                for mapMarker in topmostGrouping.markers {
+                    metadata += getClusterMetadata(mapMarker)
+                    metadata += " "
+                }
+                let metadataMessage = "Contained Metadata: " + metadata + ". "
+                //showDialog(title: "Map marker cluster picked", message: "Number of contained markers in this cluster: \(clusterSize). \(metadataMessage) Total number of markers in this MapMarkerCluster: \(topmostGrouping.parent.markers.count)")
+            }
+        }
+        
+        private func getClusterMetadata(_ mapMarker: MapMarker) -> String {
+            if let message = mapMarker.metadata?.getString(key: "key_cluster") {
+                return message
+            }
+            return "No metadata."
+        }
+        /*func onTap(origin: heresdk.Point2D) {
             parent.mapView.pickMapItems(at: origin, radius: 2, completion: onMapItemsPicked)
         }
         func onMapItemsPicked(pickedMapItems: PickMapItemsResult?) {
@@ -179,7 +254,7 @@ struct HelperMainMapView: UIViewRepresentable {
                     return message
             }
             return "No metadata."
-        }
+        } */
         ///marker tıklama */*
         
         ///harita üzerinde sürükleyerek gezme
