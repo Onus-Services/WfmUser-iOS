@@ -14,6 +14,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: List installed Xcode versions
+        run: |
+          ls -l /Applications | grep Xcode
+          xcode-select -p
+
       - name: Show Xcode version
         run: xcodebuild -version
 
