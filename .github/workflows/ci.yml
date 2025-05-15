@@ -11,6 +11,9 @@ jobs:
     runs-on: macos-14
 
     steps:
+      - name: Check Xcode version
+        run: xcodebuild -version
+        
       - name: Checkout repository
         uses: actions/checkout@v3
 
