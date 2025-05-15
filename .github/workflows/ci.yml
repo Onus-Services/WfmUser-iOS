@@ -15,9 +15,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: |
-          # Eğer CocoaPods kullanıyorsanız:
-          pod install
+        run: echo "No Podfile found, skipping pod install"
 
       - name: Build WfmUser App
         run: |
