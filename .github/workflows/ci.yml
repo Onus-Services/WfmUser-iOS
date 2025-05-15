@@ -25,10 +25,10 @@ jobs:
       - name: Show selected Xcode path
         run: xcode-select -p
 
-      - name: Set up Xcode 15.4
+      - name: Set up Xcode 16.2
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '15.4'
+          xcode-version: '16.2'
 
       - name: Install dependencies
         run: echo "No Podfile found, skipping pod install"
