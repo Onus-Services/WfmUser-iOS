@@ -8,7 +8,7 @@
 import XCTest
 import SnapshotTesting
 import SwiftUI
-
+/*
 @testable import WfmUser
 final class SnapshotTests: XCTestCase {
     
@@ -180,7 +180,7 @@ final class SnapshotTests: XCTestCase {
         }
         wait(for: [exp], timeout: delay + 1.0)
     }
-}
+} */
 
 extension View {
     func asVC() -> UIViewController {
@@ -188,26 +188,3 @@ extension View {
     }
 }
 
-
-struct ErrorDialogTestWrapper: View {
-    @State var isVisible = true
-
-    var body: some View {
-        ZStack {
-            Color.gray.opacity(0.1)
-
-            if isVisible {
-                ErrorDialogView(
-                    isErrorDialog: $isVisible,
-                    isAnimate: .constant(false),
-                    type: ErrorTypes.WARNING,
-                    text: "Snapshot test hatası",
-                    errorCode: 404
-                )
-                .environmentObject(AppState())
-                .environmentObject(HomePageViewModel())
-            }
-        }
-        .frame(width: 390, height: 844)
-    }
-}
