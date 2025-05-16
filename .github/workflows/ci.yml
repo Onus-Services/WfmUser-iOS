@@ -38,10 +38,40 @@ jobs:
             -sdk iphoneos \
             -derivedDataPath build \
             | tee xcodebuild.log | xcpretty --report html --output build/report.html
-            
-      - name: Run tests
+
+      - name: Create ExportOptions.plist
         run: |
-          xcodebuild test \
-            -project WfmUser.xcodeproj \
-            -scheme WfmUser \
-            -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
+          cat <<EOF > ExportOptions.plist
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>app-store</string>
+            <key>uploadBitcode</key>
+            <false/>
+            <key>uploadSymbols</key>
+            <true/>
+          </dict>
+          </plist>
+          EOF
+
+            
+      - name: Export IPA
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath build/Build/Products/Release-iphoneos/WfmUser.xcarchive \
+            -exportPath build/export \
+            -exportOptionsPlist ExportOptions.plist
+
+      - name: Upload to TestFlight
+        env:
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+        run: |
+          xcrun altool --upload-app \
+            -f build/export/WfmUser.ipa \
+            --type ios \
+            --apiKey "$APP_STORE_CONNECT_API_KEY_ID" \
+            --apiIssuer "$APP_STORE_CONNECT_ISSUER_ID"
