@@ -189,7 +189,7 @@ final class SnapshotTests: XCTestCase {
 final class WfmUserTestsDeneme: XCTestCase {
     
     func testExampleSuccess() {
-        // Basit bir doğrulama testi
+        // test
         let sum = 2 + 2
         XCTAssertEqual(sum, 4, "Toplama işlemi beklenen sonucu döndürmedi.")
     }
