@@ -57,12 +57,21 @@ jobs:
           EOF
 
             
+      - name: Archive app
+        run: |
+           xcodebuild archive \
+           -project WfmUser.xcodeproj \
+           -scheme WfmUser \
+           -configuration Release \
+           -sdk iphoneos \
+           -archivePath ./build/WfmUser.xcarchive
+
       - name: Export IPA
         run: |
           xcodebuild -exportArchive \
-            -archivePath build/Build/Products/Release-iphoneos/WfmUser.xcarchive \
-            -exportPath build/export \
-            -exportOptionsPlist ExportOptions.plist
+          -archivePath ./build/WfmUser.xcarchive \
+          -exportOptionsPlist ExportOptions.plist \
+          -exportPath ./build/export
 
       - name: Upload to TestFlight
         env:
