@@ -34,10 +34,10 @@ jobs:
         run: |
           brew install gdown || echo "gdown already installed"
 
-      - name: Download HERE SDK zip
+      - name: Download HERE SDK (with wget)
         run: |
-          gdown --id 1y7WC1Fj_Ok3hTbd4J0Th2ZsHqCvLhSMJ -O heresdk.zip
-
+          wget -O heresdk.zip "https://drive.google.com/uc?export=download&id=1y7WC1Fj_Ok3hTbd4J0Th2ZsHqCvLhSMJ"
+      
       - name: Unzip and place heresdk.xcframework
         run: |
           unzip -o heresdk.zip
