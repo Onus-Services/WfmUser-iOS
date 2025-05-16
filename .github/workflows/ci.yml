@@ -53,6 +53,9 @@ jobs:
           # Clean up
           rm -f cookies.txt
 
+      - name: Check downloaded file type
+        run: file heresdk.zip
+
       - name: Unzip and place heresdk.xcframework
         run: |
           unzip -o heresdk.zip
