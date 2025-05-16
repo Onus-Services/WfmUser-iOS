@@ -1128,7 +1128,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"WfmUser/Preview Content\"";
 				DEVELOPMENT_TEAM = 4379UNZJSE;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/heresdk/frameworks";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/heresdk/frameworks/heresdk.xcframework";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WfmUser/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Wfm User";
@@ -1162,7 +1162,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"WfmUser/Preview Content\"";
 				DEVELOPMENT_TEAM = 4379UNZJSE;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/heresdk/frameworks";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/heresdk/frameworks/heresdk.xcframework";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WfmUser/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Wfm User";
