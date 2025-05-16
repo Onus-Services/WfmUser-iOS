@@ -38,14 +38,14 @@ jobs:
         run: |
           gdown --id 1y7WC1Fj_Ok3hTbd4J0Th2ZsHqCvLhSMJ -O heresdk.zip
 
-      - name: List extracted files
-        run: ls -R
-
       - name: Unzip and place heresdk.xcframework
         run: |
           unzip -o heresdk.zip
           mkdir -p heresdk/frameworks
           mv heresdk-explore-ios-*/heresdk/frameworks/heresdk.xcframework heresdk/frameworks/
+
+      - name: List extracted files
+        run: ls -R
 
       - name: Install dependencies
         run: echo "No Podfile found, skipping pod install"
