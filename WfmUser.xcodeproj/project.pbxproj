@@ -740,9 +740,6 @@
 				4EC6179C2D8322580077245B /* SwiftUIIntrospect */,
 				4EC617A02D8322580077245B /* SwiftUIIntrospect-Static */,
 				4EAAC1B52D8BFC8600D7A837 /* SQLite */,
-				4EBFB9E02DD4E344000AF9D4 /* InlineSnapshotTesting */,
-				4EBFB9E22DD4E344000AF9D4 /* SnapshotTesting */,
-				4EBFB9E42DD4E344000AF9D4 /* SnapshotTestingCustomDump */,
 			);
 			productName = WfmUser;
 			productReference = 4EC617182D831C2E0077245B /* WfmUser.app */;
@@ -1131,6 +1128,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"WfmUser/Preview Content\"";
 				DEVELOPMENT_TEAM = 4379UNZJSE;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/heresdk/frameworks";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WfmUser/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Wfm User";
@@ -1164,6 +1162,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"WfmUser/Preview Content\"";
 				DEVELOPMENT_TEAM = 4379UNZJSE;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/heresdk/frameworks";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WfmUser/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Wfm User";
@@ -1274,21 +1273,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4EAAC1B42D8BFC8600D7A837 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
 			productName = SQLite;
-		};
-		4EBFB9E02DD4E344000AF9D4 /* InlineSnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4EBFB9DF2DD4E344000AF9D4 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
-			productName = InlineSnapshotTesting;
-		};
-		4EBFB9E22DD4E344000AF9D4 /* SnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4EBFB9DF2DD4E344000AF9D4 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
-			productName = SnapshotTesting;
-		};
-		4EBFB9E42DD4E344000AF9D4 /* SnapshotTestingCustomDump */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4EBFB9DF2DD4E344000AF9D4 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
-			productName = SnapshotTestingCustomDump;
 		};
 		4EBFB9F32DD4E433000AF9D4 /* InlineSnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
