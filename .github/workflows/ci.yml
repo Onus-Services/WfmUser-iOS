@@ -19,20 +19,10 @@ jobs:
         with:
           xcode-version: '13.4.1'
 
-      - name: Install unzip and gdown
+      - name: Copy HERE SDK from local machine
         run: |
-          brew install gdown || echo "gdown already installed"
-
-      - name: Download HERE SDK using gdown
-        run: |
-          gdown --id 1y7WC1Fj_Ok3hTbd4J0Th2ZsHqCvLhSMJ -O heresdk.zip
-
-      - name: Unzip HERE SDK to correct location
-        run: |
-          echo "Unzipping HERE SDK..."
-          unzip -q heresdk.zip -d heresdk
-          mkdir -p ./heresdk/frameworks
-          mv heresdk/heresdk/frameworks/heresdk.xcframework ./heresdk/frameworks
+          mkdir -p heresdk/frameworks
+          cp -R /Users/macbook/Desktop/heresdk.xcframework ./heresdk/frameworks/
 
       - name: Check if heresdk.xcframework exists
         run: ls -l heresdk/frameworks/heresdk.xcframework
