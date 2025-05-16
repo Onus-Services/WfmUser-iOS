@@ -34,10 +34,25 @@ jobs:
         run: |
           brew install gdown || echo "gdown already installed"
 
-      - name: Download HERE SDK (with wget)
+      - name: Download HERE SDK (with confirm token bypass)
         run: |
-          wget -O heresdk.zip "https://drive.google.com/uc?export=download&id=1y7WC1Fj_Ok3hTbd4J0Th2ZsHqCvLhSMJ"
-      
+          FILE_ID=1y7WC1Fj_Ok3hTbd4J0Th2ZsHqCvLhSMJ
+          FILE_NAME=heresdk.zip
+
+          # Step 1: Get confirmation token
+          CONFIRM=$(wget --quiet --save-cookies cookies.txt \
+            --keep-session-cookies --no-check-certificate \
+            "https://docs.google.com/uc?export=download&id=${FILE_ID}" -O- \
+            | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p')
+
+          # Step 2: Download file with token
+          wget --load-cookies cookies.txt \
+            "https://docs.google.com/uc?export=download&confirm=${CONFIRM}&id=${FILE_ID}" \
+            -O ${FILE_NAME}
+
+          # Clean up
+          rm -f cookies.txt
+
       - name: Unzip and place heresdk.xcframework
         run: |
           unzip -o heresdk.zip
