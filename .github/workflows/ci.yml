@@ -45,7 +45,9 @@ jobs:
             -scheme WfmUser \
             -configuration Release \
             -sdk iphoneos \
-            -derivedDataPath build
+            -derivedDataPath build \
+            | tee xcodebuild.log | xcpretty --report html --output build/report.html
+             -verbose
 
       - name: Run tests
         run: |
