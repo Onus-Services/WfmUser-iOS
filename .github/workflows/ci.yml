@@ -32,8 +32,8 @@ jobs:
           unzip -o heresdk.zip
           ls -R  # klasör yapısını kontrol et
 
-      - name: List extracted files
-        run: ls -R
+      - name: List contents of heresdk.zip
+        run: unzip -l heresdk.zip
 
       - name: Install dependencies
         run: echo "No Podfile found, skipping pod install"
