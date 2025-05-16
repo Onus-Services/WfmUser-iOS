@@ -31,8 +31,8 @@ jobs:
         run: |
           echo "Unzipping HERE SDK..."
           unzip -q heresdk.zip -d heresdk
-          mkdir -p "${SRCROOT}/heresdk/frameworks"
-          mv heresdk/heresdk/frameworks/heresdk.xcframework "${SRCROOT}/heresdk/frameworks"
+          mkdir -p ./heresdk/frameworks
+          mv heresdk/heresdk/frameworks/heresdk.xcframework ./heresdk/frameworks
 
       - name: Check if heresdk.xcframework exists
         run: ls -l heresdk/frameworks/heresdk.xcframework
