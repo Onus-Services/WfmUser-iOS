@@ -1,0 +1,55 @@
+name: Build WfmUser App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Xcode 16.2
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.2'
+
+      - name: Install unzip and gdown
+        run: |
+          brew install gdown || echo "gdown already installed"
+
+      - name: Download HERE SDK using gdown
+        run: |
+          gdown --id 1y7WC1Fj_Ok3hTbd4J0Th2ZsHqCvLhSMJ -O heresdk.zip
+
+      - name: Unzip HERE SDK
+        run: unzip -o heresdk.zip
+
+      - name: Check if heresdk.xcframework exists
+        run: ls -l heresdk/frameworks/heresdk.xcframework
+
+      - name: Install dependencies
+        run: echo "No Podfile found, skipping pod install"
+
+      - name: Build WfmUser App
+        run: |
+          xcodebuild clean build \
+            -project WfmUser.xcodeproj \
+            -scheme WfmUser \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            | tee xcodebuild.log | xcpretty --report html --output build/report.html
+             -verbose
+
+      - name: Run tests
+        run: |
+          xcodebuild test \
+            -project WfmUser.xcodeproj \
+            -scheme WfmUser \
+            -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
