@@ -30,8 +30,7 @@ jobs:
       - name: Unzip and place heresdk.xcframework
         run: |
           unzip -o heresdk.zip
-          mkdir -p heresdk/frameworks
-          mv heresdk-explore-ios-*/heresdk/frameworks/heresdk.xcframework heresdk/frameworks/
+          ls -R  # klasör yapısını kontrol et
 
       - name: List extracted files
         run: ls -R
