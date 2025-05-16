@@ -185,6 +185,16 @@ final class SnapshotTests: XCTestCase {
 
 //commit test
 
+@testable import WfmUser
+final class WfmUserTestsDeneme: XCTestCase {
+    
+    func testExampleSuccess() {
+        // Basit bir doğrulama testi
+        let sum = 2 + 2
+        XCTAssertEqual(sum, 4, "Toplama işlemi beklenen sonucu döndürmedi.")
+    }
+}
+
 extension View {
     func asVC() -> UIViewController {
         UIHostingController(rootView: self)
