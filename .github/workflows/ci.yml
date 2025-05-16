@@ -27,13 +27,11 @@ jobs:
         run: |
           gdown --id 1y7WC1Fj_Ok3hTbd4J0Th2ZsHqCvLhSMJ -O heresdk.zip
 
-      - name: Unzip and place heresdk.xcframework
-        run: |
-          unzip -o heresdk.zip
-          ls -R  # klasör yapısını kontrol et
+      - name: Unzip HERE SDK
+        run: unzip -o heresdk.zip
 
-      - name: List contents of heresdk.zip
-        run: unzip -l heresdk.zip
+      - name: Check if heresdk.xcframework exists
+        run: ls -l heresdk/frameworks/heresdk.xcframework
 
       - name: Install dependencies
         run: echo "No Podfile found, skipping pod install"
