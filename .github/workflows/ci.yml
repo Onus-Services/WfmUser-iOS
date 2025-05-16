@@ -10,76 +10,30 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        
       - name: Set up Xcode 13.4.1
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '13.4.1'
-          
-      # Try to fix project file if corrupted
-      - name: Check and fix project file
-        run: |
-          echo "Checking project file integrity..."
-          if [ -f "WfmUser.xcodeproj/project.pbxproj" ]; then
-            # Check for merge conflict markers in the project file
-            if grep -q "<<<<<<< HEAD" "WfmUser.xcodeproj/project.pbxproj"; then
-              echo "Found merge conflicts in project file. Please resolve them manually."
-              exit 1
-            fi
-            
-            # Check if 'isa' keys are properly formatted
-            if grep -q "isa = " "WfmUser.xcodeproj/project.pbxproj"; then
-              echo "Project file seems correctly formatted."
-            else
-              echo "Project file may be damaged. Consider restoring from backup."
-              exit 1
-            fi
-          else
-            echo "project.pbxproj file missing!"
-            exit 1
-          fi
-          
       - name: Copy HERE SDK from local machine
         run: |
           mkdir -p heresdk/frameworks
           cp -R /Users/macbook/Desktop/heresdk/frameworks/heresdk.xcframework ./heresdk/frameworks/
-          
       - name: Check if heresdk.xcframework exists
-        run: ls -la heresdk/frameworks/heresdk.xcframework
-        
-      - name: List project contents
-        run: |
-          echo "Project structure:"
-          ls -la
-          echo "XCode project contents:"
-          ls -la WfmUser.xcodeproj/
-        
+        run: ls -l heresdk/frameworks/heresdk.xcframework
+      - name: Install dependencies
+        run: echo "No Podfile found, skipping pod install"
       - name: Build WfmUser App
         run: |
-          # First attempt a clean build without testing
           xcodebuild clean build \
             -project WfmUser.xcodeproj \
             -scheme WfmUser \
-            -configuration Debug \
+            -configuration Release \
             -sdk iphoneos \
             -derivedDataPath build \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO \
             | tee xcodebuild.log | xcpretty --report html --output build/report.html
-        
-      - name: Run tests (if build succeeds)
-        if: success()
+      - name: Run tests
         run: |
           xcodebuild test \
             -project WfmUser.xcodeproj \
             -scheme WfmUser \
             -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
-            
-      - name: Archive build logs on failure
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-logs
-          path: |
-            xcodebuild.log
-            build/report.html
