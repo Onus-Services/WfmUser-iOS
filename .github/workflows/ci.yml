@@ -53,7 +53,7 @@ jobs:
           jazzy
 
       - name: Upload documentation as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: jazzy-docs
           path: docs
