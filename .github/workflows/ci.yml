@@ -74,6 +74,7 @@ jobs:
            -scheme WfmUser \
            -configuration Release \
            -sdk iphoneos \
+           -destination 'generic/platform=iOS' \
            -archivePath ./build/WfmUser.xcarchive
 
       - name: Export IPA
