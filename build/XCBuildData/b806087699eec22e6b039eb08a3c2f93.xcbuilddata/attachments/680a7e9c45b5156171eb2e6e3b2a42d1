@@ -1,0 +1,450 @@
+{
+  "" : {
+    "const-values" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WfmUser-master.swiftconstvalues",
+    "dependencies" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WfmUser-master.d",
+    "diagnostics" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WfmUser-master.dia",
+    "emit-module-dependencies" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WfmUser-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WfmUser-master-emit-module.dia",
+    "swift-dependencies" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WfmUser-master.swiftdeps"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/ContentView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ContentView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/Constants/FontConstants.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/FontConstants.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/FontConstants.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/FontConstants.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/Constants/GlobalConstants.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GlobalConstants.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GlobalConstants.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GlobalConstants.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/Constants/ImageConstants.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ImageConstants.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ImageConstants.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ImageConstants.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/Extensions/Color+Extensions.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/Color+Extensions.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/Color+Extensions.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/Color+Extensions.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/Extensions/ColorExtensions.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ColorExtensions.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ColorExtensions.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ColorExtensions.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/Extensions/Data+Extension.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/Data+Extension.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/Data+Extension.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/Data+Extension.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/Extensions/Date+Extensions.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/Date+Extensions.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/Date+Extensions.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/Date+Extensions.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/Extensions/String+Extensions.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/String+Extensions.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/String+Extensions.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/String+Extensions.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/Extensions/View+Extensions.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/View+Extensions.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/View+Extensions.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/View+Extensions.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/GlobalFunc/ApiResponseFunc.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ApiResponseFunc.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ApiResponseFunc.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ApiResponseFunc.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/GlobalFunc/GlobalAnimateFunc.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GlobalAnimateFunc.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GlobalAnimateFunc.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GlobalAnimateFunc.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/GlobalFunc/GlobalFunc.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GlobalFunc.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GlobalFunc.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GlobalFunc.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/GlobalFunc/LocationViewModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LocationViewModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LocationViewModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LocationViewModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/GlobalFunc/NavigationManager.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/NavigationManager.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/NavigationManager.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/NavigationManager.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/HelperViewExs/PickerTextField.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PickerTextField.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PickerTextField.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PickerTextField.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Helper/HelperViewExs/RoundedCorners.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RoundedCorners.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RoundedCorners.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RoundedCorners.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Controller/AppDelegate.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/AppDelegate.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/AppDelegate.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/AppDelegate.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Controller/AppState.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/AppState.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/AppState.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/AppState.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/DialogView/ChangeLanguageInfoDialog.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ChangeLanguageInfoDialog.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ChangeLanguageInfoDialog.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ChangeLanguageInfoDialog.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/DialogView/ErrorDialogView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ErrorDialogView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ErrorDialogView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ErrorDialogView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/DialogView/LoadingDialogView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LoadingDialogView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LoadingDialogView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LoadingDialogView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/DialogView/ReRouteDialogView/RerouteDialogView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RerouteDialogView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RerouteDialogView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RerouteDialogView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/DialogView/ReRouteDialogView/RerouteDialogViewModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RerouteDialogViewModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RerouteDialogViewModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RerouteDialogViewModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HelperView/CustomFormView/CustomPickerView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/CustomPickerView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/CustomPickerView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/CustomPickerView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HelperView/CustomFormView/DeliveredDialogText.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DeliveredDialogText.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DeliveredDialogText.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DeliveredDialogText.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HelperView/CustomFormView/GenericDateView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GenericDateView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GenericDateView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GenericDateView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HelperView/CustomFormView/PickerViewDialogCardView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PickerViewDialogCardView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PickerViewDialogCardView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PickerViewDialogCardView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HelperView/DateFilterHeaderView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DateFilterHeaderView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DateFilterHeaderView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DateFilterHeaderView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HelperView/DialogHeaderCard.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DialogHeaderCard.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DialogHeaderCard.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DialogHeaderCard.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HelperView/DropDownMenuItems.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DropDownMenuItems.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DropDownMenuItems.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DropDownMenuItems.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HelperView/HeaderBarView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HeaderBarView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HeaderBarView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HeaderBarView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HelperView/LeftListMenuView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LeftListMenuView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LeftListMenuView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LeftListMenuView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HelperView/ToastMessageView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ToastMessageView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ToastMessageView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ToastMessageView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/AddNewAddress/AddNewAddressDialogView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/AddNewAddressDialogView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/AddNewAddressDialogView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/AddNewAddressDialogView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/AddNewAddress/LearnAddressCardView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LearnAddressCardView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LearnAddressCardView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LearnAddressCardView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/HomePageRoutePage/DayMapPointExcDialogView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DayMapPointExcDialogView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DayMapPointExcDialogView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/DayMapPointExcDialogView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/HomePageRoutePage/HomePageListDayPageView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageListDayPageView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageListDayPageView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageListDayPageView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/HomePageRoutePage/HomePageRouteCellView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageRouteCellView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageRouteCellView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageRouteCellView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/HomePageRoutePage/HomePageRoutePageView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageRoutePageView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageRoutePageView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageRoutePageView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/HomePageRoutePage/NavigatePageView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/NavigatePageView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/NavigatePageView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/NavigatePageView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/HomePageRoutePage/RoutePointDialogView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RoutePointDialogView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RoutePointDialogView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RoutePointDialogView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/HomePageView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/HomePageViewModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageViewModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageViewModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageViewModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/HomePageWeeklyPage/FrekansMatrixDialogView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/FrekansMatrixDialogView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/FrekansMatrixDialogView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/FrekansMatrixDialogView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/HomePageWeeklyPage/HomePageListWeeklyPageView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageListWeeklyPageView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageListWeeklyPageView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageListWeeklyPageView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/HomePageWeeklyPage/HomePageRoutePagePointCellView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageRoutePagePointCellView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageRoutePagePointCellView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageRoutePagePointCellView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/MonhtlyPageView/MonthlyPageView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MonthlyPageView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MonthlyPageView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MonthlyPageView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/ReportDashboardView/HomePageDashboard.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageDashboard.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageDashboard.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HomePageDashboard.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/ReportDashboardView/NoValueDescView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/NoValueDescView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/NoValueDescView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/NoValueDescView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/HomePage/ReportDashboardView/WidgetMenuItems.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WidgetMenuItems.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WidgetMenuItems.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WidgetMenuItems.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Login/ForgotPass/ForgotPasswordPageView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ForgotPasswordPageView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ForgotPasswordPageView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ForgotPasswordPageView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Login/ForgotPass/ForgotPasswordPageViewModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ForgotPasswordPageViewModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ForgotPasswordPageViewModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ForgotPasswordPageViewModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Login/LoginPageView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LoginPageView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LoginPageView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LoginPageView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Login/LoginPageViewModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LoginPageViewModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LoginPageViewModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LoginPageViewModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Login/LoginUser.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LoginUser.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LoginUser.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LoginUser.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Login/OTPVerificationViewModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/OTPVerificationViewModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/OTPVerificationViewModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/OTPVerificationViewModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Login/SMSVerificationPageViewModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SMSVerificationPageViewModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SMSVerificationPageViewModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SMSVerificationPageViewModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Login/SMSVerificationView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SMSVerificationView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SMSVerificationView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SMSVerificationView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Login/SplashPageView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SplashPageView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SplashPageView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SplashPageView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/MainPage/ControllerView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ControllerView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ControllerView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ControllerView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/MainPage/MainPageView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MainPageView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MainPageView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MainPageView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/MainPage/MainPageViewModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MainPageViewModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MainPageViewModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MainPageViewModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Map/AddressbookFilterTypeModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/AddressbookFilterTypeModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/AddressbookFilterTypeModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/AddressbookFilterTypeModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Map/HelperMainMapView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HelperMainMapView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HelperMainMapView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/HelperMainMapView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Map/MapHelpherClass.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MapHelpherClass.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MapHelpherClass.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MapHelpherClass.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Map/RouteCalculator.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RouteCalculator.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RouteCalculator.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RouteCalculator.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Model/ErrorClass.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ErrorClass.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ErrorClass.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ErrorClass.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Model/NotificationResponseModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/NotificationResponseModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/NotificationResponseModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/NotificationResponseModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Model/PointModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PointModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PointModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PointModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/Model/RouteSettingModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RouteSettingModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RouteSettingModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/RouteSettingModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/ReportPageView/BarChartsView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/BarChartsView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/BarChartsView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/BarChartsView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/ReportPageView/CompareReportDialogView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/CompareReportDialogView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/CompareReportDialogView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/CompareReportDialogView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/ReportPageView/FullScreenReportDialogView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/FullScreenReportDialogView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/FullScreenReportDialogView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/FullScreenReportDialogView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/ReportPageView/LineChartsView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LineChartsView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LineChartsView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/LineChartsView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/ReportPageView/MasterCompanyModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MasterCompanyModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MasterCompanyModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/MasterCompanyModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/ReportPageView/PieChartsView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PieChartsView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PieChartsView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PieChartsView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/ReportPageView/PlateUserModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PlateUserModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PlateUserModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/PlateUserModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/ReportPageView/ReportDetail.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ReportDetail.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ReportDetail.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ReportDetail.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/ReportPageView/ReportModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ReportModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ReportModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ReportModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/ReportPageView/ReportView.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ReportView.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ReportView.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ReportView.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/MVVM/ReportPageView/WidgetModel.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WidgetModel.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WidgetModel.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WidgetModel.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/SQLiteDataSource/SQLiteCommands.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SQLiteCommands.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SQLiteCommands.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SQLiteCommands.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/SQLiteDataSource/SQLiteDatabase.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SQLiteDatabase.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SQLiteDatabase.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/SQLiteDatabase.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Services/ApiService.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ApiService.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ApiService.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ApiService.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/Services/ServiceRepository.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ServiceRepository.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ServiceRepository.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/ServiceRepository.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/WfmUser/WfmUserApp.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WfmUserApp.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WfmUserApp.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/WfmUserApp.o"
+  },
+  "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/alper/Desktop/ONUSS/WfmUser/build/WfmUser.build/Release-iphoneos/WfmUser.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  }
+}

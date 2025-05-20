@@ -1,0 +1,4 @@
+module GoogleUtilities_Environment {
+umbrella "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/GoogleUtilities/GoogleUtilities/Environment/Public"
+export *
+}

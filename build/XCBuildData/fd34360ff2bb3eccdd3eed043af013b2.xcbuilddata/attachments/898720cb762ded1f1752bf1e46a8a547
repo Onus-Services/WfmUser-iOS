@@ -1,0 +1,4 @@
+module CombineMoya {
+header "CombineMoya-Swift.h"
+export *
+}

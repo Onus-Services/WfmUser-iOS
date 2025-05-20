@@ -1,0 +1,310 @@
+{
+  "" : {
+    "const-values" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SwiftUIIntrospect-master.swiftconstvalues",
+    "dependencies" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SwiftUIIntrospect-master.d",
+    "diagnostics" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SwiftUIIntrospect-master.dia",
+    "emit-module-dependencies" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SwiftUIIntrospect-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SwiftUIIntrospect-master-emit-module.dia",
+    "swift-dependencies" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SwiftUIIntrospect-master.swiftdeps"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/Introspect.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Introspect.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Introspect.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Introspect.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/IntrospectableViewType.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/IntrospectableViewType.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/IntrospectableViewType.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/IntrospectableViewType.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/IntrospectionSelector.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/IntrospectionSelector.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/IntrospectionSelector.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/IntrospectionSelector.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/IntrospectionView.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/IntrospectionView.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/IntrospectionView.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/IntrospectionView.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/PlatformVersion.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PlatformVersion.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PlatformVersion.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PlatformVersion.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/PlatformView.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PlatformView.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PlatformView.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PlatformView.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/PlatformViewVersion.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PlatformViewVersion.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PlatformViewVersion.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PlatformViewVersion.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/Utils.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Utils.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Utils.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Utils.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/Button.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Button.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Button.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Button.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ColorPicker.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ColorPicker.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ColorPicker.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ColorPicker.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/DatePicker.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePicker.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePicker.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePicker.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/DatePickerWithCompactStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithCompactStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithCompactStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithCompactStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/DatePickerWithFieldStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithFieldStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithFieldStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithFieldStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/DatePickerWithGraphicalStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithGraphicalStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithGraphicalStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithGraphicalStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/DatePickerWithStepperFieldStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithStepperFieldStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithStepperFieldStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithStepperFieldStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/DatePickerWithWheelStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithWheelStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithWheelStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/DatePickerWithWheelStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/Form.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Form.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Form.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Form.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/FormWithGroupedStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/FormWithGroupedStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/FormWithGroupedStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/FormWithGroupedStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/FullScreenCover.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/FullScreenCover.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/FullScreenCover.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/FullScreenCover.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/List.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/List.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/List.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/List.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ListCell.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListCell.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListCell.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListCell.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ListWithBorderedStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithBorderedStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithBorderedStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithBorderedStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ListWithGroupedStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithGroupedStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithGroupedStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithGroupedStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ListWithInsetGroupedStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithInsetGroupedStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithInsetGroupedStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithInsetGroupedStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ListWithInsetStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithInsetStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithInsetStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithInsetStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ListWithSidebarStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithSidebarStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithSidebarStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ListWithSidebarStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/Map.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Map.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Map.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Map.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/NavigationSplitView.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/NavigationSplitView.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/NavigationSplitView.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/NavigationSplitView.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/NavigationStack.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/NavigationStack.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/NavigationStack.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/NavigationStack.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/NavigationViewWithColumnsStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/NavigationViewWithColumnsStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/NavigationViewWithColumnsStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/NavigationViewWithColumnsStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/NavigationViewWithStackStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/NavigationViewWithStackStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/NavigationViewWithStackStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/NavigationViewWithStackStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/PageControl.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PageControl.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PageControl.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PageControl.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/PickerWithMenuStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PickerWithMenuStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PickerWithMenuStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PickerWithMenuStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/PickerWithSegmentedStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PickerWithSegmentedStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PickerWithSegmentedStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PickerWithSegmentedStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/PickerWithWheelStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PickerWithWheelStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PickerWithWheelStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/PickerWithWheelStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/Popover.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Popover.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Popover.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Popover.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ProgressViewWithCircularStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ProgressViewWithCircularStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ProgressViewWithCircularStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ProgressViewWithCircularStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ProgressViewWithLinearStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ProgressViewWithLinearStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ProgressViewWithLinearStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ProgressViewWithLinearStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ScrollView.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ScrollView.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ScrollView.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ScrollView.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/SearchField.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SearchField.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SearchField.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SearchField.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/SecureField.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SecureField.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SecureField.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SecureField.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/Sheet.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Sheet.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Sheet.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Sheet.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/SignInWithAppleButton.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SignInWithAppleButton.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SignInWithAppleButton.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/SignInWithAppleButton.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/Slider.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Slider.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Slider.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Slider.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/Stepper.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Stepper.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Stepper.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Stepper.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/TabView.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TabView.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TabView.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TabView.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/TabViewWithPageStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TabViewWithPageStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TabViewWithPageStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TabViewWithPageStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/Table.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Table.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Table.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Table.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/TextEditor.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TextEditor.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TextEditor.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TextEditor.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/TextField.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TextField.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TextField.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TextField.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/TextFieldWithVerticalAxis.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TextFieldWithVerticalAxis.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TextFieldWithVerticalAxis.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/TextFieldWithVerticalAxis.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/Toggle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Toggle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Toggle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Toggle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ToggleWithButtonStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ToggleWithButtonStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ToggleWithButtonStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ToggleWithButtonStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ToggleWithCheckboxStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ToggleWithCheckboxStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ToggleWithCheckboxStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ToggleWithCheckboxStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ToggleWithSwitchStyle.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ToggleWithSwitchStyle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ToggleWithSwitchStyle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ToggleWithSwitchStyle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/VideoPlayer.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/VideoPlayer.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/VideoPlayer.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/VideoPlayer.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/View.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/View.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/View.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/View.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/ViewController.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ViewController.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ViewController.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/ViewController.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/ViewTypes/Window.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Window.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Window.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Window.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/Sources/Weak.swift" : {
+    "index-unit-output-path" : "/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Weak.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Weak.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/swiftui-introspect/build/swiftui-introspect.build/Release-iphoneos/SwiftUIIntrospect.build/Objects-normal/arm64/Weak.o"
+  }
+}

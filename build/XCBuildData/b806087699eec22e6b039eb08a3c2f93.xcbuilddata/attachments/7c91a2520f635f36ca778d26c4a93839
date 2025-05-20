@@ -1,0 +1,260 @@
+{
+  "" : {
+    "const-values" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ReactiveSwift-master.swiftconstvalues",
+    "dependencies" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ReactiveSwift-master.d",
+    "diagnostics" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ReactiveSwift-master.dia",
+    "emit-module-dependencies" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ReactiveSwift-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ReactiveSwift-master-emit-module.dia",
+    "swift-dependencies" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ReactiveSwift-master.swiftdeps"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Action.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Action.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Action.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Action.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Atomic.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Atomic.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Atomic.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Atomic.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Bag.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Bag.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Bag.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Bag.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Deprecations+Removals.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Deprecations+Removals.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Deprecations+Removals.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Deprecations+Removals.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Disposable.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Disposable.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Disposable.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Disposable.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Event.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Event.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Event.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Event.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/EventLogger.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/EventLogger.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/EventLogger.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/EventLogger.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Flatten.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Flatten.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Flatten.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Flatten.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/FoundationExtensions.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/FoundationExtensions.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/FoundationExtensions.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/FoundationExtensions.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Lifetime.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Lifetime.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Lifetime.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Lifetime.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/AttemptMap.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/AttemptMap.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/AttemptMap.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/AttemptMap.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/Collect.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Collect.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Collect.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Collect.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/CollectEvery.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/CollectEvery.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/CollectEvery.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/CollectEvery.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/CombinePrevious.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/CombinePrevious.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/CombinePrevious.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/CombinePrevious.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/CompactMap.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/CompactMap.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/CompactMap.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/CompactMap.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/Debounce.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Debounce.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Debounce.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Debounce.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/Delay.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Delay.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Delay.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Delay.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/Dematerialize.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Dematerialize.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Dematerialize.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Dematerialize.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/DematerializeResults.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/DematerializeResults.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/DematerializeResults.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/DematerializeResults.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/Filter.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Filter.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Filter.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Filter.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/LazyMap.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/LazyMap.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/LazyMap.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/LazyMap.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/Map.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Map.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Map.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Map.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/MapError.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/MapError.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/MapError.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/MapError.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/Materialize.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Materialize.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Materialize.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Materialize.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/MaterializeAsResult.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/MaterializeAsResult.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/MaterializeAsResult.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/MaterializeAsResult.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/ObserveOn.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ObserveOn.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ObserveOn.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ObserveOn.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/Observer.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Observer.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Observer.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Observer.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/Operators.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Operators.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Operators.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Operators.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/Reduce.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Reduce.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Reduce.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Reduce.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/ScanMap.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ScanMap.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ScanMap.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ScanMap.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/SkipFirst.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/SkipFirst.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/SkipFirst.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/SkipFirst.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/SkipRepeats.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/SkipRepeats.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/SkipRepeats.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/SkipRepeats.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/SkipWhile.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/SkipWhile.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/SkipWhile.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/SkipWhile.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/TakeFirst.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/TakeFirst.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/TakeFirst.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/TakeFirst.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/TakeLast.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/TakeLast.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/TakeLast.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/TakeLast.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/TakeWhile.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/TakeWhile.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/TakeWhile.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/TakeWhile.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/Throttle.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Throttle.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Throttle.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Throttle.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/UnaryAsyncOperator.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/UnaryAsyncOperator.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/UnaryAsyncOperator.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/UnaryAsyncOperator.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Observers/UniqueValues.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/UniqueValues.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/UniqueValues.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/UniqueValues.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Optional.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Optional.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Optional.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Optional.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Property.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Property.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Property.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Property.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Reactive.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Reactive.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Reactive.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Reactive.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/ResultExtensions.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ResultExtensions.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ResultExtensions.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ResultExtensions.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Scheduler.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Scheduler.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Scheduler.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Scheduler.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Signal.Observer.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Signal.Observer.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Signal.Observer.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Signal.Observer.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/Signal.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Signal.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Signal.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/Signal.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/SignalProducer.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/SignalProducer.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/SignalProducer.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/SignalProducer.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/UnidirectionalBinding.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/UnidirectionalBinding.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/UnidirectionalBinding.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/UnidirectionalBinding.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/UninhabitedTypeGuards.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/UninhabitedTypeGuards.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/UninhabitedTypeGuards.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/UninhabitedTypeGuards.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/Sources/ValidatingProperty.swift" : {
+    "index-unit-output-path" : "/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ValidatingProperty.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ValidatingProperty.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-agwxllgjnbqiczdrdcztuqpnfeoh/SourcePackages/checkouts/ReactiveSwift/build/ReactiveSwift.build/Release-iphoneos/ReactiveSwift.build/Objects-normal/arm64/ValidatingProperty.o"
+  }
+}
