@@ -54,7 +54,7 @@ jobs:
           xcodebuild test \
             -project WfmUser.xcodeproj \
             -scheme WfmUser \
-            -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.4' \
+            -destination 'platform=iOS Simulator,name=iPhone 15,OS=18.4' \
             -derivedDataPath build \
             | tee xcodebuild_test.log | xcpretty
 
@@ -82,7 +82,7 @@ jobs:
            -project WfmUser.xcodeproj \
            -scheme WfmUser \
            -configuration Release \
-           -sdk iphoneos \
+           -sdk iphoneos18.4 \
            -destination 'generic/platform=iOS' \
            -archivePath ./build/WfmUser.xcarchive
 
