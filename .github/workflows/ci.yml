@@ -49,6 +49,15 @@ jobs:
             -derivedDataPath build \
             | tee xcodebuild.log | xcpretty --report html --output build/report.html
 
+      - name: Run Unit Tests
+        run: |
+          xcodebuild test \
+            -project WfmUser.xcodeproj \
+            -scheme WfmUser \
+            -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.4' \
+            -derivedDataPath build \
+            | tee xcodebuild_test.log | xcpretty
+
       - name: Create ExportOptions.plist
         run: |
           cat <<EOF > ExportOptions.plist
