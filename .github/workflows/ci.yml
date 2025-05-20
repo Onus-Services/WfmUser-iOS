@@ -12,6 +12,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Tam geçmişi getir
+
+      - name: Replace broken xcodeproj file with backup
+        run: |
+          echo "Replacing WfmUser.xcodeproj with backup version..."
+          rm -rf WfmUser.xcodeproj
+          cp -R /Users/macbook/Desktop/xcodeproj-backup/WfmUser.xcodeproj .
         
       - name: Set up Xcode 13.4.1
         uses: maxim-lobanov/setup-xcode@v1
