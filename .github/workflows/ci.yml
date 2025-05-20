@@ -30,11 +30,6 @@ jobs:
         run: |
           mkdir -p heresdk/frameworks
           cp -R /Users/birol/Desktop/heresdk/frameworks/heresdk.xcframework ./heresdk/frameworks/
-
-      - name: Copy HERE SDK from shared path
-        run: |
-          mkdir -p heresdk/frameworks
-          cp -R /Users/birol/actions-runner/shared/heresdk/frameworks/heresdk.xcframework ./heresdk/frameworks/
      
       - name: Check if heresdk.xcframework exists
         run: ls -l heresdk/frameworks/heresdk.xcframework
