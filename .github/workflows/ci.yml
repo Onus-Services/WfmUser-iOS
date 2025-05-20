@@ -49,9 +49,10 @@ jobs:
             -derivedDataPath build \
             | tee xcodebuild.log | xcpretty --report html --output build/report.html
 
-      - name: Generate Swift documentation with Jazzy
+      - name: Install jazzy and generate Swift documentation
         run: |
-          gem install jazzy
+          gem install jazzy --user-install
+          export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
           cat <<EOF > .jazzy.yaml
           module: WfmUser
           author: Alper
@@ -59,7 +60,6 @@ jobs:
           xcodebuild_arguments: [-scheme, WfmUser, -project, WfmUser.xcodeproj]
           output: docs
           EOF
-
           jazzy
 
       - name: Upload documentation as artifact
