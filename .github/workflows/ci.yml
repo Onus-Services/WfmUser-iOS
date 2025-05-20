@@ -13,10 +13,10 @@ jobs:
         with:
           fetch-depth: 0  # Tam geçmişi getir
         
-      - name: Set up Xcode 13.4.1
+      - name: Set up Xcode 15.3
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '13.4.1'
+          xcode-version: '15.3'
           
       - name: Copy HERE SDK from local machine
         run: |
