@@ -16,18 +16,14 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Push a new beta build to TestFlight"
-  lane :beta do
-    increment_build_number(xcodeproj: "WfmUser.xcodeproj")
-    build_app(scheme: "WfmUser")
-    upload_to_testflight
-  end
-
-  desc "Build archive for iOS"
-  lane :build_archive do
-    build_app(
-      scheme: "WfmUser",        
-      export_method: "ad-hoc"      
+  desc "Upload to App Store Connect"
+  lane :upload do
+    deliver(
+      ipa: ENV["IPA_PATH"],
+      skip_metadata: true,
+      skip_screenshots: true,
+      submit_for_review: false,
+      automatic_release: false
     )
   end
 end
