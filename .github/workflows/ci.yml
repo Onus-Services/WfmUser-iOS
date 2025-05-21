@@ -54,7 +54,7 @@ jobs:
           mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
           code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
           team-id: ${{ secrets.TEAM_ID }}
-          p12-password: ${{ secrets.P12_PASSWORD }}
+          certificate-password: ${{ secrets.P12_PASSWORD }}
 
       - name: Saving IPA File
         uses: actions/upload-artifact@v4 
