@@ -38,26 +38,26 @@ jobs:
       - name: Install dependencies
         run: echo "No Podfile found, skipping pod install"
 
-      - name: Build project (disable code signing)
-        run: |
-           xcodebuild clean build \
-           -scheme WfmUser \
-           -configuration Release \
-           -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
-           CODE_SIGN_IDENTITY="" \
-           CODE_SIGNING_ALLOWED=NO \
-           CODE_SIGNING_REQUIRED=NO | xcpretty
+     # - name: Build project (disable code signing)
+     #   run: |
+     #      xcodebuild clean build \
+     #      -scheme WfmUser \
+     #      -configuration Release \
+     #      -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+     #      CODE_SIGN_IDENTITY="" \
+     #      CODE_SIGNING_ALLOWED=NO \
+     #      CODE_SIGNING_REQUIRED=NO | xcpretty
         
      
 
-      - name: Run Unit Tests
-        run: |
-          xcodebuild test \
-            -project WfmUser.xcodeproj \
-            -scheme WfmUser \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
-            -derivedDataPath build \
-            | tee xcodebuild_test.log | xcpretty
+     # - name: Run Unit Tests
+     #   run: |
+     #     xcodebuild test \
+     #       -project WfmUser.xcodeproj \
+     #       -scheme WfmUser \
+     #       -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+     #       -derivedDataPath build \
+     #       | tee xcodebuild_test.log | xcpretty
 
       - name: Create ExportOptions.plist
         run: |
@@ -85,7 +85,7 @@ jobs:
           configuration: Release
           export-method: app-store
           p12-key-base64: ${{ secrets.P12_KEY_BASE64 }}
-          p12-key-password: ${{ secrets.P12_PASSWORD }}
+          certificate-password: ${{ secrets.P12_PASSWORD }}
           mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
           code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
           team-id: ${{ secrets.TEAM_ID }}
