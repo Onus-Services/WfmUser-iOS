@@ -45,6 +45,7 @@ jobs:
     
       - name: Build Archive
         uses: yukiarrr/ios-build-action@v1.5.0  
+        id: build_ipa
         with:
           project-path: WfmUser.xcodeproj
           scheme: WfmUser
@@ -59,32 +60,47 @@ jobs:
      # - name: Install Fastlane
      #   run: sudo gem install fastlane
 
-      - name: Find IPA file and export path
-        id: find_ipa
+      - name: Upload App with Fastlane (API Key)
+        if: success()
+        env:
+          APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY_P8_BASE64: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
         run: |
-          IPA_PATH=$(find . -name "*.ipa" | head -n 1)
+          IPA_PATH="${{ steps.build_ipa.outputs.ipa_path }}"
           if [ -z "$IPA_PATH" ]; then
-            echo "IPA not found!"
+            echo "Error: IPA path from build step is empty."
             exit 1
           fi
-          echo "IPA_PATH=$IPA_PATH" >> $GITHUB_ENV
-          echo "ipa_path=$IPA_PATH" >> $GITHUB_OUTPUT
-          ls -l "$IPA_PATH"
+          echo "Uploading $IPA_PATH using Fastlane..."
+          bundle exec fastlane release ipa_path:"$IPA_PATH"
 
-      - name: Decode App Store Connect API Key
-        run: |
-          echo "${{ secrets.APP_STORE_CONNECT_API_KEY_BASE64 }}" | base64 --decode > AuthKey.p8
+     # - name: Find IPA file and export path
+     #   id: find_ipa
+     #   run: |
+     #     IPA_PATH=$(find . -name "*.ipa" | head -n 1)
+     #     if [ -z "$IPA_PATH" ]; then
+     #       echo "IPA not found!"
+     #       exit 1
+     #     fi
+     #     echo "IPA_PATH=$IPA_PATH" >> $GITHUB_ENV
+     #     echo "ipa_path=$IPA_PATH" >> $GITHUB_OUTPUT
+     #     ls -l "$IPA_PATH"
 
-      - name: Upload to TestFlight via Fastlane
-        env:
-          APP_STORE_CONNECT_API_KEY_PATH: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
-          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
-          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
-        run: |
-          fastlane upload \
-          --api_key_path:AuthKey.p8 \
-          --api_key_id:$APP_STORE_CONNECT_API_KEY_ID \
-          --api_key_issuer_id:$APP_STORE_CONNECT_API_ISSUER_ID
+     # - name: Decode App Store Connect API Key
+     #   run: |
+     #     echo "${{ secrets.APP_STORE_CONNECT_API_KEY_BASE64 }}" | base64 --decode > AuthKey.p8
+
+     # - name: Upload to TestFlight via Fastlane
+     #   env:
+     #     APP_STORE_CONNECT_API_KEY_PATH: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+     #     APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+     #     APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+     #   run: |
+     #     fastlane upload \
+     #     --api_key_path:AuthKey.p8 \
+     #     --api_key_id:$APP_STORE_CONNECT_API_KEY_ID \
+     #     --api_key_issuer_id:$APP_STORE_CONNECT_API_ISSUER_ID
 
      # - name: Saving IPA File
      #   uses: actions/upload-artifact@v4 
