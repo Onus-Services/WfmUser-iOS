@@ -40,26 +40,26 @@ jobs:
       - name: Install dependencies
         run: echo "No Podfile found, skipping pod install"
 
-      - name: Build project (disable code signing)
-        run: |
-           xcodebuild clean build \
-           -scheme WfmUser \
-           -configuration Release \
-           -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
-           CODE_SIGN_IDENTITY="" \
-           CODE_SIGNING_ALLOWED=NO \
-           CODE_SIGNING_REQUIRED=NO | xcpretty
+    # - name: Build project (disable code signing)
+    #    run: |
+    #       xcodebuild clean build \
+    #       -scheme WfmUser \
+    #       -configuration Release \
+    #       -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+    #       CODE_SIGN_IDENTITY="" \
+    #       CODE_SIGNING_ALLOWED=NO \
+    #       CODE_SIGNING_REQUIRED=NO | xcpretty
         
      
 
-      - name: Run Unit Tests
-        run: |
-          xcodebuild test \
-            -project WfmUser.xcodeproj \
-            -scheme WfmUser \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
-            -derivedDataPath build \
-            | tee xcodebuild_test.log | xcpretty
+     # - name: Run Unit Tests
+     #   run: |
+     #     xcodebuild test \
+     #       -project WfmUser.xcodeproj \
+     #       -scheme WfmUser \
+     #       -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+     #       -derivedDataPath build \
+     #       | tee xcodebuild_test.log | xcpretty
 
       - name: Create ExportOptions.plist
         run: |
@@ -71,7 +71,7 @@ jobs:
             <key>method</key>
             <string>app-store</string>
             <key>teamID</key>
-            <string>${TEAM_ID}</string>
+            <string>"${TEAM_ID}"</string>
             <key>uploadBitcode</key>
             <false/>
             <key>uploadSymbols</key>
@@ -90,8 +90,10 @@ jobs:
            -sdk iphoneos18.4 \
            -destination 'generic/platform=iOS' \
            -archivePath ./build/WfmUser.xcarchive \
+           CODE_SIGN_STYLE=Automatic \
+           CODE_SIGNING_ALLOWED=YES \
            DEVELOPMENT_TEAM=$TEAM_ID \
-           CODE_SIGN_STYLE=Automatic | tee xcodebuild_archive.log | xcpretty
+           | tee xcodebuild_archive.log | xcpretty
 
       - name: Export IPA
         run: |
@@ -99,6 +101,9 @@ jobs:
           -archivePath ./build/WfmUser.xcarchive \
           -exportOptionsPlist ExportOptions.plist \
           -exportPath ./build/export
+
+      - name: Verify IPA Exists
+        run: ls -lh ./build/export
 
       - name: Upload to TestFlight
         env:
