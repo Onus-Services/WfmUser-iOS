@@ -85,17 +85,23 @@ jobs:
      #   run: |
      #     xcodebuild test -project WfmUser.xcodeproj -scheme WfmUser -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' | xcpretty -s
           
-      - name: Build Archive
-        uses: yukiarrr/ios-build-action@v1.5.0  
-        with:
-          project-path: WfmUser.xcodeproj
-          scheme: WfmUser
-          configuration: Release
-          export-method: app-store
-          p12-base64: ${{ secrets.P12_KEY_BASE64 }}
-          mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
-          code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
-          team-id: ${{ secrets.TEAM_ID }}
+     # - name: Build Archive
+     #   uses: yukiarrr/ios-build-action@v1.5.0  
+     #   with:
+     #     project-path: WfmUser.xcodeproj
+     #     scheme: WfmUser
+     #     configuration: Release
+     #     export-method: app-store
+     #     p12-base64: ${{ secrets.P12_KEY_BASE64 }}
+     #     mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
+     #     code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
+     #     team-id: ${{ secrets.TEAM_ID }}
+
+      - name: Build Archive with Fastlane
+        run: bundle exec fastlane ios build_archive
+
+      - name: Export IPA with Fastlane
+        run: bundle exec fastlane ios export_ipa
 
       - name: Saving IPA File
         uses: actions/upload-artifact@v4 
