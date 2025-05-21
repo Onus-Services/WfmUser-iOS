@@ -85,7 +85,10 @@ jobs:
            -configuration Release \
            -sdk iphoneos18.4 \
            -destination 'generic/platform=iOS' \
-           -archivePath ./build/WfmUser.xcarchive
+           -archivePath ./build/WfmUser.xcarchive \
+           CODE_SIGN_IDENTITY="" \
+           CODE_SIGNING_ALLOWED=NO \
+           CODE_SIGNING_REQUIRED=NO | tee xcodebuild_archive.log | xcpretty
 
       - name: Export IPA
         run: |
