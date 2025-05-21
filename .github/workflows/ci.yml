@@ -11,6 +11,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true 
+
       - name: Selecting Xcode Version
         run: sudo xcode-select -switch /Applications/Xcode_16.3.app
           
