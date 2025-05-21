@@ -56,8 +56,8 @@ jobs:
           team-id: ${{ secrets.TEAM_ID }}
           certificate-password: ${{ secrets.P12_PASSWORD }}
 
-      - name: Install Fastlane
-        run: sudo gem install fastlane
+     # - name: Install Fastlane
+     #   run: sudo gem install fastlane
 
       - name: Find IPA file and export path
         id: find_ipa
