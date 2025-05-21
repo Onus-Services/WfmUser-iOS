@@ -59,49 +59,55 @@ jobs:
      #       -derivedDataPath build \
      #       | tee xcodebuild_test.log | xcpretty
 
-      - name: Create ExportOptions.plist
-        run: |
-          cat <<EOF > ExportOptions.plist
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-            <key>method</key>
-            <string>app-store</string>
-            <key>uploadBitcode</key>
-            <false/>
-            <key>uploadSymbols</key>
-            <true/>
-          </dict>
-          </plist>
-          EOF
+     # - name: Create ExportOptions.plist
+     #   run: |
+     #     cat <<EOF > ExportOptions.plist
+     #     <?xml version="1.0" encoding="UTF-8"?>
+     #     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+     #     <plist version="1.0">
+     #     <dict>
+     #       <key>method</key>
+     #       <string>app-store</string>
+     #       <key>uploadBitcode</key>
+     #       <false/>
+     #       <key>uploadSymbols</key>
+     #       <true/>
+     #     </dict>
+     #     </plist>
+     #     EOF
 
             
-      - name: Archive app
+      - name: Build Cleanup
         run: |
-           xcodebuild archive \
-           -project WfmUser.xcodeproj \
-           -scheme WfmUser \
-           -configuration Release \
-           -sdk iphoneos18.4 \
-           -destination 'generic/platform=iOS' \
-           -archivePath ./build/WfmUser.xcarchive
-
-      - name: Export IPA
+          xcodebuild clean -project WfmUser.xcodeproj -scheme WfmUser | xcpretty
+          
+      - name: Build Test
         run: |
-          xcodebuild -exportArchive \
-          -archivePath ./build/WfmUser.xcarchive \
-          -exportOptionsPlist ExportOptions.plist \
-          -exportPath ./build/export
+          xcodebuild test -project WfmUser.xcodeproj -scheme WfmUser -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' | xcpretty -s
+          
+      - name: Build Archive
+        uses: yukiarrr/ios-build-action@v1.5.0  
+        with:
+          project-path: MyProject.xcodeproj
+          workspace-path: MyProject.xcworkspace # workspace varsa, yoksa kaldırın
+          scheme: MyScheme
+          configuration: Release
+          export-method: app-store
+          p12-base64: ${{ secrets.P12_KEY_BASE64 }}
+          mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
+          code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
+          team-id: ${{ secrets.TEAM_ID }}
 
-      - name: Upload to TestFlight
+      - name: Saving IPA File
+        uses: actions/upload-artifact@v2   
+        with:
+          name: ipa
+          path: ./**.ipa
+          
+      - name: Upload App
+        if: success()
         env:
-          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
-          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
-          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+          APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
+          APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
         run: |
-          xcrun altool --upload-app \
-            -f build/export/WfmUser.ipa \
-            --type ios \
-            --apiKey "$APP_STORE_CONNECT_API_KEY_ID" \
-            --apiIssuer "$APP_STORE_CONNECT_ISSUER_ID"
+          xcrun altool --upload-app -t ios -f ./**.ipa -u "$APPLEID_USERNAME" -p "$APPLEID_PASSWORD" --verbose
