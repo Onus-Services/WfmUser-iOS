@@ -56,36 +56,66 @@ jobs:
           team-id: ${{ secrets.TEAM_ID }}
           certificate-password: ${{ secrets.P12_PASSWORD }}
 
-      - name: Saving IPA File
-        uses: actions/upload-artifact@v4 
-        with:
-          name: ipa
-          path: ./**.ipa
+      - name: Install Fastlane
+        run: sudo gem install fastlane
 
-      - name: Show IPA file name (Step 1)
-        run: |
-          echo "Searching for IPA file..."
-          ls -lR . | grep .ipa
-
-      - name: Set IPA file path (Step 2)
+      - name: Find IPA file and export path
         id: find_ipa
         run: |
           IPA_PATH=$(find . -name "*.ipa" | head -n 1)
           if [ -z "$IPA_PATH" ]; then
-            echo "IPA file not found!"
+            echo "IPA not found!"
             exit 1
           fi
           echo "IPA_PATH=$IPA_PATH" >> $GITHUB_ENV
+          echo "ipa_path=$IPA_PATH" >> $GITHUB_OUTPUT
+          ls -l "$IPA_PATH"
 
-      - name: Use IPA path with -f
+      - name: Decode App Store Connect API Key
         run: |
-          echo "Using IPA file at: $IPA_PATH"
+          echo "${{ secrets.APP_STORE_CONNECT_API_KEY_BASE64 }}" | base64 --decode > AuthKey.p8
 
-
-      - name: Upload App
-        if: success()
+      - name: Upload to TestFlight via Fastlane
         env:
-          APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
-          APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
+          APP_STORE_CONNECT_API_KEY_PATH: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
         run: |
-          xcrun altool --upload-app -t ios -f ./**.ipa -u "$APPLEID_USERNAME" -p "$APPLEID_PASSWORD" --verbose
+          fastlane upload \
+          --api_key_path:AuthKey.p8 \
+          --api_key_id:$APP_STORE_CONNECT_API_KEY_ID \
+          --api_key_issuer_id:$APP_STORE_CONNECT_API_ISSUER_ID
+
+     # - name: Saving IPA File
+     #   uses: actions/upload-artifact@v4 
+     #   with:
+     #     name: ipa
+     #     path: ./**.ipa
+
+     # - name: Show IPA file name (Step 1)
+     #   run: |
+     #     echo "Searching for IPA file..."
+     #     ls -lR . | grep .ipa
+
+     # - name: Set IPA file path (Step 2)
+     #   id: find_ipa
+     #   run: |
+     #     IPA_PATH=$(find . -name "*.ipa" | head -n 1)
+     #     if [ -z "$IPA_PATH" ]; then
+     #       echo "IPA file not found!"
+     #       exit 1
+     #     fi
+     #     echo "IPA_PATH=$IPA_PATH" >> $GITHUB_ENV
+
+     # - name: Use IPA path with -f
+     #   run: |
+     #     echo "Using IPA file at: $IPA_PATH"
+
+
+     # - name: Upload App
+     #   if: success()
+     #   env:
+     #     APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
+     #     APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
+     #   run: |
+     #     xcrun altool --upload-app -t ios -f ./**.ipa -u "$APPLEID_USERNAME" -p "$APPLEID_PASSWORD" --verbose
