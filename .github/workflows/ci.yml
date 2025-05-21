@@ -77,9 +77,9 @@ jobs:
      #     EOF
 
             
-      - name: Build Cleanup
-        run: |
-          xcodebuild clean -project WfmUser.xcodeproj -scheme WfmUser | xcpretty
+     # - name: Build Cleanup
+     #   run: |
+     #     xcodebuild clean -project WfmUser.xcodeproj -scheme WfmUser | xcpretty
           
      # - name: Build Test
      #   run: |
@@ -97,17 +97,52 @@ jobs:
      #     code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
      #     team-id: ${{ secrets.TEAM_ID }}
 
-      - name: Build Archive with Fastlane
-        run: fastlane ios build_archive
+     # - name: Build Archive with Fastlane
+     #   run: fastlane ios build_archive
 
-      - name: Export IPA with Fastlane
-        run: fastlane ios export_ipa
+     # - name: Export IPA with Fastlane
+     #   run: fastlane ios export_ipa
 
-      - name: Saving IPA File
-        uses: actions/upload-artifact@v4 
-        with:
-          name: ipa
-          path: ./**.ipa
+     # - name: Saving IPA File
+     #   uses: actions/upload-artifact@v4 
+     #   with:
+     #     name: ipa
+     #     path: ./**.ipa
+
+      - name: Create ExportOptions.plist
+        run: |
+          cat <<EOF > ExportOptions.plist
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>app-store</string>
+            <key>uploadBitcode</key>
+            <false/>
+            <key>uploadSymbols</key>
+            <true/>
+          </dict>
+          </plist>
+          EOF
+
+            
+      - name: Archive app
+        run: |
+           xcodebuild archive \
+           -project WfmUser.xcodeproj \
+           -scheme WfmUser \
+           -configuration Release \
+           -sdk iphoneos18.4 \
+           -destination 'generic/platform=iOS' \
+           -archivePath ./build/WfmUser.xcarchive
+
+      - name: Export IPA
+        run: |
+          xcodebuild -exportArchive \
+          -archivePath ./build/WfmUser.xcarchive \
+          -exportOptionsPlist ExportOptions.plist \
+          -exportPath ./build/export
           
       - name: Upload App
         if: success()
