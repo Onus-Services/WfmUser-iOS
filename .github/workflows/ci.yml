@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: self-hosted
+    env:
+      TEAM_ID: ${{ secrets.TEAM_ID }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -68,6 +70,8 @@ jobs:
           <dict>
             <key>method</key>
             <string>app-store</string>
+            <key>teamID</key>
+            <string>${TEAM_ID}</string>
             <key>uploadBitcode</key>
             <false/>
             <key>uploadSymbols</key>
@@ -86,9 +90,8 @@ jobs:
            -sdk iphoneos18.4 \
            -destination 'generic/platform=iOS' \
            -archivePath ./build/WfmUser.xcarchive \
-           CODE_SIGN_IDENTITY="" \
-           CODE_SIGNING_ALLOWED=NO \
-           CODE_SIGNING_REQUIRED=NO | tee xcodebuild_archive.log | xcpretty
+           DEVELOPMENT_TEAM=$TEAM_ID \
+           CODE_SIGN_STYLE=Automatic | tee xcodebuild_archive.log | xcpretty
 
       - name: Export IPA
         run: |
