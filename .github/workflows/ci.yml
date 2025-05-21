@@ -84,7 +84,7 @@ jobs:
           scheme: WfmUser
           configuration: Release
           export-method: app-store
-          p12-key-base64: ${{ secrets.P12_KEY_BASE64 }}
+          p12-base64: ${{ secrets.P12_KEY_BASE64 }}
           certificate-password: ${{ secrets.P12_PASSWORD }}
           mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
           code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
