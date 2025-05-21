@@ -22,4 +22,12 @@ platform :ios do
     build_app(scheme: "WfmUser")
     upload_to_testflight
   end
+
+  desc "Build archive for iOS"
+  lane :build_archive do
+    build_app(
+      scheme: "WfmUser",        
+      export_method: "ad-hoc"      
+    )
+  end
 end
