@@ -52,8 +52,7 @@ jobs:
           export-method: app-store
           p12-base64: ${{ secrets.P12_KEY_BASE64 }}
           mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
-          #code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
-          code-signing-identity: "Apple Distribution"
+          code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
           team-id: ${{ secrets.TEAM_ID }}
           certificate-password: ${{ secrets.P12_PASSWORD }}
 
