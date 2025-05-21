@@ -35,6 +35,14 @@ jobs:
         run: |
           xcodebuild test -project WfmUser.xcodeproj -scheme WfmUser -destination 'platform=iOS   Simulator,name=iPhone 16,OS=18.2' | xcpretty -s
 
+      - name: Remove existing keychain if exists
+        run: |
+         KEYCHAIN=ios-build.keychain
+         KEYCHAIN_PATH=~/Library/Keychains/$KEYCHAIN-db
+         if [ -f "$KEYCHAIN_PATH" ]; then
+         security delete-keychain "$KEYCHAIN"
+         fi
+    
       - name: Build Archive
         uses: yukiarrr/ios-build-action@v1.5.0  
         with:
