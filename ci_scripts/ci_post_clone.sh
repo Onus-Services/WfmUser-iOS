@@ -2,6 +2,10 @@
 
 set -e  # Script hata durumunda dursun
 
+# Script'in çalıştığı dizinden proje root'una geç
+cd "$(dirname "$0")/.."
+
+echo "Current working directory: $(pwd)"
 echo "Downloading HERE SDK from GitHub Releases..."
 
 DOWNLOAD_URL="https://github.com/Onus-Services/WfmUser-iOS/releases/download/0.0.0.1/heresdk.zip"
