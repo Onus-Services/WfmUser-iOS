@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E4FAA562DDF49110094C87B /* heresdk.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4FAA552DDF49110094C87B /* heresdk.xcframework */; };
+		4E4FAA572DDF49110094C87B /* heresdk.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4FAA552DDF49110094C87B /* heresdk.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4E811A842D8D8666003C2029 /* RouteSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E811A832D8D8666003C2029 /* RouteSettingModel.swift */; };
 		4E811A872D8D8813003C2029 /* MonthlyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E811A862D8D8813003C2029 /* MonthlyPageView.swift */; };
 		4EAAC1B22D8BFC5900D7A837 /* SQLiteCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAAC1AF2D8BFC5900D7A837 /* SQLiteCommands.swift */; };
@@ -125,8 +127,6 @@
 		4ECD90652D8B00D0007504C1 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD90642D8B00D0007504C1 /* LocationViewModel.swift */; };
 		4ED9913D2D956C4B00065555 /* RerouteDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED9913A2D956C4B00065555 /* RerouteDialogView.swift */; };
 		4ED9913E2D956C4B00065555 /* RerouteDialogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED9913B2D956C4B00065555 /* RerouteDialogViewModel.swift */; };
-		4EDAAE6A2DB7D77A00264FD1 /* heresdk.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDAAE692DB7D77A00264FD1 /* heresdk.xcframework */; };
-		4EDAAE6B2DB7D77A00264FD1 /* heresdk.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDAAE692DB7D77A00264FD1 /* heresdk.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4EFB5E1D2D88266A0086CDF3 /* HomePageRouteCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB5E1C2D88266A0086CDF3 /* HomePageRouteCellView.swift */; };
 		4EFB5E212D882CFB0086CDF3 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB5E202D882CFB0086CDF3 /* NavigationManager.swift */; };
 		4EFB5E282D8836D00086CDF3 /* HelperMainMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB5E242D8836D00086CDF3 /* HelperMainMapView.swift */; };
@@ -148,13 +148,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4EDAAE6C2DB7D77A00264FD1 /* Embed Frameworks */ = {
+		4E4FAA582DDF49110094C87B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4EDAAE6B2DB7D77A00264FD1 /* heresdk.xcframework in Embed Frameworks */,
+				4E4FAA572DDF49110094C87B /* heresdk.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +162,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E4FAA552DDF49110094C87B /* heresdk.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:PQEP8H94J7:HERE Deutschland GmbH"; lastKnownFileType = wrapper.xcframework; name = heresdk.xcframework; path = ThirdParty/HERESDK/heresdk/frameworks/heresdk.xcframework; sourceTree = "<group>"; };
 		4E811A832D8D8666003C2029 /* RouteSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSettingModel.swift; sourceTree = "<group>"; };
 		4E811A862D8D8813003C2029 /* MonthlyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyPageView.swift; sourceTree = "<group>"; };
 		4EAAC1AF2D8BFC5900D7A837 /* SQLiteCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteCommands.swift; sourceTree = "<group>"; };
@@ -302,7 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EAAC1B62D8BFC8600D7A837 /* SQLite in Frameworks */,
-				4EDAAE6A2DB7D77A00264FD1 /* heresdk.xcframework in Frameworks */,
+				4E4FAA562DDF49110094C87B /* heresdk.xcframework in Frameworks */,
 				4EC617312D831D8F0077245B /* FirebaseMessaging in Frameworks */,
 				4EC617A12D8322580077245B /* SwiftUIIntrospect-Static in Frameworks */,
 				4EC6172D2D831D8F0077245B /* FirebaseAnalytics in Frameworks */,
@@ -602,6 +603,7 @@
 		4EC617962D8322360077245B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E4FAA552DDF49110094C87B /* heresdk.xcframework */,
 				4EDAAE692DB7D77A00264FD1 /* heresdk.xcframework */,
 				4EC617972D8322370077245B /* heresdk.xcframework */,
 			);
@@ -720,7 +722,7 @@
 				4EC617142D831C2E0077245B /* Sources */,
 				4EC617152D831C2E0077245B /* Frameworks */,
 				4EC617162D831C2E0077245B /* Resources */,
-				4EDAAE6C2DB7D77A00264FD1 /* Embed Frameworks */,
+				4E4FAA582DDF49110094C87B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
