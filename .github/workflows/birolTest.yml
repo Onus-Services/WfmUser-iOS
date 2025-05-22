@@ -1,4 +1,4 @@
-name: Build WfmUser App
+name: Birol Build WfmUser App
 
 on:
   workflow_dispatch:
@@ -9,9 +9,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Tam geçmişi getir
 
-      - name: Selecting Xcode Version
-        run: sudo xcode-select -switch /Applications/Xcode_16.3.app
+      - name: Install xcpretty
+        run: |
+          sudo gem install xcpretty
+
+      - name: Enable IDEFileSystemSynchronizedGroups
+        run: |
+          export IDEFileSystemSynchronizedGroupsAreEnabled=YES
+        
+      - name: Set up Xcode 16.3
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.3'
           
       - name: Copy HERE SDK from local machine
         run: |
@@ -22,73 +34,76 @@ jobs:
       - name: Check if heresdk.xcframework exists
         run: ls -l heresdk/frameworks/heresdk.xcframework
         
-      - name: Running Xcode version
-        run: /usr/bin/xcodebuild -version
+      - name: Install dependencies
+        run: echo "No Podfile found, skipping pod install"
 
-      - name: Remove existing keychain if exists
+      - name: Build project (disable code signing)
         run: |
-          KEYCHAIN=ios-build.keychain
-          KEYCHAIN_PATH=~/Library/Keychains/$KEYCHAIN-db
-          if [ -f "$KEYCHAIN_PATH" ]; then
-            security delete-keychain "$KEYCHAIN"
-          fi
+           xcodebuild clean build \
+           -scheme WfmUser \
+           -configuration Release \
+           -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+           CODE_SIGN_IDENTITY="" \
+           CODE_SIGNING_ALLOWED=NO \
+           CODE_SIGNING_REQUIRED=NO | xcpretty
+        
+     
 
-      - name: Build Archive and Export .ipa
-        uses: yukiarrr/ios-build-action@v1.5.0  
-        id: build_ipa
-        with:
-          project-path: WfmUser.xcodeproj
-          scheme: WfmUser
-          configuration: Release
-          export-method: app-store
-          p12-base64: ${{ secrets.P12_KEY_BASE64 }}
-          mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
-          code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
-          team-id: ${{ secrets.TEAM_ID }}
-          certificate-password: ${{ secrets.P12_PASSWORD }}
-
-      - name: Print .ipa path from yukiarrr action
-        run: echo "IPA_PATH = ${{ steps.build_ipa.outputs.ipa_path }}"
-
-      - name: Find .ipa manually if output is empty
-        id: manual_ipa
+      - name: Run Unit Tests
         run: |
-          IPA_PATH="${{ steps.build_ipa.outputs.ipa_path }}"
-          if [ -z "$IPA_PATH" ]; then
-            echo "Trying to find .ipa manually..."
-            IPA_PATH=$(find . -type f -name "*.ipa" | head -n 1)
-          fi
+          xcodebuild test \
+            -project WfmUser.xcodeproj \
+            -scheme WfmUser \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+            -derivedDataPath build \
+            | tee xcodebuild_test.log | xcpretty
 
-          if [ -z "$IPA_PATH" ]; then
-            echo "IPA not found!"
-            exit 1
-          fi
-
-          echo "Found IPA at: $IPA_PATH"
-          echo "ipa_path=$IPA_PATH" >> $GITHUB_OUTPUT
-
-      - name: Upload .ipa to GitHub Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ios-app
-          path: ${{ steps.manual_ipa.outputs.ipa_path }}
-
-      - name: Decode App Store Connect API Key (.p8)
+      - name: Create ExportOptions.plist
         run: |
-          echo "$APP_STORE_CONNECT_API_KEY_P8_BASE64" | base64 --decode > AuthKey.p8
-        env:
-          APP_STORE_CONNECT_API_KEY_P8_BASE64: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+          cat <<EOF > ExportOptions.plist
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>app-store</string>
+            <key>uploadBitcode</key>
+            <false/>
+            <key>uploadSymbols</key>
+            <true/>
+          </dict>
+          </plist>
+          EOF
 
-      - name: Upload App with Fastlane (API Key)
-        if: success()
+            
+      - name: Archive app
+        run: |
+           xcodebuild archive \
+           -project WfmUser.xcodeproj \
+           -scheme WfmUser \
+           -configuration Release \
+           -sdk iphoneos18.4 \
+           -destination 'generic/platform=iOS' \
+           -archivePath ./build/WfmUser.xcarchive \
+           CODE_SIGN_IDENTITY="" \
+           CODE_SIGNING_ALLOWED=NO \
+           CODE_SIGNING_REQUIRED=NO | tee xcodebuild_archive.log | xcpretty
+
+      - name: Export IPA
+        run: |
+          xcodebuild -exportArchive \
+          -archivePath ./build/WfmUser.xcarchive \
+          -exportOptionsPlist ExportOptions.plist \
+          -exportPath ./build/export
+
+      - name: Upload to TestFlight
         env:
           APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
-          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
         run: |
-          IPA_PATH="${{ steps.manual_ipa.outputs.ipa_path }}"
-          if [ -z "$IPA_PATH" ]; then
-            echo "Error: IPA path from build step is empty."
-            exit 1
-          fi
-          echo "Uploading $IPA_PATH using Fastlane..."
-          bundle exec fastlane release ipa_path:"$IPA_PATH"
+          xcrun altool --upload-app \
+            -f build/export/WfmUser.ipa \
+            --type ios \
+            --apiKey "$APP_STORE_CONNECT_API_KEY_ID" \
+            --apiIssuer "$APP_STORE_CONNECT_ISSUER_ID"
