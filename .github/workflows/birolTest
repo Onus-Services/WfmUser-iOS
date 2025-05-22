@@ -1,0 +1,100 @@
+name: Build WfmUser App
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true 
+
+      - name: Selecting Xcode Version
+        run: sudo xcode-select -switch /Applications/Xcode_16.3.app
+          
+      - name: Copy HERE SDK from local machine
+        run: |
+          cd $GITHUB_WORKSPACE
+          mkdir -p heresdk/frameworks
+          cp -R /Users/birol/Desktop/heresdk/frameworks/heresdk.xcframework heresdk/frameworks/
+     
+      - name: Check if heresdk.xcframework exists
+        run: ls -l heresdk/frameworks/heresdk.xcframework
+        
+      - name: Running Xcode version
+        run: /usr/bin/xcodebuild -version
+
+      - name: Remove existing keychain if exists
+        run: |
+          KEYCHAIN=ios-build.keychain
+          KEYCHAIN_PATH=~/Library/Keychains/$KEYCHAIN-db
+          if [ -f "$KEYCHAIN_PATH" ]; then
+            security delete-keychain "$KEYCHAIN"
+          fi
+
+      - name: Build Archive and Export .ipa
+        uses: yukiarrr/ios-build-action@v1.5.0  
+        id: build_ipa
+        with:
+          project-path: WfmUser.xcodeproj
+          scheme: WfmUser
+          configuration: Release
+          export-method: app-store
+          p12-base64: ${{ secrets.P12_KEY_BASE64 }}
+          mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
+          code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
+          team-id: ${{ secrets.TEAM_ID }}
+          certificate-password: ${{ secrets.P12_PASSWORD }}
+
+      - name: Print .ipa path from yukiarrr action
+        run: echo "IPA_PATH = ${{ steps.build_ipa.outputs.ipa_path }}"
+
+      - name: Find .ipa manually if output is empty
+        id: manual_ipa
+        run: |
+          IPA_PATH="${{ steps.build_ipa.outputs.ipa_path }}"
+          if [ -z "$IPA_PATH" ]; then
+            echo "Trying to find .ipa manually..."
+            IPA_PATH=$(find . -type f -name "*.ipa" | head -n 1)
+          fi
+
+          if [ -z "$IPA_PATH" ]; then
+            echo "IPA not found!"
+            exit 1
+          fi
+
+          echo "Found IPA at: $IPA_PATH"
+          echo "ipa_path=$IPA_PATH" >> $GITHUB_OUTPUT
+
+      - name: Upload .ipa to GitHub Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-app
+          path: ${{ steps.manual_ipa.outputs.ipa_path }}
+
+      - name: Decode App Store Connect API Key (.p8)
+        run: |
+          echo "$APP_STORE_CONNECT_API_KEY_P8_BASE64" | base64 --decode > AuthKey.p8
+        env:
+          APP_STORE_CONNECT_API_KEY_P8_BASE64: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+
+      - name: Upload App with Fastlane (API Key)
+        if: success()
+        env:
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+        run: |
+          IPA_PATH="${{ steps.manual_ipa.outputs.ipa_path }}"
+          if [ -z "$IPA_PATH" ]; then
+            echo "Error: IPA path from build step is empty."
+            exit 1
+          fi
+          echo "Uploading $IPA_PATH using Fastlane..."
+          bundle exec fastlane release ipa_path:"$IPA_PATH"
