@@ -1,16 +1,19 @@
-echo "Downloading HERE SDK from Google Drive..."
+#!/bin/bash
 
-FILE_ID=1y7WC1Fj_Ok3hTbd4J0Th2ZsHqCvLhSMJ
-FILE_NAME=heresdk.zip
+echo "Downloading HERE SDK from GitHub Releases..."
 
-# Google Drive’dan indirme
-curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${FILE_ID}" > temp.html
-CONFIRM_CODE=$(grep -o 'confirm=[^&]*' temp.html | sed 's/confirm=//')
-curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=${CONFIRM_CODE}&id=${FILE_ID}" -o ${FILE_NAME}
+DOWNLOAD_URL="https://github.com/Onus-Services/WfmUser-iOS/releases/download/0.0.0.1/heresdk.zip"
+DESTINATION="ThirdParty/HERESDK"
 
-# Temizleme ve unzip işlemi
-rm -f temp.html cookie
-unzip -q ${FILE_NAME} -d WfmUser/SDKs/HERESDK/
-rm ${FILE_NAME}
+# ZIP dosyasını indir
+curl -L -o heresdk.zip "$DOWNLOAD_URL"
 
-echo "HERE SDK ready."
+# ZIP geçerliliğini kontrol et
+if unzip -t heresdk.zip >/dev/null 2>&1; then
+  echo "Extracting HERE SDK to $DESTINATION ..."
+  mkdir -p "$DESTINATION"
+  unzip -o heresdk.zip -d "$DESTINATION"
+  echo "HERE SDK ready."
+else
+  echo "Error: heresdk.zip is not a valid zip file!"
+fi
