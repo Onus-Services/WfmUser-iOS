@@ -1,0 +1,4 @@
+module FirebaseCore {
+umbrella header "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Sources/Public/FirebaseCore/FirebaseCore.h"
+export *
+}

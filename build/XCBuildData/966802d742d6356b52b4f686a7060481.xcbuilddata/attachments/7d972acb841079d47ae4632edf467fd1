@@ -1,0 +1,4 @@
+module GoogleUtilities_NSData {
+umbrella "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/GoogleUtilities/GoogleUtilities/NSData+zlib/Public"
+export *
+}

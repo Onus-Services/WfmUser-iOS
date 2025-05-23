@@ -1,0 +1,25 @@
+{
+  "" : {
+    "const-values" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/CombineMoya-master.swiftconstvalues",
+    "dependencies" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/CombineMoya-master.d",
+    "diagnostics" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/CombineMoya-master.dia",
+    "emit-module-dependencies" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/CombineMoya-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/CombineMoya-master-emit-module.dia",
+    "swift-dependencies" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/CombineMoya-master.swiftdeps"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/Sources/CombineMoya/AnyPublisher+Response.swift" : {
+    "index-unit-output-path" : "/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/AnyPublisher+Response.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/AnyPublisher+Response.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/AnyPublisher+Response.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/Sources/CombineMoya/MoyaProvider+Combine.swift" : {
+    "index-unit-output-path" : "/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/MoyaProvider+Combine.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/MoyaProvider+Combine.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/MoyaProvider+Combine.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/Sources/CombineMoya/MoyaPublisher.swift" : {
+    "index-unit-output-path" : "/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/MoyaPublisher.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/MoyaPublisher.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/CombineMoya.build/Objects-normal/arm64/MoyaPublisher.o"
+  }
+}

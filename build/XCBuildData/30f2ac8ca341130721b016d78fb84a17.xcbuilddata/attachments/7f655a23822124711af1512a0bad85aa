@@ -1,0 +1,20 @@
+{
+  "" : {
+    "const-values" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/ReactiveMoya.build/Objects-normal/arm64/ReactiveMoya-master.swiftconstvalues",
+    "dependencies" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/ReactiveMoya.build/Objects-normal/arm64/ReactiveMoya-master.d",
+    "diagnostics" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/ReactiveMoya.build/Objects-normal/arm64/ReactiveMoya-master.dia",
+    "emit-module-dependencies" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/ReactiveMoya.build/Objects-normal/arm64/ReactiveMoya-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/ReactiveMoya.build/Objects-normal/arm64/ReactiveMoya-master-emit-module.dia",
+    "swift-dependencies" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/ReactiveMoya.build/Objects-normal/arm64/ReactiveMoya-master.swiftdeps"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/Sources/ReactiveMoya/MoyaProvider+Reactive.swift" : {
+    "index-unit-output-path" : "/Moya.build/Release-iphoneos/ReactiveMoya.build/Objects-normal/arm64/MoyaProvider+Reactive.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/ReactiveMoya.build/Objects-normal/arm64/MoyaProvider+Reactive.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/ReactiveMoya.build/Objects-normal/arm64/MoyaProvider+Reactive.o"
+  },
+  "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/Sources/ReactiveMoya/SignalProducer+Response.swift" : {
+    "index-unit-output-path" : "/Moya.build/Release-iphoneos/ReactiveMoya.build/Objects-normal/arm64/SignalProducer+Response.o",
+    "llvm-bc" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/ReactiveMoya.build/Objects-normal/arm64/SignalProducer+Response.bc",
+    "object" : "/Users/alper/Library/Developer/Xcode/DerivedData/WfmUser-fkhnpgeygpwqorgksgklqsgpeurr/SourcePackages/checkouts/Moya/build/Moya.build/Release-iphoneos/ReactiveMoya.build/Objects-normal/arm64/SignalProducer+Response.o"
+  }
+}

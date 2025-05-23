@@ -8,7 +8,7 @@
 import XCTest
 import SnapshotTesting
 import SwiftUI
-/*
+
 @testable import WfmUser
 final class SnapshotTests: XCTestCase {
     
@@ -180,7 +180,7 @@ final class SnapshotTests: XCTestCase {
         }
         wait(for: [exp], timeout: delay + 1.0)
     }
-} */
+}
 
 
 //commit test
