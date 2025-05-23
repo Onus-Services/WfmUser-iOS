@@ -10,9 +10,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Tam geçmişi getir
 
-      - name: Selecting Xcode Version
-        run: sudo xcode-select -switch /Applications/Xcode_16.3.app
+      - name: Install xcpretty
+        run: |
+          sudo gem install xcpretty
+
+      - name: Enable IDEFileSystemSynchronizedGroups
+        run: |
+          export IDEFileSystemSynchronizedGroupsAreEnabled=YES
+        
+      - name: Set up Xcode 16.3
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.3'
           
       - name: Copy HERE SDK from local machine
         run: |
@@ -23,138 +35,74 @@ jobs:
       - name: Check if heresdk.xcframework exists
         run: ls -l heresdk/frameworks/heresdk.xcframework
         
-      - name: Running Xcode version Is?
-        run: /usr/bin/xcodebuild -version
+      - name: Install dependencies
+        run: echo "No Podfile found, skipping pod install"
 
-     # - name: Build Cleanup
+      - name: Build project (disable code signing)
+        run: |
+           xcodebuild clean build \
+           -scheme WfmUser \
+           -configuration Release \
+           -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+           CODE_SIGN_IDENTITY="" \
+           CODE_SIGNING_ALLOWED=NO \
+           CODE_SIGNING_REQUIRED=NO | xcpretty
+        
+      - name: Run Unit Tests
+        run: |
+          xcodebuild test \
+            -project WfmUser.xcodeproj \
+            -scheme WfmUser \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+            -derivedDataPath build \
+            | tee xcodebuild_test.log | xcpretty
+
+     # - name: Create ExportOptions.plist
      #   run: |
-     #     xcodebuild clean -project WfmUser.xcodeproj -scheme WfmUser | xcpretty
+     #     cat <<EOF > ExportOptions.plist
+     #     <?xml version="1.0" encoding="UTF-8"?>
+     #     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+     #     <plist version="1.0">
+     #     <dict>
+     #       <key>method</key>
+     #       <string>app-store</string>
+     #       <key>uploadBitcode</key>
+     #       <false/>
+     #       <key>uploadSymbols</key>
+     #       <true/>
+     #     </dict>
+     #     </plist>
+     #     EOF
 
             
-     # - name: Build Test
+     # - name: Archive app
      #   run: |
-     #     xcodebuild test -project WfmUser.xcodeproj -scheme WfmUser -destination 'platform=iOS   Simulator,name=iPhone 16,OS=18.2' | xcpretty -s
+     #      xcodebuild archive \
+     #      -project WfmUser.xcodeproj \
+     #      -scheme WfmUser \
+     #      -configuration Release \
+     #      -sdk iphoneos18.4 \
+     #      -destination 'generic/platform=iOS' \
+     #      -archivePath ./build/WfmUser.xcarchive \
+     #      CODE_SIGN_IDENTITY="" \
+     #      CODE_SIGNING_ALLOWED=NO \
+     #      CODE_SIGNING_REQUIRED=NO | tee xcodebuild_archive.log | xcpretty
 
-      - name: Remove existing keychain if exists
-        run: |
-         KEYCHAIN=ios-build.keychain
-         KEYCHAIN_PATH=~/Library/Keychains/$KEYCHAIN-db
-         if [ -f "$KEYCHAIN_PATH" ]; then
-         security delete-keychain "$KEYCHAIN"
-         fi
-    
-      - name: Build Archive
-        uses: yukiarrr/ios-build-action@v1.5.0  
-        id: build_ipa
-        with:
-          project-path: WfmUser.xcodeproj
-          scheme: WfmUser
-          configuration: Release
-          export-method: app-store
-          p12-base64: ${{ secrets.P12_KEY_BASE64 }}
-          mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
-          code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
-          team-id: ${{ secrets.TEAM_ID }}
-          certificate-password: ${{ secrets.P12_PASSWORD }}
-
-      - name: Print .ipa path from yukiarrr action
-        run: echo "IPA_PATH = ${{ steps.build_ipa.outputs.ipa_path }}"
-
-      - name: Find .ipa manually if output is empty
-        id: manual_ipa
-        run: |
-          IPA_PATH="${{ steps.build_ipa.outputs.ipa_path }}"
-          if [ -z "$IPA_PATH" ]; then
-            echo "Trying to find .ipa manually..."
-            IPA_PATH=$(find . -type f -name "*.ipa" | head -n 1)
-          fi
-
-          if [ -z "$IPA_PATH" ]; then
-            echo "IPA not found!"
-            exit 1
-          fi
-
-          echo "Found IPA at: $IPA_PATH"
-          echo "ipa_path=$IPA_PATH" >> $GITHUB_OUTPUT
-
-      - name: Upload .ipa to GitHub Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-         name: ios-app
-         path: ${{ steps.manual_ipa.outputs.ipa_path }}
-
-     # - name: Find IPA file and export path
-     #   id: find_ipa
+     # - name: Export IPA
      #   run: |
-     #     IPA_PATH=$(find . -name "*.ipa" | head -n 1)
-     #     if [ -z "$IPA_PATH" ]; then
-     #       echo "IPA not found!"
-     #       exit 1
-     #     fi
-     #     echo "IPA_PATH=$IPA_PATH" >> $GITHUB_ENV
-     #     echo "ipa_path=$IPA_PATH" >> $GITHUB_OUTPUT
-     #     ls -l "$IPA_PATH"
+     #     xcodebuild -exportArchive \
+     #     -archivePath ./build/WfmUser.xcarchive \
+     #     -exportOptionsPlist ExportOptions.plist \
+     #     -exportPath ./build/export
 
-      - name: Upload App with Fastlane (API Key)
-        if: success()
-        env:
-          APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
-          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
-          APP_STORE_CONNECT_API_KEY_P8_BASE64: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
-        run: |
-          IPA_PATH="${{ steps.manual_ipa.outputs.ipa_path }}"
-          if [ -z "$IPA_PATH" ]; then
-            echo "Error: IPA path from build step is empty."
-            exit 1
-          fi
-          echo "Uploading $IPA_PATH using Fastlane..."
-          bundle exec fastlane release ipa_path:"$IPA_PATH"
-
-     # - name: Decode App Store Connect API Key
-     #   run: |
-     #     echo "${{ secrets.APP_STORE_CONNECT_API_KEY_BASE64 }}" | base64 --decode > AuthKey.p8
-
-     # - name: Upload to TestFlight via Fastlane
+     # - name: Upload to TestFlight
      #   env:
-     #     APP_STORE_CONNECT_API_KEY_PATH: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
      #     APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
-     #     APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+     #     APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+     #     APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
      #   run: |
-     #     fastlane upload \
-     #     --api_key_path:AuthKey.p8 \
-     #     --api_key_id:$APP_STORE_CONNECT_API_KEY_ID \
-     #     --api_key_issuer_id:$APP_STORE_CONNECT_API_ISSUER_ID
-
-     # - name: Saving IPA File
-     #   uses: actions/upload-artifact@v4 
-     #   with:
-     #     name: ipa
-     #     path: ./**.ipa
-
-     # - name: Show IPA file name (Step 1)
-     #   run: |
-     #     echo "Searching for IPA file..."
-     #     ls -lR . | grep .ipa
-
-     # - name: Set IPA file path (Step 2)
-     #   id: find_ipa
-     #   run: |
-     #     IPA_PATH=$(find . -name "*.ipa" | head -n 1)
-     #     if [ -z "$IPA_PATH" ]; then
-     #       echo "IPA file not found!"
-     #       exit 1
-     #     fi
-     #     echo "IPA_PATH=$IPA_PATH" >> $GITHUB_ENV
-
-     # - name: Use IPA path with -f
-     #   run: |
-     #     echo "Using IPA file at: $IPA_PATH"
-
-
-     # - name: Upload App
-     #   if: success()
-     #   env:
-     #     APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
-     #     APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
-     #   run: |
-     #     xcrun altool --upload-app -t ios -f ./**.ipa -u "$APPLEID_USERNAME" -p "$APPLEID_PASSWORD" --verbose
+     #     xcrun altool --upload-app \
+     #       -f build/export/WfmUser.ipa \
+     #       --type ios \
+     #       --apiKey "$APP_STORE_CONNECT_API_KEY_ID" \
+     #       --apiIssuer "$APP_STORE_CONNECT_ISSUER_ID"
