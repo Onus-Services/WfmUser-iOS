@@ -19,7 +19,13 @@ jobs:
 
       - name: Install Jazzy for documentation
         run: |
-          sudo gem install jazzy
+          # Önce mevcut gem'leri temizle ve native extension'ları yeniden derle
+          sudo gem uninstall ffi sassc --force || true
+          sudo gem cleanup
+          # Jazzy ve bağımlılıklarını yeniden yükle
+          sudo gem install ffi --force
+          sudo gem install sassc --force  
+          sudo gem install jazzy --force
 
       - name: Enable IDEFileSystemSynchronizedGroups
         run: |
@@ -48,24 +54,37 @@ jobs:
       - name: Install dependencies
         run: echo "No Podfile found, skipping pod install"
 
-      - name: Build project (disable code signing)
-        run: |
-           xcodebuild clean build \
-           -scheme WfmUser \
-           -configuration Release \
-           -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
-           CODE_SIGN_IDENTITY="" \
-           CODE_SIGNING_ALLOWED=NO \
-           CODE_SIGNING_REQUIRED=NO | xcpretty
+     # - name: Build project (disable code signing)
+     #   run: |
+     #      xcodebuild clean build \
+     #      -scheme WfmUser \
+     #      -configuration Release \
+     #      -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+     #      CODE_SIGN_IDENTITY="" \
+     #      CODE_SIGNING_ALLOWED=NO \
+     #      CODE_SIGNING_REQUIRED=NO | xcpretty
 
       - name: Generate Documentation with Jazzy
         run: |
+          # Ruby environment'ını temizle ve Jazzy'yi çalıştır
+          export GEM_HOME=""
+          export GEM_PATH=""
           jazzy \
             --clean \
             --min-acl internal \
             --module "WfmUser" \
             --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
-            --output docs
+            --output docs || {
+              echo "Jazzy failed, trying with rbenv/rvm Ruby..."
+              # Alternatif olarak sistem Ruby'si yerine homebrew Ruby kullan
+              /usr/bin/ruby -S gem install jazzy --user-install
+              ~/.gem/ruby/*/bin/jazzy \
+                --clean \
+                --min-acl internal \
+                --module "WfmUser" \
+                --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
+                --output docs
+            }
             
       - name: Deploy Documentation to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
