@@ -118,15 +118,12 @@ jobs:
      #     # DOSYANIN İÇERİĞİNİ YAZDIR (DEBUG AMAÇLI - HATA AYIKLAMA SONRASI KALDIR!)
      #     echo "--- rclone.conf İçeriği (DEBUG ONLY!) ---"
      #     cat ~/.config/rclone/rclone.conf
-     #     echo "--- rclone.conf İçeriği Sonu ---"
+     #     echo "--- rclone.conf İçeriği Sonu ---"   
 
-      - name: WfmUser dizinindeki dosyaları listele (hata ayıklama için)
-        run: ls -F WfmUser/    
-
-      - name: Set version and build folder
+      - name: Read version and build from Xcode settings
         run: |
-          VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "WfmUser/Info.plist")
-          BUILD=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "WfmUser/Info.plist")
+          VERSION=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep MARKETING_VERSION | awk '{print $3}')
+          BUILD=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
           FOLDER_NAME="v${VERSION}_${BUILD}"
           echo "📁 Version: $VERSION"
           echo "📦 Build: $BUILD"
