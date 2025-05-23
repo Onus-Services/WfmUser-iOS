@@ -18,7 +18,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           mkdir -p heresdk/frameworks
-          cp -R ./ThirtParty/HERESDK/heresdk/frameworks/heresdk.xcframework heresdk/frameworks/
+          cp -R /Users/birol/Desktop/heresdk/frameworks/heresdk.xcframework heresdk/frameworks/
      
       - name: Check if heresdk.xcframework exists
         run: ls -l heresdk/frameworks/heresdk.xcframework
