@@ -13,6 +13,11 @@ jobs:
         with:
           fetch-depth: 0  # Tam geçmişi getir
 
+      - name: Print Current Directory
+        run: |
+          pwd
+          ls -la
+
       - name: Install xcpretty
         run: |
           sudo gem install xcpretty
