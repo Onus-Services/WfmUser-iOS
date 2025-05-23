@@ -19,21 +19,34 @@ jobs:
 
       - name: Setup Ruby environment
         run: |
-          # Homebrew Ruby kullan (eğer varsa) veya sistem Ruby ile çalış
-          if command -v brew &> /dev/null && brew list ruby &> /dev/null; then
-            echo "Using Homebrew Ruby"
+          # Homebrew Ruby kullan (eğer varsa)
+          if command -v brew &> /dev/null; then
+            echo "Installing/updating Homebrew Ruby..."
+            brew install ruby || brew upgrade ruby
             export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
             export PATH="/opt/homebrew/lib/ruby/gems/3.0.0/bin:$PATH"
+            echo "/opt/homebrew/opt/ruby/bin" >> $GITHUB_PATH
+            echo "/opt/homebrew/lib/ruby/gems/3.0.0/bin" >> $GITHUB_PATH
           else
-            echo "Using system Ruby with compatible Jazzy version"
+            echo "Homebrew not found, will use alternative approach"
           fi
           
       - name: Install Jazzy for documentation
         run: |
-          # Ruby 2.6 ile uyumlu eski Jazzy versiyonu kur
-          gem install jazzy -v 0.13.7 --user-install
-          # PATH'e gem binary dizinini ekle
-          echo "$HOME/.gem/ruby/2.6.0/bin" >> $GITHUB_PATH
+          # Homebrew Ruby varsa onu kullan
+          if command -v /opt/homebrew/opt/ruby/bin/ruby &> /dev/null; then
+            echo "Using Homebrew Ruby"
+            /opt/homebrew/opt/ruby/bin/gem install jazzy
+          else
+            echo "Trying to fix native extensions and install Jazzy"
+            # Tüm problematik gem'leri temizle
+            sudo gem cleanup --verbose
+            # Native extension'ları mevcut mimari için yeniden derle
+            sudo gem install --force ffi
+            sudo gem install --force redcarpet
+            sudo gem install --force sassc
+            sudo gem install jazzy
+          fi
 
       - name: Enable IDEFileSystemSynchronizedGroups
         run: |
@@ -74,14 +87,24 @@ jobs:
 
       - name: Generate Documentation with Jazzy
         run: |
-          # PATH'i güncelle ve Jazzy'yi çalıştır
-          export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
-          jazzy \
-            --clean \
-            --min-acl internal \
-            --module "WfmUser" \
-            --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
-            --output docs
+          # Homebrew Ruby varsa onu kullan, yoksa sistem Ruby
+          if command -v /opt/homebrew/opt/ruby/bin/ruby &> /dev/null; then
+            echo "Using Homebrew Ruby for Jazzy"
+            /opt/homebrew/lib/ruby/gems/3.0.0/bin/jazzy \
+              --clean \
+              --min-acl internal \
+              --module "WfmUser" \
+              --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
+              --output docs
+          else
+            echo "Using system Ruby for Jazzy"
+            jazzy \
+              --clean \
+              --min-acl internal \
+              --module "WfmUser" \
+              --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
+              --output docs
+          fi
             
       - name: Deploy Documentation to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
