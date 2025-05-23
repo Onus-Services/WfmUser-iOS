@@ -17,15 +17,15 @@ jobs:
         run: |
           sudo gem install xcpretty
 
+      - name: Setup Ruby environment
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: false
+          
       - name: Install Jazzy for documentation
         run: |
-          # Önce mevcut gem'leri temizle ve native extension'ları yeniden derle
-          sudo gem uninstall ffi sassc --force || true
-          sudo gem cleanup
-          # Jazzy ve bağımlılıklarını yeniden yükle
-          sudo gem install ffi --force
-          sudo gem install sassc --force  
-          sudo gem install jazzy --force
+          gem install jazzy
 
       - name: Enable IDEFileSystemSynchronizedGroups
         run: |
@@ -66,25 +66,12 @@ jobs:
 
       - name: Generate Documentation with Jazzy
         run: |
-          # Ruby environment'ını temizle ve Jazzy'yi çalıştır
-          export GEM_HOME=""
-          export GEM_PATH=""
           jazzy \
             --clean \
             --min-acl internal \
             --module "WfmUser" \
             --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
-            --output docs || {
-              echo "Jazzy failed, trying with rbenv/rvm Ruby..."
-              # Alternatif olarak sistem Ruby'si yerine homebrew Ruby kullan
-              /usr/bin/ruby -S gem install jazzy --user-install
-              ~/.gem/ruby/*/bin/jazzy \
-                --clean \
-                --min-acl internal \
-                --module "WfmUser" \
-                --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
-                --output docs
-            }
+            --output docs
             
       - name: Deploy Documentation to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
