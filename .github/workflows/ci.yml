@@ -58,20 +58,20 @@ jobs:
         with:
           xcode-version: '16.3'
           
-     # - name: Setup HERE SDK directory structure
-     #   run: |
-     #     cd $GITHUB_WORKSPACE
-     #     mkdir -p ThirdParty/HERESDK/heresdk/frameworks
+      - name: Setup HERE SDK directory structure
+        run: |
+          cd $GITHUB_WORKSPACE
+          mkdir -p ThirdParty/HERESDK/heresdk/frameworks
 
-     # - name: Copy HERE SDK from local machine
-     #   run: |
-     #     cd $GITHUB_WORKSPACE
-     #     cp -R /Users/birol/Desktop/heresdk/frameworks/heresdk.xcframework ThirdParty/HERESDK/heresdk/frameworks/
+      - name: Copy HERE SDK from local machine
+        run: |
+          cd $GITHUB_WORKSPACE
+          cp -R /Users/birol/Desktop/heresdk/frameworks/heresdk.xcframework ThirdParty/HERESDK/heresdk/frameworks/
 
-     # - name: Check if HERE SDK exists in correct location
-     #   run: |
-     #     ls -la ThirdParty/HERESDK/heresdk/frameworks/
-     #     ls -la ThirdParty/HERESDK/heresdk/frameworks/heresdk.xcframework
+      - name: Check if HERE SDK exists in correct location
+        run: |
+          ls -la ThirdParty/HERESDK/heresdk/frameworks/
+          ls -la ThirdParty/HERESDK/heresdk/frameworks/heresdk.xcframework
         
      # - name: Install dependencies
      #   run: echo "No Podfile found, skipping pod install"
