@@ -120,6 +120,9 @@ jobs:
      #     cat ~/.config/rclone/rclone.conf
      #     echo "--- rclone.conf İçeriği Sonu ---"
 
+      - name: WfmUser dizinindeki dosyaları listele (hata ayıklama için)
+        run: ls -F WfmUser/    
+
       - name: Set version and build folder
         run: |
           VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "WfmUser/Info.plist")
@@ -134,9 +137,9 @@ jobs:
         run: |
           echo "✅ Generated folder name: $FOLDER_NAME"
 
-      - name: Upload docs to Google Drive
-        run: |
-          rclone copy docs gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/${{ env.FOLDER_NAME }}/Docs --create-empty-src-dirs --drive-chunk-size=64M --progress
+     # - name: Upload docs to Google Drive
+     #   run: |
+     #     rclone copy docs gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/${{ env.FOLDER_NAME }}/Docs --create-empty-src-dirs --drive-chunk-size=64M --progress
 
      # - name: Run Unit Tests
      #   run: |
