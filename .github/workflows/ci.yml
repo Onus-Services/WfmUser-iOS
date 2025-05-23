@@ -107,13 +107,20 @@ jobs:
           fi
 
       - name: Commit and push docs folder to main branch
-        working-directory: ${{ github.workspace }}
+        # working-directory: ${{ github.workspace }} # This is usually not needed here as checkout sets the working directory
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs
-          git diff --cached --quiet || git commit -m "Auto-generate docs [skip ci]"
-          git push origin main
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Check if there are changes to commit before trying to commit
+          if git diff --exit-code --quiet docs; then
+            echo "No changes in docs folder to commit."
+          else
+            git add docs
+            git commit -m "Auto-generate docs [skip ci]"
+            # Use --follow-tags to push tags if you have them, though not strictly needed for this workflow
+            git push origin main
+          fi
 
       - name: Deploy Documentation to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -122,6 +129,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
           destination_dir: docs
+          # The cname option is useful if you have a custom domain for GitHub Pages
+          # cname: your.custom.domain
         
      # - name: Run Unit Tests
      #   run: |
