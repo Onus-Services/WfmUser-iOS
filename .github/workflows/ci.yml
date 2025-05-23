@@ -14,11 +14,6 @@ jobs:
         with:
           fetch-depth: 0  # Tam geçmişi getir
 
-      - name: Print Current Directory
-        run: |
-          pwd
-          ls -la
-
      # - name: Install xcpretty
      #   run: |
      #     sudo gem install xcpretty
@@ -63,23 +58,23 @@ jobs:
         with:
           xcode-version: '16.3'
           
-      - name: Setup HERE SDK directory structure
-        run: |
-          cd $GITHUB_WORKSPACE
-          mkdir -p ThirdParty/HERESDK/heresdk/frameworks
+     # - name: Setup HERE SDK directory structure
+     #   run: |
+     #     cd $GITHUB_WORKSPACE
+     #     mkdir -p ThirdParty/HERESDK/heresdk/frameworks
 
-      - name: Copy HERE SDK from local machine
-        run: |
-          cd $GITHUB_WORKSPACE
-          cp -R /Users/birol/Desktop/heresdk/frameworks/heresdk.xcframework ThirdParty/HERESDK/heresdk/frameworks/
+     # - name: Copy HERE SDK from local machine
+     #   run: |
+     #     cd $GITHUB_WORKSPACE
+     #     cp -R /Users/birol/Desktop/heresdk/frameworks/heresdk.xcframework ThirdParty/HERESDK/heresdk/frameworks/
 
-      - name: Check if HERE SDK exists in correct location
-        run: |
-          ls -la ThirdParty/HERESDK/heresdk/frameworks/
-          ls -la ThirdParty/HERESDK/heresdk/frameworks/heresdk.xcframework
+     # - name: Check if HERE SDK exists in correct location
+     #   run: |
+     #     ls -la ThirdParty/HERESDK/heresdk/frameworks/
+     #     ls -la ThirdParty/HERESDK/heresdk/frameworks/heresdk.xcframework
         
-      - name: Install dependencies
-        run: echo "No Podfile found, skipping pod install"
+     # - name: Install dependencies
+     #   run: echo "No Podfile found, skipping pod install"
 
      # - name: Build project (disable code signing)
      #   run: |
@@ -125,28 +120,41 @@ jobs:
      #     cat ~/.config/rclone/rclone.conf
      #     echo "--- rclone.conf İçeriği Sonu ---"
 
-     # - name: Upload docs to Google Driv
+      - name: Extract folder name from Info.plist
+        id: vars
+        run: |
+          VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "WfmUser/Info.plist")
+          BUILD=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "WfmUser/Info.plist")
+          FOLDER_NAME="v${VERSION}_${BUILD}"
+          echo "📁 Version: $VERSION"
+          echo "📦 Build: $BUILD"
+          echo "📂 Folder Name: $FOLDER_NAME"
+          echo "FOLDER_NAME=$FOLDER_NAME" >> "$GITHUB_ENV"
+
+      - name: Print FOLDER_NAME for debug
+        run: |
+          echo "✅ Generated folder name: $FOLDER_NAME"
+
+      - name: Upload docs to Google Drive
+        run: |
+          rclone copy docs gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/${{ env.FOLDER_NAME }}/Docs --create-empty-src-dirs --drive-chunk-size=64M --progress
+
+     # - name: Run Unit Tests
      #   run: |
-     #     rclone copy docs gdrive:/MOBILDOKUMANLAR/WfmUser-iOS --create-empty-src-dirs --drive-chunk-size=64M --progress
+     #     xcodebuild test \
+     #       -project WfmUser.xcodeproj \
+     #       -scheme WfmUser \
+     #       -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+     #       -derivedDataPath build \
+     #       | tee xcodebuild_test.log | xcpretty
 
-
-    
-      - name: Run Unit Tests
-        run: |
-          xcodebuild test \
-            -project WfmUser.xcodeproj \
-            -scheme WfmUser \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
-            -derivedDataPath build \
-            | tee xcodebuild_test.log | xcpretty
-
-      - name: Upload SnapshotTests to Google Drive
-        run: |
-          rclone copy "/Users/birol/actions-runner/_work/WfmUser-iOS/WfmUser-iOS/WfmUserTests/__Snapshots__/SnapshotTests" \
-          gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/R1/Snapshot \
-          --create-empty-src-dirs \
-          --drive-chunk-size=64M \
-          --progress
+     # - name: Upload SnapshotTests to Google Drive
+     #   run: |
+     #     rclone copy "/Users/birol/actions-runner/_work/WfmUser-iOS/WfmUser-iOS/WfmUserTests/__Snapshots__/SnapshotTests" \
+     #     gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/${{ env.FOLDER_NAME }}/Snapshot \
+     #     --create-empty-src-dirs \
+     #     --drive-chunk-size=64M \
+     #     --progress
 
      # - name: Create ExportOptions.plist
      #   run: |
