@@ -106,20 +106,22 @@ jobs:
               --output docs
           fi
 
-      - name: Commit and push docs folder to main branch
-        # working-directory: ${{ github.workspace }} # This is usually not needed here as checkout sets the working directory
+      - name: Dokümantasyon Klasörünü Ana Dala Commit Et ve Push Et
+        # Bu adımın deposunun kök dizininde çalıştığından emin olmak için working-directory kullanın.
+        working-directory: ${{ github.workspace }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Check if there are changes to commit before trying to commit
+          # Commit edilecek değişiklik olup olmadığını kontrol et
           if git diff --exit-code --quiet docs; then
-            echo "No changes in docs folder to commit."
+            echo "Docs klasöründe commit edilecek değişiklik yok."
           else
+            echo "Docs klasöründe değişiklikler algılandı, commit ediliyor..."
             git add docs
             git commit -m "Auto-generate docs [skip ci]"
-            # Use --follow-tags to push tags if you have them, though not strictly needed for this workflow
-            git push origin main
+            # GITHUB_TOKEN kullanarak push işlemini yap
+            git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" main
           fi
 
       - name: Deploy Documentation to GitHub Pages
