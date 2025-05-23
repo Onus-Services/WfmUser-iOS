@@ -18,14 +18,22 @@ jobs:
           sudo gem install xcpretty
 
       - name: Setup Ruby environment
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.1'
-          bundler-cache: false
+        run: |
+          # Homebrew Ruby kullan (eğer varsa) veya sistem Ruby ile çalış
+          if command -v brew &> /dev/null && brew list ruby &> /dev/null; then
+            echo "Using Homebrew Ruby"
+            export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+            export PATH="/opt/homebrew/lib/ruby/gems/3.0.0/bin:$PATH"
+          else
+            echo "Using system Ruby with compatible Jazzy version"
+          fi
           
       - name: Install Jazzy for documentation
         run: |
-          gem install jazzy
+          # Ruby 2.6 ile uyumlu eski Jazzy versiyonu kur
+          gem install jazzy -v 0.13.7 --user-install
+          # PATH'e gem binary dizinini ekle
+          echo "$HOME/.gem/ruby/2.6.0/bin" >> $GITHUB_PATH
 
       - name: Enable IDEFileSystemSynchronizedGroups
         run: |
@@ -66,6 +74,8 @@ jobs:
 
       - name: Generate Documentation with Jazzy
         run: |
+          # PATH'i güncelle ve Jazzy'yi çalıştır
+          export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
           jazzy \
             --clean \
             --min-acl internal \
