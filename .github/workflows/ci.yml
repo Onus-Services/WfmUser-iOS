@@ -120,7 +120,7 @@ jobs:
           ${{ secrets.RCLONE_CONF }}
           EOF
 
-      - name: Upload docs to Google Drive
+      - name: Upload docs to Google Driv
         run: |
           rclone copy docs gdrive:/MOBILDOKUMANLAR/WfmUser-iOS --create-empty-src-dirs --drive-chunk-size=64M --progress
 
