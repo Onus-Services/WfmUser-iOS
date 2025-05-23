@@ -19,9 +19,9 @@ jobs:
           pwd
           ls -la
 
-      - name: Install xcpretty
-        run: |
-          sudo gem install xcpretty
+     # - name: Install xcpretty
+     #   run: |
+     #     sudo gem install xcpretty
 
      # - name: Setup Ruby environment
      #   run: |
@@ -91,43 +91,43 @@ jobs:
      #      CODE_SIGNING_ALLOWED=NO \
      #      CODE_SIGNING_REQUIRED=NO | xcpretty
 
-      - name: Generate Documentation with Jazzy
-        run: |
-          # Homebrew Ruby varsa onu kullan, yoksa sistem Ruby
-          if command -v /opt/homebrew/opt/ruby/bin/ruby &> /dev/null; then
-            echo "Using Homebrew Ruby for Jazzy"
-            /opt/homebrew/lib/ruby/gems/3.0.0/bin/jazzy \
-              --clean \
-              --min-acl internal \
-              --module "WfmUser" \
-              --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
-              --output docs
-          else
-            echo "Using system Ruby for Jazzy"
-            jazzy \
-              --clean \
-              --min-acl internal \
-              --module "WfmUser" \
-              --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
-              --output docs
-          fi
+     # - name: Generate Documentation with Jazzy
+     #   run: |
+     #     # Homebrew Ruby varsa onu kullan, yoksa sistem Ruby
+     #     if command -v /opt/homebrew/opt/ruby/bin/ruby &> /dev/null; then
+     #       echo "Using Homebrew Ruby for Jazzy"
+     #       /opt/homebrew/lib/ruby/gems/3.0.0/bin/jazzy \
+     #         --clean \
+     #         --min-acl internal \
+     #         --module "WfmUser" \
+     #         --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
+     #         --output docs
+     #     else
+     #       echo "Using system Ruby for Jazzy"
+     #       jazzy \
+     #         --clean \
+     #         --min-acl internal \
+     #         --module "WfmUser" \
+     #         --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
+     #         --output docs
+     #     fi
 
-      - name: Setup rclone config
-        run: |
-          mkdir -p ~/.config/rclone
-          # İçeriği dosyaya yaz
-          cat > ~/.config/rclone/rclone.conf << EOF
-          ${{ secrets.RCLONE_CONF }}
-          EOF
+     # - name: Setup rclone config
+     #   run: |
+     #     mkdir -p ~/.config/rclone
+     #     # İçeriği dosyaya yaz
+     #     cat > ~/.config/rclone/rclone.conf << EOF
+     #     ${{ secrets.RCLONE_CONF }}
+     #     EOF
 
-          # DOSYANIN İÇERİĞİNİ YAZDIR (DEBUG AMAÇLI - HATA AYIKLAMA SONRASI KALDIR!)
-          echo "--- rclone.conf İçeriği (DEBUG ONLY!) ---"
-          cat ~/.config/rclone/rclone.conf
-          echo "--- rclone.conf İçeriği Sonu ---"
+     #     # DOSYANIN İÇERİĞİNİ YAZDIR (DEBUG AMAÇLI - HATA AYIKLAMA SONRASI KALDIR!)
+     #     echo "--- rclone.conf İçeriği (DEBUG ONLY!) ---"
+     #     cat ~/.config/rclone/rclone.conf
+     #     echo "--- rclone.conf İçeriği Sonu ---"
 
-      - name: Upload docs to Google Driv
-        run: |
-          rclone copy docs gdrive:/MOBILDOKUMANLAR/WfmUser-iOS --create-empty-src-dirs --drive-chunk-size=64M --progress
+     # - name: Upload docs to Google Driv
+     #   run: |
+     #     rclone copy docs gdrive:/MOBILDOKUMANLAR/WfmUser-iOS --create-empty-src-dirs --drive-chunk-size=64M --progress
 
 
     
