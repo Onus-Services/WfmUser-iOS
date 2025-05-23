@@ -140,7 +140,13 @@ jobs:
             -derivedDataPath build \
             | tee xcodebuild_test.log | xcpretty
 
-      
+      - name: Upload SnapshotTests to Google Drive
+        run: |
+          rclone copy "/Users/birol/actions-runner/_work/WfmUser-iOS/WfmUser-iOS/WfmUserTests/__Snapshots__/SnapshotTests" \
+          gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/R1/Snapshot \
+          --create-empty-src-dirs \
+          --drive-chunk-size=64M \
+          --progress
 
      # - name: Create ExportOptions.plist
      #   run: |
