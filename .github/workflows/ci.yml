@@ -120,11 +120,11 @@ jobs:
      #     cat ~/.config/rclone/rclone.conf
      #     echo "--- rclone.conf İçeriği Sonu ---"
 
-      - name: Extract folder name from Info.plist
+      - name: Set folder name from Info.plist
         id: vars
         run: |
-          VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "WfmUser/Info.plist")
-          BUILD=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "WfmUser/Info.plist")
+          VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "WfmUser-iOS/WfmUser-iOS/WfmUser/Info.plist")
+          BUILD=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "WfmUser-iOS/WfmUser-iOS/WfmUser/Info.plist")
           FOLDER_NAME="v${VERSION}_${BUILD}"
           echo "📁 Version: $VERSION"
           echo "📦 Build: $BUILD"
