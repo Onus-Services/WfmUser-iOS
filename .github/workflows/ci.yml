@@ -115,7 +115,10 @@ jobs:
       - name: Setup rclone config
         run: |
           mkdir -p ~/.config/rclone
-          echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
+          # Using a 'here-document' (<<<) to ensure content is written literally
+          cat > ~/.config/rclone/rclone.conf << EOF
+          ${{ secrets.RCLONE_CONF }}
+          EOF
 
       - name: Upload docs to Google Drive
         run: |
