@@ -115,10 +115,15 @@ jobs:
       - name: Setup rclone config
         run: |
           mkdir -p ~/.config/rclone
-          # Using a 'here-document' (<<<) to ensure content is written literally
+          # İçeriği dosyaya yaz
           cat > ~/.config/rclone/rclone.conf << EOF
           ${{ secrets.RCLONE_CONF }}
           EOF
+
+          # DOSYANIN İÇERİĞİNİ YAZDIR (DEBUG AMAÇLI - HATA AYIKLAMA SONRASI KALDIR!)
+          echo "--- rclone.conf İçeriği (DEBUG ONLY!) ---"
+          cat ~/.config/rclone/rclone.conf
+          echo "--- rclone.conf İçeriği Sonu ---"
 
       - name: Upload docs to Google Driv
         run: |
