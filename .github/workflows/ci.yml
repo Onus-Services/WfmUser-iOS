@@ -5,15 +5,6 @@ on:
       - main
   pull_request:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   build:
     runs-on: self-hosted
@@ -121,45 +112,29 @@ jobs:
               --output docs
           fi
 
-      - name: Dokümantasyon Klasörünü Ana Dala Commit Et ve Push Et
-        # Bu adımın deposunun kök dizininde çalıştığından emin olmak için working-directory kullanın.
-        working-directory: ${{ github.workspace }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Commit edilecek değişiklik olup olmadığını kontrol et
-          if git diff --exit-code --quiet docs; then
-            echo "Docs klasöründe commit edilecek değişiklik yok."
-          else
-            echo "Docs klasöründe değişiklikler algılandı, commit ediliyor..."
-            git add docs
-            git commit -m "Auto-generate docs [skip ci]"
-            # GITHUB_TOKEN kullanarak push işlemini yap
-            git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" main
-          fi
-
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload to gdrive
+        uses: adityak74/google-drive-upload-git-action@main
         with:
-          path: ./docs
+          credentials: ${{ secrets.credentials }}
+          filename: "archive.zip"
+          folderId: ${{ secrets.folderId }}
+          name: "WfmUser-iOS" # optional string
+          overwrite: "true" # optional boolean
+          
+      - name: Make Directory Structure
+        run: |
+          mkdir -p w/x/y
+          date +%s > w/x/y/z
+      - name: Mirror Directory Structure
+        uses: adityak74/google-drive-upload-git-action@main
+        with:
+          credentials: ${{ secrets.credentials }}
+          filename: w/x/y/z
+          folderId: ${{ secrets.folderId }}
+          overwrite: "true"
+          mirrorDirectoryStructure: "true"
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        
+    
      # - name: Run Unit Tests
      #   run: |
      #     xcodebuild test \
