@@ -112,27 +112,15 @@ jobs:
               --output docs
           fi
 
-      - name: Upload to gdrive
-        uses: adityak74/google-drive-upload-git-action@main
-        with:
-          credentials: ${{ secrets.credentials }}
-          filename: "archive.zip"
-          folderId: ${{ secrets.folderId }}
-          name: "WfmUser-iOS" # optional string
-          overwrite: "true" # optional boolean
-          
-      - name: Make Directory Structure
+      - name: Setup rclone config
         run: |
-          mkdir -p w/x/y
-          date +%s > w/x/y/z
-      - name: Mirror Directory Structure
-        uses: adityak74/google-drive-upload-git-action@main
-        with:
-          credentials: ${{ secrets.credentials }}
-          filename: w/x/y/z
-          folderId: ${{ secrets.folderId }}
-          overwrite: "true"
-          mirrorDirectoryStructure: "true"
+          mkdir -p ~/.config/rclone
+          echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
+
+      - name: Upload docs to Google Drive
+        run: |
+          rclone copy docs gdrive:/MOBILDOKUMANLAR/WfmUser-iOS --create-empty-src-dirs --drive-chunk-size=64M --progress
+
 
     
      # - name: Run Unit Tests
