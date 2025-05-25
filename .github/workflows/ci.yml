@@ -30,17 +30,17 @@ jobs:
           mkdir -p WfmUser-iOS
           echo "Workspace cleaned"
 
-      - name: Manual git clone (fallback)
+      - name: Manual git clone with token
         run: |
-          echo "Attempting manual git clone..."
+          echo "Attempting git clone with authentication..."
           cd /Users/birol/actions-runner/_work/WfmUser-iOS/
           rm -rf WfmUser-iOS || true
           
-          # GitHub repository URL'ini oluştur
-          REPO_URL="https://github.com/${{ github.repository }}.git"
-          echo "Cloning from: $REPO_URL"
+          # Token ile repository URL'ini oluştur
+          REPO_URL="https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          echo "Cloning repository..."
           
-          # Clone işlemi (--depth=0 yerine fetch-depth için boş bırak veya --depth kullanma)
+          # Clone işlemi
           git clone "$REPO_URL" WfmUser-iOS
           cd WfmUser-iOS
           
@@ -49,7 +49,7 @@ jobs:
             git checkout ${{ github.sha }}
           fi
           
-          echo "Manual clone completed"
+          echo "Clone completed successfully"
       
 
       - name: Verify checkout
