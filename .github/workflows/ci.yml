@@ -40,8 +40,8 @@ jobs:
           REPO_URL="https://github.com/${{ github.repository }}.git"
           echo "Cloning from: $REPO_URL"
           
-          # Clone işlemi
-          git clone --depth=0 "$REPO_URL" WfmUser-iOS
+          # Clone işlemi (--depth=0 yerine fetch-depth için boş bırak veya --depth kullanma)
+          git clone "$REPO_URL" WfmUser-iOS
           cd WfmUser-iOS
           
           # Checkout specific ref if needed
