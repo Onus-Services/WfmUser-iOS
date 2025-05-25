@@ -12,16 +12,45 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      - name: Clean workspace
-        run: |
-          echo "Cleaning workspace..."
-          rm -rf $GITHUB_WORKSPACE/*
-          rm -rf $GITHUB_WORKSPACE/.[!.]*
+
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Tam geçmişi getir
           token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Clean workspace completely
+        run: |
+          echo "Current workspace: $GITHUB_WORKSPACE"
+          echo "Stopping any git processes..."
+          pkill -f git || true
+          echo "Removing all files..."
+          cd /Users/birol/actions-runner/_work/WfmUser-iOS/
+          rm -rf WfmUser-iOS || true
+          mkdir -p WfmUser-iOS
+          echo "Workspace cleaned"
+
+      - name: Manual git clone (fallback)
+        run: |
+          echo "Attempting manual git clone..."
+          cd /Users/birol/actions-runner/_work/WfmUser-iOS/
+          rm -rf WfmUser-iOS || true
+          
+          # GitHub repository URL'ini oluştur
+          REPO_URL="https://github.com/${{ github.repository }}.git"
+          echo "Cloning from: $REPO_URL"
+          
+          # Clone işlemi
+          git clone --depth=0 "$REPO_URL" WfmUser-iOS
+          cd WfmUser-iOS
+          
+          # Checkout specific ref if needed
+          if [ "${{ github.ref }}" != "refs/heads/main" ]; then
+            git checkout ${{ github.sha }}
+          fi
+          
+          echo "Manual clone completed"
+      
 
       - name: Verify checkout
         run: |
