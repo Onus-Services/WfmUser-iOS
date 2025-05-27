@@ -168,19 +168,19 @@ jobs:
      #     cat ~/.config/rclone/rclone.conf
      #     echo "--- rclone.conf İçeriği Sonu ---"   
 
-      - name: Read version and build from Xcode settings
-        run: |
-          VERSION=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep MARKETING_VERSION | awk '{print $3}')
-          BUILD=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
-          FOLDER_NAME="v${VERSION}_${BUILD}"
-          echo "📁 Version: $VERSION"
-          echo "📦 Build: $BUILD"
-          echo "📂 Folder Name: $FOLDER_NAME"
-          echo "FOLDER_NAME=$FOLDER_NAME" >> "$GITHUB_ENV"
+     # - name: Read version and build from Xcode settings
+     #   run: |
+     #     VERSION=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep MARKETING_VERSION | awk '{print $3}')
+     #     BUILD=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
+     #     FOLDER_NAME="v${VERSION}_${BUILD}"
+     #     echo "📁 Version: $VERSION"
+     #     echo "📦 Build: $BUILD"
+     #     echo "📂 Folder Name: $FOLDER_NAME"
+     #     echo "FOLDER_NAME=$FOLDER_NAME" >> "$GITHUB_ENV"
 
-      - name: Print FOLDER_NAME for debug
-        run: |
-          echo "✅ Generated folder name: $FOLDER_NAME"
+     # - name: Print FOLDER_NAME for debug
+     #   run: |
+     #     echo "✅ Generated folder name: $FOLDER_NAME"
 
      # - name: Upload docs to Google Drive
      #   run: |
@@ -203,21 +203,39 @@ jobs:
      #     --drive-chunk-size=64M \
      #     --progress
 
-      - name: Debug git status before tag creation
+      - name: Set up Java (for Codacy CLI)
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Download Codacy CLI
         run: |
-           echo "Current directory: $(pwd)"
-           echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
-           ls -la
-           git status
-           git log --oneline -n 5
+          curl -L https://github.com/codacy/codacy-analysis-cli/releases/latest/download/codacy-analysis-cli.zip -o codacy-analysis-cli.zip
+          unzip codacy-analysis-cli.zip -d codacy-cli
+          chmod +x codacy-cli/codacy-analysis-cli
+
+      - name: Run Codacy Analysis CLI
+        env:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        run: |
+          ./codacy-cli/codacy-analysis-cli analyze --tool eslint --upload --project-token $CODACY_PROJECT_TOKEN
+
+     # - name: Debug git status before tag creation
+     #   run: |
+     #      echo "Current directory: $(pwd)"
+     #      echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+     #      ls -la
+     #      git status
+     #      git log --oneline -n 5
     
-      - name: Create Git Tag
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          TAG_NAME="release${{ env.FOLDER_NAME }}"
-          git tag "$TAG_NAME"
-          git push origin "$TAG_NAME"
+     # - name: Create Git Tag
+     #   run: |
+     #     git config user.name "github-actions"
+     #     git config user.email "github-actions@github.com"
+     #     TAG_NAME="release${{ env.FOLDER_NAME }}"
+     #     git tag "$TAG_NAME"
+     #     git push origin "$TAG_NAME"
 
      # - name: Create ExportOptions.plist
      #   run: |
