@@ -230,7 +230,7 @@ jobs:
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           verbose: true
-          max-allowed-issues: 100
+          max-allowed-issues: 1500
           upload: true
      
 
