@@ -209,17 +209,16 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Download Codacy CLI
+      - name: Download Codacy CLI (Apple M1 - macOS ARM64)
         run: |
-          curl -L https://github.com/codacy/codacy-analysis-cli/releases/latest/download/codacy-analysis-cli.zip -o codacy-analysis-cli.zip
-          unzip codacy-analysis-cli.zip -d codacy-cli
-          chmod +x codacy-cli/codacy-analysis-cli
+          curl -L https://github.com/codacy/codacy-analysis-cli/releases/latest/download/codacy-analysis-cli-macos-arm64 -o codacy-analysis-cli
+          chmod +x codacy-analysis-cli
 
       - name: Run Codacy Analysis CLI
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: |
-          ./codacy-cli/codacy-analysis-cli analyze --tool eslint --upload --project-token $CODACY_PROJECT_TOKEN
+          ./codacy-analysis-cli analyze --upload --project-token $CODACY_PROJECT_TOKEN
 
      # - name: Debug git status before tag creation
      #   run: |
