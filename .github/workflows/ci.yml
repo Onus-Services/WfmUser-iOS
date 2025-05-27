@@ -203,188 +203,223 @@ jobs:
      #     --drive-chunk-size=64M \
      #     --progress
 
-     # - name: Set up Java (for Codacy CLI)
-     #   uses: actions/setup-java@v4
-     #   with:
-     #     distribution: 'temurin'
-     #     java-version: '17'
-     #     architecture: 'aarch64'
+      - name: Set up Java (for Codacy CLI)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          architecture: 'aarch64'
           
-     # - name: Download Codacy CLI (Dynamic version detection)
-     #   run: |
-     #     echo "🔍 Finding available Codacy CLI releases..."
+      - name: Download Codacy CLI (Dynamic version detection)
+        run: |
+          echo "🔍 Finding available Codacy CLI releases..."
           
           # GitHub API'den release bilgilerini al
-     #     echo "Fetching release information from GitHub API..."
-     #     RELEASES_JSON=$(curl -s "https://api.github.com/repos/codacy/codacy-analysis-cli/releases" | head -20000)
+          echo "Fetching release information from GitHub API..."
+          RELEASES_JSON=$(curl -s "https://api.github.com/repos/codacy/codacy-analysis-cli/releases" | head -20000)
           
-     #     if [ -z "$RELEASES_JSON" ]; then
-     #       echo "❌ Failed to fetch release information"
-     #       exit 1
-     #     fi
+          if [ -z "$RELEASES_JSON" ]; then
+            echo "❌ Failed to fetch release information"
+            exit 1
+          fi
           
-     #     echo "✅ Release information fetched"
+          echo "✅ Release information fetched"
           
           # Available assets'leri listele (debug için)
-     #     echo "📋 Available assets in latest releases:"
-     #     echo "$RELEASES_JSON" | grep -o '"name": "[^"]*"' | head -20
+          echo "📋 Available assets in latest releases:"
+          echo "$RELEASES_JSON" | grep -o '"name": "[^"]*"' | head -20
           
           # Method 1: ARM64 macOS binary bul
-     #     echo "🎯 Method 1: Looking for ARM64 macOS binary..."
-     #     ARM64_URL=$(echo "$RELEASES_JSON" | grep -o '"browser_download_url": "[^"]*codacy-analysis-cli[^"]*macos[^"]*arm64[^"]*"' | head -1 | sed 's/"browser_download_url": "//;s/"//')
+          echo "🎯 Method 1: Looking for ARM64 macOS binary..."
+          ARM64_URL=$(echo "$RELEASES_JSON" | grep -o '"browser_download_url": "[^"]*codacy-analysis-cli[^"]*macos[^"]*arm64[^"]*"' | head -1 | sed 's/"browser_download_url": "//;s/"//')
           
-     #     if [ -n "$ARM64_URL" ]; then
-     #       echo "Found ARM64 URL: $ARM64_URL"
-     #       if curl -L -f "$ARM64_URL" -o codacy-analysis-cli; then
-     #         chmod +x codacy-analysis-cli
-     #         echo "✅ Method 1 successful - ARM64 binary downloaded"
-     #       else
-     #         echo "❌ Method 1 download failed"
-     #         ARM64_URL=""
-     #       fi
-     #     else
-     #       echo "❌ Method 1: ARM64 binary not found"
-     #     fi
+          if [ -n "$ARM64_URL" ]; then
+            echo "Found ARM64 URL: $ARM64_URL"
+            if curl -L -f "$ARM64_URL" -o codacy-analysis-cli; then
+              chmod +x codacy-analysis-cli
+              echo "✅ Method 1 successful - ARM64 binary downloaded"
+            else
+              echo "❌ Method 1 download failed"
+              ARM64_URL=""
+            fi
+          else
+            echo "❌ Method 1: ARM64 binary not found"
+          fi
           
-     #     if [ -z "$ARM64_URL" ] || [ ! -f codacy-analysis-cli ]; then
+          if [ -z "$ARM64_URL" ] || [ ! -f codacy-analysis-cli ]; then
             # Method 2: Generic macOS binary
-     #       echo "🎯 Method 2: Looking for generic macOS binary..."
-     #       MACOS_URL=$(echo "$RELEASES_JSON" | grep -o '"browser_download_url": "[^"]*codacy-analysis-cli[^"]*macos[^"]*"' | head -1 | sed 's/"browser_download_url": "//;s/"//')
+            echo "🎯 Method 2: Looking for generic macOS binary..."
+            MACOS_URL=$(echo "$RELEASES_JSON" | grep -o '"browser_download_url": "[^"]*codacy-analysis-cli[^"]*macos[^"]*"' | head -1 | sed 's/"browser_download_url": "//;s/"//')
             
-     #       if [ -n "$MACOS_URL" ]; then
-     #         echo "Found macOS URL: $MACOS_URL"
-     #         if curl -L -f "$MACOS_URL" -o codacy-analysis-cli; then
-     #           chmod +x codacy-analysis-cli
-     #           echo "✅ Method 2 successful - Generic macOS binary downloaded"
-     #         else
-     #           echo "❌ Method 2 download failed"
-     #           MACOS_URL=""
-     #         fi
-     #       else
-     #         echo "❌ Method 2: Generic macOS binary not found"
-     #       fi
-     #     fi
+            if [ -n "$MACOS_URL" ]; then
+              echo "Found macOS URL: $MACOS_URL"
+              if curl -L -f "$MACOS_URL" -o codacy-analysis-cli; then
+                chmod +x codacy-analysis-cli
+                echo "✅ Method 2 successful - Generic macOS binary downloaded"
+              else
+                echo "❌ Method 2 download failed"
+                MACOS_URL=""
+              fi
+            else
+              echo "❌ Method 2: Generic macOS binary not found"
+            fi
+          fi
           
-     #     if [ ! -f codacy-analysis-cli ]; then
+          if [ ! -f codacy-analysis-cli ]; then
             # Method 3: JAR file
-     #       echo "🎯 Method 3: Looking for JAR file..."
-     #       JAR_URL=$(echo "$RELEASES_JSON" | grep -o '"browser_download_url": "[^"]*\.jar[^"]*"' | head -1 | sed 's/"browser_download_url": "//;s/"//')
+            echo "🎯 Method 3: Looking for JAR file..."
+            JAR_URL=$(echo "$RELEASES_JSON" | grep -o '"browser_download_url": "[^"]*\.jar[^"]*"' | head -1 | sed 's/"browser_download_url": "//;s/"//')
             
-     #       if [ -n "$JAR_URL" ]; then
-     #         echo "Found JAR URL: $JAR_URL"
-     #         if curl -L -f "$JAR_URL" -o codacy-analysis-cli.jar; then
-     #           echo '#!/bin/bash' > codacy-analysis-cli
-     #           echo 'exec java -jar "$(dirname "$0")/codacy-analysis-cli.jar" "$@"' >> codacy-analysis-cli
-     #           chmod +x codacy-analysis-cli
-     #           echo "✅ Method 3 successful - JAR downloaded with wrapper script"
-     #         else
-     #           echo "❌ Method 3 download failed"
-     #           exit 1
-     #         fi
-     #       else
-     #         echo "❌ Method 3: JAR file not found"
-     #         exit 1
-     #       fi
-     #     fi
+            if [ -n "$JAR_URL" ]; then
+              echo "Found JAR URL: $JAR_URL"
+              if curl -L -f "$JAR_URL" -o codacy-analysis-cli.jar; then
+                echo '#!/bin/bash' > codacy-analysis-cli
+                echo 'exec java -jar "$(dirname "$0")/codacy-analysis-cli.jar" "$@"' >> codacy-analysis-cli
+                chmod +x codacy-analysis-cli
+                echo "✅ Method 3 successful - JAR downloaded with wrapper script"
+              else
+                echo "❌ Method 3 download failed"
+                exit 1
+              fi
+            else
+              echo "❌ Method 3: JAR file not found"
+              exit 1
+            fi
+          fi
           
-     #     echo "🎉 Codacy CLI ready!"
+          echo "🎉 Codacy CLI ready!"
 
-     # - name: Verify Codacy CLI
-     #   run: |
-     #     echo "Checking Codacy CLI..."
-     #     ls -la codacy-analysis-cli*
-     #     file codacy-analysis-cli 2>/dev/null || echo "File command not available"
+      - name: Verify Codacy CLI
+        run: |
+          echo "Checking Codacy CLI..."
+          ls -la codacy-analysis-cli*
+          file codacy-analysis-cli 2>/dev/null || echo "File command not available"
           
           # CLI'yi test et
-     #     echo "Testing Codacy CLI..."
-     #     ./codacy-analysis-cli --version || ./codacy-analysis-cli --help || echo "CLI test failed, will continue anyway"
+          echo "Testing Codacy CLI..."
+          ./codacy-analysis-cli --version || ./codacy-analysis-cli --help || echo "CLI test failed, will continue anyway"
           
-     #     echo "Current working directory: $(pwd)"
-     #     echo "Files in current directory:"
-     #     ls -la
+          echo "Current working directory: $(pwd)"
+          echo "Files in current directory:"
+          ls -la
 
-     # - name: Run Codacy Analysis CLI
-     #   env:
-     #     CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-     #   run: |
-     #     echo "Starting Codacy analysis..."
-     #     echo "Project token is set: $([ -n "$CODACY_PROJECT_TOKEN" ] && echo "Yes" || echo "No")"
+      - name: Run Codacy Analysis CLI
+        env:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        run: |
+          echo "Starting Codacy analysis..."
+          echo "Project token is set: $([ -n "$CODACY_PROJECT_TOKEN" ] && echo "Yes" || echo "No")"
           
           # Analiz çalıştır
-     #     ./codacy-analysis-cli analyze \
-     #       --upload \
-     #       --project-token $CODACY_PROJECT_TOKEN \
-     #       --verbose \
-     #       --commit-uuid ${{ github.sha }} \
-     #       --parallel 2
+          ./codacy-analysis-cli analyze \
+            --upload \
+            --project-token $CODACY_PROJECT_TOKEN \
+            --verbose \
+            --commit-uuid ${{ github.sha }} \
+            --parallel 2
 
-     # - name: Run Codacy Analysis with Docker
-     #   env:
-     #      CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-     #   run: |
-     #     echo "🐳 Running Codacy analysis with Docker..."
-     #     echo "Project token is set: $([ -n "$CODACY_PROJECT_TOKEN" ] && echo "Yes" || echo "No")"
+      - name: Run Codacy Analysis with Docker
+        env:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        run: |
+          echo "🐳 Running Codacy analysis with Docker..."
+          echo "Project token is set: $([ -n "$CODACY_PROJECT_TOKEN" ] && echo "Yes" || echo "No")"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Repository: ${{ github.repository }}"
           
-          # Docker ile Codacy CLI çalıştır
-     #     docker run --rm \
-     #       -v "$GITHUB_WORKSPACE:/code" \
-     #       -e CODACY_PROJECT_TOKEN="$CODACY_PROJECT_TOKEN" \
-     #       codacy/codacy-analysis-cli:latest \
-     #       analyze \
-     #       --upload \
-     #       --project-token "$CODACY_PROJECT_TOKEN" \
-     #       --verbose \
-     #       --commit-uuid "${{ github.sha }}" \
-     #       --directory /code
+          # Docker ile Codacy CLI çalıştır - çıktıyı kontrol et
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/code" \
+            -e CODACY_PROJECT_TOKEN="$CODACY_PROJECT_TOKEN" \
+            codacy/codacy-analysis-cli:latest \
+            analyze \
+            --upload \
+            --project-token "$CODACY_PROJECT_TOKEN" \
+            --commit-uuid "${{ github.sha }}" \
+            --directory /code \
+            --max-allowed-issues 1000 \
+            --parallel 2 \
+            --format json 2>&1 | tee codacy_output.log | tail -50
+          
+          echo "📊 Analysis completed!"
+
+      - name: Summarize Codacy Results
+        if: always()
+        run: |
+          echo "=== CODACY ANALYSIS SUMMARY ==="
+          
+          if [ -f codacy_output.log ]; then
+            echo "📄 Log file size: $(wc -l < codacy_output.log) lines"
+            
+            # Son 20 satırı göster
+            echo "📋 Last 20 lines of analysis:"
+            tail -20 codacy_output.log
+            
+            # Hata varsa göster
+            if grep -q "ERROR" codacy_output.log; then
+              echo "❌ Errors found:"
+              grep "ERROR" codacy_output.log | tail -5
+            fi
+            
+            # Başarı mesajı varsa göster
+            if grep -q -i "upload.*success\|analysis.*complete\|results.*uploaded" codacy_output.log; then
+              echo "✅ Upload appears successful!"
+            fi
+          else
+            echo "⚠️ No log file found"
+          fi
+          
+          echo "🔗 Check your results at: https://app.codacy.com/gh/${{ github.repository }}/dashboard"
+            
             
       # Fallback: Manuel CLI ile analiz (Docker başarısız olursa)
-     # - name: Fallback - Manual CLI Analysis
-     #   if: failure()
-     #   env:
-     #     CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-     #   run: |
-     #     echo "🔄 Docker failed, trying manual CLI analysis..."
+      - name: Fallback - Manual CLI Analysis
+        if: failure()
+        env:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        run: |
+          echo "🔄 Docker failed, trying manual CLI analysis..."
           
           # Basit curl ile en son JAR'ı bul ve indir
-     #     curl -s https://api.github.com/repos/codacy/codacy-analysis-cli/releases/latest | \
-     #     grep "browser_download_url.*\.jar" | \
-     #     cut -d '"' -f 4 | \
-     #     head -1 | \
-     #     xargs curl -L -o codacy-analysis-cli.jar
+          curl -s https://api.github.com/repos/codacy/codacy-analysis-cli/releases/latest | \
+          grep "browser_download_url.*\.jar" | \
+          cut -d '"' -f 4 | \
+          head -1 | \
+          xargs curl -L -o codacy-analysis-cli.jar
           
-     #     if [ -f codacy-analysis-cli.jar ]; then
-     #       echo "✅ JAR downloaded successfully"
-     #       java -jar codacy-analysis-cli.jar analyze \
-     #         --upload \
-     #         --project-token "$CODACY_PROJECT_TOKEN" \
-     #         --verbose \
-     #         --commit-uuid "${{ github.sha }}"
-     #     else
-     #       echo "❌ Failed to download Codacy CLI"
-     #       exit 1
-     #     fi
+          if [ -f codacy-analysis-cli.jar ]; then
+            echo "✅ JAR downloaded successfully"
+            java -jar codacy-analysis-cli.jar analyze \
+              --upload \
+              --project-token "$CODACY_PROJECT_TOKEN" \
+              --verbose \
+              --commit-uuid "${{ github.sha }}"
+          else
+            echo "❌ Failed to download Codacy CLI"
+            exit 1
+          fi
 
-     # - name: Log Codacy Analysis Results
-     #   if: always()
-     #   run: |
-     #     echo "Codacy analysis completed"
-     #     echo "Commit SHA: ${{ github.sha }}"
-     #     echo "Branch: ${{ github.ref_name }}"
+      - name: Log Codacy Analysis Results
+        if: always()
+        run: |
+          echo "Codacy analysis completed"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Branch: ${{ github.ref_name }}"
 
-     # - name: Debug Information (on failure)
-     #   if: failure()
-     #   run: |
-     #     echo "=== DEBUG INFORMATION ==="
-     #     echo "Working directory: $(pwd)"
-     #     echo "Environment variables:"
-     #     env | grep -E "(GITHUB_|CODACY_)" | head -10
-     #     echo "Codacy CLI executable check:"
-     #     ls -la codacy-analysis-cli
-     #     file codacy-analysis-cli
-     #     echo "System information:"
-     #     uname -a
-     #     echo "Java version:"
-     #     java -version
+      - name: Debug Information (on failure)
+        if: failure()
+        run: |
+          echo "=== DEBUG INFORMATION ==="
+          echo "Working directory: $(pwd)"
+          echo "Environment variables:"
+          env | grep -E "(GITHUB_|CODACY_)" | head -10
+          echo "Codacy CLI executable check:"
+          ls -la codacy-analysis-cli
+          file codacy-analysis-cli
+          echo "System information:"
+          uname -a
+          echo "Java version:"
+          java -version
 
      # - name: Debug git status before tag creation
      #   run: |
