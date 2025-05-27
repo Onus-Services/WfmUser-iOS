@@ -116,43 +116,7 @@ jobs:
      #     cd $GITHUB_WORKSPACE
      #     cp -R /Users/birol/Desktop/heresdk/frameworks/heresdk.xcframework ThirdParty/HERESDK/heresdk/frameworks/
 
-      - name: Create .codacy.yml configuration
-        run: |
-          cd $GITHUB_WORKSPACE
-          
-          # Codacy konfigürasyon dosyası oluştur
-          cat > .codacy.yml << 'EOF'
-          ---
-          engines:
-            # Swift analizi için
-            tailor:
-              enabled: true
-            # Genel kod kalitesi için
-            duplication:
-              enabled: true
-              exclude_paths:
-                - 'ThirdParty/**'
-                - '**/*.xcframework/**'
-                - 'Pods/**'
-                - 'build/**'
-            
-          exclude_paths:
-            # Third party kütüphaneleri hariç tut
-            - 'ThirdParty/**'
-            - '**/*.xcframework/**'
-            - 'Pods/**'
-            - 'build/**'
-            - 'DerivedData/**'
-            - '**/*.generated.swift'
-            
-          # Sadece kaynak kod dosyalarını analiz et
-          include_paths:
-            - 'WfmUser/**/*.swift'
-            - 'WfmUserTests/**/*.swift'
-          EOF
-          
-          echo "📄 Created .codacy.yml configuration:"
-          cat .codacy.yml
+     
 
      # - name: Check if HERE SDK exists in correct location
      #   run: |
