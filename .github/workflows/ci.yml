@@ -208,7 +208,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-          architecture: 'aarch64
+          architecture: 'aarch64'
           
       - name: Download Codacy CLI (Apple M1 - macOS ARM64)
         run: |
