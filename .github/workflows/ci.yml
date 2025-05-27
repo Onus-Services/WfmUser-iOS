@@ -204,21 +204,62 @@ jobs:
      #     --progress
 
       - name: Set up Java (for Codacy CLI)
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
-
+          architecture: 'aarch64
+          
       - name: Download Codacy CLI (Apple M1 - macOS ARM64)
         run: |
+          echo "Downloading Codacy CLI for macOS ARM64..."
           curl -L https://github.com/codacy/codacy-analysis-cli/releases/latest/download/codacy-analysis-cli-macos-arm64 -o codacy-analysis-cli
           chmod +x codacy-analysis-cli
+          echo "Codacy CLI downloaded and made executable"
+
+      - name: Verify Codacy CLI
+        run: |
+          ./codacy-analysis-cli --version
+          echo "Current working directory: $(pwd)"
+          echo "Files in current directory:"
+          ls -la
 
       - name: Run Codacy Analysis CLI
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: |
-          ./codacy-analysis-cli analyze --upload --project-token $CODACY_PROJECT_TOKEN
+          echo "Starting Codacy analysis..."
+          echo "Project token is set: $([ -n "$CODACY_PROJECT_TOKEN" ] && echo "Yes" || echo "No")"
+          
+          # Analiz çalıştır
+          ./codacy-analysis-cli analyze \
+            --upload \
+            --project-token $CODACY_PROJECT_TOKEN \
+            --verbose \
+            --commit-uuid ${{ github.sha }} \
+            --parallel 2
+
+      - name: Log Codacy Analysis Results
+        if: always()
+        run: |
+          echo "Codacy analysis completed"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Branch: ${{ github.ref_name }}"
+
+      - name: Debug Information (on failure)
+        if: failure()
+        run: |
+          echo "=== DEBUG INFORMATION ==="
+          echo "Working directory: $(pwd)"
+          echo "Environment variables:"
+          env | grep -E "(GITHUB_|CODACY_)" | head -10
+          echo "Codacy CLI executable check:"
+          ls -la codacy-analysis-cli
+          file codacy-analysis-cli
+          echo "System information:"
+          uname -a
+          echo "Java version:"
+          java -version
 
      # - name: Debug git status before tag creation
      #   run: |
