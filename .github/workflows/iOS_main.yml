@@ -13,33 +13,33 @@ jobs:
   checkout:
     uses: ./.github/workflows/checkout.yml
 
- # setup-xcode:
- #   uses: ./.github/workflows/xcode-setup.yml
- #   needs: checkout
+  setup-xcode:
+    uses: ./.github/workflows/xcode-setup.yml
+    needs: checkout
 
- # setup-here-sdk:
- #   uses: ./.github/workflows/here-sdk-setup.yml
- #   needs: setup-xcode
+  setup-here-sdk:
+    uses: ./.github/workflows/here-sdk-setup.yml
+    needs: setup-xcode
 
- # build-project:
- #   uses: ./.github/workflows/build-project.yml
- #   needs: setup-here-sdk
+  build-project:
+    uses: ./.github/workflows/build-project.yml
+    needs: setup-here-sdk
 
- # unit-tests:
- #   uses: ./.github/workflows/unit-tests.yml
- #   needs: build-project
+  unit-tests:
+    uses: ./.github/workflows/unit-tests.yml
+    needs: build-project
 
- # docs:
- #   uses: ./.github/workflows/generate-docs.yml
- #   needs: build-project
-
- # upload:
- #   uses: ./.github/workflows/upload-to-drive.yml
- #   needs: docs
+  docs:
+    uses: ./.github/workflows/generate-docs.yml
+    needs: build-project
 
   codacy:
     uses: ./.github/workflows/codacy-analysis.yml
-    needs: checkout
+    needs: unit-tests
+
+  upload:
+    uses: ./.github/workflows/upload-to-drive.yml
+    needs: codacy
 
  # tags:
  #   uses: ./.github/workflows/create-tag.yml
