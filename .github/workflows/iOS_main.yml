@@ -28,22 +28,22 @@ jobs:
     needs: setup-here-sdk
 
   unit-tests:
-    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/main'
     uses: ./.github/workflows/unit-tests.yml
     needs: build-project
 
   docs:
-    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/main'
     uses: ./.github/workflows/generate-docs.yml
     needs: build-project
 
   codacy:
-    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/main'
     uses: ./.github/workflows/codacy-analysis.yml
     needs: unit-tests
 
   upload:
-    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/main'
     uses: ./.github/workflows/upload-to-drive.yml
     needs: codacy
 
