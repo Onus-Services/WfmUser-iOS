@@ -3,7 +3,7 @@ on:
   workflow_call:
 
 jobs:
-  build-project:
+  codacy-analysis:
     runs-on: self-hosted
     steps:
       - name: Verify wget installation
