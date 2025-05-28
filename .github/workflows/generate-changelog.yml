@@ -12,12 +12,13 @@ jobs:
           rm -rf ${{ github.workspace }}/*
           rm -rf ${{ github.workspace }}/.git*
           
-      - name: Checkout repository
-        uses: actions/checkout@v4  # v4 kullanın
-        with:
-          fetch-depth: 0
-          clean: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Manual Git setup
+        run: |
+          cd ${{ github.workspace }}
+          git clone https://github.com/${{ github.repository }}.git .
+          git checkout ${{ github.head_ref || github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Verify Git repository
         run: |
