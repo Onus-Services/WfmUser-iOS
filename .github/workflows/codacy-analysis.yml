@@ -9,6 +9,19 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Debug token availability
+        run: |
+          echo "Checking token availability..."
+          if [ -n "${{ secrets.CODACY_PROJECT_TOKEN }}" ]; then
+            echo "✅ CODACY_PROJECT_TOKEN is set"
+            echo "Token length: ${#CODACY_PROJECT_TOKEN}"
+          else
+            echo "❌ CODACY_PROJECT_TOKEN is empty or not set"
+            exit 1
+          fi
+        env:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         
       - name: Verify wget installation
         run: |
