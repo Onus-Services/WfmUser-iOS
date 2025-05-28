@@ -156,47 +156,47 @@ extension AppDelegate: MessagingDelegate {
         var notfModel: NotificationResponseModel = NotificationResponseModel()
         for notf in userInfo {
             if notf.key.description == "Type" {
-                //notfModel.Type1 = Int(notf.value as! String)
+                // notfModel.Type1 = Int(notf.value as! String)
                 let stringValue = notf.value as? String ?? "0"
                 notfModel.Type1 = Int(stringValue) ?? 0
             } else if notf.key.description == "MxRouteId" {
-                //notfModel.MxRouteId = Int(notf.value as! String)
+                // notfModel.MxRouteId = Int(notf.value as! String)
                 let stringValue = notf.value as? String ?? "0"
                 notfModel.MxRouteId = Int(stringValue) ?? 0
             } else if notf.key.description == "MxBlockId" {
-                //notfModel.MxBlockId = Int(notf.value as! String)
+                // notfModel.MxBlockId = Int(notf.value as! String)
                 let stringValue = notf.value as? String ?? "0"
                 notfModel.MxBlockId = Int(stringValue) ?? 0
             } else if notf.key.description == "BlockStatusId" {
-                //notfModel.BlockStatusId = Int(notf.value as! String)
+                // notfModel.BlockStatusId = Int(notf.value as! String)
                 let stringValue = notf.value as? String ?? "0"
                 notfModel.BlockStatusId = Int(stringValue) ?? 0
             } else if notf.key.description == "BlockExecutionStatusId" {
-                //notfModel.BlockExecutionStatusId = Int(notf.value as! String)
+                // notfModel.BlockExecutionStatusId = Int(notf.value as! String)
                 let stringValue = notf.value as? String ?? "0"
                 notfModel.BlockExecutionStatusId = Int(stringValue) ?? 0
             } else if notf.key.description == "BlockActionDesc" {
                 notfModel.BlockActionDesc = notf.value as? String
             } else if notf.key.description == "PointStatusId" {
-                //notfModel.PointStatusId = Int(notf.value as! String)
+                // notfModel.PointStatusId = Int(notf.value as! String)
                 let stringValue = notf.value as? String ?? "0"
                 notfModel.PointStatusId = Int(stringValue) ?? 0
             } else if notf.key.description == "PointId" {
-                //notfModel.PointId = Int(notf.value as! String)
+                // notfModel.PointId = Int(notf.value as! String)
                 let stringValue = notf.value as? String ?? "0"
                 notfModel.PointId = Int(stringValue) ?? 0
             } else if notf.key.description == "Show" {
-                //notfModel.Show = Int(notf.value as! String)
+                // notfModel.Show = Int(notf.value as! String)
                 let stringValue = notf.value as? String ?? "0"
                 notfModel.Show = Int(stringValue) ?? 0
             } else if notf.key.description == "ActionDesc" {
                 notfModel.ActionDesc = notf.value as? String
             } else if notf.key.description == "UseSandBox" {
-                //notfModel.UseSandBox = Int(notf.value as! String)
+                // notfModel.UseSandBox = Int(notf.value as! String)
                 let stringValue = notf.value as? String ?? "0"
                 notfModel.UseSandBox = Int(stringValue) ?? 0
             } else if notf.key.description == "ExecutionType" {
-                //notfModel.ExecutionType = Int(notf.value as! String)
+                // notfModel.ExecutionType = Int(notf.value as! String)
                 let stringValue = notf.value as? String ?? "0"
                 notfModel.ExecutionType = Int(stringValue) ?? 0
             }
