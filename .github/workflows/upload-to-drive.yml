@@ -42,3 +42,11 @@ jobs:
       - name: Upload docs to Google Drive
         run: |
           rclone copy docs gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/${{ env.FOLDER_NAME }}/Docs --create-empty-src-dirs --drive-chunk-size=64M --progress
+
+      - name: Upload SnapshotTests to Google Drive
+        run: |
+          rclone copy "/Users/birol/actions-runner/_work/WfmUser-iOS/WfmUser-iOS/WfmUserTests/__Snapshots__/SnapshotTests" \
+          gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/${{ env.FOLDER_NAME }}/Snapshot \
+          --create-empty-src-dirs \
+          --drive-chunk-size=64M \
+          --progress
