@@ -12,6 +12,19 @@ jobs:
      #     mkdir -p ~/.config/rclone
      #     echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
 
+     # - name: Setup rclone config
+     #   run: |
+     #     mkdir -p ~/.config/rclone
+     #     # İçeriği dosyaya yaz
+     #     cat > ~/.config/rclone/rclone.conf << EOF
+     #     ${{ secrets.RCLONE_CONF }}
+     #     EOF
+
+     #     # DOSYANIN İÇERİĞİNİ YAZDIR (DEBUG AMAÇLI - HATA AYIKLAMA SONRASI KALDIR!)
+     #     echo "--- rclone.conf İçeriği (DEBUG ONLY!) ---"
+     #     cat ~/.config/rclone/rclone.conf
+     #     echo "--- rclone.conf İçeriği Sonu ---"   
+
       - name: Read version and build from Xcode settings
         run: |
           VERSION=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep MARKETING_VERSION | awk '{print $3}')
@@ -28,4 +41,4 @@ jobs:
 
       - name: Upload docs to Google Drive
         run: |
-          rclone copy fastlane gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/${{ env.FOLDER_NAME }}/Docs --create-empty-src-dirs --drive-chunk-size=64M --progress
+          rclone copy docs gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/${{ env.FOLDER_NAME }}/Docs --create-empty-src-dirs --drive-chunk-size=64M --progress
