@@ -13,17 +13,17 @@ jobs:
   checkout:
     uses: ./.github/workflows/checkout.yml
 
- # setup-xcode:
- #   uses: ./.github/workflows/xcode-setup.yml
- #   needs: checkout
+  setup-xcode:
+    uses: ./.github/workflows/xcode-setup.yml
+    needs: checkout
 
- # setup-here-sdk:
- #   uses: ./.github/workflows/here-sdk-setup.yml
- #   needs: setup-xcode
+  setup-here-sdk:
+    uses: ./.github/workflows/here-sdk-setup.yml
+    needs: setup-xcode
 
- # build-project:
- #   uses: ./.github/workflows/build-project.yml
- #   needs: setup-here-sdk
+  build-project:
+    uses: ./.github/workflows/build-project.yml
+    needs: setup-here-sdk
 
  # unit-tests:
  #   uses: ./.github/workflows/unit-tests.yml
@@ -31,7 +31,7 @@ jobs:
 
   docs:
     uses: ./.github/workflows/generate-docs.yml
-    needs: checkout
+    needs: build-project
 
   upload:
     uses: ./.github/workflows/upload-to-drive.yml
