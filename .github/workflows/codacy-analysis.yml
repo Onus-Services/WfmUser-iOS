@@ -13,6 +13,49 @@ jobs:
           fetch-depth: 0  # Tam geçmişi getir
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Clean workspace completely
+        run: |
+          echo "Current workspace: $GITHUB_WORKSPACE"
+          echo "Stopping any git processes..."
+          pkill -f git || true
+          echo "Removing all files..."
+          cd /Users/birol/actions-runner/_work/WfmUser-iOS/
+          rm -rf WfmUser-iOS || true
+          mkdir -p WfmUser-iOS
+          echo "Workspace cleaned"
+
+      - name: Manual git clone with token
+        run: |
+          echo "Attempting git clone with authentication..."
+          cd /Users/birol/actions-runner/_work/WfmUser-iOS/
+          rm -rf WfmUser-iOS || true
+          
+          # Token ile repository URL'ini oluştur
+          REPO_URL="https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          echo "Cloning repository..."
+          
+          # Clone işlemi
+          git clone "$REPO_URL" WfmUser-iOS
+          cd WfmUser-iOS
+          
+          # Checkout specific ref if needed
+          if [ "${{ github.ref }}" != "refs/heads/main" ]; then
+            git checkout ${{ github.sha }}
+          fi
+          
+          echo "Clone completed successfully"
+      
+
+      - name: Verify checkout
+        run: |
+          echo "Working directory: $(pwd)"
+          echo "Git status:"
+          git status
+          echo "Git remote:"
+          git remote -v
+          echo "Recent commits:"
+          git log --oneline -n 3
+
       - name: Debug token availability
         run: |
           echo "Checking token availability..."
