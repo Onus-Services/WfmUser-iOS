@@ -6,6 +6,10 @@ jobs:
   codacy-analysis:
     runs-on: self-hosted
     steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Verify wget installation
         run: |
           which wget
