@@ -6,16 +6,46 @@ jobs:
   upload:
     runs-on: self-hosted
     steps:
+
+      - name: Generate Documentation with Jazzy
+        run: |
+          # Homebrew Ruby varsa onu kullan, yoksa sistem Ruby
+          if command -v /opt/homebrew/opt/ruby/bin/ruby &> /dev/null; then
+            echo "Using Homebrew Ruby for Jazzy"
+            /opt/homebrew/lib/ruby/gems/3.0.0/bin/jazzy \
+              --clean \
+              --min-acl internal \
+              --module "WfmUser" \
+              --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
+              --output docs
+          else
+            echo "Using system Ruby for Jazzy"
+            jazzy \
+              --clean \
+              --min-acl internal \
+              --module "WfmUser" \
+              --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
+              --output docs
+          fi
+    
       - name: Setup rclone config
         run: |
           mkdir -p ~/.config/rclone
           echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
 
-      - name: Read version and build
+      - name: Read version and build from Xcode settings
         run: |
           VERSION=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep MARKETING_VERSION | awk '{print $3}')
           BUILD=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
-          echo "FOLDER_NAME=v${VERSION}_${BUILD}" >> "$GITHUB_ENV"
+          FOLDER_NAME="v${VERSION}_${BUILD}"
+          echo "📁 Version: $VERSION"
+          echo "📦 Build: $BUILD"
+          echo "📂 Folder Name: $FOLDER_NAME"
+          echo "FOLDER_NAME=$FOLDER_NAME" >> "$GITHUB_ENV"
+
+      - name: Print FOLDER_NAME for debug
+        run: |
+          echo "✅ Generated folder name: $FOLDER_NAME"
 
       - name: Upload docs to Google Drive
         run: |
