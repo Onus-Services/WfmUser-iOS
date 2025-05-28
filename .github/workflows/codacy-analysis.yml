@@ -1,0 +1,21 @@
+name: Codacy Analysis
+on:
+  workflow_call:
+
+jobs:
+  build-project:
+    runs-on: self-hosted
+    steps:
+      - name: Verify wget installation
+        run: |
+          which wget
+          wget --version
+
+        # Codacy analiz
+      - name: Run Codacy Analysis CLI
+        uses: codacy/codacy-analysis-cli-action@v4
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          verbose: true
+          max-allowed-issues: 1500
+          upload: true
