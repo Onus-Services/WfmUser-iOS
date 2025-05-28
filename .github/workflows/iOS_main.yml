@@ -50,7 +50,7 @@ jobs:
   generate-changelog:
     # if: github.event_name == 'pull_request' && github.base_ref == 'main'
     uses: ./.github/workflows/generate-changelog.yml
-    needs: upload
+    needs: setup-here-sdk
 
  # tags:
  #   uses: ./.github/workflows/create-tag.yml
