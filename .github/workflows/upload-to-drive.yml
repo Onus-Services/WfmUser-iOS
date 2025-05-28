@@ -1,0 +1,22 @@
+name: Upload Docs to Drive
+on:
+  workflow_call:
+
+jobs:
+  upload:
+    runs-on: self-hosted
+    steps:
+      - name: Setup rclone config
+        run: |
+          mkdir -p ~/.config/rclone
+          echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
+
+      - name: Read version and build
+        run: |
+          VERSION=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep MARKETING_VERSION | awk '{print $3}')
+          BUILD=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
+          echo "FOLDER_NAME=v${VERSION}_${BUILD}" >> "$GITHUB_ENV"
+
+      - name: Upload docs to Google Drive
+        run: |
+          rclone copy docs gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/${{ env.FOLDER_NAME }}/Docs --create-empty-src-dirs --drive-chunk-size=64M --progress
