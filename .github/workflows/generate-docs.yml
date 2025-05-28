@@ -1,0 +1,24 @@
+name: Generate Documentation
+on:
+  workflow_call:
+
+jobs:
+  docs:
+    runs-on: self-hosted
+    steps:
+      - name: Generate Documentation with Jazzy
+        run: |
+          if command -v /opt/homebrew/opt/ruby/bin/ruby &> /dev/null; then
+            /opt/homebrew/lib/ruby/gems/3.0.0/bin/jazzy \
+              --clean \
+              --min-acl internal \
+              --module "WfmUser" \
+              --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
+              --output docs
+          else
+            jazzy \
+              --clean \
+              --min-acl internal \
+              --module "WfmUser" \
+              --build-tool-arguments -project,WfmUser.xcodeproj,-scheme,WfmUser,-sdk,iphonesimulator \
+              --output docs
