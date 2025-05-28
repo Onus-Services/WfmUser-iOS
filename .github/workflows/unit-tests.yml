@@ -1,0 +1,16 @@
+name: Run Unit Tests
+on:
+  workflow_call:
+
+jobs:
+  unit-tests:
+    runs-on: self-hosted
+    steps:
+      - name: Run Unit Tests
+        run: |
+          xcodebuild test \
+            -project WfmUser.xcodeproj \
+            -scheme WfmUser \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+            -derivedDataPath build \
+            | tee xcodebuild_test.log | xcpretty
