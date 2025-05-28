@@ -1,0 +1,20 @@
+name: Setup HERE SDK
+on:
+  workflow_call:
+
+jobs:
+  setup-here-sdk:
+    runs-on: self-hosted
+    steps:
+      - name: Setup HERE SDK directory structure
+        run: |
+          mkdir -p ThirdParty/HERESDK/heresdk/frameworks
+
+      - name: Copy HERE SDK from local machine
+        run: |
+          cp -R /Users/birol/Desktop/heresdk/frameworks/heresdk.xcframework ThirdParty/HERESDK/heresdk/frameworks/
+
+      - name: Check if HERE SDK exists
+        run: |
+          ls -la ThirdParty/HERESDK/heresdk/frameworks/
+          ls -la ThirdParty/HERESDK/heresdk/frameworks/heresdk.xcframework
