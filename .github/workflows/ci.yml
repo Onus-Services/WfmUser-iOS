@@ -62,6 +62,7 @@ jobs:
           echo "Recent commits:"
           git log --oneline -n 3
 
+     #Döküman için jazzy pc de ilk kez kullanılıyorsa
      # - name: Install xcpretty
      #   run: |
      #     sudo gem install xcpretty
@@ -105,7 +106,8 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '16.3'
-          
+
+     #Here sdk dosyalarını oluştur     
      # - name: Setup HERE SDK directory structure
      #   run: |
      #     cd $GITHUB_WORKSPACE
@@ -116,8 +118,6 @@ jobs:
      #     cd $GITHUB_WORKSPACE
      #     cp -R /Users/birol/Desktop/heresdk/frameworks/heresdk.xcframework ThirdParty/HERESDK/heresdk/frameworks/
 
-     
-
      # - name: Check if HERE SDK exists in correct location
      #   run: |
      #     ls -la ThirdParty/HERESDK/heresdk/frameworks/
@@ -126,6 +126,7 @@ jobs:
      # - name: Install dependencies
      #   run: echo "No Podfile found, skipping pod install"
 
+     #Build al
      # - name: Build project (disable code signing)
      #   run: |
      #      xcodebuild clean build \
@@ -136,6 +137,7 @@ jobs:
      #      CODE_SIGNING_ALLOWED=NO \
      #      CODE_SIGNING_REQUIRED=NO | xcpretty
 
+     #Döküman oluştur
      # - name: Generate Documentation with Jazzy
      #   run: |
      #     # Homebrew Ruby varsa onu kullan, yoksa sistem Ruby
@@ -157,6 +159,7 @@ jobs:
      #         --output docs
      #     fi
 
+     #Drive a yüklemek için
      # - name: Setup rclone config
      #   run: |
      #     mkdir -p ~/.config/rclone
@@ -170,6 +173,7 @@ jobs:
      #     cat ~/.config/rclone/rclone.conf
      #     echo "--- rclone.conf İçeriği Sonu ---"   
 
+     #Verison_BuildNo al
      # - name: Read version and build from Xcode settings
      #   run: |
      #     VERSION=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep MARKETING_VERSION | awk '{print $3}')
@@ -180,10 +184,12 @@ jobs:
      #     echo "📂 Folder Name: $FOLDER_NAME"
      #     echo "FOLDER_NAME=$FOLDER_NAME" >> "$GITHUB_ENV"
 
+     #Version_BuildNo olarak dosya adı oluştur
      # - name: Print FOLDER_NAME for debug
      #   run: |
      #     echo "✅ Generated folder name: $FOLDER_NAME"
 
+     #Dökümanları drive yükle
      # - name: Upload docs to Google Drive
      #   run: |
      #     rclone copy docs gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/${{ env.FOLDER_NAME }}/Docs --create-empty-src-dirs --drive-chunk-size=64M --progress
@@ -197,6 +203,7 @@ jobs:
      #       -derivedDataPath build \
      #       | tee xcodebuild_test.log | xcpretty
 
+     #Ssleri drive yükle
      # - name: Upload SnapshotTests to Google Drive
      #   run: |
      #     rclone copy "/Users/birol/actions-runner/_work/WfmUser-iOS/WfmUser-iOS/WfmUserTests/__Snapshots__/SnapshotTests" \
@@ -205,6 +212,7 @@ jobs:
      #     --drive-chunk-size=64M \
      #     --progress
 
+     #Codacy ilk kez kullanılacaksa wget yükle
      # - name: Install wget
      #   run: |
      #     if ! command -v wget &> /dev/null; then
@@ -220,11 +228,13 @@ jobs:
      #       echo "wget already installed"
      #     fi
 
+
       - name: Verify wget installation
         run: |
           which wget
           wget --version
 
+        # Codacy analiz
       - name: Run Codacy Analysis CLI
         uses: codacy/codacy-analysis-cli-action@v4
         with:
@@ -233,7 +243,7 @@ jobs:
           max-allowed-issues: 1500
           upload: true
      
-
+     #Tag oluşturma
      # - name: Debug git status before tag creation
      #   run: |
      #      echo "Current directory: $(pwd)"
@@ -249,53 +259,3 @@ jobs:
      #     TAG_NAME="release${{ env.FOLDER_NAME }}"
      #     git tag "$TAG_NAME"
      #     git push origin "$TAG_NAME"
-
-     # - name: Create ExportOptions.plist
-     #   run: |
-     #     cat <<EOF > ExportOptions.plist
-     #     <?xml version="1.0" encoding="UTF-8"?>
-     #     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-     #     <plist version="1.0">
-     #     <dict>
-     #       <key>method</key>
-     #       <string>app-store</string>
-     #       <key>uploadBitcode</key>
-     #       <false/>
-     #       <key>uploadSymbols</key>
-     #       <true/>
-     #     </dict>
-     #     </plist>
-     #     EOF
-
-            
-     # - name: Archive app
-     #   run: |
-     #      xcodebuild archive \
-     #      -project WfmUser.xcodeproj \
-     #      -scheme WfmUser \
-     #      -configuration Release \
-     #      -sdk iphoneos18.4 \
-     #      -destination 'generic/platform=iOS' \
-     #      -archivePath ./build/WfmUser.xcarchive \
-     #      CODE_SIGN_IDENTITY="" \
-     #      CODE_SIGNING_ALLOWED=NO \
-     #      CODE_SIGNING_REQUIRED=NO | tee xcodebuild_archive.log | xcpretty
-
-     # - name: Export IPA
-     #   run: |
-     #     xcodebuild -exportArchive \
-     #     -archivePath ./build/WfmUser.xcarchive \
-     #     -exportOptionsPlist ExportOptions.plist \
-     #     -exportPath ./build/export
-
-     # - name: Upload to TestFlight
-     #   env:
-     #     APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
-     #     APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
-     #     APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
-     #   run: |
-     #     xcrun altool --upload-app \
-     #       -f build/export/WfmUser.ipa \
-     #       --type ios \
-     #       --apiKey "$APP_STORE_CONNECT_API_KEY_ID" \
-     #       --apiIssuer "$APP_STORE_CONNECT_ISSUER_ID"
