@@ -19,3 +19,4 @@ jobs:
           verbose: true
           max-allowed-issues: 1500
           upload: true
+          run-docker-tools: true
