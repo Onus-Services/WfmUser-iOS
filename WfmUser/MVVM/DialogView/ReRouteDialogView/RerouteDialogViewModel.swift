@@ -29,7 +29,7 @@ class RerouteDialogViewModel: ObservableObject {
             if plannedList[i].executionStatusId != LecyStatus.olumluTeslimat && plannedList[i].executionStatusId != LecyStatus.olumluTeslimat {
                 data.append(String("\(plannedList[i].sira) - \(plannedList[i].isim) - \(plannedList[i].takipId)\n\(plannedList[i].gelenAdres)"))
                 dataHash[k] = Int(plannedList[i].mxRouteProcessedId)
-                k = k + 1
+                k += 1
             }
             /*if plannedList[i].ExecutionType == ExecutionTypes.islemYok && !plannedList[i].isCenterPoint() {
                 data.append(String("\(plannedList[i].ListSequence!) - \(plannedList[i].Name!) - \(plannedList[i].Special1!)\n\(plannedList[i].Address!)"))

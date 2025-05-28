@@ -351,9 +351,12 @@ struct FrekansMatrixDialogView: View {
             
             if filterSp != [] {
                 if let index = gunler.firstIndex(where: { $0 == filterSp[0] }) {
-                    filterArray = filterArray + homePageVM.personelRoutePointArray.filter { nokta in
+                    filterArray += homePageVM.personelRoutePointArray.filter { nokta in
                         "\(index + 1)".contains(nokta.haftaninGunu) && filterSp[1].contains(nokta.frekans)
                     }
+                    /*filterArray = filterArray + homePageVM.personelRoutePointArray.filter { nokta in
+                        "\(index + 1)".contains(nokta.haftaninGunu) && filterSp[1].contains(nokta.frekans)
+                    } */
                 } else {
                     
                 }
@@ -371,9 +374,12 @@ struct FrekansMatrixDialogView: View {
             
             if filterSp != [] {
                 if let index = gunler.firstIndex(where: { $0 == filterSp[0] }) {
-                    filterArray = filterArray + homePageVM.personelRoutePointArray.filter { nokta in
+                    filterArray += homePageVM.personelRoutePointArray.filter { nokta in
                         "\(index + 1)".contains(nokta.haftaninGunu) && filterSp[1].contains(nokta.frekans)
                     }
+                    /*filterArray = filterArray + homePageVM.personelRoutePointArray.filter { nokta in
+                        "\(index + 1)".contains(nokta.haftaninGunu) && filterSp[1].contains(nokta.frekans)
+                    }*/
                 }
                 /*filterArray = filterArray + personelRoutePointArray.filter { nokta in
                     filterSp[0].contains(nokta.arac) && nokta.kritikGun.contains(filterSp[1])

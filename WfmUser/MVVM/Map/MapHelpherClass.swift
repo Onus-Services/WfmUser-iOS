@@ -155,14 +155,16 @@ struct MapHelpherClass {
         locationIndicator.updateLocation(location)
     }
     
-    func createMapPolygon(geoCoordinates: [GeoCoordinates], color: UIColor) -> MapPolygon {
-        
-        let coordinates = geoCoordinates
-        let geoPolygon = try! GeoPolygon(vertices: coordinates)
-        let fillColor = color.withAlphaComponent(0.3)
-        var mapPolygon = MapPolygon(geometry: geoPolygon, color: fillColor)
-        
-        return mapPolygon
+    func createMapPolygon(geoCoordinates: [GeoCoordinates], color: UIColor) -> MapPolygon? {
+        do {
+            let geoPolygon = try GeoPolygon(vertices: geoCoordinates)
+            let fillColor = color.withAlphaComponent(0.3)
+            let mapPolygon = MapPolygon(geometry: geoPolygon, color: fillColor)
+            return mapPolygon
+        } catch {
+            print("GeoPolygon oluşturulamadı: \(error)")
+            return nil
+        }
     }
     
     func createMarkerAddressBook(point: PointModel, week: Bool = false, isSenaryo: Bool = false, kritikGun: [String] = [], markerArray: @escaping ([MapMarker]) -> Void) {

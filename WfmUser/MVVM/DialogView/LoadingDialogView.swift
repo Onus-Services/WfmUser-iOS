@@ -44,7 +44,7 @@ struct LoadingGifView: UIViewRepresentable {
     //var gifName: String
     let animatedView = FLAnimatedImageView()
     
-    func makeUIView(context: UIViewRepresentableContext<LoadingGifView>) -> UIView {
+    /*func makeUIView(context: UIViewRepresentableContext<LoadingGifView>) -> UIView {
         
         let view = UIView()
         
@@ -61,6 +61,35 @@ struct LoadingGifView: UIViewRepresentable {
         NSLayoutConstraint.activate([
             animatedView.heightAnchor.constraint(equalTo: view.heightAnchor),
             animatedView.widthAnchor.constraint(equalTo: view.widthAnchor)])
+
+        return view
+    } */
+    
+    func makeUIView(context: UIViewRepresentableContext<LoadingGifView>) -> UIView {
+        let view = UIView()
+
+        guard let path = Bundle.main.path(forResource: "loading_rotamen", ofType: "gif") else {
+            print("GIF dosyası bulunamadı")
+            return view
+        }
+
+        let url = URL(fileURLWithPath: path)
+
+        do {
+            let gifData = try Data(contentsOf: url)
+            let gif = FLAnimatedImage(animatedGIFData: gifData)
+            animatedView.animatedImage = gif
+        } catch {
+            print("GIF verisi okunamadı: \(error)")
+        }
+
+        animatedView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(animatedView)
+
+        NSLayoutConstraint.activate([
+            animatedView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            animatedView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
 
         return view
     }
