@@ -1,0 +1,53 @@
+name: Generate Changelog Entry
+
+on:
+  workflow_call:  # Başka bir workflow'dan çağrılabilir
+
+jobs:
+  generate-changelog:
+    name: Generate CHANGELOG.md Entry
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set metadata from PR
+        run: |
+          echo "TITLE=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
+          echo "BODY=${{ github.event.pull_request.body }}" >> $GITHUB_ENV
+          echo "NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          echo "AUTHOR=${{ github.event.pull_request.user.login }}" >> $GITHUB_ENV
+          echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+          echo "VERSION=1.0.${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+
+      - name: Create changelog entry file
+        run: |
+          echo "## [${VERSION}] - ${DATE}" > NEW_CHANGELOG_ENTRY.md
+          echo "" >> NEW_CHANGELOG_ENTRY.md
+
+          echo "### feature:" >> NEW_CHANGELOG_ENTRY.md
+          echo "- $TITLE (by @$AUTHOR) [PR #$NUMBER]" >> NEW_CHANGELOG_ENTRY.md
+          echo "" >> NEW_CHANGELOG_ENTRY.md
+
+          echo "### fix:" >> NEW_CHANGELOG_ENTRY.md
+          echo "" >> NEW_CHANGELOG_ENTRY.md
+
+          echo "### chore:" >> NEW_CHANGELOG_ENTRY.md
+          echo "" >> NEW_CHANGELOG_ENTRY.md
+
+      - name: Merge with existing CHANGELOG.md
+        run: |
+          if [ -f CHANGELOG.md ]; then
+            cat CHANGELOG.md >> OLD_CHANGELOG_CONTENT.md
+          fi
+
+          cat NEW_CHANGELOG_ENTRY.md OLD_CHANGELOG_CONTENT.md > CHANGELOG.md
+
+      - name: Commit and push updated CHANGELOG
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md
+          git commit -m "chore: update CHANGELOG for PR #$NUMBER"
+          git push origin HEAD:${{ github.head_ref }}
