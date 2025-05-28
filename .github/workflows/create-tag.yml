@@ -1,0 +1,23 @@
+name: Create Tag
+on:
+  workflow_call:
+
+jobs:
+  build-project:
+    runs-on: self-hosted
+    steps:
+     - name: Debug git status before tag creation
+       run: |
+         echo "Current directory: $(pwd)"
+         echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+         ls -la
+         git status
+         git log --oneline -n 5
+    
+     - name: Create Git Tag
+       run: |
+         git config user.name "github-actions"
+         git config user.email "github-actions@github.com"
+         TAG_NAME="release${{ env.FOLDER_NAME }}"
+         git tag "$TAG_NAME"
+         git push origin "$TAG_NAME"
