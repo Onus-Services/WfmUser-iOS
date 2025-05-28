@@ -35,4 +35,4 @@ jobs:
 
   upload:
     uses: ./.github/workflows/upload-to-drive.yml
-    needs: docs
+    needs: setup-here-sdk
