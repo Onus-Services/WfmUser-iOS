@@ -7,10 +7,10 @@ jobs:
     runs-on: self-hosted
     steps:
     
-      - name: Setup rclone config
-        run: |
-          mkdir -p ~/.config/rclone
-          echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
+     # - name: Setup rclone config
+     #   run: |
+     #     mkdir -p ~/.config/rclone
+     #     echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
 
       - name: Read version and build from Xcode settings
         run: |
@@ -28,4 +28,4 @@ jobs:
 
       - name: Upload docs to Google Drive
         run: |
-          rclone copy docs gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/${{ env.FOLDER_NAME }}/Docs --create-empty-src-dirs --drive-chunk-size=64M --progress
+          rclone copy fastlane gdrive:/MOBILDOKUMANLAR/WfmUser-iOS/${{ env.FOLDER_NAME }}/Docs --create-empty-src-dirs --drive-chunk-size=64M --progress
