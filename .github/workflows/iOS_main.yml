@@ -37,10 +37,10 @@ jobs:
  #   uses: ./.github/workflows/upload-to-drive.yml
  #   needs: docs
 
- # codacy:
- #   uses: ./.github/workflows/codacy-analysis.yml
- #   needs: checkout
-
-  tags:
-    uses: ./.github/workflows/create-tag.yml
+  codacy:
+    uses: ./.github/workflows/codacy-analysis.yml
     needs: checkout
+
+ # tags:
+ #   uses: ./.github/workflows/create-tag.yml
+ #   needs: checkout
