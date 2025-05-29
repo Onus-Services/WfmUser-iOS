@@ -73,5 +73,5 @@ jobs:
         with:
           project-token: '101c14959850483ead736dda762d36cf'
           verbose: true
-          max-allowed-issues: 1500
+          max-allowed-issues: 914
           upload: true
