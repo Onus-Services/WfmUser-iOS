@@ -75,4 +75,16 @@ jobs:
           verbose: true
           max-allowed-issues: 1500
           upload: true
+
+      - name: Get list of changed files
+        run: |
+          git fetch origin main
+          git diff --name-only origin/main...HEAD > changed_files.txt
+
+      - name: Run Codacy CLI on changed files only
+        run: |
+          cat changed_files.txt | xargs codacy-analysis-cli analyze -r . \
+          --project-token=${{ secrets.CODACY_PROJECT_TOKEN }} \
+          --output results.json --format json \
+          --max-allowed-issues=0 --verbose
       
