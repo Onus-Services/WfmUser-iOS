@@ -1,32 +1,22 @@
 name: Generate Changelog Entry
 on:
   workflow_call:  # Başka bir workflow'dan çağrılabilir
+
 jobs:
   generate-changelog:
     name: Generate CHANGELOG.md Entry
     runs-on: self-hosted
+    permissions:
+      contents: write
+      pull-requests: read
+    
     steps:
-      - name: Complete cleanup and clone
-        run: |
-          # Tamamen temizle
-          rm -rf /Users/birol/actions-runner/_work/WfmUser-iOS/WfmUser-iOS
-          mkdir -p /Users/birol/actions-runner/_work/WfmUser-iOS/WfmUser-iOS
-          cd /Users/birol/actions-runner/_work/WfmUser-iOS/WfmUser-iOS
-          
-          # Token ile repository'yi klonla
-          git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git .
-          
-          # Doğru branch'e geç
-          git fetch origin ${{ github.head_ref }}
-          git checkout ${{ github.head_ref }}
-          
-          # Durumu kontrol et
-          echo "Git status after setup:"
-          git status
-          echo "Current branch:"
-          git branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
           
       - name: Set metadata from PR
         run: |
@@ -39,7 +29,6 @@ jobs:
           
       - name: Create changelog entry file
         run: |
-          cd ${{ github.workspace }}
           echo "## [${VERSION}] - ${DATE}" > NEW_CHANGELOG_ENTRY.md
           echo "" >> NEW_CHANGELOG_ENTRY.md
           echo "### feature:" >> NEW_CHANGELOG_ENTRY.md
@@ -52,7 +41,6 @@ jobs:
           
       - name: Merge with existing CHANGELOG.md
         run: |
-          cd ${{ github.workspace }}
           if [ -f CHANGELOG.md ]; then
             cp CHANGELOG.md OLD_CHANGELOG_CONTENT.md
           else
@@ -62,7 +50,6 @@ jobs:
           
       - name: Commit and push updated CHANGELOG
         run: |
-          cd ${{ github.workspace }}
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add CHANGELOG.md
@@ -71,4 +58,5 @@ jobs:
           else
             git commit -m "chore: update CHANGELOG for PR #$NUMBER"
             git push origin ${{ github.head_ref }}
-          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
