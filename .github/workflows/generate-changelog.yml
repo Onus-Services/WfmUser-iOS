@@ -6,29 +6,25 @@ jobs:
     name: Generate CHANGELOG.md Entry
     runs-on: self-hosted
     steps:
-      - name: Clean workspace
+      - name: Complete cleanup and clone
         run: |
-          # Self-hosted runner için workspace temizliği
-          rm -rf ${{ github.workspace }}/*
-          rm -rf ${{ github.workspace }}/.git*
+          # Tamamen temizle
+          rm -rf /Users/birol/actions-runner/_work/WfmUser-iOS/WfmUser-iOS
+          mkdir -p /Users/birol/actions-runner/_work/WfmUser-iOS/WfmUser-iOS
+          cd /Users/birol/actions-runner/_work/WfmUser-iOS/WfmUser-iOS
           
-      - name: Manual Git setup
-        run: |
-          cd ${{ github.workspace }}
+          # Repository'yi klonla
           git clone https://github.com/${{ github.repository }}.git .
-          git checkout ${{ github.head_ref || github.ref_name }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Verify Git repository
-        run: |
-          echo "Current directory: $(pwd)"
-          echo "Git status:"
+          # Doğru branch'e geç
+          git fetch origin ${{ github.head_ref }}
+          git checkout ${{ github.head_ref }}
+          
+          # Durumu kontrol et
+          echo "Git status after setup:"
           git status
-          echo "Git remote:"
-          git remote -v
-          echo "Git log (last 3 commits):"
-          git log --oneline -3
+          echo "Current branch:"
+          git branch
           
       - name: Set metadata from PR
         run: |
@@ -41,6 +37,7 @@ jobs:
           
       - name: Create changelog entry file
         run: |
+          cd ${{ github.workspace }}
           echo "## [${VERSION}] - ${DATE}" > NEW_CHANGELOG_ENTRY.md
           echo "" >> NEW_CHANGELOG_ENTRY.md
           echo "### feature:" >> NEW_CHANGELOG_ENTRY.md
@@ -53,6 +50,7 @@ jobs:
           
       - name: Merge with existing CHANGELOG.md
         run: |
+          cd ${{ github.workspace }}
           if [ -f CHANGELOG.md ]; then
             cp CHANGELOG.md OLD_CHANGELOG_CONTENT.md
           else
@@ -60,17 +58,15 @@ jobs:
           fi
           cat NEW_CHANGELOG_ENTRY.md OLD_CHANGELOG_CONTENT.md > CHANGELOG.md
           
-      - name: Configure Git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
       - name: Commit and push updated CHANGELOG
         run: |
+          cd ${{ github.workspace }}
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add CHANGELOG.md
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
             git commit -m "chore: update CHANGELOG for PR #$NUMBER"
-            git push origin HEAD:${{ github.head_ref }}
+            git push origin ${{ github.head_ref }}
           fi
