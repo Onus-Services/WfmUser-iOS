@@ -106,12 +106,12 @@ jobs:
           echo "Initial issuesCount: $initial"
           echo "New issuesCount: $new"
 
-          diff=$((initial - new))
-          echo "Difference (initial - new): $diff"
+          diff=$((new - initial))
+          echo "Difference (new - initial): $diff"
 
-          if [ "$diff" -gt -1 ]; then
-            echo "Failing: difference $diff is greater than -1"
+          if [ "$diff" -gt 1 ]; then
+            echo "Failing: difference $diff is greater than 1"
             exit 1
           else
-            echo "Success: difference $diff is not greater than -1"
+            echo "Success: difference $diff is not greater than 1"
           fi
