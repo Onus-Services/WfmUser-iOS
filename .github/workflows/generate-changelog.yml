@@ -1,4 +1,4 @@
-name: Update Changelog
+name: Release Pipeline
 
 on:
   release:
@@ -12,130 +12,67 @@ on:
         description: 'Version number (e.g., v1.0.0)'
         required: true
         type: string
+      create_pr:
+        description: 'Create PR instead of direct commit'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
-  update-changelog:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-
+  # Diğer işleriniz (build, test, vs.)
+  build:
+    runs-on: self-hosted
     steps:
-    - name: Checkout repository
+    - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Get version from tag or input
-      id: version
+    - name: Build application
       run: |
-        if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-          echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
-        elif [ "${{ github.event_name }}" == "release" ]; then
-          echo "version=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
-        else
-          echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
-        fi
+        echo "Building application..."
+        # Buraya build komutlarınız
 
-    - name: Get previous tag
-      id: prev_tag
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Run tests
       run: |
-        PREV_TAG=$(git tag --sort=-version:refname | grep -v "${{ steps.version.outputs.version }}" | head -n 1)
-        echo "prev_tag=${PREV_TAG}" >> $GITHUB_OUTPUT
+        echo "Running tests..."
+        # Buraya test komutlarınız
 
-    - name: Generate changelog content
-      id: changelog
+  # Changelog güncelleme işi
+  update-changelog:
+    needs: [build, test]  # Önce build ve test tamamlanmalı
+    uses: ./.github/workflows/changelog.yml  # Yukarıdaki workflow dosyasının yolu
+    with:
+      version: ${{ github.event.release.tag_name || github.event.inputs.version || github.ref_name }}
+      create_pr: ${{ github.event.inputs.create_pr || false }}
+      changelog_path: 'CHANGELOG.md'  # İsteğe bağlı, varsayılan değer
+      # commit_range: 'v1.0.0..HEAD'  # İsteğe bağlı özel commit aralığı
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Changelog güncellemesinden sonra çalışacak işler
+  deploy:
+    needs: update-changelog
+    if: needs.update-changelog.outputs.changelog_updated == 'true'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy
       run: |
-        VERSION="${{ steps.version.outputs.version }}"
-        PREV_TAG="${{ steps.prev_tag.outputs.prev_tag }}"
-        DATE=$(date '+%Y-%m-%d')
-        
-        echo "## [$VERSION] - $DATE" > temp_changelog.md
-        echo "" >> temp_changelog.md
-        
-        # Commit'leri kategorilere ayır
-        if [ -n "$PREV_TAG" ]; then
-          COMMITS=$(git log --pretty=format:"%s" ${PREV_TAG}..HEAD)
-        else
-          COMMITS=$(git log --pretty=format:"%s")
-        fi
-        
-        # Özellik eklemeleri
-        FEATURES=$(echo "$COMMITS" | grep -i "^feat\|^add\|^new" | sed 's/^/- /' || true)
-        if [ -n "$FEATURES" ]; then
-          echo "### ✨ Yeni Özellikler" >> temp_changelog.md
-          echo "$FEATURES" >> temp_changelog.md
-          echo "" >> temp_changelog.md
-        fi
-        
-        # Düzeltmeler
-        FIXES=$(echo "$COMMITS" | grep -i "^fix\|^bug\|^patch" | sed 's/^/- /' || true)
-        if [ -n "$FIXES" ]; then
-          echo "### 🐛 Düzeltmeler" >> temp_changelog.md
-          echo "$FIXES" >> temp_changelog.md
-          echo "" >> temp_changelog.md
-        fi
-        
-        # Güncellemeler
-        UPDATES=$(echo "$COMMITS" | grep -i "^update\|^improve\|^enhance" | sed 's/^/- /' || true)
-        if [ -n "$UPDATES" ]; then
-          echo "### 🔄 Güncellemeler" >> temp_changelog.md
-          echo "$UPDATES" >> temp_changelog.md
-          echo "" >> temp_changelog.md
-        fi
-        
-        # Diğer değişiklikler
-        OTHERS=$(echo "$COMMITS" | grep -v -i "^feat\|^add\|^new\|^fix\|^bug\|^patch\|^update\|^improve\|^enhance" | sed 's/^/- /' || true)
-        if [ -n "$OTHERS" ]; then
-          echo "### 📝 Diğer Değişiklikler" >> temp_changelog.md
-          echo "$OTHERS" >> temp_changelog.md
-          echo "" >> temp_changelog.md
-        fi
+        echo "Deploying application..."
+        echo "Changelog updated: ${{ needs.update-changelog.outputs.changelog_updated }}"
+        # Buraya deploy komutlarınız
 
-    - name: Update CHANGELOG.md
+  notify:
+    needs: [update-changelog, deploy]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+    - name: Notify team
       run: |
-        if [ ! -f CHANGELOG.md ]; then
-          echo "# Changelog" > CHANGELOG.md
-          echo "" >> CHANGELOG.md
-          echo "Bu dosya projedeki tüm önemli değişiklikleri kayıt altına alır." >> CHANGELOG.md
-          echo "" >> CHANGELOG.md
+        echo "Pipeline completed!"
+        if [ "${{ needs.update-changelog.outputs.pr_number }}" != "" ]; then
+          echo "PR created: #${{ needs.update-changelog.outputs.pr_number }}"
         fi
-        
-        # Yeni içeriği mevcut changelog'un başına ekle
-        cp CHANGELOG.md old_changelog.md
-        head -n 4 old_changelog.md > CHANGELOG.md
-        cat temp_changelog.md >> CHANGELOG.md
-        tail -n +5 old_changelog.md >> CHANGELOG.md
-        
-        rm temp_changelog.md old_changelog.md
-
-    - name: Commit and push changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        
-        if git diff --quiet CHANGELOG.md; then
-          echo "Changelog'da değişiklik yok"
-        else
-          git add CHANGELOG.md
-          git commit -m "📝 Changelog güncellendi: ${{ steps.version.outputs.version }}"
-          git push
-        fi
-
-    - name: Create Pull Request (optional)
-      if: github.event_name == 'workflow_dispatch'
-      uses: peter-evans/create-pull-request@v5
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: "📝 Changelog güncellendi: ${{ steps.version.outputs.version }}"
-        title: "Changelog Güncellemesi - ${{ steps.version.outputs.version }}"
-        body: |
-          Bu PR, ${{ steps.version.outputs.version }} sürümü için changelog'u otomatik olarak günceller.
-          
-          ### Değişiklikler:
-          - CHANGELOG.md dosyası güncellendi
-          - Yeni sürüm bilgileri eklendi
-          - Commit geçmişinden otomatik içerik oluşturuldu
-        branch: changelog-update-${{ steps.version.outputs.version }}
-        delete-branch: true
