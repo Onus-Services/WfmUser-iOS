@@ -8,14 +8,30 @@ jobs:
     runs-on: self-hosted
     permissions:
       contents: write
+      pull-requests: read
     
     steps:
+      - name: Clean workspace
+        run: |
+          # Self-hosted runner için çalışma alanını temizle
+          rm -rf ${{ github.workspace }}/*
+          rm -rf ${{ github.workspace }}/.git*
+          
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: ${{ github.head_ref }}
           fetch-depth: 0
+          clean: true
+          
+      - name: Verify git setup
+        run: |
+          pwd
+          ls -la
+          git status
+          git branch -a
+          echo "Current branch: $(git branch --show-current)"
           
       - name: Set metadata from PR
         run: |
@@ -27,6 +43,7 @@ jobs:
           echo "VERSION=1.0.${{ github.event.pull_request.number }}" >> $GITHUB_ENV
           
       - name: Create changelog entry file
+        working-directory: ${{ github.workspace }}
         run: |
           echo "## [${VERSION}] - ${DATE}" > NEW_CHANGELOG_ENTRY.md
           echo "" >> NEW_CHANGELOG_ENTRY.md
@@ -39,6 +56,7 @@ jobs:
           echo "" >> NEW_CHANGELOG_ENTRY.md
           
       - name: Merge with existing CHANGELOG.md
+        working-directory: ${{ github.workspace }}
         run: |
           if [ -f CHANGELOG.md ]; then
             cp CHANGELOG.md OLD_CHANGELOG_CONTENT.md
@@ -48,14 +66,31 @@ jobs:
           cat NEW_CHANGELOG_ENTRY.md OLD_CHANGELOG_CONTENT.md > CHANGELOG.md
           
       - name: Commit and push updated CHANGELOG
+        working-directory: ${{ github.workspace }}
         run: |
+          # Çalışma dizinini kontrol et
+          pwd
+          ls -la
+          
+          # Git repository olduğunu doğrula
+          if [ ! -d ".git" ]; then
+            echo "Error: Not in a git repository"
+            exit 1
+          fi
+          
+          # Git config
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Değişiklikleri kontrol et ve commit et
           git add CHANGELOG.md
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
+            echo "Committing changes..."
             git commit -m "chore: update CHANGELOG for PR #$NUMBER"
+            echo "Pushing to branch: ${{ github.head_ref }}"
             git push origin ${{ github.head_ref }}
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
