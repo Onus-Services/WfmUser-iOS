@@ -78,22 +78,18 @@ jobs:
           CODACY_PROJECT_ID: 'WfmUser-iOS' # Codacy projenizin ID'si
           CODACY_ORGANIZATION_ID: 'Onus-Services' # Codacy organizasyonunuzun ID'si
         run: |
-          # jq kurulu değilse buraya kurulum komutunu ekleyebilirsiniz (örn: brew install jq)
-          # which jq || (echo "jq not found, installing..." && brew install jq) # macOS örneği
-          
-          echo "Mevcut Codacy issue'larını çekiyorum..."
-          # Codacy API'sinden issue'ları çek ve UUID'lerini initial_issues.txt'ye kaydet
-          # Sadece 'Opened' statüsündeki issue'ları çekiyoruz.
-          # API endpoint'leri ve parametreleri Codacy dokümantasyonuna göre değişebilir.
-          curl -s \
-            -H "api-token: ${CODACY_API_TOKEN}" \
-            "https://api.codacy.com/api/v3/organizations/${CODACY_ORGANIZATION_ID}/projects/${CODACY_PROJECT_ID}/issues?status=Opened" | \
-            jq -r '.[].uuid' > initial_issues.txt
+          echo "Mevcut Codacy issue'larını çekiyorum (debug modu)..."
+    
+          curl -v \
+             -H "api-token: ${CODACY_API_TOKEN}" \
+            "https://api.codacy.com/api/v3/organizations/${CODACY_ORGANIZATION_ID}/projects/${CODACY_PROJECT_ID}/issues?status=Opened" 2>&1 | tee curl_output.txt
 
-          INITIAL_ISSUE_COUNT=$(wc -l < initial_issues.txt)
-          echo "Başlangıçta ${INITIAL_ISSUE_COUNT} açık issue bulundu."
+          echo "--- curl_output.txt içeriği ---"
+          cat curl_output.txt
+          echo "----------------------------"
+
+          touch initial_issues.txt
           echo "initial_issues.txt dosyasına yazıldı."
-          cat initial_issues.txt # Debug amaçlı
 
       
 
