@@ -80,15 +80,24 @@ jobs:
 
       - name: Check new issues count
         run: |
-          NEW_ISSUES=$(curl -s -H "api-token: 101c14959850483ead736dda762d36cf" \
-            "https://api.codacy.com/2.0/commit/${{ github.sha }}/issuesRemaining" | \
-            jq '.newIssues // 0')
     
-          echo "New issues found: $NEW_ISSUES"
+         RESPONSE=$(curl -s -H "api-token: 101c14959850483ead736dda762d36cf" \
+           "https://api.codacy.com/2.0/commit/${{ github.sha }}/issuesRemaining")
     
-          if [ "$NEW_ISSUES" -gt 10 ]; then
-            echo "❌ Too many new issues: $NEW_ISSUES (limit: 10)"
-            exit 1
-          else
-            echo "✅ New issues within limit: $NEW_ISSUES/10"
-          fi
+         echo "API Response: $RESPONSE"
+    
+         if echo "$RESPONSE" | jq empty 2>/dev/null; then
+           NEW_ISSUES=$(echo "$RESPONSE" | jq '.newIssues // 0')
+           echo "New issues found: $NEW_ISSUES"
+      
+           if [ "$NEW_ISSUES" -gt 10 ]; then
+             echo "❌ Too many new issues: $NEW_ISSUES (limit: 10)"
+             exit 1
+           else
+             echo "✅ New issues within limit: $NEW_ISSUES/10"
+           fi
+         else
+           echo "❌ Invalid JSON response from API"
+           echo "Response: $RESPONSE"
+           exit 1
+         fi
