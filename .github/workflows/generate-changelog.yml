@@ -1,11 +1,7 @@
 name: CI
 
 on:
-  push: # Sadece PR değil, her commit sonrası çalışır
-    branches:
-      - main
-      - 'release/**'
-      - 'feature/**'
+  workflow_call:
 
 jobs:
   changelog-update:
