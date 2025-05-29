@@ -24,33 +24,33 @@ jobs:
     uses: ./.github/workflows/here-sdk-setup.yml
     needs: setup-xcode
 
-  # build-project:
-  #  uses: ./.github/workflows/build-project.yml
-  #  needs: setup-here-sdk
+  build-project:
+    uses: ./.github/workflows/build-project.yml
+    needs: setup-here-sdk
 
-  # unit-tests:
-  #  if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
-  #  uses: ./.github/workflows/unit-tests.yml
-  #  needs: setup-here-sdk
+  unit-tests:
+    #if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/unit-tests.yml
+    needs: setup-here-sdk
 
-  # docs:
-  #  if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
-  #  uses: ./.github/workflows/generate-docs.yml
-  #  needs: setup-here-sdk
+  docs:
+    #if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/generate-docs.yml
+    needs: unit-tests
 
   codacy:
     #if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
     uses: ./.github/workflows/codacy-analysis.yml
-    needs: setup-here-sdk
+    needs: unit-tests
 
-  # upload:
-  #  if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
-  #  uses: ./.github/workflows/upload-to-drive.yml
-  #  needs: codacy
+  upload:
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/upload-to-drive.yml
+    needs: codacy
 
- # generate-changelog:
- #   uses: ./.github/workflows/generate-changelog.yml
- #   needs: setup-here-sdk
+  generate-changelog:
+    uses: ./.github/workflows/generate-changelog.yml
+    needs: upload
 
  # tags:
  #   uses: ./.github/workflows/create-tag.yml
