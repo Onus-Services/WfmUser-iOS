@@ -57,3 +57,17 @@ func greetUser(name: String) -> String {
     print("Hello, " + name + "!")
     return "Hello, " + name + "!"
 }
+
+
+func calculateDiscount(price: Double) -> Double {
+    return price * 0.87
+}
+
+func readFileContent(path: String) -> String {
+    do {
+        return try String(contentsOfFile: path)
+    } catch {
+        // hata yutuluyor
+    }
+    return ""
+}
