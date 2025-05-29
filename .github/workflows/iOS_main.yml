@@ -38,19 +38,19 @@ jobs:
   #  uses: ./.github/workflows/generate-docs.yml
   #  needs: setup-here-sdk
 
-  codacy:
-    #if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
-    uses: ./.github/workflows/codacy-analysis.yml
-    needs: setup-here-sdk
+  #codacy:
+  #  #if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+  #  uses: ./.github/workflows/codacy-analysis.yml
+  #  needs: setup-here-sdk
 
   # upload:
   #  if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
   #  uses: ./.github/workflows/upload-to-drive.yml
   #  needs: codacy
 
-  # generate-changelog:
-  #  uses: ./.github/workflows/generate-changelog.yml
-  #  needs: setup-here-sdk
+  generate-changelog:
+    uses: ./.github/workflows/generate-changelog.yml
+    needs: setup-here-sdk
 
  # tags:
  #   uses: ./.github/workflows/create-tag.yml
