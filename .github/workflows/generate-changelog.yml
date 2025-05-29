@@ -1,19 +1,27 @@
-name: CI
-
 on:
   workflow_call:
+    inputs:
+      base_sha:
+        required: true
+        type: string
+      head_sha:
+        required: true
+        type: string
 
 jobs:
   changelog-update:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
 
-      - name: Setup Git identity
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Git
         run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Generate formatted CHANGELOG
         run: |
@@ -27,39 +35,30 @@ jobs:
 
           echo -e "\n## $DATE - $VERSION\n" >> CHANGELOG.md
 
-          COMMITS=$(git log -10 --pretty=format:"%H|%s|%an")
+          COMMITS=$(git log ${{ inputs.base_sha }}..${{ inputs.head_sha }} --pretty=format:"%H|%s")
 
           FEATURES=""
           FIXES=""
           CHORES=""
 
-          while IFS='|' read -r HASH MESSAGE AUTHOR; do
-            SHORT_HASH=${HASH:0:7}
-            MESSAGE_CLEANED=$(echo "$MESSAGE" | sed -E 's/^(feat|fix|chore):[[:space:]]*//')
-            LINK="[$MESSAGE_CLEANED]($REPO_URL/commit/$HASH)"
-
+          while IFS='|' read -r HASH MESSAGE; do
+            CLEANED_MSG=$(echo "$MESSAGE" | sed -E 's/^(feat|fix|chore):\s*//')
+            LINK="- [$CLEANED_MSG]($REPO_URL/commit/$HASH)"
             if [[ "$MESSAGE" == feat:* ]]; then
-              FEATURES+="- $LINK\n"
+              FEATURES+="$LINK\n"
             elif [[ "$MESSAGE" == fix:* ]]; then
-              FIXES+="- $LINK\n"
+              FIXES+="$LINK\n"
             elif [[ "$MESSAGE" == chore:* ]]; then
-              CHORES+="- $LINK\n"
+              CHORES+="$LINK\n"
             fi
           done <<< "$COMMITS"
 
-          if [[ -n "$FEATURES" ]]; then
-            echo -e "### Features\n$FEATURES" >> CHANGELOG.md
-          fi
-          if [[ -n "$FIXES" ]]; then
-            echo -e "### Fixes\n$FIXES" >> CHANGELOG.md
-          fi
-          if [[ -n "$CHORES" ]]; then
-            echo -e "### Chore\n$CHORES" >> CHANGELOG.md
-          fi
+          [[ -n "$FEATURES" ]] && echo -e "### Features\n$FEATURES" >> CHANGELOG.md
+          [[ -n "$FIXES" ]] && echo -e "### Fixes\n$FIXES" >> CHANGELOG.md
+          [[ -n "$CHORES" ]] && echo -e "### Chore\n$CHORES" >> CHANGELOG.md
 
-      - name: Commit & push CHANGELOG
-        run: |
-          git add CHANGELOG.md
-          git diff --cached --quiet || git commit -m "chore: update CHANGELOG"
-          git push
-        continue-on-error: true
+      - name: Upload changelog artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: changelog
+          path: CHANGELOG.md
