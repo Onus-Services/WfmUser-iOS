@@ -1,191 +1,39 @@
-name: Generate Changelog
+name: CI
 
 on:
-  workflow_call:
-    inputs:
-      version:
-        description: 'Version number (e.g., v1.0.0)'
-        required: true
-        type: string
-      create_pr:
-        description: 'Create pull request instead of direct commit'
-        required: false
-        type: boolean
-        default: false
-      changelog_path:
-        description: 'Path to changelog file'
-        required: false
-        type: string
-        default: 'CHANGELOG.md'
-      commit_range:
-        description: 'Custom commit range (optional)'
-        required: false
-        type: string
-        default: ''
-    secrets:
-      GITHUB_TOKEN:
-        required: true
+  push: # Sadece PR değil, her commit sonrası çalışır
+    branches:
+      - main
+      - 'release/**'
+      - 'feature/**'
 
 jobs:
-  update-changelog:
+  changelog-update:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Get previous tag
-      id: prev_tag
-      run: |
-        if [ -n "${{ inputs.commit_range }}" ]; then
-          echo "Using custom commit range: ${{ inputs.commit_range }}"
-          echo "prev_tag=" >> $GITHUB_OUTPUT
-        else
-          PREV_TAG=$(git tag --sort=-version:refname | grep -v "${{ inputs.version }}" | head -n 1)
-          echo "prev_tag=${PREV_TAG}" >> $GITHUB_OUTPUT
-        fi
+      - name: Setup Git identity
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
 
-    - name: Generate changelog content
-      id: changelog
-      run: |
-        VERSION="${{ inputs.version }}"
-        PREV_TAG="${{ steps.prev_tag.outputs.prev_tag }}"
-        COMMIT_RANGE="${{ inputs.commit_range }}"
-        DATE=$(date '+%Y-%m-%d')
-        
-        echo "## [$VERSION] - $DATE" > temp_changelog.md
-        echo "" >> temp_changelog.md
-        
-        # Commit aralığını belirle
-        if [ -n "$COMMIT_RANGE" ]; then
-          COMMITS=$(git log --pretty=format:"%s" $COMMIT_RANGE)
-        elif [ -n "$PREV_TAG" ]; then
-          COMMITS=$(git log --pretty=format:"%s" ${PREV_TAG}..HEAD)
-        else
-          COMMITS=$(git log --pretty=format:"%s")
-        fi
-        
-        echo "Found commits:"
-        echo "$COMMITS"
-        
-        # Özellik eklemeleri
-        FEATURES=$(echo "$COMMITS" | grep -i "^feat\|^add\|^new\|feature:" | sed 's/^/- /' || true)
-        if [ -n "$FEATURES" ]; then
-          echo "### ✨ Yeni Özellikler" >> temp_changelog.md
-          echo "$FEATURES" >> temp_changelog.md
-          echo "" >> temp_changelog.md
-        fi
-        
-        # Düzeltmeler
-        FIXES=$(echo "$COMMITS" | grep -i "^fix\|^bug\|^patch\|fix:" | sed 's/^/- /' || true)
-        if [ -n "$FIXES" ]; then
-          echo "### 🐛 Düzeltmeler" >> temp_changelog.md
-          echo "$FIXES" >> temp_changelog.md
-          echo "" >> temp_changelog.md
-        fi
-        
-        # Güncellemeler/İyileştirmeler
-        UPDATES=$(echo "$COMMITS" | grep -i "^update\|^improve\|^enhance\|^refactor\|update:\|improve:" | sed 's/^/- /' || true)
-        if [ -n "$UPDATES" ]; then
-          echo "### 🔄 Güncellemeler" >> temp_changelog.md
-          echo "$UPDATES" >> temp_changelog.md
-          echo "" >> temp_changelog.md
-        fi
-        
-        # Breaking changes
-        BREAKING=$(echo "$COMMITS" | grep -i "breaking\|BREAKING" | sed 's/^/- /' || true)
-        if [ -n "$BREAKING" ]; then
-          echo "### ⚠️ Breaking Changes" >> temp_changelog.md
-          echo "$BREAKING" >> temp_changelog.md
-          echo "" >> temp_changelog.md
-        fi
-        
-        # Diğer değişiklikler
-        OTHERS=$(echo "$COMMITS" | grep -v -i "^feat\|^add\|^new\|^fix\|^bug\|^patch\|^update\|^improve\|^enhance\|^refactor\|breaking\|feature:\|fix:\|update:\|improve:" | sed 's/^/- /' || true)
-        if [ -n "$OTHERS" ]; then
-          echo "### 📝 Diğer Değişiklikler" >> temp_changelog.md
-          echo "$OTHERS" >> temp_changelog.md
-          echo "" >> temp_changelog.md
-        fi
+      - name: Generate or update CHANGELOG
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=format:"%h - %s (%an)")
+          DATE=$(date +"%Y-%m-%d")
+          echo "Last commit: $COMMIT_MSG"
 
-    - name: Update changelog file
-      run: |
-        CHANGELOG_FILE="${{ inputs.changelog_path }}"
-        
-        if [ ! -f "$CHANGELOG_FILE" ]; then
-          echo "# Changelog" > "$CHANGELOG_FILE"
-          echo "" >> "$CHANGELOG_FILE"
-          echo "Bu dosya projedeki tüm önemli değişiklikleri kayıt altına alır." >> "$CHANGELOG_FILE"
-          echo "" >> "$CHANGELOG_FILE"
-          echo "Format [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) standardına dayanır." >> "$CHANGELOG_FILE"
-          echo "" >> "$CHANGELOG_FILE"
-        fi
-        
-        # Yeni içeriği mevcut changelog'un başına ekle
-        cp "$CHANGELOG_FILE" old_changelog.md
-        
-        # Header'ları koru ve yeni içeriği ekle
-        if grep -q "# Changelog" old_changelog.md; then
-          sed -n '1,/^$/p' old_changelog.md > "$CHANGELOG_FILE"
-          cat temp_changelog.md >> "$CHANGELOG_FILE"
-          sed -n '/^## \[/,$p' old_changelog.md >> "$CHANGELOG_FILE"
-        else
-          cat temp_changelog.md > "$CHANGELOG_FILE"
-          cat old_changelog.md >> "$CHANGELOG_FILE"
-        fi
-        
-        rm temp_changelog.md old_changelog.md
+          if [ ! -f CHANGELOG.md ]; then
+            echo "# Changelog" > CHANGELOG.md
+          fi
 
-    - name: Check for changes
-      id: changes
-      run: |
-        if git diff --quiet "${{ inputs.changelog_path }}"; then
-          echo "has_changes=false" >> $GITHUB_OUTPUT
-          echo "Changelog'da değişiklik yok"
-        else
-          echo "has_changes=true" >> $GITHUB_OUTPUT
-          echo "Changelog güncellendi"
-        fi
+          echo -e "\n## $DATE\n- $COMMIT_MSG" >> CHANGELOG.md
 
-    - name: Commit changes directly
-      if: steps.changes.outputs.has_changes == 'true' && inputs.create_pr == false
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add "${{ inputs.changelog_path }}"
-        git commit -m "📝 Changelog güncellendi: ${{ inputs.version }}"
-        git push
-
-    - name: Create Pull Request
-      if: steps.changes.outputs.has_changes == 'true' && inputs.create_pr == true
-      uses: peter-evans/create-pull-request@v5
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: "📝 Changelog güncellendi: ${{ inputs.version }}"
-        title: "Changelog Güncellemesi - ${{ inputs.version }}"
-        body: |
-          Bu PR, ${{ inputs.version }} sürümü için changelog'u otomatik olarak günceller.
-          
-          ### Değişiklikler:
-          - `${{ inputs.changelog_path }}` dosyası güncellendi
-          - Yeni sürüm bilgileri eklendi
-          - Commit geçmişinden otomatik içerik oluşturuldu
-          
-          ### İnceleme:
-          Lütfen eklenen değişiklikleri kontrol edin ve gerekirse düzenleyin.
-        branch: changelog-update-${{ inputs.version }}
-        delete-branch: true
-
-    outputs:
-      changelog_updated:
-        description: 'Whether changelog was updated'
-        value: ${{ steps.changes.outputs.has_changes }}
-      pr_number:
-        description: 'Pull request number if created'
-        value: ${{ steps.create-pull-request.outputs.pull-request-number || '' }}
+      - name: Commit & push CHANGELOG
+        run: |
+          git add CHANGELOG.md
+          git commit -m "chore: update CHANGELOG"
+          git push
+        continue-on-error: true
