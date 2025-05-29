@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  workflow_call:
+
+jobs:
+  changelog-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Git identity
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+      - name: Generate formatted CHANGELOG
+        run: |
+          REPO_URL="https://github.com/${{ github.repository }}"
+          VERSION=$(cat VERSION 2>/dev/null || echo "v1.0.0")
+          DATE=$(date +"%Y-%m-%d")
+
+          if [ ! -f CHANGELOG.md ]; then
+            echo "# Changelog" > CHANGELOG.md
+          fi
+
+          echo -e "\n## $DATE - $VERSION\n" >> CHANGELOG.md
+
+          COMMITS=$(git log -10 --pretty=format:"%H|%s|%an")
+
+          FEATURES=""
+          FIXES=""
+          CHORES=""
+
+          while IFS='|' read -r HASH MESSAGE AUTHOR; do
+            SHORT_HASH=${HASH:0:7}
+            MESSAGE_CLEANED=$(echo "$MESSAGE" | sed -E 's/^(feat|fix|chore):[[:space:]]*//')
+            LINK="[$MESSAGE_CLEANED]($REPO_URL/commit/$HASH)"
+
+            if [[ "$MESSAGE" == feat:* ]]; then
+              FEATURES+="- $LINK\n"
+            elif [[ "$MESSAGE" == fix:* ]]; then
+              FIXES+="- $LINK\n"
+            elif [[ "$MESSAGE" == chore:* ]]; then
+              CHORES+="- $LINK\n"
+            fi
+          done <<< "$COMMITS"
+
+          if [[ -n "$FEATURES" ]]; then
+            echo -e "### Features\n$FEATURES" >> CHANGELOG.md
+          fi
+          if [[ -n "$FIXES" ]]; then
+            echo -e "### Fixes\n$FIXES" >> CHANGELOG.md
+          fi
+          if [[ -n "$CHORES" ]]; then
+            echo -e "### Chore\n$CHORES" >> CHANGELOG.md
+          fi
+
+      - name: Commit & push CHANGELOG
+        run: |
+          git add CHANGELOG.md
+          git diff --cached --quiet || git commit -m "chore: update CHANGELOG"
+          git push
+        continue-on-error: true
