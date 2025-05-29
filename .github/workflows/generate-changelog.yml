@@ -30,8 +30,28 @@ jobs:
             rm -rf .git
             git init
             git remote add origin https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-            git fetch origin ${{ github.head_ref }}
-            git checkout ${{ github.head_ref }}
+            git fetch origin
+            
+            # Mevcut branch'leri kontrol et
+            echo "Available branches:"
+            git branch -r
+            
+            # Head ref varsa kullan, yoksa main kullan
+            if [ -n "${{ github.head_ref }}" ]; then
+              TARGET_BRANCH="${{ github.head_ref }}"
+            else
+              TARGET_BRANCH="main"
+            fi
+            
+            echo "Attempting to checkout: $TARGET_BRANCH"
+            
+            # Branch'in var olup olmadığını kontrol et
+            if git show-ref --verify --quiet refs/remotes/origin/$TARGET_BRANCH; then
+              git checkout -b $TARGET_BRANCH origin/$TARGET_BRANCH
+            else
+              echo "Branch $TARGET_BRANCH not found, using main"
+              git checkout -b main origin/main
+            fi
           fi
           
           echo "Git status after fix:"
