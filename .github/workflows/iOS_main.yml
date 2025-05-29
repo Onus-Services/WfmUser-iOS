@@ -39,7 +39,7 @@ jobs:
   #  needs: setup-here-sdk
 
   codacy:
-    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    #if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
     uses: ./.github/workflows/codacy-analysis.yml
     needs: setup-here-sdk
 
