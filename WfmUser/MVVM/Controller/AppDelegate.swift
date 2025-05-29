@@ -156,13 +156,13 @@ extension AppDelegate: MessagingDelegate {
         var notfModel: NotificationResponseModel = NotificationResponseModel()
         for notf in userInfo {
             if notf.key.description == "Type" {
-                // notfModel.Type1 = Int(notf.value as! String)
-                let stringValue = notf.value as? String ?? "0"
-                notfModel.Type1 = Int(stringValue) ?? 0
+                notfModel.Type1 = Int(notf.value as! String)
+                /*let stringValue = notf.value as? String ?? "0"
+                notfModel.Type1 = Int(stringValue) ?? 0*/
             } else if notf.key.description == "MxRouteId" {
-                // notfModel.MxRouteId = Int(notf.value as! String)
-                let stringValue = notf.value as? String ?? "0"
-                notfModel.MxRouteId = Int(stringValue) ?? 0
+                notfModel.MxRouteId = Int(notf.value as! String)
+                /*let stringValue = notf.value as? String ?? "0"
+                notfModel.MxRouteId = Int(stringValue) ?? 0*/
             } else if notf.key.description == "MxBlockId" {
                 // notfModel.MxBlockId = Int(notf.value as! String)
                 let stringValue = notf.value as? String ?? "0"
