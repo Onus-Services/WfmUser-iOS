@@ -10,7 +10,7 @@ import Moya
 
 var isDummyData: Bool = true
 
-//var BASE_URL = "http://192.168.2.49/rotamenavswebapi/api/Business/" //lokal
+//var BASE_URL = "http://192.168.2.49/rotamenavswebapi/api/Business/" //lokall
 //var BASE_URL = "http://192.168.2.36/kuryecepwebapi/api/" //test
 var BASE_URL = "https://rx.rotamen.com/webapi/api/Business/" //cloud
 //var BASE_URL = "http://192.168.2.86/rotamenwfmwebapi/api/Business/" //cloud
