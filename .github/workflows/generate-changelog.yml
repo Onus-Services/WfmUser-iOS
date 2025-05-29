@@ -27,7 +27,6 @@ jobs:
 
           echo -e "\n## $DATE - $VERSION\n" >> CHANGELOG.md
 
-          # Get latest 10 commits (you can modify this if needed)
           COMMITS=$(git log -10 --pretty=format:"%H|%s|%an")
 
           FEATURES=""
@@ -36,7 +35,9 @@ jobs:
 
           while IFS='|' read -r HASH MESSAGE AUTHOR; do
             SHORT_HASH=${HASH:0:7}
-            LINK="[$MESSAGE]($REPO_URL/commit/$HASH)"
+            MESSAGE_CLEANED=$(echo "$MESSAGE" | sed -E 's/^(feat|fix|chore):[[:space:]]*//')
+            LINK="[$MESSAGE_CLEANED]($REPO_URL/commit/$HASH)"
+
             if [[ "$MESSAGE" == feat:* ]]; then
               FEATURES+="- $LINK\n"
             elif [[ "$MESSAGE" == fix:* ]]; then
