@@ -69,38 +69,26 @@ jobs:
           which wget
           wget --version
 
-      - name: Run Codacy Analysis CLI and check for new issues
+        # Codacy analiz
+      - name: Run Codacy Analysis CLI
+        uses: codacy/codacy-analysis-cli-action@v4
+        with:
+          project-token: '101c14959850483ead736dda762d36cf'
+          verbose: true
+          max-allowed-issues: 1500
+          upload: true
+
+      - name: Check new issues count
         run: |
-          echo "Running Codacy CLI..."
-
-          # CLI çıktısını JSON olarak al ve kaydet
-          codacy-analysis-cli analyze \
-            --project-token 101c14959850483ead736dda762d36cf \
-            --output results.json \
-            --format json \
-            --verbose
-
-          echo "Codacy analysis completed. Output written to results.json"
-
-          # Yeni issue sayısını say
-          NEW_ISSUES=$(jq '[.issues[] | select(.isNew == true)] | length' results.json)
+          NEW_ISSUES=$(curl -s -H "api-token: 101c14959850483ead736dda762d36cf" \
+            "https://api.codacy.com/2.0/commit/${{ github.sha }}/issuesRemaining" | \
+            jq '.newIssues // 0')
+    
           echo "New issues found: $NEW_ISSUES"
-
-          # Sınır kontrolü
+    
           if [ "$NEW_ISSUES" -gt 10 ]; then
-            echo "❌ Too many new issues ($NEW_ISSUES). Failing the workflow..."
+            echo "❌ Too many new issues: $NEW_ISSUES (limit: 10)"
             exit 1
           else
-            echo "✅ Acceptable number of new issues ($NEW_ISSUES)."
+            echo "✅ New issues within limit: $NEW_ISSUES/10"
           fi
-        env:
-          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-
-        # Codacy analiz
-     # - name: Run Codacy Analysis CLI
-     #   uses: codacy/codacy-analysis-cli-action@v4
-     #   with:
-     #     project-token: '101c14959850483ead736dda762d36cf'
-     #     verbose: true
-     #     max-allowed-issues: 1500
-     #     upload: true
