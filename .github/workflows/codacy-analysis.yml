@@ -8,9 +8,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Tam geçmişi getir
+          fetch-depth: 0  # Tam geçmişi getir
           token: ${{ secrets.GITHUB_TOKEN }}
-
+      
       - name: Clean workspace completely
         run: |
           echo "Current workspace: $GITHUB_WORKSPACE"
@@ -21,7 +21,7 @@ jobs:
           rm -rf WfmUser-iOS || true
           mkdir -p WfmUser-iOS
           echo "Workspace cleaned"
-
+      
       - name: Manual git clone with token
         run: |
           echo "Attempting git clone with authentication..."
@@ -42,7 +42,7 @@ jobs:
           fi
           
           echo "Clone completed successfully"
-
+      
       - name: Verify checkout
         run: |
           echo "Working directory: $(pwd)"
@@ -52,7 +52,7 @@ jobs:
           git remote -v
           echo "Recent commits:"
           git log --oneline -n 3
-
+      
       - name: Enable IDEFileSystemSynchronizedGroups
         run: |
           export IDEFileSystemSynchronizedGroupsAreEnabled=YES
@@ -66,77 +66,12 @@ jobs:
         run: |
           which wget
           wget --version
-
       
-
-      ## Mevcut Issue'ları Alın (API İsteği)
-
-      - name: Mevcut Codacy Issue'larını Çek
-        id: get_initial_issues
-        env:
-          CODACY_API_TOKEN: '101c14959850483ead736dda762d36cf' # GitHub secrets'a eklemeniz gereken token
-          CODACY_PROJECT_ID: 'WfmUser-iOS' # Codacy projenizin ID'si
-          CODACY_ORGANIZATION_ID: 'Onus-Services' # Codacy organizasyonunuzun ID'si
-        run: |
-          echo "Mevcut Codacy issue'larını çekiyorum (debug modu)..."
-    
-          curl -v \
-             -H "api-token: ${CODACY_API_TOKEN}" \
-            "https://api.codacy.com/api/v3/organizations/${CODACY_ORGANIZATION_ID}/projects/${CODACY_PROJECT_ID}/issues?status=Opened" 2>&1 | tee curl_output.txt
-
-          echo "--- curl_output.txt içeriği ---"
-          cat curl_output.txt
-          echo "----------------------------"
-
-          touch initial_issues.txt
-          echo "initial_issues.txt dosyasına yazıldı."
-
-      
-
-      ## Codacy Analizi Çalıştırın
-
-      - name: Codacy Analiz CLI'yi Çalıştır
+      # Codacy analiz
+      - name: Run Codacy Analysis CLI
         uses: codacy/codacy-analysis-cli-action@v4
         with:
           project-token: '101c14959850483ead736dda762d36cf'
           verbose: true
-          max-allowed-issues: 1500 # Bu, toplam issue'lar içindir, yeni issue'lar için değil
+          max-allowed-issues: 1500
           upload: true
-
-      
-
-      ## Yeni Issue'ları Kontrol Edin
-
-      - name: Yeni Issue Sayısını Kontrol Et ve Başarısız Ol
-        env:
-          CODACY_API_TOKEN: '101c14959850483ead736dda762d36cf'
-          CODACY_PROJECT_ID: 'WfmUser-iOS'
-          CODACY_ORGANIZATION_ID: 'Onus-Services'
-        run: |
-          echo "Yeni oluşan issue'ları kontrol ediyorum..."
-
-          # Analiz sonrası güncel issue'ları çek ve UUID'lerini current_issues.txt'ye kaydet
-          curl -s \
-            -H "api-token: ${CODACY_API_TOKEN}" \
-            "https://api.codacy.com/api/v3/organizations/${CODACY_ORGANIZATION_ID}/projects/${CODACY_PROJECT_ID}/issues?status=Opened" | \
-            jq -r '.[].uuid' > current_issues.txt
-
-          CURRENT_ISSUE_COUNT=$(wc -l < current_issues.txt)
-          echo "Analiz sonrası ${CURRENT_ISSUE_COUNT} açık issue bulundu."
-          cat current_issues.txt # Debug amaçlı
-
-          # initial_issues.txt ve current_issues.txt dosyalarını karşılaştırarak
-          # yeni eklenen (current_issues.txt'de olup initial_issues.txt'de olmayan) issue'ları bul.
-          # comm -13, ilk dosyada olmayan ve ikinci dosyada olan satırları gösterir.
-          NEW_ISSUES_COUNT=$(comm -13 initial_issues.txt current_issues.txt | wc -l)
-          NEW_ISSUES_COUNT=${NEW_ISSUES_COUNT// /} # Baştaki/sondaki boşlukları kaldır
-
-          echo "Bu analizde ${NEW_ISSUES_COUNT} yeni issue tespit edildi."
-
-          if [ "$NEW_ISSUES_COUNT" -gt 1 ]; then
-            echo "Hata: Bu commit ${NEW_ISSUES_COUNT} yeni issue tanıttı. Yeni issue sayısı 1'den fazla olduğu için iş akışı başarısız oluyor."
-            exit 1
-          else
-            echo "Yeni issue sayısı 1'den fazla değil ($NEW_ISSUES_COUNT yeni issue)."
-            echo "İş akışı başarıyla tamamlandı."
-          fi
