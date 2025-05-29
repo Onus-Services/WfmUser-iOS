@@ -1,7 +1,6 @@
 name: Codacy Analysis
 on:
   workflow_call:
-
 jobs:
   codacy-analysis:
     runs-on: self-hosted
@@ -11,7 +10,7 @@ jobs:
         with:
           fetch-depth: 0  # Tam geçmişi getir
           token: ${{ secrets.GITHUB_TOKEN }}
-
+      
       - name: Clean workspace completely
         run: |
           echo "Current workspace: $GITHUB_WORKSPACE"
@@ -22,7 +21,7 @@ jobs:
           rm -rf WfmUser-iOS || true
           mkdir -p WfmUser-iOS
           echo "Workspace cleaned"
-
+      
       - name: Manual git clone with token
         run: |
           echo "Attempting git clone with authentication..."
@@ -44,7 +43,6 @@ jobs:
           
           echo "Clone completed successfully"
       
-
       - name: Verify checkout
         run: |
           echo "Working directory: $(pwd)"
@@ -54,7 +52,7 @@ jobs:
           git remote -v
           echo "Recent commits:"
           git log --oneline -n 3
-
+      
       - name: Enable IDEFileSystemSynchronizedGroups
         run: |
           export IDEFileSystemSynchronizedGroupsAreEnabled=YES
@@ -68,8 +66,8 @@ jobs:
         run: |
           which wget
           wget --version
-
-        # Codacy analiz
+      
+      # Codacy analiz
       - name: Run Codacy Analysis CLI
         uses: codacy/codacy-analysis-cli-action@v4
         with:
@@ -77,3 +75,4 @@ jobs:
           verbose: true
           max-allowed-issues: 1500
           upload: true
+      
