@@ -66,3 +66,17 @@ jobs:
           verbose: true
           max-allowed-issues: 1000
           upload: true
+
+      - name: Check Codacy Quality Gate
+        env:
+          CODACY_API_TOKEN: 'peNJEy3SRP5Q1ZvGJiLU'
+          PROJECT_UUID: 'WfmUser-iOS'
+        run: |
+          response=$(curl -s -H "api-token: $CODACY_API_TOKEN" \
+            "https://api.codacy.com/api/v3/analysis/${PROJECT_UUID}/lastAnalysis")
+          STATUS=$(echo "$response" | jq -r '.qualityGateStatus')
+          echo "Quality Gate status: $STATUS"
+          if [ "$STATUS" != "passed" ]; then
+            echo "Quality Gate failed, stopping the build."
+            exit 1
+          fi
