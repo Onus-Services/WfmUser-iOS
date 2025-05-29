@@ -129,33 +129,30 @@ jobs:
         run: |
           echo "📝 Creating changelog entry..."
           
-          cat > NEW_CHANGELOG_ENTRY.md << EOF
-## [${VERSION}] - ${DATE} ${TIME} (TEST)
-
-### 🧪 TEST EVENT: ${EVENT_TYPE}
-- **Title**: ${TITLE}
-- **Author**: @${AUTHOR}
-- **Branch**: ${BRANCH}
-- **Event**: ${EVENT_TYPE}
-EOF
-
+          # Create changelog entry using echo commands
+          echo "## [${VERSION}] - ${DATE} ${TIME} (TEST)" > NEW_CHANGELOG_ENTRY.md
+          echo "" >> NEW_CHANGELOG_ENTRY.md
+          echo "### 🧪 TEST EVENT: ${EVENT_TYPE}" >> NEW_CHANGELOG_ENTRY.md
+          echo "- **Title**: ${TITLE}" >> NEW_CHANGELOG_ENTRY.md
+          echo "- **Author**: @${AUTHOR}" >> NEW_CHANGELOG_ENTRY.md
+          echo "- **Branch**: ${BRANCH}" >> NEW_CHANGELOG_ENTRY.md
+          echo "- **Event**: ${EVENT_TYPE}" >> NEW_CHANGELOG_ENTRY.md
+          
           if [ "${EVENT_TYPE}" == "pull_request" ]; then
             echo "- **PR Number**: #${NUMBER}" >> NEW_CHANGELOG_ENTRY.md
           else
             echo "- **ID**: ${NUMBER}" >> NEW_CHANGELOG_ENTRY.md
           fi
           
-          cat >> NEW_CHANGELOG_ENTRY.md << EOF
-
-### feature:
-- ${TITLE} (by @${AUTHOR})
-
-### fix:
-
-### chore:
-
----
-EOF
+          echo "" >> NEW_CHANGELOG_ENTRY.md
+          echo "### feature:" >> NEW_CHANGELOG_ENTRY.md
+          echo "- ${TITLE} (by @${AUTHOR})" >> NEW_CHANGELOG_ENTRY.md
+          echo "" >> NEW_CHANGELOG_ENTRY.md
+          echo "### fix:" >> NEW_CHANGELOG_ENTRY.md
+          echo "" >> NEW_CHANGELOG_ENTRY.md
+          echo "### chore:" >> NEW_CHANGELOG_ENTRY.md
+          echo "" >> NEW_CHANGELOG_ENTRY.md
+          echo "---" >> NEW_CHANGELOG_ENTRY.md
           
           echo "📄 Created changelog entry:"
           cat NEW_CHANGELOG_ENTRY.md
