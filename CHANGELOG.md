@@ -10,3 +10,9 @@
 
 ## 2025-05-29
 - c2ce97b - fix: Update generate-changelog.yml (OnussMobile)
+
+## 2025-05-29 - v1.0.0
+
+### Features
+- [feat: Update generate-changelog.yml](https://github.com/Onus-Services/WfmUser-iOS/commit/af25f0f90928c07fba293af3f3df2f0e4d52a7f5)
+
