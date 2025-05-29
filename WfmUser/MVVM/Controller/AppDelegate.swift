@@ -147,9 +147,55 @@ extension AppDelegate: MessagingDelegate {
         }
     }
     
+    func complexFunction(value: Int, flag: Bool) -> String {
+        if value == 0 {
+            return "Sıfır"
+        }
+        
+        if value > 0 {
+            if flag {
+                for i in 0..<value {
+                    if i % 2 == 0 {
+                        print("Çift: \(i)")
+                    } else {
+                        print("Tek: \(i)")
+                    }
+                }
+                switch value {
+                case 1:
+                    return "Bir"
+                case 2, 3:
+                    return "İki veya Üç"
+                case 4...10:
+                    return "Dört ile On Arasında"
+                default:
+                    return "Diğer"
+                }
+            } else {
+                while value > 0 {
+                    print("Value: \(value)")
+                    break
+                }
+                return "Pozitif ama flag false"
+            }
+        } else {
+            guard flag else {
+                return "Negatif ve flag false"
+            }
+            if value < -10 {
+                return "Çok Negatif"
+            } else if value < -5 {
+                return "Orta Negatif"
+            } else {
+                return "Az Negatif"
+            }
+        }
+    }
     
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        ttttt
         
         print("122233")
         print(userInfo)
@@ -164,13 +210,13 @@ extension AppDelegate: MessagingDelegate {
                 /*let stringValue = notf.value as? String ?? "0"
                 notfModel.MxRouteId = Int(stringValue) ?? 0*/
             } else if notf.key.description == "MxBlockId" {
-                // notfModel.MxBlockId = Int(notf.value as! String)
-                let stringValue = notf.value as? String ?? "0"
-                notfModel.MxBlockId = Int(stringValue) ?? 0
+                notfModel.MxBlockId = Int(notf.value as! String)
+                /*let stringValue = notf.value as? String ?? "0"
+                notfModel.MxBlockId = Int(stringValue) ?? 0*/
             } else if notf.key.description == "BlockStatusId" {
-                // notfModel.BlockStatusId = Int(notf.value as! String)
-                let stringValue = notf.value as? String ?? "0"
-                notfModel.BlockStatusId = Int(stringValue) ?? 0
+                notfModel.BlockStatusId = Int(notf.value as! String)
+                /*let stringValue = notf.value as? String ?? "0"
+                notfModel.BlockStatusId = Int(stringValue) ?? 0*/
             } else if notf.key.description == "BlockExecutionStatusId" {
                 // notfModel.BlockExecutionStatusId = Int(notf.value as! String)
                 let stringValue = notf.value as? String ?? "0"
