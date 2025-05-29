@@ -53,12 +53,6 @@ jobs:
             echo "Manual input: ${{ github.event.inputs.test_type }}"
           fi
           
-      - name: 🧹 Clean workspace
-        run: |
-          echo "🧹 Cleaning workspace..."
-          rm -rf ${{ github.workspace }}/*
-          rm -rf ${{ github.workspace }}/.git* || true
-          
       - name: 📥 Checkout repository
         uses: actions/checkout@v4
         with:
