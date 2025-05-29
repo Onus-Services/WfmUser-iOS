@@ -16,3 +16,9 @@
 ### Features
 - [feat: Update generate-changelog.yml](https://github.com/Onus-Services/WfmUser-iOS/commit/af25f0f90928c07fba293af3f3df2f0e4d52a7f5)
 
+
+## 2025-05-29 - v1.0.0
+
+### Features
+- [Update generate-changelog.yml](https://github.com/Onus-Services/WfmUser-iOS/commit/b6bf4df784473f9493f0f47a54641fc0720af675)
+
