@@ -230,15 +230,15 @@ extension AppDelegate: MessagingDelegate {
                 let stringValue = notf.value as? String ?? "0"
                 notfModel.PointId = Int(stringValue) ?? 0
             } else if notf.key.description == "Show" {
-                // notfModel.Show = Int(notf.value as! String)
-                let stringValue = notf.value as? String ?? "0"
-                notfModel.Show = Int(stringValue) ?? 0
+                notfModel.Show = Int(notf.value as! String)
+                /*let stringValue = notf.value as? String ?? "0"
+                notfModel.Show = Int(stringValue) ?? 0*/
             } else if notf.key.description == "ActionDesc" {
                 notfModel.ActionDesc = notf.value as? String
             } else if notf.key.description == "UseSandBox" {
-                // notfModel.UseSandBox = Int(notf.value as! String)
-                let stringValue = notf.value as? String ?? "0"
-                notfModel.UseSandBox = Int(stringValue) ?? 0
+                notfModel.UseSandBox = Int(notf.value as! String)
+                /*let stringValue = notf.value as? String ?? "0"
+                notfModel.UseSandBox = Int(stringValue) ?? 0*/
             } else if notf.key.description == "ExecutionType" {
                 notfModel.ExecutionType = Int(notf.value as! String)
                 /*let stringValue = notf.value as? String ?? "0"
