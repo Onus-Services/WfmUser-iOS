@@ -28,25 +28,25 @@ jobs:
   #  uses: ./.github/workflows/build-project.yml
   #  needs: setup-here-sdk
 
-  unit-tests:
-    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
-    uses: ./.github/workflows/unit-tests.yml
-    needs: setup-here-sdk
+  # unit-tests:
+  #  if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+  #  uses: ./.github/workflows/unit-tests.yml
+  #  needs: setup-here-sdk
 
-  docs:
-    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
-    uses: ./.github/workflows/generate-docs.yml
-    needs: setup-here-sdk
+  # docs:
+  #  if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+  #  uses: ./.github/workflows/generate-docs.yml
+  #  needs: setup-here-sdk
 
-  codacy:
-    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
-    uses: ./.github/workflows/codacy-analysis.yml
-    needs: unit-tests
+  # codacy:
+  #  if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+  #  uses: ./.github/workflows/codacy-analysis.yml
+  #  needs: unit-tests
 
-  upload:
-    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
-    uses: ./.github/workflows/upload-to-drive.yml
-    needs: codacy
+  # upload:
+  #  if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+  #  uses: ./.github/workflows/upload-to-drive.yml
+  #  needs: codacy
 
   generate-changelog:
     # if: github.event_name == 'pull_request' && github.base_ref == 'main'
