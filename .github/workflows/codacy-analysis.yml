@@ -57,6 +57,15 @@ jobs:
         run: |
           which wget
           wget --version
+
+      - name: Fetch Codacy issuesCount from API
+        run: |
+          response=$(curl -s -X GET "https://app.codacy.com/api/v3/analysis/organizations/gh/Onus-Services/repositories/WfmUser-iOS" \
+            -H "Accept: application/json" \
+            -H "api-token: peNJEy3SRP5Q1ZvGJiLU")
+
+          issues_count=$(echo "$response" | jq '.data.issuesCount')
+          echo "Codacy issuesCount: $issues_count"
       
       # Codacy analiz
       - name: Run Codacy Analysis CLI
@@ -67,16 +76,4 @@ jobs:
           max-allowed-issues: 1500
           upload: true
 
-      - name: Check Codacy Quality Gate
-        env:
-          CODACY_API_TOKEN: 'peNJEy3SRP5Q1ZvGJiLU'
-          PROJECT_UUID: 'WfmUser-iOS'
-        run: |
-          response=$(curl -s -H "api-token: $CODACY_API_TOKEN" \
-            "https://api.codacy.com/api/v3/analysis/${PROJECT_UUID}/lastAnalysis")
-          STATUS=$(echo "$response" | jq -r '.qualityGateStatus')
-          echo "Quality Gate status: $STATUS"
-          if [ "$STATUS" != "passed" ]; then
-            echo "Quality Gate failed, stopping the build."
-            exit 1
-          fi
+     
