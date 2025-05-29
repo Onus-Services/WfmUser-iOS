@@ -1,77 +1,192 @@
-name: Generate Changelog Entry
+name: TEST - Generate Changelog Entry
 on:
-  workflow_call:  # Başka bir workflow'dan çağrılabilir
+  # TEST: Push ve PR için trigger'lar
+  push:
+    branches: 
+      - yml_test_brach
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - yml_test_brach
+  # Manuel test için
+  workflow_dispatch:
+    inputs:
+      test_type:
+        description: 'Test type (push/pr/manual)'
+        required: true
+        default: 'manual'
+        type: choice
+        options:
+        - push
+        - pr
+        - manual
 
 jobs:
-  generate-changelog:
-    name: Generate CHANGELOG.md Entry
+  test-changelog:
+    name: TEST - Generate CHANGELOG.md Entry
     runs-on: self-hosted
+    permissions:
+      contents: write
+      pull-requests: read
     
     steps:
-      - name: Clean workspace
+      - name: 🧪 TEST - Display Event Info
         run: |
-          # Self-hosted runner için çalışma alanını temizle
-          rm -rf ${{ github.workspace }}/*
-          rm -rf ${{ github.workspace }}/.git*
+          echo "🔍 EVENT DETAILS:"
+          echo "Event name: ${{ github.event_name }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "Ref name: ${{ github.ref_name }}"
+          echo "Head ref: ${{ github.head_ref }}"
+          echo "Base ref: ${{ github.base_ref }}"
           
-      - name: Checkout repository
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            echo "PR Number: ${{ github.event.pull_request.number }}"
+            echo "PR Title: ${{ github.event.pull_request.title }}"
+            echo "PR Author: ${{ github.event.pull_request.user.login }}"
+          fi
+          
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "Manual input: ${{ github.event.inputs.test_type }}"
+          fi
+          
+      - name: 🧹 Clean workspace
+        run: |
+          echo "🧹 Cleaning workspace..."
+          rm -rf ${{ github.workspace }}/*
+          rm -rf ${{ github.workspace }}/.git* || true
+          
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
           fetch-depth: 0
           clean: true
           
-      - name: Verify git setup
+      - name: ✅ Verify git setup
         run: |
-          pwd
+          echo "📍 Current directory: $(pwd)"
+          echo "📂 Directory contents:"
           ls -la
+          echo "🌿 Git status:"
           git status
+          echo "🌿 Available branches:"
           git branch -a
-          echo "Current branch: $(git branch --show-current)"
+          echo "🌿 Current branch: $(git branch --show-current)"
+          echo "🌿 Remote origin:"
+          git remote -v
           
-      - name: Set metadata from PR
+      - name: 📝 Set metadata based on event type
         run: |
-          echo "TITLE=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
-          echo "BODY=${{ github.event.pull_request.body }}" >> $GITHUB_ENV
-          echo "NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
-          echo "AUTHOR=${{ github.event.pull_request.user.login }}" >> $GITHUB_ENV
+          echo "🔧 Setting environment variables..."
+          
+          case "${{ github.event_name }}" in
+            "pull_request")
+              echo "📋 Processing PULL REQUEST event..."
+              echo "TITLE=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
+              echo "NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+              echo "AUTHOR=${{ github.event.pull_request.user.login }}" >> $GITHUB_ENV
+              echo "BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
+              echo "EVENT_TYPE=pull_request" >> $GITHUB_ENV
+              ;;
+            "push")
+              echo "📋 Processing PUSH event..."
+              COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+              echo "TITLE=$COMMIT_MSG" >> $GITHUB_ENV
+              echo "NUMBER=push-$(date +'%H%M%S')" >> $GITHUB_ENV
+              echo "AUTHOR=${{ github.actor }}" >> $GITHUB_ENV
+              echo "BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
+              echo "EVENT_TYPE=push" >> $GITHUB_ENV
+              ;;
+            "workflow_dispatch")
+              echo "📋 Processing MANUAL event..."
+              echo "TITLE=TEST: Manual changelog generation (${{ github.event.inputs.test_type }})" >> $GITHUB_ENV
+              echo "NUMBER=manual-$(date +'%H%M%S')" >> $GITHUB_ENV
+              echo "AUTHOR=${{ github.actor }}" >> $GITHUB_ENV
+              echo "BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
+              echo "EVENT_TYPE=manual" >> $GITHUB_ENV
+              ;;
+            *)
+              echo "📋 Processing UNKNOWN event..."
+              echo "TITLE=Unknown event: ${{ github.event_name }}" >> $GITHUB_ENV
+              echo "NUMBER=unknown-$(date +'%H%M%S')" >> $GITHUB_ENV
+              echo "AUTHOR=${{ github.actor }}" >> $GITHUB_ENV
+              echo "BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
+              echo "EVENT_TYPE=unknown" >> $GITHUB_ENV
+              ;;
+          esac
+          
           echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
-          echo "VERSION=1.0.${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          echo "TIME=$(date +'%H:%M:%S')" >> $GITHUB_ENV
+          echo "VERSION=TEST-1.0.$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
           
-      - name: Create changelog entry file
+      - name: 📄 Create changelog entry file
         working-directory: ${{ github.workspace }}
         run: |
-          echo "## [${VERSION}] - ${DATE}" > NEW_CHANGELOG_ENTRY.md
-          echo "" >> NEW_CHANGELOG_ENTRY.md
-          echo "### feature:" >> NEW_CHANGELOG_ENTRY.md
-          echo "- $TITLE (by @$AUTHOR) [PR #$NUMBER]" >> NEW_CHANGELOG_ENTRY.md
-          echo "" >> NEW_CHANGELOG_ENTRY.md
-          echo "### fix:" >> NEW_CHANGELOG_ENTRY.md
-          echo "" >> NEW_CHANGELOG_ENTRY.md
-          echo "### chore:" >> NEW_CHANGELOG_ENTRY.md
-          echo "" >> NEW_CHANGELOG_ENTRY.md
+          echo "📝 Creating changelog entry..."
           
-      - name: Merge with existing CHANGELOG.md
+          cat > NEW_CHANGELOG_ENTRY.md << EOF
+## [${VERSION}] - ${DATE} ${TIME} (TEST)
+
+### 🧪 TEST EVENT: ${EVENT_TYPE}
+- **Title**: ${TITLE}
+- **Author**: @${AUTHOR}
+- **Branch**: ${BRANCH}
+- **Event**: ${EVENT_TYPE}
+EOF
+
+          if [ "${EVENT_TYPE}" == "pull_request" ]; then
+            echo "- **PR Number**: #${NUMBER}" >> NEW_CHANGELOG_ENTRY.md
+          else
+            echo "- **ID**: ${NUMBER}" >> NEW_CHANGELOG_ENTRY.md
+          fi
+          
+          cat >> NEW_CHANGELOG_ENTRY.md << EOF
+
+### feature:
+- ${TITLE} (by @${AUTHOR})
+
+### fix:
+
+### chore:
+
+---
+EOF
+          
+          echo "📄 Created changelog entry:"
+          cat NEW_CHANGELOG_ENTRY.md
+          
+      - name: 🔄 Merge with existing CHANGELOG.md
         working-directory: ${{ github.workspace }}
         run: |
+          echo "🔄 Merging with existing CHANGELOG..."
+          
           if [ -f CHANGELOG.md ]; then
+            echo "📄 Existing CHANGELOG.md found, backing up..."
             cp CHANGELOG.md OLD_CHANGELOG_CONTENT.md
           else
+            echo "📄 No existing CHANGELOG.md, creating new one..."
             touch OLD_CHANGELOG_CONTENT.md
           fi
+          
+          echo "🔄 Merging files..."
           cat NEW_CHANGELOG_ENTRY.md OLD_CHANGELOG_CONTENT.md > CHANGELOG.md
           
-      - name: Commit and push updated CHANGELOG
+          echo "📄 Preview of new CHANGELOG.md (first 20 lines):"
+          head -20 CHANGELOG.md
+          
+      - name: 💾 Commit and push updated CHANGELOG
         working-directory: ${{ github.workspace }}
         run: |
-          # Çalışma dizinini kontrol et
-          pwd
-          ls -la
+          echo "💾 Preparing to commit changes..."
           
-          # Git repository olduğunu doğrula
+          # Git repository kontrolü
           if [ ! -d ".git" ]; then
-            echo "Error: Not in a git repository"
+            echo "❌ Error: Not in a git repository"
             exit 1
           fi
           
@@ -79,15 +194,51 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Değişiklikleri kontrol et ve commit et
+          # Değişiklikleri kontrol et
           git add CHANGELOG.md
+          
           if git diff --staged --quiet; then
-            echo "No changes to commit"
+            echo "ℹ️ No changes to commit"
           else
-            echo "Committing changes..."
-            git commit -m "chore: update CHANGELOG for PR #$NUMBER"
-            echo "Pushing to branch: ${{ github.head_ref }}"
-            git push origin ${{ github.head_ref }}
+            echo "📝 Changes detected, committing..."
+            
+            case "${EVENT_TYPE}" in
+              "pull_request")
+                COMMIT_MSG="🧪 TEST: Update CHANGELOG for PR #${NUMBER}"
+                ;;
+              "push")
+                COMMIT_MSG="🧪 TEST: Update CHANGELOG for push (${NUMBER})"
+                ;;
+              "manual")
+                COMMIT_MSG="🧪 TEST: Manual CHANGELOG update (${NUMBER})"
+                ;;
+              *)
+                COMMIT_MSG="🧪 TEST: Update CHANGELOG (${EVENT_TYPE})"
+                ;;
+            esac
+            
+            echo "📝 Commit message: $COMMIT_MSG"
+            git commit -m "$COMMIT_MSG"
+            
+            echo "🚀 Pushing to branch: ${BRANCH}"
+            git push origin ${BRANCH}
+            
+            echo "✅ Successfully pushed changes!"
           fi
+          
+          # Cleanup temporary files
+          rm -f NEW_CHANGELOG_ENTRY.md OLD_CHANGELOG_CONTENT.md || true
+          
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: 🎉 TEST Complete
+        run: |
+          echo "🎉 TEST COMPLETED SUCCESSFULLY!"
+          echo "Event: ${EVENT_TYPE}"
+          echo "Version: ${VERSION}"
+          echo "Author: ${AUTHOR}"
+          echo "Branch: ${BRANCH}"
+          echo ""
+          echo "🔍 Check the CHANGELOG.md file to see the results."
+          echo "🧪 This was a TEST run - remove TEST triggers when satisfied."
