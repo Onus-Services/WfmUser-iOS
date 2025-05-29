@@ -49,7 +49,7 @@ jobs:
   #  needs: codacy
 
   generate-changelog:
-    # if: github.event_name == 'pull_request' && github.base_ref == 'main'
+    if: github.event_name == 'pull_request' && github.base_ref == 'main'
     uses: ./.github/workflows/generate-changelog.yml
     needs: setup-here-sdk
 
