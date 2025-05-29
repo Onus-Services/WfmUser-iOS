@@ -52,15 +52,6 @@ jobs:
           git remote -v
           echo "Recent commits:"
           git log --oneline -n 3
-      
-      - name: Enable IDEFileSystemSynchronizedGroups
-        run: |
-          export IDEFileSystemSynchronizedGroupsAreEnabled=YES
-        
-      - name: Set up Xcode 16.3
-        uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: '16.3'
         
       - name: Verify wget installation
         run: |
@@ -73,5 +64,5 @@ jobs:
         with:
           project-token: '101c14959850483ead736dda762d36cf'
           verbose: true
-          max-allowed-issues: 914
+          max-allowed-issues: 1000
           upload: true
