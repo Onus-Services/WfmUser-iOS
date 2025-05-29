@@ -58,14 +58,25 @@ jobs:
           which wget
           wget --version
 
-      - name: Fetch Codacy issuesCount from API
+     # - name: Fetch Codacy issuesCount from API
+     #   run: |
+     #     response=$(curl -s -X GET "https://app.codacy.com/api/v3/analysis/organizations/gh/Onus-Services/repositories/WfmUser-iOS" \
+     #       -H "Accept: application/json" \
+     #       -H "api-token: peNJEy3SRP5Q1ZvGJiLU")
+
+     #     issues_count=$(echo "$response" | jq '.data.issuesCount')
+     #     echo "Codacy issuesCount: $issues_count"
+
+      - name: Fetch initial Codacy issuesCount from API
+        id: fetch_initial
         run: |
           response=$(curl -s -X GET "https://app.codacy.com/api/v3/analysis/organizations/gh/Onus-Services/repositories/WfmUser-iOS" \
             -H "Accept: application/json" \
             -H "api-token: peNJEy3SRP5Q1ZvGJiLU")
 
           issues_count=$(echo "$response" | jq '.data.issuesCount')
-          echo "Codacy issuesCount: $issues_count"
+          echo "Initial Codacy issuesCount: $issues_count"
+          echo "::set-output name=initial::$issues_count"
       
       # Codacy analiz
       - name: Run Codacy Analysis CLI
@@ -76,4 +87,31 @@ jobs:
           max-allowed-issues: 1500
           upload: true
 
-     
+      - name: Fetch new Codacy issuesCount from API
+        id: fetch_new
+        run: |
+          response=$(curl -s -X GET "https://app.codacy.com/api/v3/analysis/organizations/gh/Onus-Services/repositories/WfmUser-iOS" \
+            -H "Accept: application/json" \
+            -H "api-token: peNJEy3SRP5Q1ZvGJiLU")
+
+          issues_count=$(echo "$response" | jq '.data.issuesCount')
+          echo "New Codacy issuesCount: $issues_count"
+          echo "::set-output name=new::$issues_count"
+
+      - name: Compare issuesCount and fail if needed
+        run: |
+          initial=${{ steps.fetch_initial.outputs.initial }}
+          new=${{ steps.fetch_new.outputs.new }}
+
+          echo "Initial issuesCount: $initial"
+          echo "New issuesCount: $new"
+
+          diff=$((initial - new))
+          echo "Difference (initial - new): $diff"
+
+          if [ "$diff" -gt -1 ]; then
+            echo "Failing: difference $diff is greater than -1"
+            exit 1
+          else
+            echo "Success: difference $diff is not greater than -1"
+          fi
