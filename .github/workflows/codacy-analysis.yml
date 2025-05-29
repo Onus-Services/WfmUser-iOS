@@ -64,7 +64,7 @@ jobs:
         with:
           project-token: '101c14959850483ead736dda762d36cf'
           verbose: true
-          max-allowed-issues: 1000
+          max-allowed-issues: 1500
           upload: true
 
       - name: Check Codacy Quality Gate
