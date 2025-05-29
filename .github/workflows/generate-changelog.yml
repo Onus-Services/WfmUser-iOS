@@ -6,9 +6,6 @@ jobs:
   generate-changelog:
     name: Generate CHANGELOG.md Entry
     runs-on: self-hosted
-    permissions:
-      contents: write
-      pull-requests: read
     
     steps:
       - name: Clean workspace
