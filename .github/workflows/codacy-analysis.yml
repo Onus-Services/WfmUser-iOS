@@ -87,15 +87,34 @@ jobs:
           max-allowed-issues: 1500
           upload: true
 
-      - name: Fetch new Codacy issuesCount from API
+      - name: Fetch new Codacy issuesCount from API (with polling)
         id: fetch_new
         run: |
-          response=$(curl -s -X GET "https://app.codacy.com/api/v3/analysis/organizations/gh/Onus-Services/repositories/WfmUser-iOS" \
-            -H "Accept: application/json" \
-            -H "api-token: peNJEy3SRP5Q1ZvGJiLU")
+          initial_count="${{ steps.fetch_initial.outputs.initial }}"
+          max_attempts=10
+          attempt=0
+          delay=10
 
-          issues_count=$(echo "$response" | jq '.data.issuesCount')
-          echo "New Codacy issuesCount: $issues_count"
+          while [ "$attempt" -lt "$max_attempts" ]; do
+            echo "Attempt $((attempt+1)) of $max_attempts..."
+
+            response=$(curl -s -X GET "https://app.codacy.com/api/v3/analysis/organizations/gh/Onus-Services/repositories/WfmUser-iOS" \
+              -H "Accept: application/json" \
+              -H "api-token: peNJEy3SRP5Q1ZvGJiLU")
+
+            issues_count=$(echo "$response" | jq '.data.issuesCount')
+            echo "Fetched issuesCount: $issues_count"
+
+            if [ "$issues_count" != "$initial_count" ]; then
+              echo "New issuesCount detected: $issues_count"
+              break
+            fi
+
+            echo "No change in issuesCount yet. Waiting $delay seconds..."
+            sleep "$delay"
+            attempt=$((attempt+1))
+          done
+
           echo "::set-output name=new::$issues_count"
 
       - name: Compare issuesCount and fail if needed
