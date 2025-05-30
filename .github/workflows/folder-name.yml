@@ -1,0 +1,21 @@
+name: Generate Folder Name
+on:
+  workflow_call:
+    outputs:
+      folder-name:
+        description: "Generated folder name"
+        value: ${{ jobs.generate.outputs.folder-name }}
+
+jobs:
+  generate:
+    runs-on: macos-latest
+    outputs:
+      folder-name: ${{ steps.set-folder-name.outputs.folder-name }}
+    steps:
+      - name: Read version and build from Xcode settings
+        id: set-folder-name
+        run: |
+          VERSION=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep MARKETING_VERSION | awk '{print $3}')
+          BUILD=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
+          FOLDER_NAME="v${VERSION}_${BUILD}"
+          echo "folder-name=$FOLDER_NAME" >> $GITHUB_OUTPUT
