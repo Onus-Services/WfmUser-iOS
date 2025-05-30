@@ -28,22 +28,24 @@ jobs:
      #     cat ~/.config/rclone/rclone.conf
      #     echo "--- rclone.conf İçeriği Sonu ---"   
 
-      - name: Read version and build from Xcode settings
-        run: |
-          VERSION=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep MARKETING_VERSION | awk '{print $3}')
-          BUILD=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
-          FOLDER_NAME="v${VERSION}_${BUILD}"
-          echo "📁 Version: $VERSION"
-          echo "📦 Build: $BUILD"
-          echo "📂 Folder Name: $FOLDER_NAME"
-          echo "FOLDER_NAME=$FOLDER_NAME" >> "$GITHUB_ENV"
+     # - name: Read version and build from Xcode settings
+     #   run: |
+     #     VERSION=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep MARKETING_VERSION | awk '{print $3}')
+     #     BUILD=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
+     #     FOLDER_NAME="v${VERSION}_${BUILD}"
+     #     echo "📁 Version: $VERSION"
+     #     echo "📦 Build: $BUILD"
+     #     echo "📂 Folder Name: $FOLDER_NAME"
+     #     echo "FOLDER_NAME=$FOLDER_NAME" >> "$GITHUB_ENV"
 
-      - name: Print FOLDER_NAME for debug
-        run: |
-          echo "✅ Generated folder name: $FOLDER_NAME"
+     # - name: Print FOLDER_NAME for debug
+     #   run: |
+     #     echo "✅ Generated folder name: $FOLDER_NAME"
 
       - name: Read folder name
-        run: echo "Uploading to folder ${{ inputs.folder_name }}"
+        run: |
+          echo "Uploading to folder ${{ inputs.folder_name }}"
+          echo "📂 Folder Name: ${{ inputs.folder_name }} xx"
 
       - name: Upload docs to Google Drive
         run: |
