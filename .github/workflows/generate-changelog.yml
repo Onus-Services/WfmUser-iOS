@@ -22,7 +22,7 @@ jobs:
       - name: Generate formatted CHANGELOG
         run: |
           REPO_URL="https://github.com/${{ github.repository }}"
-          VERSION=$(cat VERSION 2>/dev/null || echo "v1.0.0")
+          VERSION=$(cat VERSION 2>/dev/null || echo "${{ inputs.folder_name }}")
           DATE=$(date +"%Y-%m-%d")
 
           if [ ! -f CHANGELOG.md ]; then
