@@ -1,12 +1,15 @@
 name: Upload Docs to Drive
 on:
   workflow_call:
+    inputs:
+      folder_name:
+        required: true
+        type: string
 
 jobs:
   upload:
     runs-on: self-hosted
     steps:
-    
      # - name: Setup rclone config
      #   run: |
      #     mkdir -p ~/.config/rclone
@@ -38,6 +41,9 @@ jobs:
       - name: Print FOLDER_NAME for debug
         run: |
           echo "✅ Generated folder name: $FOLDER_NAME"
+
+      - name: Read folder name
+        run: echo "Uploading to folder: ${{ inputs.folder_name }}"
 
       - name: Upload docs to Google Drive
         run: |
