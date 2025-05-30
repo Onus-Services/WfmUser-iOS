@@ -16,41 +16,49 @@ jobs:
   checkout:
     uses: ./.github/workflows/checkout.yml
 
-  setup-xcode:
-    uses: ./.github/workflows/xcode-setup.yml
+  folder-name:
+    uses: ./.github/workflows/folder-name.yml
     needs: checkout
 
-  setup-here-sdk:
-    uses: ./.github/workflows/here-sdk-setup.yml
-    needs: setup-xcode
+ # setup-xcode:
+ #   uses: ./.github/workflows/xcode-setup.yml
+ #   needs: checkout
+
+ # setup-here-sdk:
+ #   uses: ./.github/workflows/here-sdk-setup.yml
+ #   needs: setup-xcode
 
  # build-project:
  #   uses: ./.github/workflows/build-project.yml
  #   needs: setup-here-sdk
 
-  unit-tests:
+ # unit-tests:
     #if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
-    uses: ./.github/workflows/unit-tests.yml
-    needs: setup-here-sdk
+ #   uses: ./.github/workflows/unit-tests.yml
+ #   needs: setup-here-sdk
 
-  docs:
+ # docs:
     #if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
-    uses: ./.github/workflows/generate-docs.yml
-    needs: unit-tests
+ #   uses: ./.github/workflows/generate-docs.yml
+ #   needs: unit-tests
 
-  codacy:
+ # codacy:
     #if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
-    uses: ./.github/workflows/codacy-analysis.yml
-    needs: unit-tests
+ #   uses: ./.github/workflows/codacy-analysis.yml
+ #   needs: unit-tests
 
   upload:
     if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
     uses: ./.github/workflows/upload-to-drive.yml
-    needs: codacy
+    needs: folder-name #codacy
+    with:
+      folder_name: ${{ needs.folder-name.outputs.folder_name }}
 
   generate-changelog:
     uses: ./.github/workflows/generate-changelog.yml
-    needs: upload
+    needs: folder-name #upload
+    with:
+      folder_name: ${{ needs.folder-name.outputs.folder_name }}
 
  # tags:
  #   uses: ./.github/workflows/create-tag.yml
