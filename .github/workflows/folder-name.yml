@@ -18,4 +18,7 @@ jobs:
           VERSION=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep MARKETING_VERSION | awk '{print $3}')
           BUILD=$(xcodebuild -project WfmUser.xcodeproj -scheme WfmUser -showBuildSettings | grep CURRENT_PROJECT_VERSION | awk '{print $3}')
           FOLDER_NAME="v${VERSION}_${BUILD}"
+          echo "📁 Version: $VERSION"
+          echo "📦 Build: $BUILD"
+          echo "📂 Folder Name: $FOLDER_NAME"
           echo "folder-name=$FOLDER_NAME" >> $GITHUB_OUTPUT
