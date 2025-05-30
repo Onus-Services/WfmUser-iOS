@@ -12,6 +12,7 @@ jobs:
     outputs:
       folder-name: ${{ steps.set-folder-name.outputs.folder-name }}
     steps:
+
       - name: Read version and build from Xcode settings
         id: set-folder-name
         run: |
@@ -22,3 +23,4 @@ jobs:
           echo "📦 Build: $BUILD"
           echo "📂 Folder Name: $FOLDER_NAME"
           echo "folder-name=$FOLDER_NAME" >> $GITHUB_OUTPUT
+         
