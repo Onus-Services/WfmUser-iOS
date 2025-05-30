@@ -2,15 +2,15 @@ name: Generate Folder Name
 on:
   workflow_call:
     outputs:
-      folder-name:
+      folder_name:
         description: "Generated folder name"
-        value: ${{ jobs.generate.outputs.folder-name }}
+        value: ${{ jobs.generate.outputs.folder_name }}
 
 jobs:
   generate:
     runs-on: self-hosted
     outputs:
-      folder-name: ${{ steps.set-folder-name.outputs.folder-name }}
+      folder_name: ${{ steps.set-folder-name.outputs.folder_name }}
     steps:
 
       - name: Read version and build from Xcode settings
@@ -22,5 +22,5 @@ jobs:
           echo "📁 Version: $VERSION"
           echo "📦 Build: $BUILD"
           echo "📂 Folder Name: $FOLDER_NAME"
-          echo "folder-name=$FOLDER_NAME" >> $GITHUB_OUTPUT
+          echo "folder_name=$FOLDER_NAME" >> $GITHUB_OUTPUT
          
