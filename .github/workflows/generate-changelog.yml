@@ -2,6 +2,10 @@ name: CI
 
 on:
   workflow_call:
+    inputs:
+      folder_name:
+        required: true
+        type: string
 
 jobs:
   changelog-update:
