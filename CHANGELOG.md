@@ -28,3 +28,6 @@
 ### Fixes
 - [Update iOS_main.yml](https://github.com/Onus-Services/WfmUser-iOS/commit/009ee678e54618b654d6f52cc44ea4b337e65896)
 
+
+## 2025-05-30 - v1.0.0
+
