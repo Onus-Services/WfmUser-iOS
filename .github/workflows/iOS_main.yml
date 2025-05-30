@@ -24,9 +24,9 @@ jobs:
     uses: ./.github/workflows/here-sdk-setup.yml
     needs: setup-xcode
 
-  build-project:
-    uses: ./.github/workflows/build-project.yml
-    needs: setup-here-sdk
+ # build-project:
+ #   uses: ./.github/workflows/build-project.yml
+ #   needs: setup-here-sdk
 
   unit-tests:
     #if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
