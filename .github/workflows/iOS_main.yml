@@ -60,6 +60,8 @@ jobs:
     with:
       folder_name: ${{ needs.folder-name.outputs.folder_name }}
 
- # tags:
- #   uses: ./.github/workflows/create-tag.yml
- #   needs: checkout
+  tags:
+    uses: ./.github/workflows/create-tag.yml
+    needs: generate-changelog
+    with:
+      folder_name: ${{ needs.folder-name.outputs.folder_name }}
