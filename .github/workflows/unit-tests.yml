@@ -6,10 +6,9 @@ jobs:
   unit-tests:
     runs-on: self-hosted
     steps:
-      - name: Run Unit Tests
+      - name: Run Unit Tests (no build)
         run: |
-          xcodebuild test \
-            -project WfmUser.xcodeproj \
+          xcodebuild test-without-building \
             -scheme WfmUser \
             -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
             -derivedDataPath build \
