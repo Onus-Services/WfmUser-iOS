@@ -43,7 +43,7 @@ jobs:
           echo "✅ Generated folder name: $FOLDER_NAME"
 
       - name: Read folder name
-        run: echo "Uploading to folder: ${{ inputs.folder_name }}"
+        run: echo "Uploading to folder ${{ inputs.folder_name }}"
 
       - name: Upload docs to Google Drive
         run: |
