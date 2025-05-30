@@ -1,17 +1,49 @@
 name: Build Project
 on:
   workflow_call:
-
 jobs:
   build-project:
     runs-on: self-hosted
     steps:
-      - name: Build project (disable code signing)
+      - name: Cache DerivedData
+        uses: actions/cache@v4
+        with:
+          path: |
+            build/Build
+            ~/Library/Developer/Xcode/DerivedData
+          key: ${{ runner.os }}-xcode-deriveddata-${{ hashFiles('**/*.xcodeproj', '**/*.swift', '**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-xcode-deriveddata-
+      
+      - name: Cache CocoaPods
+        uses: actions/cache@v4
+        with:
+          path: Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+        if: hashFiles('**/Podfile.lock') != ''
+      
+      - name: Install CocoaPods (if needed)
+        run: |
+          if [ -f "Podfile.lock" ]; then
+            pod install --deployment
+          fi
+      
+      - name: Build project (optimized)
         run: |
           xcodebuild clean build \
           -scheme WfmUser \
           -configuration Release \
           -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+          -derivedDataPath build \
+          -jobs $(sysctl -n hw.ncpu) \
+          -parallelizeTargets \
+          -quiet \
           CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_ALLOWED=NO \
-          CODE_SIGNING_REQUIRED=NO | xcpretty
+          CODE_SIGNING_REQUIRED=NO \
+          COMPILER_INDEX_STORE_ENABLE=NO \
+          DEBUG_INFORMATION_FORMAT=dwarf \
+          SWIFT_COMPILATION_MODE=wholemodule \
+          SWIFT_OPTIMIZATION_LEVEL=-O | xcpretty
